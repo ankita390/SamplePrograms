@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testng-results skipped="0" failed="0" total="1" passed="1">
+  <reporter-output>
+    <line>
+      <![CDATA[Chrome Browser launches]]>
+    </line>
+    <line>
+      <![CDATA[Navigate to the URL]]>
+    </line>
+    <line>
+      <![CDATA[Script passed]]>
+    </line>
+    <line>
+      <![CDATA[Browser closed]]>
+    </line>
+  </reporter-output>
+  <suite name="Suite" duration-ms="285287" started-at="2018-02-13T12:46:44Z" finished-at="2018-02-13T12:51:30Z">
+    <groups>
+      <group name="Detail">
+        <method signature="LoginTest.AllSpecificPackageUserLoginTest()[pri:0, instance:com.applect.meritnation.scripts.LoginTest@150d6a5e]" name="AllSpecificPackageUserLoginTest" class="com.applect.meritnation.scripts.LoginTest"/>
+      </group> <!-- Detail -->
+    </groups>
+    <test name="RegressiononChromeTest" duration-ms="285287" started-at="2018-02-13T12:46:44Z" finished-at="2018-02-13T12:51:30Z">
+      <class name="com.applect.meritnation.scripts.LoginTest">
+        <test-method status="PASS" signature="precondition(java.lang.String)[pri:0, instance:com.applect.meritnation.scripts.LoginTest@150d6a5e]" name="precondition" is-config="true" duration-ms="10305" started-at="2018-02-13T18:16:44Z" finished-at="2018-02-13T18:16:55Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[chrome]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+            <line>
+              <![CDATA[Chrome Browser launches]]>
+            </line>
+            <line>
+              <![CDATA[Navigate to the URL]]>
+            </line>
+          </reporter-output>
+        </test-method> <!-- precondition -->
+        <test-method status="PASS" signature="AllSpecificPackageUserLoginTest()[pri:0, instance:com.applect.meritnation.scripts.LoginTest@150d6a5e]" name="AllSpecificPackageUserLoginTest" duration-ms="274733" started-at="2018-02-13T18:16:55Z" finished-at="2018-02-13T18:21:30Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- AllSpecificPackageUserLoginTest -->
+        <test-method status="PASS" signature="postCondition(org.testng.ITestResult)[pri:0, instance:com.applect.meritnation.scripts.LoginTest@150d6a5e]" name="postCondition" is-config="true" duration-ms="218" started-at="2018-02-13T18:21:30Z" finished-at="2018-02-13T18:21:30Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[[TestResult name=AllSpecificPackageUserLoginTest status=SUCCESS method=LoginTest.AllSpecificPackageUserLoginTest()[pri:0, instance:com.applect.meritnation.scripts.LoginTest@150d6a5e] output={null}]]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+            <line>
+              <![CDATA[Script passed]]>
+            </line>
+            <line>
+              <![CDATA[Browser closed]]>
+            </line>
+          </reporter-output>
+        </test-method> <!-- postCondition -->
+      </class> <!-- com.applect.meritnation.scripts.LoginTest -->
+    </test> <!-- RegressiononChromeTest -->
+  </suite> <!-- Suite -->
+</testng-results>

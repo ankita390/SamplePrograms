@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite guice-stage="DEVELOPMENT" name="Failed suite [Failed suite [Suite]]" parallel="none">
+  <parameter name="browser" value="chrome"/>
+  <test name="RegressiononChromeTest(failed)(failed)" parallel="none">
+    <parameter name="browser" value="chrome"/>
+    <groups>
+      <run>
+        <include name="Regression"/>
+      </run>
+    </groups>
+    <classes>
+      <class name="com.applect.meritnation.scripts.SearchTest">
+        <methods>
+          <include name="SearchTest"/>
+          <include name="precondition"/>
+          <include name="postCondition"/>
+        </methods>
+      </class> <!-- com.applect.meritnation.scripts.SearchTest -->
+      <class name="com.applect.meritnation.scripts.LoginTest">
+        <methods>
+          <include name="LoginTest"/>
+          <include name="precondition"/>
+          <include name="postCondition"/>
+        </methods>
+      </class> <!-- com.applect.meritnation.scripts.LoginTest -->
+      <class name="com.applect.meritnation.scripts.StudyTest">
+        <methods>
+          <include name="precondition"/>
+          <include name="postCondition"/>
+        </methods>
+      </class> <!-- com.applect.meritnation.scripts.StudyTest -->
+      <class name="com.applect.meritnation.scripts.CreateAccountTest">
+        <methods>
+          <include name="precondition"/>
+          <include name="postCondition"/>
+        </methods>
+      </class> <!-- com.applect.meritnation.scripts.CreateAccountTest -->
+    </classes>
+  </test> <!-- RegressiononChromeTest(failed)(failed) -->
+</suite> <!-- Failed suite [Failed suite [Suite]] -->
