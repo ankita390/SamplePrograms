@@ -10,6 +10,7 @@ import java.util.Set;
 import java.util.concurrent.TimeUnit;
 
 import org.openqa.selenium.Alert;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -185,14 +186,9 @@ public abstract class BasePage {
 		for (int i=0;i<element.size();i++)
 		{
 			String visibledata = element.get(i).getText().toString();
-			System.out.println(visibledata);
 			for (int j=4;j<15;j++)
 			{
 				String data = ExcelUtils.readData("TestData", j, k).toString();
-				System.out.println(data);
-				System.out.println(element1.getText().toString());
-				System.out.println(ExcelUtils.readData("TestData", 3, k).toString());
-				
 				if(data.equals(visibledata)){
 					break;
 				}
@@ -298,8 +294,67 @@ public abstract class BasePage {
 		Actions act = new Actions(driver);
 		act.moveToElement(toElement).build().perform();
 	}
-	
+	public static void pressEscapeKey(WebDriver driver){
 		
+		try {
+			Robot r = new Robot();
+			r.keyPress(java.awt.event.KeyEvent.VK_ESCAPE); 
+			r.keyRelease(java.awt.event.KeyEvent.VK_ESCAPE);
+			
+		} catch (AWTException e) {
+			
+			e.printStackTrace();
+		} 
+	}
+public static void pressPageUpKey(WebDriver driver){
+		
+		try {
+			Robot r = new Robot();
+			r.keyPress(java.awt.event.KeyEvent.VK_PAGE_UP); 
+			r.keyRelease(java.awt.event.KeyEvent.VK_PAGE_UP);
+			
+		} catch (AWTException e) {
+			
+			e.printStackTrace();
+		} 
+	}
+	public static void usingSoftAssert(boolean condition, String message){
+		SoftAssert sf = new SoftAssert();
+		sf.assertTrue(condition, message);
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 
 	public BasePage (WebDriver driver)
 	{

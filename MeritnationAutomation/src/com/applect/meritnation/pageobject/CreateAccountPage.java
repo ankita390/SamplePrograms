@@ -29,7 +29,7 @@ public class CreateAccountPage
 	private WebElement nametxtbx;
 	@FindBy(xpath="//input[@name='data[UserDetail][email]']")
 	private WebElement emailtxtbx;
-	 @FindBy(id="userPassword")
+	@FindBy(id="userPassword")
 	private WebElement pwdtxtbx;
 	@FindBy(id="userPincode")
 	private WebElement pincodebx;
@@ -69,7 +69,18 @@ public class CreateAccountPage
 	private WebElement expirydateinsubscriptionbox;
 	@FindBy(xpath="//div[@class='s_header group']/div[1]/a")
 	private WebElement backarrow;
-	
+	@FindBy(xpath="//a[contains(text(),'Explore Courses')]")
+	private WebElement linktodirectpkgpurchase;
+	@FindBy(xpath="//div[@class='test-card__action']/div/button")
+	private List <WebElement> buynowbtnontests;
+	@FindBy(xpath="//div[@class='navBox']/nav/ul/li[2]/ul/li")
+	private List <WebElement> subjectlist;
+	@FindBy(xpath="//div[@class='allsession']/ul/li/div")
+	private List <WebElement> chapterlist;
+	@FindBy(xpath="//div[@class='sidebarInner']/div/div")
+	private List <WebElement> leftmenu;
+	@FindBy(xpath="//div[@class='sidebarInner']/div/div/div")
+	private List <WebElement> innerleftmenu;
 	
 	public CreateAccountPage(WebDriver driver)
 	{
@@ -165,11 +176,15 @@ public class CreateAccountPage
 		try{
 			BasePage.isPresentAndDisplayed(topnotification);
 			closenotification.click();
+			BasePage.sleepForMilliSecond(1000);
+			profileicon.click();
+		
 		}
 		catch(NoSuchElementException e){
-			
+			BasePage.sleepForMilliSecond(1000);
+			profileicon.click();
 		}
-	//	WaitStatementLib.implicitWaitForSecond(driver, 5);
+	/*	WaitStatementLib.implicitWaitForSecond(driver, 5);
 		BasePage.sleepForMilliSecond(2000);
 	if(BasePage.isPresentAndDisplayed(profileicon)){
 		profileicon.click();
@@ -177,7 +192,7 @@ public class CreateAccountPage
 	else{
 		BasePage.sleepForMilliSecond(2000);
 		profileicon.click();
-	}
+	}*/
 	}
 	public void verifyPaidSubscription(WebDriver driver)
 	{
@@ -192,6 +207,44 @@ public class CreateAccountPage
 		Assert.assertTrue(BasePage.isPresentAndDisplayed(expirydateinsubscriptionbox));
 		backarrow.click();
 	}
+	public void verifyPaidAccess(WebDriver driver){
+		
+	StudyPage studypage	= new StudyPage(driver);
+	BasePage.moveToElementAndClick(driver, studypage.studybx, subjectlist.get(0));
+	for(int i=0;i<leftmenu.size();i++){
+    	if(String.valueOf(leftmenu.get(i).getText().toString().equalsIgnoreCase("Chapters")) != "false"){
+    		leftmenu.get(i).click();
+			}
+			else{
+				continue;
+			}
+	}
+	for(int j=3;j<chapterlist.size();j++){
+		if(String.valueOf(BasePage.isPresentAndDisplayed(chapterlist.get(j)))=="true"){
+			chapterlist.get(j).click();
+		}
+		else{
+			continue;
+		}
+	}
+	BasePage.sleepForMilliSecond(2000);
+    Assert.assertFalse(BasePage.isPresentAndDisplayed(linktodirectpkgpurchase));
+    for(int k=0;k<innerleftmenu.size();k++){
+    	if(String.valueOf(innerleftmenu.get(k).getText().toString().equalsIgnoreCase("Tests")) == "true"){
+    		innerleftmenu.get(k).click();
+			BasePage.sleepForMilliSecond(2000);
+			Assert.assertTrue(BasePage.isPresentAndDisplayed(buynowbtnontests.get(0)));
+			for(int i=0;i<buynowbtnontests.size();i++){
+				Assert.assertFalse(buynowbtnontests.get(0).getText().toString().equalsIgnoreCase("Buy Now"));
+			}
+			
+		}
+    	else{
+    		continue;
+    	}
+    }
+   
+  }
 	public void logoutClick(WebDriver driver)
 	{
 		WaitStatementLib.explicitWaitForClickable(driver, 10, logoutbtn);

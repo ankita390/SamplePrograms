@@ -17,7 +17,7 @@ import com.applect.meritnation.pageobject.CreateAccountPage;
 public class CreateAccountTest extends BaseLib
 {
 	@Test(invocationCount=1, groups="Regression")
-	public void createAccountTest() 
+	public void TC_001_CreateAccountTest() 
 	{
 		
 		CreateAccountPage createAccountPage = new CreateAccountPage(driver);

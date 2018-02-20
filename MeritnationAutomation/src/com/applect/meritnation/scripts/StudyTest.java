@@ -12,8 +12,9 @@ import com.applect.meritnation.pageobject.StudyPage;
 
 public class StudyTest extends BaseLib
 {
+	
 	@Test(groups="Regression")
-	public void TC_001_VerifyStudyPhysicsTest(){
+	public void TC_001_VerifyStudyPhysicsPageTest(){
 		BasePage.login(driver);
 		StudyPage studyPage = new StudyPage(driver);
 		studyPage.moveToStudyBoxAndClickPhysics(driver);
@@ -316,7 +317,7 @@ public class StudyTest extends BaseLib
 			studyPage.clickMathSubject(driver);
 			studyPage.clickBoardPaperQuestionsOnMath();
 			BasePage.logout(driver);
-	}
+		}
 		@Test
 		public void TC_030_VerifyStudyMathTopicFormativeAssesmentTest()
 		{

@@ -25,7 +25,7 @@ public class LoginTest extends BaseLib
 		createAccountPage.clickProfileIcon(driver);
 		createAccountPage.logoutClick(driver);
 	}
-	@Test
+	@Test(groups="Access")
 	public void AllUserLoginTest()
 	{
 		LoginPage loginPage = new LoginPage(driver);
@@ -37,13 +37,14 @@ public class LoginTest extends BaseLib
 			loginPage.enterPassword(driver);
 			loginPage.signInBtnClick();
 			loginPage.checkHeaderDisplayForAllClasses(driver, k);
+			createAccountPage.verifyPaidAccess(driver);
 			createAccountPage.clickProfileIcon(driver);
 			createAccountPage.verifyPaidSubscription(driver);
 			createAccountPage.clickProfileIcon(driver);
 			createAccountPage.logoutClick(driver);
 		}
 	}
-	@Test(groups="Detail")
+	@Test(groups="Access")
 	public void AllSpecificPackageUserLoginTest(){
 		LoginPage loginPage = new LoginPage(driver);
 		CreateAccountPage createAccountPage = new CreateAccountPage(driver);
@@ -54,6 +55,7 @@ public class LoginTest extends BaseLib
 			loginPage.enterPassword(driver);
 			loginPage.signInBtnClick();
 			loginPage.checkHeaderDisplayForAllClassesSpecificUsers(driver, k);
+			createAccountPage.verifyPaidAccess(driver);
 			createAccountPage.clickProfileIcon(driver);
 			createAccountPage.verifyPaidSubscription(driver);
 			createAccountPage.clickProfileIcon(driver);

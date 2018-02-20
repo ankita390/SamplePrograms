@@ -5,7 +5,7 @@
   
    <groups>
    	<run>
-		<include name = "Detail" /> 
+		<include name = "Access" /> 
 	</run>
    </groups>
     
@@ -16,7 +16,7 @@
    <class name="com.applect.meritnation.scripts.CreateAccountTest"/>
    <class name="com.applect.meritnation.scripts.SearchTest"/>
    <class name="com.applect.meritnation.scripts.LoginTest"/>
-   <class name="com.applect.meritnation.scripts.MyQaTest"/>
+   <class name="com.applect.meritnation.scripts.AsknAnswerTest"/>
    <class name="com.applect.meritnation.scripts.StudyTest"/>
 </classes>
 </test> <!-- RegressiononChromeTest -->

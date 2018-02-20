@@ -28,7 +28,7 @@ import com.applect.meritnation.generic.WaitStatementLib;
 public class StudyPage {
 	//WebDriver driver;
 	@FindBy(xpath="//div[@class='navBox']/nav/ul/li[2]")
-	private WebElement studybx;
+	protected WebElement studybx;
 	@FindBy(xpath="//div[@class='navBox']/nav/ul/li[2]/ul/li[1]/a[text()='Physics']")
 	private WebElement physicsicon;
 	@FindBy(xpath="//div[@class='navBox']/nav/ul/li[2]/ul/li[2]/a[text()='Chemistry']")
@@ -45,6 +45,8 @@ public class StudyPage {
 	private WebElement physicspart1radionbtn;
 	@FindBy(xpath="//div[@class='allsession']/ul/li/div/img[@title='Electric Charges And Fields']")
 	private WebElement electricchargesandfields;
+	@FindBy(xpath="//div[@class='allsession']/ul/li/div/img[@title='Current Electricity']")
+	private WebElement physics3rdsubject;
 	@FindBy(xpath="//div[@class='mysessionFilter']/div/div/ul/li/a[text()=' Chemistry Part-I ']")
 	private WebElement chemistrypart1radionbtn;
 	@FindBy(xpath="//div[@class='mysessionFilter']/div/div/ul/li/a[text()=' Biology ']")
@@ -119,6 +121,8 @@ public class StudyPage {
 	private List <WebElement> topictest1stquestionoptions;
 	@FindBy(xpath="//div[@class='topicTestSliderParent']/a[@id='nextBtn']")
 	private WebElement nextbtn;
+	@FindBy(xpath="//div[@id='questionWiseReport']/span[2]")
+	private WebElement nextbtnontestgenerator;
 	
 	@FindBy(xpath="//div[@id='1849']/ul[@class='topic_test_options']/li/label")
 	private List <WebElement> topictest2ndquestionoptions;
@@ -177,8 +181,8 @@ public class StudyPage {
 	private WebElement yesbtn_confpopup;
 	@FindBy(xpath="//div[@class='mp_user_section']/div")
 	private WebElement gobackbtn;
-	@FindBy(xpath="//div[@class='sidebarInner']/div/div/div[6]/h3")
-	private WebElement testslnk;
+	@FindBy(xpath="//div[@class='sidebarInner']/div/div/div[6]/h3") 
+	protected WebElement testslnk;
 	@FindBy(xpath="//div[@class='sidebarInner']/div/div/div[5]/h3")
 	private WebElement testsonenglishlnk;
 	@FindBy(xpath="//div[@class='sidebarInner']/div/div/div[3]/h3[text()='Tests']")
@@ -286,7 +290,7 @@ public class StudyPage {
 	public WebElement generatetestbtn;
 	@FindBy(xpath="//div[@id='allsession']/div/div/span")
 	public WebElement generatetestinstruction;
-	@FindBy(xpath="//div[@id='allsession']/ul/li/div/img")
+	@FindBy(xpath="//div[@id='allsession']/ul/li")
 	public List <WebElement> topicsfortestgenerate;
 	@FindBy(xpath="//div[@id='allsession']/div[@id='tgBox']/button")
 	public WebElement generatetestbtnactual;
@@ -350,6 +354,7 @@ public class StudyPage {
 		electricchargesandfields.click();
 			
 		}
+	
 	public void verifyPhysicsPage(WebDriver driver)
 	{
 		
@@ -394,16 +399,33 @@ public class StudyPage {
 		generatetestbtn.click();
 		BasePage.sleepForMilliSecond(2000);
 		Assert.assertTrue(BasePage.isPresentAndDisplayed(generatetestinstruction));
-		Assert.assertTrue(generatetestinstruction.getText().toString().length() !=0, "Generate Test Instrucction not present");
-		/*for (int i=0;i<topicsfortestgenerate.size(); i++){
+		Assert.assertEquals(generatetestinstruction.getText().toString(), "Select 3 or more chapters to Generate test");
+		Assert.assertTrue(generatetestinstruction.getText().toString().length() !=0, "Generate Test Instruction not present");
+		for (int i=0;i<3; i++){
 			if(String.valueOf(BasePage.isPresentAndDisplayed(topicsfortestgenerate.get(i)))!= "false");
 			topicsfortestgenerate.get(i).click();
 		}
 		generatetestbtnactual.click();
 		BasePage.sleepForMilliSecond(2000);
-		takeTestOnAssignment();*/
+		proceeedbtn.click();
 		BasePage.sleepForMilliSecond(2000);
-	}
+		for(int i=0;i < questionannsweroptions.size();i++){
+			BasePage.sleepForMilliSecond(2000);
+			if(String.valueOf(BasePage.isPresentAndDisplayed(questionannsweroptions.get(i)))!= "false"){
+				BasePage.sleepForMilliSecond(1000);
+				questionannsweroptions.get(i).click();
+				BasePage.sleepForMilliSecond(1000);
+				nextbtnontestgenerator.click();
+				}
+			else{
+				continue;
+			}
+			
+		}
+		BasePage.pressEscapeKey(driver);
+		BasePage.sleepForMilliSecond(2000);
+		driver.navigate().back();
+		}
 		
 	public void clickChemistrySubject(WebDriver driver)
 	{
@@ -580,8 +602,6 @@ public class StudyPage {
 			if(taketestassignmentbtn.size()!=0){
 			
 				for(int k=0;k<=taketestassignmentbtn.size();k++){
-					System.out.println(taketestassignmentbtn.size());
-					System.out.println(BasePage.isPresentAndDisplayed(taketestassignmentbtn.get(k)));
 					if(String.valueOf(BasePage.isPresentAndDisplayed(taketestassignmentbtn.get(k)))!="false")
 					{
 					taketestassignmentbtn.get(k).click();

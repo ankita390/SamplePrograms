@@ -19,6 +19,7 @@ import org.testng.annotations.Parameters;
 import org.testng.reporters.EmailableReporter;
 
 import com.applect.meritnation.pageobject.LoginPage;
+import com.applect.meritnation.pageobject.StudyPage;
 
 import javax.activation.DataHandler;
 import javax.activation.DataSource;
@@ -31,8 +32,6 @@ import java.util.*;
 
 public class BaseLib {
 	public WebDriver driver;
-	
-	
 	@BeforeMethod(alwaysRun =true)
 	@Parameters(value="browser")
 	public void precondition(String browsername){

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testng-results skipped="0" failed="0" total="1" passed="1">
+<testng-results skipped="0" failed="0" total="14" passed="14">
   <reporter-output>
     <line>
       <![CDATA[Chrome Browser launches]]>
@@ -13,16 +13,185 @@
     <line>
       <![CDATA[Browser closed]]>
     </line>
+    <line>
+      <![CDATA[Chrome Browser launches]]>
+    </line>
+    <line>
+      <![CDATA[Navigate to the URL]]>
+    </line>
+    <line>
+      <![CDATA[Script passed]]>
+    </line>
+    <line>
+      <![CDATA[Browser closed]]>
+    </line>
+    <line>
+      <![CDATA[Chrome Browser launches]]>
+    </line>
+    <line>
+      <![CDATA[Navigate to the URL]]>
+    </line>
+    <line>
+      <![CDATA[Script passed]]>
+    </line>
+    <line>
+      <![CDATA[Browser closed]]>
+    </line>
+    <line>
+      <![CDATA[Chrome Browser launches]]>
+    </line>
+    <line>
+      <![CDATA[Navigate to the URL]]>
+    </line>
+    <line>
+      <![CDATA[Script passed]]>
+    </line>
+    <line>
+      <![CDATA[Browser closed]]>
+    </line>
+    <line>
+      <![CDATA[Chrome Browser launches]]>
+    </line>
+    <line>
+      <![CDATA[Navigate to the URL]]>
+    </line>
+    <line>
+      <![CDATA[Script passed]]>
+    </line>
+    <line>
+      <![CDATA[Browser closed]]>
+    </line>
+    <line>
+      <![CDATA[Chrome Browser launches]]>
+    </line>
+    <line>
+      <![CDATA[Navigate to the URL]]>
+    </line>
+    <line>
+      <![CDATA[Script passed]]>
+    </line>
+    <line>
+      <![CDATA[Browser closed]]>
+    </line>
+    <line>
+      <![CDATA[Chrome Browser launches]]>
+    </line>
+    <line>
+      <![CDATA[Navigate to the URL]]>
+    </line>
+    <line>
+      <![CDATA[Script passed]]>
+    </line>
+    <line>
+      <![CDATA[Browser closed]]>
+    </line>
+    <line>
+      <![CDATA[Chrome Browser launches]]>
+    </line>
+    <line>
+      <![CDATA[Navigate to the URL]]>
+    </line>
+    <line>
+      <![CDATA[Script passed]]>
+    </line>
+    <line>
+      <![CDATA[Browser closed]]>
+    </line>
+    <line>
+      <![CDATA[Chrome Browser launches]]>
+    </line>
+    <line>
+      <![CDATA[Navigate to the URL]]>
+    </line>
+    <line>
+      <![CDATA[Script passed]]>
+    </line>
+    <line>
+      <![CDATA[Browser closed]]>
+    </line>
+    <line>
+      <![CDATA[Chrome Browser launches]]>
+    </line>
+    <line>
+      <![CDATA[Navigate to the URL]]>
+    </line>
+    <line>
+      <![CDATA[Script passed]]>
+    </line>
+    <line>
+      <![CDATA[Browser closed]]>
+    </line>
+    <line>
+      <![CDATA[Chrome Browser launches]]>
+    </line>
+    <line>
+      <![CDATA[Navigate to the URL]]>
+    </line>
+    <line>
+      <![CDATA[Script passed]]>
+    </line>
+    <line>
+      <![CDATA[Browser closed]]>
+    </line>
+    <line>
+      <![CDATA[Chrome Browser launches]]>
+    </line>
+    <line>
+      <![CDATA[Navigate to the URL]]>
+    </line>
+    <line>
+      <![CDATA[Script passed]]>
+    </line>
+    <line>
+      <![CDATA[Browser closed]]>
+    </line>
+    <line>
+      <![CDATA[Chrome Browser launches]]>
+    </line>
+    <line>
+      <![CDATA[Navigate to the URL]]>
+    </line>
+    <line>
+      <![CDATA[Script passed]]>
+    </line>
+    <line>
+      <![CDATA[Browser closed]]>
+    </line>
+    <line>
+      <![CDATA[Chrome Browser launches]]>
+    </line>
+    <line>
+      <![CDATA[Navigate to the URL]]>
+    </line>
+    <line>
+      <![CDATA[Script passed]]>
+    </line>
+    <line>
+      <![CDATA[Browser closed]]>
+    </line>
   </reporter-output>
-  <suite name="Suite" duration-ms="285287" started-at="2018-02-13T12:46:44Z" finished-at="2018-02-13T12:51:30Z">
+  <suite name="Suite" duration-ms="1282441" started-at="2018-02-20T09:52:52Z" finished-at="2018-02-20T10:14:15Z">
     <groups>
-      <group name="Detail">
-        <method signature="LoginTest.AllSpecificPackageUserLoginTest()[pri:0, instance:com.applect.meritnation.scripts.LoginTest@150d6a5e]" name="AllSpecificPackageUserLoginTest" class="com.applect.meritnation.scripts.LoginTest"/>
-      </group> <!-- Detail -->
+      <group name="Regression">
+        <method signature="AsknAnswerTest.TC_001AskQuestionTest()[pri:0, instance:com.applect.meritnation.scripts.AsknAnswerTest@7d256e50]" name="TC_001AskQuestionTest" class="com.applect.meritnation.scripts.AsknAnswerTest"/>
+        <method signature="CreateAccountTest.TC_001_CreateAccountTest()[pri:0, instance:com.applect.meritnation.scripts.CreateAccountTest@1f4db697]" name="TC_001_CreateAccountTest" class="com.applect.meritnation.scripts.CreateAccountTest"/>
+        <method signature="LoginTest.LoginTest()[pri:0, instance:com.applect.meritnation.scripts.LoginTest@29df3551]" name="LoginTest" class="com.applect.meritnation.scripts.LoginTest"/>
+        <method signature="SearchTest.SearchTest()[pri:0, instance:com.applect.meritnation.scripts.SearchTest@270e838f]" name="SearchTest" class="com.applect.meritnation.scripts.SearchTest"/>
+        <method signature="StudyTest.TC_001_VerifyStudyPhysicsPageTest()[pri:0, instance:com.applect.meritnation.scripts.StudyTest@246d8660]" name="TC_001_VerifyStudyPhysicsPageTest" class="com.applect.meritnation.scripts.StudyTest"/>
+        <method signature="StudyTest.TC_002_verifyStudyPhysicsTopicLiveClasssesTest()[pri:0, instance:com.applect.meritnation.scripts.StudyTest@246d8660]" name="TC_002_verifyStudyPhysicsTopicLiveClasssesTest" class="com.applect.meritnation.scripts.StudyTest"/>
+        <method signature="StudyTest.TC_003_VerifyStudyPhysicsTopicConceptsTest()[pri:0, instance:com.applect.meritnation.scripts.StudyTest@246d8660]" name="TC_003_VerifyStudyPhysicsTopicConceptsTest" class="com.applect.meritnation.scripts.StudyTest"/>
+        <method signature="StudyTest.TC_004_VerifyStudyPhysicsTopicPracticeTest()[pri:0, instance:com.applect.meritnation.scripts.StudyTest@246d8660]" name="TC_004_VerifyStudyPhysicsTopicPracticeTest" class="com.applect.meritnation.scripts.StudyTest"/>
+        <method signature="StudyTest.TC_005_VerifyStudyPhysicsTopicAssignmentTest()[pri:0, instance:com.applect.meritnation.scripts.StudyTest@246d8660]" name="TC_005_VerifyStudyPhysicsTopicAssignmentTest" class="com.applect.meritnation.scripts.StudyTest"/>
+        <method signature="StudyTest.TC_006_VerifyStudyPhysicsTopicTestsTest()[pri:0, instance:com.applect.meritnation.scripts.StudyTest@246d8660]" name="TC_006_VerifyStudyPhysicsTopicTestsTest" class="com.applect.meritnation.scripts.StudyTest"/>
+        <method signature="StudyTest.TC_007_VerifyStudyPhysicsTopicPupularQuestionsTest()[pri:0, instance:com.applect.meritnation.scripts.StudyTest@246d8660]" name="TC_007_VerifyStudyPhysicsTopicPupularQuestionsTest" class="com.applect.meritnation.scripts.StudyTest"/>
+        <method signature="StudyTest.TC_009_VerifyStudyPhysicsTopicRevisionNotesTest()[pri:0, instance:com.applect.meritnation.scripts.StudyTest@246d8660]" name="TC_009_VerifyStudyPhysicsTopicRevisionNotesTest" class="com.applect.meritnation.scripts.StudyTest"/>
+        <method signature="StudyTest.TC_010_VerifyStudyPhysicsTopicBoardPaperQuestionsTest()[pri:0, instance:com.applect.meritnation.scripts.StudyTest@246d8660]" name="TC_010_VerifyStudyPhysicsTopicBoardPaperQuestionsTest" class="com.applect.meritnation.scripts.StudyTest"/>
+        <method signature="StudyTest.TC_011_VerifyStudyPhysicsTopicFormativeAssesmentTest()[pri:0, instance:com.applect.meritnation.scripts.StudyTest@246d8660]" name="TC_011_VerifyStudyPhysicsTopicFormativeAssesmentTest" class="com.applect.meritnation.scripts.StudyTest"/>
+      </group> <!-- Regression -->
     </groups>
-    <test name="RegressiononChromeTest" duration-ms="285287" started-at="2018-02-13T12:46:44Z" finished-at="2018-02-13T12:51:30Z">
-      <class name="com.applect.meritnation.scripts.LoginTest">
-        <test-method status="PASS" signature="precondition(java.lang.String)[pri:0, instance:com.applect.meritnation.scripts.LoginTest@150d6a5e]" name="precondition" is-config="true" duration-ms="10305" started-at="2018-02-13T18:16:44Z" finished-at="2018-02-13T18:16:55Z">
+    <test name="RegressiononChromeTest" duration-ms="1282441" started-at="2018-02-20T09:52:52Z" finished-at="2018-02-20T10:14:15Z">
+      <class name="com.applect.meritnation.scripts.CreateAccountTest">
+        <test-method status="PASS" signature="precondition(java.lang.String)[pri:0, instance:com.applect.meritnation.scripts.CreateAccountTest@1f4db697]" name="precondition" is-config="true" duration-ms="8481" started-at="2018-02-20T15:22:52Z" finished-at="2018-02-20T15:23:01Z">
           <params>
             <param index="0">
               <value>
@@ -39,15 +208,135 @@
             </line>
           </reporter-output>
         </test-method> <!-- precondition -->
-        <test-method status="PASS" signature="AllSpecificPackageUserLoginTest()[pri:0, instance:com.applect.meritnation.scripts.LoginTest@150d6a5e]" name="AllSpecificPackageUserLoginTest" duration-ms="274733" started-at="2018-02-13T18:16:55Z" finished-at="2018-02-13T18:21:30Z">
+        <test-method status="PASS" signature="TC_001_CreateAccountTest()[pri:0, instance:com.applect.meritnation.scripts.CreateAccountTest@1f4db697]" name="TC_001_CreateAccountTest" duration-ms="36526" started-at="2018-02-20T15:23:01Z" finished-at="2018-02-20T15:23:37Z">
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- AllSpecificPackageUserLoginTest -->
-        <test-method status="PASS" signature="postCondition(org.testng.ITestResult)[pri:0, instance:com.applect.meritnation.scripts.LoginTest@150d6a5e]" name="postCondition" is-config="true" duration-ms="218" started-at="2018-02-13T18:21:30Z" finished-at="2018-02-13T18:21:30Z">
+        </test-method> <!-- TC_001_CreateAccountTest -->
+        <test-method status="PASS" signature="postCondition(org.testng.ITestResult)[pri:0, instance:com.applect.meritnation.scripts.CreateAccountTest@1f4db697]" name="postCondition" is-config="true" duration-ms="266" started-at="2018-02-20T15:23:37Z" finished-at="2018-02-20T15:23:37Z">
           <params>
             <param index="0">
               <value>
-                <![CDATA[[TestResult name=AllSpecificPackageUserLoginTest status=SUCCESS method=LoginTest.AllSpecificPackageUserLoginTest()[pri:0, instance:com.applect.meritnation.scripts.LoginTest@150d6a5e] output={null}]]]>
+                <![CDATA[[TestResult name=TC_001_CreateAccountTest status=SUCCESS method=CreateAccountTest.TC_001_CreateAccountTest()[pri:0, instance:com.applect.meritnation.scripts.CreateAccountTest@1f4db697] output={null}]]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+            <line>
+              <![CDATA[Script passed]]>
+            </line>
+            <line>
+              <![CDATA[Browser closed]]>
+            </line>
+          </reporter-output>
+        </test-method> <!-- postCondition -->
+      </class> <!-- com.applect.meritnation.scripts.CreateAccountTest -->
+      <class name="com.applect.meritnation.scripts.SearchTest">
+        <test-method status="PASS" signature="precondition(java.lang.String)[pri:0, instance:com.applect.meritnation.scripts.SearchTest@270e838f]" name="precondition" is-config="true" duration-ms="11266" started-at="2018-02-20T15:23:37Z" finished-at="2018-02-20T15:23:49Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[chrome]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+            <line>
+              <![CDATA[Chrome Browser launches]]>
+            </line>
+            <line>
+              <![CDATA[Navigate to the URL]]>
+            </line>
+          </reporter-output>
+        </test-method> <!-- precondition -->
+        <test-method status="PASS" signature="SearchTest()[pri:0, instance:com.applect.meritnation.scripts.SearchTest@270e838f]" name="SearchTest" duration-ms="45584" started-at="2018-02-20T15:23:49Z" finished-at="2018-02-20T15:24:34Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- SearchTest -->
+        <test-method status="PASS" signature="postCondition(org.testng.ITestResult)[pri:0, instance:com.applect.meritnation.scripts.SearchTest@270e838f]" name="postCondition" is-config="true" duration-ms="170" started-at="2018-02-20T15:24:34Z" finished-at="2018-02-20T15:24:34Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[[TestResult name=SearchTest status=SUCCESS method=SearchTest.SearchTest()[pri:0, instance:com.applect.meritnation.scripts.SearchTest@270e838f] output={null}]]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+            <line>
+              <![CDATA[Script passed]]>
+            </line>
+            <line>
+              <![CDATA[Browser closed]]>
+            </line>
+          </reporter-output>
+        </test-method> <!-- postCondition -->
+      </class> <!-- com.applect.meritnation.scripts.SearchTest -->
+      <class name="com.applect.meritnation.scripts.AsknAnswerTest">
+        <test-method status="PASS" signature="precondition(java.lang.String)[pri:0, instance:com.applect.meritnation.scripts.AsknAnswerTest@7d256e50]" name="precondition" is-config="true" duration-ms="12592" started-at="2018-02-20T15:25:23Z" finished-at="2018-02-20T15:25:35Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[chrome]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+            <line>
+              <![CDATA[Chrome Browser launches]]>
+            </line>
+            <line>
+              <![CDATA[Navigate to the URL]]>
+            </line>
+          </reporter-output>
+        </test-method> <!-- precondition -->
+        <test-method status="PASS" signature="TC_001AskQuestionTest()[pri:0, instance:com.applect.meritnation.scripts.AsknAnswerTest@7d256e50]" name="TC_001AskQuestionTest" duration-ms="73013" started-at="2018-02-20T15:25:35Z" finished-at="2018-02-20T15:26:48Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- TC_001AskQuestionTest -->
+        <test-method status="PASS" signature="postCondition(org.testng.ITestResult)[pri:0, instance:com.applect.meritnation.scripts.AsknAnswerTest@7d256e50]" name="postCondition" is-config="true" duration-ms="151" started-at="2018-02-20T15:26:48Z" finished-at="2018-02-20T15:26:49Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[[TestResult name=TC_001AskQuestionTest status=SUCCESS method=AsknAnswerTest.TC_001AskQuestionTest()[pri:0, instance:com.applect.meritnation.scripts.AsknAnswerTest@7d256e50] output={null}]]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+            <line>
+              <![CDATA[Script passed]]>
+            </line>
+            <line>
+              <![CDATA[Browser closed]]>
+            </line>
+          </reporter-output>
+        </test-method> <!-- postCondition -->
+      </class> <!-- com.applect.meritnation.scripts.AsknAnswerTest -->
+      <class name="com.applect.meritnation.scripts.LoginTest">
+        <test-method status="PASS" signature="precondition(java.lang.String)[pri:0, instance:com.applect.meritnation.scripts.LoginTest@29df3551]" name="precondition" is-config="true" duration-ms="13587" started-at="2018-02-20T15:24:34Z" finished-at="2018-02-20T15:24:48Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[chrome]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+            <line>
+              <![CDATA[Chrome Browser launches]]>
+            </line>
+            <line>
+              <![CDATA[Navigate to the URL]]>
+            </line>
+          </reporter-output>
+        </test-method> <!-- precondition -->
+        <test-method status="PASS" signature="LoginTest()[pri:0, instance:com.applect.meritnation.scripts.LoginTest@29df3551]" name="LoginTest" duration-ms="34597" started-at="2018-02-20T15:24:48Z" finished-at="2018-02-20T15:25:23Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- LoginTest -->
+        <test-method status="PASS" signature="postCondition(org.testng.ITestResult)[pri:0, instance:com.applect.meritnation.scripts.LoginTest@29df3551]" name="postCondition" is-config="true" duration-ms="170" started-at="2018-02-20T15:25:23Z" finished-at="2018-02-20T15:25:23Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[[TestResult name=LoginTest status=SUCCESS method=LoginTest.LoginTest()[pri:0, instance:com.applect.meritnation.scripts.LoginTest@29df3551] output={null}]]]>
               </value>
             </param>
           </params>
@@ -61,6 +350,388 @@
           </reporter-output>
         </test-method> <!-- postCondition -->
       </class> <!-- com.applect.meritnation.scripts.LoginTest -->
+      <class name="com.applect.meritnation.scripts.StudyTest">
+        <test-method status="PASS" signature="precondition(java.lang.String)[pri:0, instance:com.applect.meritnation.scripts.StudyTest@246d8660]" name="precondition" is-config="true" duration-ms="12141" started-at="2018-02-20T15:26:49Z" finished-at="2018-02-20T15:27:01Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[chrome]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+            <line>
+              <![CDATA[Chrome Browser launches]]>
+            </line>
+            <line>
+              <![CDATA[Navigate to the URL]]>
+            </line>
+          </reporter-output>
+        </test-method> <!-- precondition -->
+        <test-method status="PASS" signature="TC_001_VerifyStudyPhysicsPageTest()[pri:0, instance:com.applect.meritnation.scripts.StudyTest@246d8660]" name="TC_001_VerifyStudyPhysicsPageTest" duration-ms="189319" started-at="2018-02-20T15:27:01Z" finished-at="2018-02-20T15:30:10Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- TC_001_VerifyStudyPhysicsPageTest -->
+        <test-method status="PASS" signature="postCondition(org.testng.ITestResult)[pri:0, instance:com.applect.meritnation.scripts.StudyTest@246d8660]" name="postCondition" is-config="true" duration-ms="283" started-at="2018-02-20T15:30:10Z" finished-at="2018-02-20T15:30:10Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[[TestResult name=TC_001_VerifyStudyPhysicsPageTest status=SUCCESS method=StudyTest.TC_001_VerifyStudyPhysicsPageTest()[pri:0, instance:com.applect.meritnation.scripts.StudyTest@246d8660] output={null}]]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+            <line>
+              <![CDATA[Script passed]]>
+            </line>
+            <line>
+              <![CDATA[Browser closed]]>
+            </line>
+          </reporter-output>
+        </test-method> <!-- postCondition -->
+        <test-method status="PASS" signature="precondition(java.lang.String)[pri:0, instance:com.applect.meritnation.scripts.StudyTest@246d8660]" name="precondition" is-config="true" duration-ms="10282" started-at="2018-02-20T15:30:10Z" finished-at="2018-02-20T15:30:21Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[chrome]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+            <line>
+              <![CDATA[Chrome Browser launches]]>
+            </line>
+            <line>
+              <![CDATA[Navigate to the URL]]>
+            </line>
+          </reporter-output>
+        </test-method> <!-- precondition -->
+        <test-method status="PASS" signature="TC_002_verifyStudyPhysicsTopicLiveClasssesTest()[pri:0, instance:com.applect.meritnation.scripts.StudyTest@246d8660]" name="TC_002_verifyStudyPhysicsTopicLiveClasssesTest" duration-ms="75596" started-at="2018-02-20T15:30:21Z" finished-at="2018-02-20T15:31:36Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- TC_002_verifyStudyPhysicsTopicLiveClasssesTest -->
+        <test-method status="PASS" signature="postCondition(org.testng.ITestResult)[pri:0, instance:com.applect.meritnation.scripts.StudyTest@246d8660]" name="postCondition" is-config="true" duration-ms="217" started-at="2018-02-20T15:31:36Z" finished-at="2018-02-20T15:31:36Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[[TestResult name=TC_002_verifyStudyPhysicsTopicLiveClasssesTest status=SUCCESS method=StudyTest.TC_002_verifyStudyPhysicsTopicLiveClasssesTest()[pri:0, instance:com.applect.meritnation.scripts.StudyTest@246d8660] output={null}]]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+            <line>
+              <![CDATA[Script passed]]>
+            </line>
+            <line>
+              <![CDATA[Browser closed]]>
+            </line>
+          </reporter-output>
+        </test-method> <!-- postCondition -->
+        <test-method status="PASS" signature="precondition(java.lang.String)[pri:0, instance:com.applect.meritnation.scripts.StudyTest@246d8660]" name="precondition" is-config="true" duration-ms="10900" started-at="2018-02-20T15:31:36Z" finished-at="2018-02-20T15:31:47Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[chrome]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+            <line>
+              <![CDATA[Chrome Browser launches]]>
+            </line>
+            <line>
+              <![CDATA[Navigate to the URL]]>
+            </line>
+          </reporter-output>
+        </test-method> <!-- precondition -->
+        <test-method status="PASS" signature="TC_003_VerifyStudyPhysicsTopicConceptsTest()[pri:0, instance:com.applect.meritnation.scripts.StudyTest@246d8660]" name="TC_003_VerifyStudyPhysicsTopicConceptsTest" duration-ms="141945" started-at="2018-02-20T15:31:47Z" finished-at="2018-02-20T15:34:09Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- TC_003_VerifyStudyPhysicsTopicConceptsTest -->
+        <test-method status="PASS" signature="postCondition(org.testng.ITestResult)[pri:0, instance:com.applect.meritnation.scripts.StudyTest@246d8660]" name="postCondition" is-config="true" duration-ms="273" started-at="2018-02-20T15:34:09Z" finished-at="2018-02-20T15:34:10Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[[TestResult name=TC_003_VerifyStudyPhysicsTopicConceptsTest status=SUCCESS method=StudyTest.TC_003_VerifyStudyPhysicsTopicConceptsTest()[pri:0, instance:com.applect.meritnation.scripts.StudyTest@246d8660] output={null}]]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+            <line>
+              <![CDATA[Script passed]]>
+            </line>
+            <line>
+              <![CDATA[Browser closed]]>
+            </line>
+          </reporter-output>
+        </test-method> <!-- postCondition -->
+        <test-method status="PASS" signature="precondition(java.lang.String)[pri:0, instance:com.applect.meritnation.scripts.StudyTest@246d8660]" name="precondition" is-config="true" duration-ms="9802" started-at="2018-02-20T15:34:10Z" finished-at="2018-02-20T15:34:19Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[chrome]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+            <line>
+              <![CDATA[Chrome Browser launches]]>
+            </line>
+            <line>
+              <![CDATA[Navigate to the URL]]>
+            </line>
+          </reporter-output>
+        </test-method> <!-- precondition -->
+        <test-method status="PASS" signature="TC_004_VerifyStudyPhysicsTopicPracticeTest()[pri:0, instance:com.applect.meritnation.scripts.StudyTest@246d8660]" name="TC_004_VerifyStudyPhysicsTopicPracticeTest" duration-ms="67196" started-at="2018-02-20T15:34:19Z" finished-at="2018-02-20T15:35:27Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- TC_004_VerifyStudyPhysicsTopicPracticeTest -->
+        <test-method status="PASS" signature="postCondition(org.testng.ITestResult)[pri:0, instance:com.applect.meritnation.scripts.StudyTest@246d8660]" name="postCondition" is-config="true" duration-ms="276" started-at="2018-02-20T15:35:27Z" finished-at="2018-02-20T15:35:27Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[[TestResult name=TC_004_VerifyStudyPhysicsTopicPracticeTest status=SUCCESS method=StudyTest.TC_004_VerifyStudyPhysicsTopicPracticeTest()[pri:0, instance:com.applect.meritnation.scripts.StudyTest@246d8660] output={null}]]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+            <line>
+              <![CDATA[Script passed]]>
+            </line>
+            <line>
+              <![CDATA[Browser closed]]>
+            </line>
+          </reporter-output>
+        </test-method> <!-- postCondition -->
+        <test-method status="PASS" signature="precondition(java.lang.String)[pri:0, instance:com.applect.meritnation.scripts.StudyTest@246d8660]" name="precondition" is-config="true" duration-ms="12968" started-at="2018-02-20T15:35:27Z" finished-at="2018-02-20T15:35:40Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[chrome]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+            <line>
+              <![CDATA[Chrome Browser launches]]>
+            </line>
+            <line>
+              <![CDATA[Navigate to the URL]]>
+            </line>
+          </reporter-output>
+        </test-method> <!-- precondition -->
+        <test-method status="PASS" signature="TC_005_VerifyStudyPhysicsTopicAssignmentTest()[pri:0, instance:com.applect.meritnation.scripts.StudyTest@246d8660]" name="TC_005_VerifyStudyPhysicsTopicAssignmentTest" duration-ms="76344" started-at="2018-02-20T15:35:40Z" finished-at="2018-02-20T15:36:56Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- TC_005_VerifyStudyPhysicsTopicAssignmentTest -->
+        <test-method status="PASS" signature="postCondition(org.testng.ITestResult)[pri:0, instance:com.applect.meritnation.scripts.StudyTest@246d8660]" name="postCondition" is-config="true" duration-ms="226" started-at="2018-02-20T15:36:56Z" finished-at="2018-02-20T15:36:56Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[[TestResult name=TC_005_VerifyStudyPhysicsTopicAssignmentTest status=SUCCESS method=StudyTest.TC_005_VerifyStudyPhysicsTopicAssignmentTest()[pri:0, instance:com.applect.meritnation.scripts.StudyTest@246d8660] output={null}]]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+            <line>
+              <![CDATA[Script passed]]>
+            </line>
+            <line>
+              <![CDATA[Browser closed]]>
+            </line>
+          </reporter-output>
+        </test-method> <!-- postCondition -->
+        <test-method status="PASS" signature="precondition(java.lang.String)[pri:0, instance:com.applect.meritnation.scripts.StudyTest@246d8660]" name="precondition" is-config="true" duration-ms="13150" started-at="2018-02-20T15:36:56Z" finished-at="2018-02-20T15:37:10Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[chrome]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+            <line>
+              <![CDATA[Chrome Browser launches]]>
+            </line>
+            <line>
+              <![CDATA[Navigate to the URL]]>
+            </line>
+          </reporter-output>
+        </test-method> <!-- precondition -->
+        <test-method status="PASS" signature="TC_006_VerifyStudyPhysicsTopicTestsTest()[pri:0, instance:com.applect.meritnation.scripts.StudyTest@246d8660]" name="TC_006_VerifyStudyPhysicsTopicTestsTest" duration-ms="70075" started-at="2018-02-20T15:37:10Z" finished-at="2018-02-20T15:38:20Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- TC_006_VerifyStudyPhysicsTopicTestsTest -->
+        <test-method status="PASS" signature="postCondition(org.testng.ITestResult)[pri:0, instance:com.applect.meritnation.scripts.StudyTest@246d8660]" name="postCondition" is-config="true" duration-ms="224" started-at="2018-02-20T15:38:20Z" finished-at="2018-02-20T15:38:20Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[[TestResult name=TC_006_VerifyStudyPhysicsTopicTestsTest status=SUCCESS method=StudyTest.TC_006_VerifyStudyPhysicsTopicTestsTest()[pri:0, instance:com.applect.meritnation.scripts.StudyTest@246d8660] output={null}]]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+            <line>
+              <![CDATA[Script passed]]>
+            </line>
+            <line>
+              <![CDATA[Browser closed]]>
+            </line>
+          </reporter-output>
+        </test-method> <!-- postCondition -->
+        <test-method status="PASS" signature="precondition(java.lang.String)[pri:0, instance:com.applect.meritnation.scripts.StudyTest@246d8660]" name="precondition" is-config="true" duration-ms="9949" started-at="2018-02-20T15:38:20Z" finished-at="2018-02-20T15:38:30Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[chrome]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+            <line>
+              <![CDATA[Chrome Browser launches]]>
+            </line>
+            <line>
+              <![CDATA[Navigate to the URL]]>
+            </line>
+          </reporter-output>
+        </test-method> <!-- precondition -->
+        <test-method status="PASS" signature="TC_007_VerifyStudyPhysicsTopicPupularQuestionsTest()[pri:0, instance:com.applect.meritnation.scripts.StudyTest@246d8660]" name="TC_007_VerifyStudyPhysicsTopicPupularQuestionsTest" duration-ms="77882" started-at="2018-02-20T15:38:30Z" finished-at="2018-02-20T15:39:48Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- TC_007_VerifyStudyPhysicsTopicPupularQuestionsTest -->
+        <test-method status="PASS" signature="postCondition(org.testng.ITestResult)[pri:0, instance:com.applect.meritnation.scripts.StudyTest@246d8660]" name="postCondition" is-config="true" duration-ms="227" started-at="2018-02-20T15:39:48Z" finished-at="2018-02-20T15:39:48Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[[TestResult name=TC_007_VerifyStudyPhysicsTopicPupularQuestionsTest status=SUCCESS method=StudyTest.TC_007_VerifyStudyPhysicsTopicPupularQuestionsTest()[pri:0, instance:com.applect.meritnation.scripts.StudyTest@246d8660] output={null}]]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+            <line>
+              <![CDATA[Script passed]]>
+            </line>
+            <line>
+              <![CDATA[Browser closed]]>
+            </line>
+          </reporter-output>
+        </test-method> <!-- postCondition -->
+        <test-method status="PASS" signature="precondition(java.lang.String)[pri:0, instance:com.applect.meritnation.scripts.StudyTest@246d8660]" name="precondition" is-config="true" duration-ms="11435" started-at="2018-02-20T15:39:48Z" finished-at="2018-02-20T15:39:59Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[chrome]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+            <line>
+              <![CDATA[Chrome Browser launches]]>
+            </line>
+            <line>
+              <![CDATA[Navigate to the URL]]>
+            </line>
+          </reporter-output>
+        </test-method> <!-- precondition -->
+        <test-method status="PASS" signature="TC_009_VerifyStudyPhysicsTopicRevisionNotesTest()[pri:0, instance:com.applect.meritnation.scripts.StudyTest@246d8660]" name="TC_009_VerifyStudyPhysicsTopicRevisionNotesTest" duration-ms="79982" started-at="2018-02-20T15:39:59Z" finished-at="2018-02-20T15:41:19Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- TC_009_VerifyStudyPhysicsTopicRevisionNotesTest -->
+        <test-method status="PASS" signature="postCondition(org.testng.ITestResult)[pri:0, instance:com.applect.meritnation.scripts.StudyTest@246d8660]" name="postCondition" is-config="true" duration-ms="217" started-at="2018-02-20T15:41:19Z" finished-at="2018-02-20T15:41:20Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[[TestResult name=TC_009_VerifyStudyPhysicsTopicRevisionNotesTest status=SUCCESS method=StudyTest.TC_009_VerifyStudyPhysicsTopicRevisionNotesTest()[pri:0, instance:com.applect.meritnation.scripts.StudyTest@246d8660] output={null}]]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+            <line>
+              <![CDATA[Script passed]]>
+            </line>
+            <line>
+              <![CDATA[Browser closed]]>
+            </line>
+          </reporter-output>
+        </test-method> <!-- postCondition -->
+        <test-method status="PASS" signature="precondition(java.lang.String)[pri:0, instance:com.applect.meritnation.scripts.StudyTest@246d8660]" name="precondition" is-config="true" duration-ms="19978" started-at="2018-02-20T15:41:20Z" finished-at="2018-02-20T15:41:40Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[chrome]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+            <line>
+              <![CDATA[Chrome Browser launches]]>
+            </line>
+            <line>
+              <![CDATA[Navigate to the URL]]>
+            </line>
+          </reporter-output>
+        </test-method> <!-- precondition -->
+        <test-method status="PASS" signature="TC_010_VerifyStudyPhysicsTopicBoardPaperQuestionsTest()[pri:0, instance:com.applect.meritnation.scripts.StudyTest@246d8660]" name="TC_010_VerifyStudyPhysicsTopicBoardPaperQuestionsTest" duration-ms="60588" started-at="2018-02-20T15:41:40Z" finished-at="2018-02-20T15:42:40Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- TC_010_VerifyStudyPhysicsTopicBoardPaperQuestionsTest -->
+        <test-method status="PASS" signature="postCondition(org.testng.ITestResult)[pri:0, instance:com.applect.meritnation.scripts.StudyTest@246d8660]" name="postCondition" is-config="true" duration-ms="265" started-at="2018-02-20T15:42:40Z" finished-at="2018-02-20T15:42:40Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[[TestResult name=TC_010_VerifyStudyPhysicsTopicBoardPaperQuestionsTest status=SUCCESS method=StudyTest.TC_010_VerifyStudyPhysicsTopicBoardPaperQuestionsTest()[pri:0, instance:com.applect.meritnation.scripts.StudyTest@246d8660] output={null}]]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+            <line>
+              <![CDATA[Script passed]]>
+            </line>
+            <line>
+              <![CDATA[Browser closed]]>
+            </line>
+          </reporter-output>
+        </test-method> <!-- postCondition -->
+        <test-method status="PASS" signature="precondition(java.lang.String)[pri:0, instance:com.applect.meritnation.scripts.StudyTest@246d8660]" name="precondition" is-config="true" duration-ms="16569" started-at="2018-02-20T15:42:40Z" finished-at="2018-02-20T15:42:57Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[chrome]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+            <line>
+              <![CDATA[Chrome Browser launches]]>
+            </line>
+            <line>
+              <![CDATA[Navigate to the URL]]>
+            </line>
+          </reporter-output>
+        </test-method> <!-- precondition -->
+        <test-method status="PASS" signature="TC_011_VerifyStudyPhysicsTopicFormativeAssesmentTest()[pri:0, instance:com.applect.meritnation.scripts.StudyTest@246d8660]" name="TC_011_VerifyStudyPhysicsTopicFormativeAssesmentTest" duration-ms="77446" started-at="2018-02-20T15:42:57Z" finished-at="2018-02-20T15:44:14Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- TC_011_VerifyStudyPhysicsTopicFormativeAssesmentTest -->
+        <test-method status="PASS" signature="postCondition(org.testng.ITestResult)[pri:0, instance:com.applect.meritnation.scripts.StudyTest@246d8660]" name="postCondition" is-config="true" duration-ms="194" started-at="2018-02-20T15:44:14Z" finished-at="2018-02-20T15:44:15Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[[TestResult name=TC_011_VerifyStudyPhysicsTopicFormativeAssesmentTest status=SUCCESS method=StudyTest.TC_011_VerifyStudyPhysicsTopicFormativeAssesmentTest()[pri:0, instance:com.applect.meritnation.scripts.StudyTest@246d8660] output={null}]]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+            <line>
+              <![CDATA[Script passed]]>
+            </line>
+            <line>
+              <![CDATA[Browser closed]]>
+            </line>
+          </reporter-output>
+        </test-method> <!-- postCondition -->
+      </class> <!-- com.applect.meritnation.scripts.StudyTest -->
     </test> <!-- RegressiononChromeTest -->
   </suite> <!-- Suite -->
 </testng-results>

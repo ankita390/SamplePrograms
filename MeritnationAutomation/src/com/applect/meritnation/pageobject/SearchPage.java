@@ -3,6 +3,7 @@ package com.applect.meritnation.pageobject;
 import org.openqa.selenium.Dimension;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.Keys;
+import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
@@ -20,6 +21,10 @@ public class SearchPage {
 	private WebElement firstsearchedoption;
 	@FindBy(xpath="//div[@class='allsession']/h1[text()='Quadratic Equations']")
 	private WebElement headername;
+	@FindBy(xpath="//div[@id='notification_bar_top']")
+	private WebElement topnotification;
+	@FindBy(xpath="//div[@id='notification_bar_top']/div[@id='top-notification-close']")
+	private WebElement closenotification;
 	
 	
 	
@@ -42,20 +47,18 @@ public class SearchPage {
 	public void enterSearchBox(WebDriver driver)
 	{
 		try{
-			WaitStatementLib.explicitWaitForClickable(driver, 5, searchbx);
-			searchbx.click();
-			Thread.sleep(2000);
-			Actions actions = new Actions(driver);
-			Thread.sleep(2000);
-			String searchtxt = ExcelUtils.readData("TestData", 3, 1);
-			actions.moveToElement(searchbx).click().sendKeys(searchtxt).build().perform();;
-			Thread.sleep(2000);
+			BasePage.isPresentAndDisplayed(topnotification);
+			closenotification.click();
 		}
-		
-		catch(InterruptedException e)
-		{
+		catch(NoSuchElementException e){
 			
 		}
+			WaitStatementLib.explicitWaitForClickable(driver, 5, searchbx);
+			searchbx.click();
+			Actions actions = new Actions(driver);
+			String searchtxt = ExcelUtils.readData("TestData", 3, 1);
+			actions.moveToElement(searchbx).click().sendKeys(searchtxt).build().perform();;
+			BasePage.sleepForMilliSecond(2000);
 	}
 		public void clickFirstSearchedOption()
 		{
