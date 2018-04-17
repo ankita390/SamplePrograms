@@ -1,16 +1,12 @@
 package com.applect.meritnation.pageobject;
 
-import org.openqa.selenium.Dimension;
-import org.openqa.selenium.JavascriptExecutor;
-import org.openqa.selenium.Keys;
+
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
-
-import com.applect.meritnation.generic.BaseLib;
 import com.applect.meritnation.generic.ExcelUtils;
 import com.applect.meritnation.generic.WaitStatementLib;
 
@@ -57,6 +53,8 @@ public class SearchPage {
 			searchbx.click();
 			Actions actions = new Actions(driver);
 			String searchtxt = ExcelUtils.readData("TestData", 3, 1);
+			WaitStatementLib.explicitWaitForVisiblity(driver, 5, searchbx);
+			searchbx.click();
 			actions.moveToElement(searchbx).click().sendKeys(searchtxt).build().perform();;
 			BasePage.sleepForMilliSecond(2000);
 	}

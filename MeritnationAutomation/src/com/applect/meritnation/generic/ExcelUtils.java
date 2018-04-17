@@ -11,7 +11,8 @@ import org.apache.poi.ss.usermodel.WorkbookFactory;
 
 public class ExcelUtils 
 {
-	static final String filepath = "/home/applect/workspace/MeritnationAutomation/Test Data/testData.xlsx";
+	static final String filepath = "/var/www/mn-testing/MeritnationAutomation/Test Data/testData.xlsx";
+	
 
 	public static String readData(String sheetName,int rowNum,int cellNum) 
 	{

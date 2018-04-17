@@ -4,20 +4,15 @@ package com.applect.meritnation.pageobject;
 import java.util.List;
 
 import org.junit.Assert;
-import org.openqa.selenium.Keys;
-import org.openqa.selenium.NoSuchElementException;
+import org.openqa.selenium.ElementNotVisibleException;
 import org.openqa.selenium.StaleElementReferenceException;
+import org.openqa.selenium.TimeoutException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.Select;
-
-
-
-
-
 import com.applect.meritnation.generic.ExcelUtils;
 import com.applect.meritnation.generic.WaitStatementLib;
 
@@ -41,11 +36,21 @@ public class CreateAccountPage
 	private WebElement classname;
 	@FindBy(xpath="//*[@id='userType1']/label[1]") 
 	private WebElement student;
+	@FindBy(xpath="//*[@id='userType1']/label[3]") 
+	private WebElement teacher;
 	@FindBy(id="subBtn_0") 
 	private WebElement joinbtn;
+	@FindBy(xpath="//div[@class='information-box group']/div/div/div/div/span[4]") 
+	private WebElement changelocationicon;
+	@FindBy(xpath="//div[@class='bs-col-md-4']/div/div/div/span") 
+	private List <WebElement> selectlocation;
+	@FindBy(xpath="//div[@class='ui-select-choices-content selectize-dropdown-content']/div/div/div/span[text()='Mauritius']") 
+	private WebElement country_Mauritius;
+	@FindBy(xpath="//div[@class='ui-select-choices-content selectize-dropdown-content']/div/div[2]/div/span") 
+	private WebElement city_Mauritius;
 	@FindBy(xpath ="//div[@class='bs-col-md-12 text-center']/div/div/div/span[@class = 'ng-binding ng-scope']") 
 	private WebElement schoolnamebx;
-	@FindBy(xpath ="//div[@class='ui-select-choices-content selectize-dropdown-content']/div/div[@role='option']/div/div/div/div/div[@title='f-block, east of kailash, new delhi, delhi 110065']")
+	@FindBy(xpath ="//div[@class='ui-select-choices-content selectize-dropdown-content']/div/div[@role='option']/div/div/div/div/div[@title='a221, okhla phase - 1']")
 	private WebElement schoolnamelist;
 	@FindBy(xpath="//div[@class='profilcePic']/div/img")
 	private WebElement profileicon;
@@ -81,6 +86,10 @@ public class CreateAccountPage
 	private List <WebElement> leftmenu;
 	@FindBy(xpath="//div[@class='sidebarInner']/div/div/div")
 	private List <WebElement> innerleftmenu;
+	@FindBy(xpath="//div[@class='tablerow']/div[3]/i")
+	private WebElement closeboardpprnotification;
+	@FindBy(xpath = "//div[@id='webengage-notification-container']/iframe")
+	private WebElement frame;
 	
 	public CreateAccountPage(WebDriver driver)
 	{
@@ -127,32 +136,58 @@ public class CreateAccountPage
 		Select sel = new Select(classname);
 		sel.selectByVisibleText("X");
 	}
-	public void selectuserAs()
+	public void selectUserAsStudent()
 	{
 		student.click();
 	}
+	public void selectUserAsTeacher()
+	{
+		teacher.click();
+	}
 	public void joinNow()
 	{
-		joinbtn.click();;	
+		joinbtn.click();
 	}
 	
 	public void enterSchoolName (WebDriver driver)  
 	{
-		WaitStatementLib.implicitWaitForSecond(driver, 3);
+		WaitStatementLib.explicitWaitForVisiblity(driver, 15, changelocationicon);
+		changelocationicon.click();
+		BasePage.moveToElementAndClick(driver, selectlocation.get(0));
+		BasePage.sleepForMilliSecond(2000);
+		BasePage.moveToElementAndClick(driver,country_Mauritius);
+		WaitStatementLib.explicitWaitForVisiblity(driver, 5, selectlocation.get(2));
+		BasePage.sleepForMilliSecond(2000);
+		BasePage.moveToElementAndClick(driver, selectlocation.get(2));
+		//WaitStatementLib.explicitWaitForVisiblity(driver, 5, city_Mauritius);
+		BasePage.sleepForMilliSecond(2000);
+		BasePage.moveToElementAndClick(driver,city_Mauritius);
+		if(String.valueOf(BasePage.isPresentAndDisplayed(frame))=="true"){
+			WaitStatementLib.explicitWaitForVisiblity(driver, 15, frame);
+			try{
+			driver.switchTo().frame(frame);
+			WaitStatementLib.explicitWaitForVisiblity(driver, 5, closeboardpprnotification);
+			closeboardpprnotification.click();
+			BasePage.sleepForMilliSecond(1000);
+			driver.switchTo().defaultContent();
+			}
+			catch(ElementNotVisibleException ex){
+				
+			}
+			catch(TimeoutException ex){
+			driver.switchTo().defaultContent();
+			}
+		}
+		
 		schoolnamebx.click();
 		String school = ExcelUtils.readData("TestData", 0, 6);
 		Actions actions = new Actions(driver);
 		actions.moveToElement(schoolnamebx);
-		//actions.click();
+		actions.click();
+		BasePage.sleepForMilliSecond(2000);
 		actions.sendKeys(school);
 		actions.build().perform();
-		try{
-			Thread.sleep(3000);
-		}
-		catch(InterruptedException ex)
-		{
-			
-		}
+		BasePage.sleepForMilliSecond(1000);
 		try
 		{
 			schoolnamelist.click();
@@ -161,38 +196,57 @@ public class CreateAccountPage
 		{
 			schoolnamelist.click();
 		}
-		BasePage.sleepForMilliSecond(4000);
+		//WaitStatementLib.explicitWaitForVisiblity(driver, 15, profileicon);
+		//BasePage.sleepForMilliSecond(3000);
 		
-	try{
-		BasePage.isPresentAndDisplayed(topnotification);
-		closenotification.click();
-	}
-	catch(NoSuchElementException e){
+
+		if(String.valueOf(BasePage.isPresentAndDisplayed(topnotification))=="true"){
+			closenotification.click();
+			BasePage.sleepForMilliSecond(2000);
+			//WaitStatementLib.explicitWaitForVisiblity(driver, 5, profileicon);
+		}
+	/*	if(String.valueOf(BasePage.isPresentAndDisplayed(frame))=="true"){
 		
-	}
+		try{
+		WaitStatementLib.explicitWaitForVisiblity(driver, 15, frame);
+		driver.switchTo().frame(frame);
+		WaitStatementLib.explicitWaitForVisiblity(driver, 5, closeboardpprnotification);
+		closeboardpprnotification.click();
+		//BasePage.sleepForMilliSecond(2000);
+		driver.switchTo().defaultContent();
+		}
+		catch(ElementNotVisibleException ex){
+			
+		}
+		catch (TimeoutException ex){
+			
+		}
+		}*/
 	}
 	public void clickProfileIcon(WebDriver driver)
 	{
-		try{
-			BasePage.isPresentAndDisplayed(topnotification);
-			closenotification.click();
-			BasePage.sleepForMilliSecond(1000);
+		/* This code needs to uncommeneted when any webengage notification starts appearing
+			if(String.valueOf(BasePage.isPresentAndDisplayed(topnotification))=="true"){
+				closenotification.click();
+			}
+			if(String.valueOf(BasePage.isPresentAndDisplayed(frame))=="true"){
+				WaitStatementLib.explicitWaitForVisiblity(driver, 15, frame);
+				try{
+				driver.switchTo().frame(frame);
+				WaitStatementLib.explicitWaitForVisiblity(driver, 5, closeboardpprnotification);
+				closeboardpprnotification.click();
+				BasePage.sleepForMilliSecond(1000);
+				driver.switchTo().defaultContent();
+				}
+				catch(ElementNotVisibleException ex){
+					
+				}
+				catch(TimeoutException ex){
+				driver.switchTo().defaultContent();
+				}
+			}*/
+			WaitStatementLib.explicitWaitForVisiblity(driver, 5, profileicon);
 			profileicon.click();
-		
-		}
-		catch(NoSuchElementException e){
-			BasePage.sleepForMilliSecond(1000);
-			profileicon.click();
-		}
-	/*	WaitStatementLib.implicitWaitForSecond(driver, 5);
-		BasePage.sleepForMilliSecond(2000);
-	if(BasePage.isPresentAndDisplayed(profileicon)){
-		profileicon.click();
-	}
-	else{
-		BasePage.sleepForMilliSecond(2000);
-		profileicon.click();
-	}*/
 	}
 	public void verifyPaidSubscription(WebDriver driver)
 	{
@@ -247,8 +301,8 @@ public class CreateAccountPage
   }
 	public void logoutClick(WebDriver driver)
 	{
-		WaitStatementLib.explicitWaitForClickable(driver, 10, logoutbtn);
-		BasePage.sleepForMilliSecond(2000);
+		WaitStatementLib.explicitWaitForVisiblity(driver, 5, logoutbtn);
+	//	BasePage.sleepForMilliSecond(2000);
 		logoutbtn.click();
 	}
 	

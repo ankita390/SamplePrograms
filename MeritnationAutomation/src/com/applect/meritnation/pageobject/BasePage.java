@@ -7,27 +7,48 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Random;
 import java.util.Set;
-import java.util.concurrent.TimeUnit;
-
-import org.openqa.selenium.Alert;
-import org.openqa.selenium.Keys;
+import org.openqa.selenium.ElementNotVisibleException;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.NoSuchElementException;
+import org.openqa.selenium.TimeoutException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.Select;
 import org.testng.Assert;
-import org.testng.Reporter;
 import org.testng.asserts.SoftAssert;
-
 import com.applect.meritnation.generic.ExcelUtils;
-import com.thoughtworks.selenium.webdriven.commands.KeyEvent;
+import com.applect.meritnation.generic.WaitStatementLib;
+
 
 
 
 public abstract class BasePage {
 	static WebDriver driver;
+	
+	public static void closeJEETestSeriesPopup(WebDriver driver, WebElement element, WebElement element1){
+		if(String.valueOf(BasePage.isPresentAndDisplayed(element))=="true"){
+		try{
+			WaitStatementLib.explicitWaitForVisiblity(driver, 5, element1);
+			element1.click();
+			BasePage.sleepForMilliSecond(1000);
+		
+			}
+			catch(ElementNotVisibleException ex){
+				
+			}
+			catch(TimeoutException ex){
+		
+			}
+		}
+	}
+	
+	public static void scrollDown(WebElement element, WebDriver driver){
+		((JavascriptExecutor) driver).executeScript(
+                "arguments[0].scrollIntoView(true);", element);
+
+	}
 	
 	public static String randomString() 
 	{
@@ -50,10 +71,7 @@ public abstract class BasePage {
 		loginPage.loginButtonClick(driver);
 		loginPage.enterUserName(driver);
 		loginPage.enterPassword(driver);
-		loginPage.signInBtnClick();
-		//BasePage.sleepForMilliSecond(2000);
-		
-		
+		loginPage.signInBtnClick(driver);
 	}
 	public static void logout(WebDriver driver)
 	{
@@ -89,10 +107,7 @@ public abstract class BasePage {
 	{
 		element.isDisplayed();
 	}
-	public static void implicitWaitForSecond(int time)
-	{
-		driver.manage().timeouts().implicitlyWait(time, TimeUnit.SECONDS);
-	}
+	
 	
 	public static void sleepForMilliSecond(int time)  
 	{
@@ -121,7 +136,7 @@ public abstract class BasePage {
 			
 		}
 	}
-	public static void switchToParentWindow(WebDriver driver, WebElement element){
+	public static void switchToParentWindow(WebDriver driver){
 		
 		try{
 			Set <String> allWindow = driver.getWindowHandles();
@@ -131,7 +146,7 @@ public abstract class BasePage {
 			for (int i =0;i<allWindow.size();i++){
 				myl.add(itr.next());
 			}
-			driver.switchTo().window(myl.get(1));
+			driver.switchTo().window(myl.get(0));
 			}
 		catch(RuntimeException ex){
 			
@@ -153,7 +168,7 @@ public abstract class BasePage {
 		for (int i=0;i<element.size();i++)
 		{
 			String visibledata = element.get(i).getText().toString();
-			for (int j=4;j<15;j++)
+			for (int j=4;j<=15;j++)
 			{
 				String data = ExcelUtils.readData("TestData", j, 1).toString();
 				if(data.equals(visibledata)){
@@ -165,11 +180,12 @@ public abstract class BasePage {
 			}
 		}
 	}
+	
 	public static void verifyCourseMenuContentforAllClasses(List<WebElement> element, int k){
 		for (int i=0;i<element.size();i++)
 		{
 			String visibledata = element.get(i).getText().toString();
-			for (int j=4;j<15;j++)
+			for (int j=4;j<=15;j++)
 			{
 				String data = ExcelUtils.readData("TestData", j, k).toString();
 				if(data.equals(visibledata)){
@@ -186,7 +202,7 @@ public abstract class BasePage {
 		for (int i=0;i<element.size();i++)
 		{
 			String visibledata = element.get(i).getText().toString();
-			for (int j=4;j<15;j++)
+			for (int j=4;j<=15;j++)
 			{
 				String data = ExcelUtils.readData("TestData", j, k).toString();
 				if(data.equals(visibledata)){
@@ -306,21 +322,21 @@ public abstract class BasePage {
 			e.printStackTrace();
 		} 
 	}
-public static void pressPageUpKey(WebDriver driver){
+public static void pressHomeKey(WebDriver driver){
 		
 		try {
 			Robot r = new Robot();
-			r.keyPress(java.awt.event.KeyEvent.VK_PAGE_UP); 
-			r.keyRelease(java.awt.event.KeyEvent.VK_PAGE_UP);
+			r.keyPress(java.awt.event.KeyEvent.VK_HOME); 
+			r.keyRelease(java.awt.event.KeyEvent.VK_HOME);
 			
 		} catch (AWTException e) {
 			
 			e.printStackTrace();
 		} 
 	}
-	public static void usingSoftAssert(boolean condition, String message){
+	public static void usingSoftAssert(boolean condition){
 		SoftAssert sf = new SoftAssert();
-		sf.assertTrue(condition, message);
+		sf.assertTrue(condition);
 	}
 	
 	

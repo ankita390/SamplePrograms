@@ -7,22 +7,16 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Set;
-import java.util.concurrent.TimeUnit;
 
-import org.openqa.selenium.Alert;
-import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.ElementNotVisibleException;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.NoSuchElementException;
+import org.openqa.selenium.TimeoutException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.interactions.Action;
-import org.openqa.selenium.interactions.Actions;
-import org.openqa.selenium.remote.server.handler.SendKeys;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import org.testng.Assert;
-import org.testng.asserts.SoftAssert;
-
 import com.applect.meritnation.generic.WaitStatementLib;
 
 public class StudyPage {
@@ -31,6 +25,14 @@ public class StudyPage {
 	protected WebElement studybx;
 	@FindBy(xpath="//div[@class='navBox']/nav/ul/li[2]/ul/li[1]/a[text()='Physics']")
 	private WebElement physicsicon;
+	@FindBy(xpath="//div[@class='navBox']/nav/ul/li[2]/ul/li[1]/a[text()='Accountancy']")
+	private WebElement accountancyicon;
+	@FindBy(xpath="//div[@class='navBox']/nav/ul/li[2]/ul/li[1]/a[text()='Science']")
+	private WebElement scienceicon;
+	@FindBy(xpath="//div[@class='navBox']/nav/ul/li[2]/ul/li[5]/a[text()='Hindi']")
+	private WebElement hindiicon;
+	@FindBy(xpath="//div[@class='navBox']/nav/ul/li[2]/ul/li[2]/a[contains(text(),'Business')]")
+	private WebElement business_studiesicon;
 	@FindBy(xpath="//div[@class='navBox']/nav/ul/li[2]/ul/li[2]/a[text()='Chemistry']")
 	private WebElement chemistryicon;
 	@FindBy(xpath="//div[@class='navBox']/nav/ul/li[2]/ul/li[3]/a[text()='Biology']")
@@ -152,16 +154,12 @@ public class StudyPage {
 	private WebElement assignmentlnk;
 	@FindBy(xpath="//div[@class='sidebarInner']/div/div/div[4]/h3")
 	private WebElement assignmentonenglishlnk;
-	
-	
 	@FindBy(xpath="//div[@class='sidebarInner']/div/div[3]/h3[text()='Assignments']")
 	private WebElement assignmentonsubjectlnk;
 	@FindBy(xpath="//div[@class='sidebarInner']/div/div[6]/h3[text()='Tests']")
 	private WebElement testsonsubjectlnk;
-	
-
-	
-	
+	@FindBy(xpath="//div[@class='sidebarInner']/div/div[4]/h3[text()='Tests']")
+	private WebElement testsonsubject_hindilnk;
 	@FindBy(xpath="//div[@class='bottomRow']/a[contains(text(),'Take test')]")
 	private List <WebElement> taketestassignmentbtn;
 	@FindBy(xpath="//div[@class='bottomRow']/a[contains(text(),'View report')]")
@@ -170,9 +168,6 @@ public class StudyPage {
 	private List <WebElement> retaketestlink;
 	@FindBy(xpath="//div[@class='insHeading']/a")
 	private WebElement proceeedbtn;
-	
-	
-	
 	@FindBy(xpath="//div[@class='testSliderBlock']/ul/li/label/span")
 	private List <WebElement> questionannsweroptions;
 	@FindBy(xpath="//div[@class='exit_game_button']/a[@class='pause']")
@@ -244,9 +239,11 @@ public class StudyPage {
 	@FindBy(xpath="//div[@class='sidebarInner']/div/div/div[9]/h3[text()='Formative Assessment']")
 	private WebElement formativeassessmentonmathlnk;
 	
-	@FindBy(tagName = "iframe")
+	@FindBy(xpath = "//div[@id='webengage-notification-container']/iframe")
 	private WebElement frame;
-	@FindBy(xpath = "//div[@class='fat']/div[2]/form/table/tbody/tr[5]/td[2]/div/input")
+	@FindBy(xpath="//div[@class='tablerow']/div[3]/i")
+	private WebElement closeboardpprnotification;
+	@FindBy(xpath = "//div[@class='fat']/div[2]/form/table/tbody/tr[5]/td[2]/div/input[contains(text(),'')]")
 	private WebElement startevaluationbtn;
 	@FindBy(xpath = "//tbody/tr/td[2]/table/tbody/tr/td/div/div/div[2]/table/tbody/tr/td[3]")
 	private WebElement continuelaterbtn1;
@@ -282,7 +279,7 @@ public class StudyPage {
 	public List <WebElement> topicstextbooksolutionson;
 	@FindBy(xpath="//div[@class='sidebarInner']/div/div[6]/h3")
 	public WebElement testslink;	
-	@FindBy(xpath="//div[@class='right-side ']/div/section/h2")
+	@FindBy(xpath="//div[@class='right-side ']/div/section/div/i")
 	public WebElement subjectarrow;
 	@FindBy(xpath="//div[@class='right-side ']/div/section/ul/li")
 	public List <WebElement> subjectlist;
@@ -300,19 +297,189 @@ public class StudyPage {
 	public WebElement conceptsonenglish;
 	@FindBy(xpath="//div[@id='allsession']/section/div/span")
 	public WebElement norecordfoundonliveclasses;
+	@FindBy(xpath="//div[@class='sidebarInner']/div/div[6]/div/div/ul/li[3]")
+	public WebElement brdpprsolnradiobtn_science;
+	@FindBy(xpath="//div[@class='sidebarInner']/div/div[6]/div/div/ul/li[2]")
+	public WebElement brdpprsolnradiobtn_commerce;
+	@FindBy(xpath="//div[@class='sidebarInner']/div/div[4]/div/div/ul/li[2]")
+	public WebElement brdpprsolnradiobtn_classten_hindi;
 	
-	
+	@FindBy(xpath="//main[@id='mainContent']/div/h1")
+	public WebElement brdpprsolntitle;
+	@FindBy(xpath="//main[@id='mainContent']/div/div/ul/li")
+	public List <WebElement> brdpprsolnyearrwise;
+	//@FindBy(xpath="//main[@id='mainContent']/div/div/ul/li/a")
+	//public List <WebElement> brdpprsolnyearrwisesoln;
+	@FindBy(xpath="//div[@class='profileWrapper']/div[@class='usrInfoBox']/div[@class='usr_grade']/span")
+	public WebElement usrgrade;
+	@FindBy(tagName="iframe")
+	private WebElement frameOnFormativeAssesmnt;	
 	
 	public StudyPage(WebDriver driver)
 	{
 		PageFactory.initElements(driver, this);
 	}
 	
+	public void verifyBoardPaperSolution(WebDriver driver){
+		
+		CreateAccountPage createAccountPage = new CreateAccountPage(driver);
+		if(String.valueOf(BasePage.isPresentAndDisplayed(frame))=="true"){
+			WaitStatementLib.explicitWaitForVisiblity(driver, 15, frame);
+			try{
+			driver.switchTo().frame(frame);
+			WaitStatementLib.explicitWaitForVisiblity(driver, 15, closeboardpprnotification);
+			closeboardpprnotification.click();
+			BasePage.sleepForMilliSecond(1000);
+			driver.switchTo().defaultContent();
+			}
+			catch(ElementNotVisibleException ex){
+				
+			}
+			catch(TimeoutException ex){
+				driver.switchTo().defaultContent();
+				}
+		}
+		createAccountPage.clickProfileIcon(driver);
+		if (usrgrade.getText().contains("CBSE XII-SCIENCE")){
+			moveToStudyBoxAndClickPhysics(driver);
+			testsonsubjectlnk.click();
+			WaitStatementLib.explicitWaitForVisiblity(driver, 5, brdpprsolnradiobtn_science);
+			brdpprsolnradiobtn_science.click();
+			WaitStatementLib.explicitWaitForVisiblity(driver, 5, brdpprsolnyearrwise.get(0));
+			Assert.assertTrue(brdpprsolnyearrwise.get(0).getText().contains("Physics 2018 Delhi Set 1: Solutions"), "Class-12 science physics delhi set 1: Board paper solution link not available");
+			Assert.assertTrue(brdpprsolnyearrwise.get(1).getText().contains("Physics 2018 Delhi Set 2: Solutions"), "Class-12 science physics delhi set 2: Board paper solution link not available");
+			Assert.assertTrue(brdpprsolnyearrwise.get(2).getText().contains("Physics 2018 Delhi Set 3: Solutions"), "Class-12 science physics delhi set 3: Board paper solution link not available");
+			if(String.valueOf(BasePage.isPresentAndDisplayed(frame))=="true"){
+				WaitStatementLib.explicitWaitForVisiblity(driver, 15, frame);
+				try{
+				driver.switchTo().frame(frame);
+				WaitStatementLib.explicitWaitForVisiblity(driver, 15, closeboardpprnotification);
+				closeboardpprnotification.click();
+				BasePage.sleepForMilliSecond(1000);
+				driver.switchTo().defaultContent();
+				}
+				catch(ElementNotVisibleException ex){
+					
+				}
+				catch(TimeoutException ex){
+					driver.switchTo().defaultContent();
+					}
+			}
+			moveToStudyBoxAndClickChemistry(driver);
+			testsonsubjectlnk.click();
+			WaitStatementLib.explicitWaitForVisiblity(driver, 5, brdpprsolnradiobtn_science);
+			brdpprsolnradiobtn_science.click();
+			WaitStatementLib.explicitWaitForVisiblity(driver, 5, brdpprsolntitle);
+			Assert.assertTrue(brdpprsolnyearrwise.get(0).getText().contains("Chemistry 2018 Delhi Set-1: Solutions"), "Class-12 science chemistry delhi set 1: Board paper solution link not available");
+			Assert.assertTrue(brdpprsolnyearrwise.get(1).getText().contains("Chemistry 2018 Delhi Set-2: Solutions"), "Class-12 science chemistry delhi set 2: Board paper solution link not available");
+			Assert.assertTrue(brdpprsolnyearrwise.get(2).getText().contains("Chemistry 2018 Delhi Set-3: Solutions"), "Class-12 science chemistry delhi set 3: Board paper solution link not available");
+			
+			
+		}
+		else if (usrgrade.getText().contains("CBSE XII-COMMERCE")){
+			moveToStudyBoxAndClickAccountancy(driver);
+			testsonsubjectlnk.click();
+			WaitStatementLib.explicitWaitForVisiblity(driver, 5, brdpprsolnradiobtn_commerce);
+			brdpprsolnradiobtn_commerce.click();
+			WaitStatementLib.explicitWaitForVisiblity(driver, 5, brdpprsolnyearrwise.get(0));
+			Assert.assertTrue(brdpprsolnyearrwise.get(0).getText().contains("Accountancy 2018 Delhi Set 1: Solutions"), "Class-12 Commerce Accountancy delhi set 1: Board paper solution link not available");
+			Assert.assertTrue(brdpprsolnyearrwise.get(1).getText().contains("Accountancy 2018 Delhi Set 2: Solutions"), "Class-12 Commerce Accountancy delhi set 2: Board paper solution link not available");
+			Assert.assertTrue(brdpprsolnyearrwise.get(2).getText().contains("Accountancy 2018 Delhi Set 3: Solutions"), "Class-12 Commerce Accountancy delhi set 3: Board paper solution link not available");
+			if(String.valueOf(BasePage.isPresentAndDisplayed(frame))=="true"){
+				WaitStatementLib.explicitWaitForVisiblity(driver, 15, frame);
+				try{
+				driver.switchTo().frame(frame);
+				WaitStatementLib.explicitWaitForVisiblity(driver, 15, closeboardpprnotification);
+				closeboardpprnotification.click();
+				BasePage.sleepForMilliSecond(1000);
+				driver.switchTo().defaultContent();
+				}
+				catch(ElementNotVisibleException ex){
+					
+				}
+				catch(TimeoutException ex){
+					driver.switchTo().defaultContent();
+					}
+			}
+			moveToStudyBoxAndClickBusinessStudies(driver);
+			testsonsubjectlnk.click();
+			WaitStatementLib.explicitWaitForVisiblity(driver, 5, brdpprsolnradiobtn_commerce);
+			brdpprsolnradiobtn_commerce.click();
+			WaitStatementLib.explicitWaitForVisiblity(driver, 5, brdpprsolnyearrwise.get(0));
+			Assert.assertTrue(brdpprsolnyearrwise.get(0).getText().contains("Business Studies 2018 Delhi Set 1: Solutions"), "Class-12 Commerce Business Studies delhi set 1: Board paper solution link not available");
+			Assert.assertTrue(brdpprsolnyearrwise.get(1).getText().contains("Business Studies 2018 Delhi Set 2: Solutions"), "Class-12 Commerce Business Studies delhi set 2: Board paper solution link not available");
+			Assert.assertTrue(brdpprsolnyearrwise.get(2).getText().contains("Business Studies 2018 Delhi Set 3: Solutions"), "Class-12 Commerce Business Studies delhi set 3: Board paper solution link not available");
+			
+			}
+		else if (usrgrade.getText().contains("CBSE X")){
+			moveToStudyBoxAndClickScience(driver);
+			testsonsubjectlnk.click();
+			WaitStatementLib.explicitWaitForVisiblity(driver, 5, brdpprsolnradiobtn_science);
+			brdpprsolnradiobtn_science.click();
+			WaitStatementLib.explicitWaitForVisiblity(driver, 5, brdpprsolnyearrwise.get(0));
+			Assert.assertTrue(brdpprsolnyearrwise.get(0).getText().contains("Science 2018 Delhi Set 1: Solutions"), "Class-10 Science delhi set 1: Board paper solution link not available");
+			Assert.assertTrue(brdpprsolnyearrwise.get(1).getText().contains("Science 2018 Delhi Set 2: Solutions"), "Class-10 Science delhi set 2: Board paper solution link not available");
+			Assert.assertTrue(brdpprsolnyearrwise.get(2).getText().contains("Science 2018 Delhi Set 3: Solutions"), "Class-10 Science delhi set 3: Board paper solution link not available");
+			if(String.valueOf(BasePage.isPresentAndDisplayed(frame))=="true"){
+				WaitStatementLib.explicitWaitForVisiblity(driver, 15, frame);
+				try{
+				driver.switchTo().frame(frame);
+				WaitStatementLib.explicitWaitForVisiblity(driver, 15, closeboardpprnotification);
+				closeboardpprnotification.click();
+				BasePage.sleepForMilliSecond(1000);
+				driver.switchTo().defaultContent();
+				}
+				catch(ElementNotVisibleException ex){
+					
+				}
+				catch(TimeoutException ex){
+					driver.switchTo().defaultContent();
+					}
+			}
+			moveToStudyBoxAndClickHindi(driver);
+			testsonsubject_hindilnk.click();
+			WaitStatementLib.explicitWaitForVisiblity(driver, 5, brdpprsolnradiobtn_classten_hindi);
+			brdpprsolnradiobtn_classten_hindi.click();
+			WaitStatementLib.explicitWaitForVisiblity(driver, 5, brdpprsolnyearrwise.get(0));
+			Assert.assertTrue(brdpprsolnyearrwise.get(0).getText().contains("Hindi 2018 Delhi Set 1 A: Solutions"), "Class-10 Hindi delhi set 1: Board paper solution link not available");
+			Assert.assertTrue(brdpprsolnyearrwise.get(1).getText().contains("Hindi 2018 Delhi Set 2 A: Solutions"), "Class-10 Hindi delhi set 2: Board paper solution link not available");
+			Assert.assertTrue(brdpprsolnyearrwise.get(2).getText().contains("Hindi 2018 Delhi Set 3 A: Solutions"), "Class-10 Hindi delhi set 3: Board paper solution link not available");
+			}
+		}
+	
 	public void moveToStudyBoxAndClickPhysics(WebDriver driver)
 	{
 		WaitStatementLib.implicitWaitForSecond(driver, 10);
 		BasePage.sleepForMilliSecond(2000);
 		BasePage.moveToElementAndClick(driver,studybx,physicsicon);
+		
+		}
+	public void moveToStudyBoxAndClickAccountancy(WebDriver driver)
+	{
+		WaitStatementLib.implicitWaitForSecond(driver, 10);
+		BasePage.sleepForMilliSecond(2000);
+		BasePage.moveToElementAndClick(driver,studybx,accountancyicon);
+		
+		}
+	public void moveToStudyBoxAndClickHindi(WebDriver driver)
+	{
+		WaitStatementLib.implicitWaitForSecond(driver, 10);
+		BasePage.sleepForMilliSecond(2000);
+		BasePage.moveToElementAndClick(driver,studybx,hindiicon);
+		
+		}
+	public void moveToStudyBoxAndClickScience(WebDriver driver)
+	{
+		WaitStatementLib.implicitWaitForSecond(driver, 10);
+		BasePage.sleepForMilliSecond(2000);
+		BasePage.moveToElementAndClick(driver,studybx,scienceicon);
+		
+		}
+	public void moveToStudyBoxAndClickBusinessStudies(WebDriver driver)
+	{
+		WaitStatementLib.implicitWaitForSecond(driver, 10);
+		BasePage.sleepForMilliSecond(2000);
+		BasePage.moveToElementAndClick(driver,studybx,business_studiesicon);
 		
 		}
 	public void moveToStudyBoxAndClickChemistry(WebDriver driver)
@@ -388,6 +555,7 @@ public class StudyPage {
 		Assert.assertTrue(BasePage.isPresentAndDisplayed(testsonsubjectlnk), "Tests link not present");
 		testsonsubjectlnk.click();
 		BasePage.sleepForMilliSecond(2000);
+		
 		moveToStudyBoxAndClickPhysics(driver);
 		BasePage.sleepForMilliSecond(2000);
 		Assert.assertTrue(BasePage.isPresentAndDisplayed(subjectarrow),"Subject arrow not present");
@@ -572,7 +740,7 @@ public class StudyPage {
 			practicelnk.click();
 			WaitStatementLib.implicitWaitForSecond(driver, 10);
 			startbtn.get(0).click();
-			WaitStatementLib.implicitWaitForSecond(driver, 10);
+			WaitStatementLib.explicitWaitForVisiblity(driver, 10, startpractisingbtn);
 			startpractisingbtn.click();
 			BasePage.sleepForMilliSecond(2000);
 			firstansweroptions.get(0).click();
@@ -936,10 +1104,11 @@ public class StudyPage {
 			formativeassessmentlnk.click();
 			Assert.assertFalse(BasePage.isPresentAndDisplayed(logoutbx));
 			BasePage.sleepForMilliSecond(2000);
-			driver.switchTo().frame(frame);
-			BasePage.sleepForMilliSecond(2000);
+			driver.switchTo().frame(frameOnFormativeAssesmnt);
+	//  	BasePage.sleepForMilliSecond(2000);
 			try{	
 				BasePage.isPresentAndDisplayed(startevaluationbtn);
+				System.out.println(String.valueOf(BasePage.isPresentAndDisplayed(startevaluationbtn)));
 				startevaluationbtn.click();
 				BasePage.sleepForMilliSecond(2000);
 				try
@@ -958,6 +1127,7 @@ public class StudyPage {
 					BasePage.sleepForMilliSecond(2000);
 					driver.switchTo().defaultContent();
 				}
+			driver.switchTo().defaultContent();
 			}
 		public void clickFormativeAssesmentOnMath(WebDriver driver)
 		{

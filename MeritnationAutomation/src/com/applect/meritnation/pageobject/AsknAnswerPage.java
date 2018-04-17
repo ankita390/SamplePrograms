@@ -1,14 +1,14 @@
 package com.applect.meritnation.pageobject;
 
-import java.util.List;
 
+import java.util.List;
 import org.openqa.selenium.Keys;
+import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import org.testng.Assert;
-
 import com.applect.meritnation.generic.ExcelUtils;
 import com.applect.meritnation.generic.WaitStatementLib;
 
@@ -50,16 +50,121 @@ public class AsknAnswerPage {
 	private WebElement icanansbtn;
 	@FindBy(xpath="//div[@id='top_filter_box']/div[3]/a[2]")
 	private WebElement allbtn;
-	
-	
-	
+	@FindBy(xpath="//div[@class='commentContainer']/div[3]/div/div/div[2]")
+	private List <WebElement> allaskedquestions;
+	@FindBy(xpath="//div[@class='user_activity']/div/div/h2[text()='Leaderboard']")
+	private WebElement leaderboard;
+	@FindBy(xpath="//div[@class='user_activity']/div/div/div/a[1]")
+	private WebElement mnth;
+	@FindBy(xpath="//div[@class='user_activity']/div/div/div/a[2]")
+	private WebElement day;
+	@FindBy(xpath="//div[@class='bottom group']/div[1]/span[1]")
+	private WebElement students;
+	@FindBy(xpath="//div[@class='bottom group']/div[1]/span[2]")
+	private WebElement helpfullvotes;
+	@FindBy(xpath="//div[@class='bottom group']/div[2]/img")
+	private WebElement seeyourselfhere;
+	@FindBy(xpath="//div[@class='user_activity']/div[2]/div/h2[contains(text(),'My Stats')]")
+	private WebElement mystats;
+	@FindBy(xpath="//div[@class='user_activity']/div[3]/div[1]")
+	private WebElement getrewarded;
+	@FindBy(xpath="//div[@class='user_activity']/div[3]/div[2]/div[2]")
+	private WebElement pntsforansweringquestion;
+	@FindBy(xpath="//div[@class='user_activity']/div[3]/div[2]/div[3]")
+	private WebElement pntsforhelpfulvotefromothers;
+	@FindBy(xpath="//div[@class='user_activity']/div[3]/div[2]/div[4]")
+	private WebElement pntsforhelpfulvotefromexperts;
+	@FindBy(xpath="//div[@class='myStatusContainer marginBottom20px']/div/h2[contains(text(),'Email')]")
+	private WebElement emailnotification;
+	@FindBy(xpath="//div[@class='commentContainer']/div[3]/div/div/div[1]/div[2]/div/a")
+	public List <WebElement> questionaskeename;
+	@FindBy(xpath="//main[@id='AnaLeftSectionControllerId']/div[3]/div[1]/div/div[1]/div[1]/a")
+	public List <WebElement> questionaskeenameonchildwndw;
+	@FindBy(xpath="//main[@id='AnaLeftSectionControllerId']/div[3]/div[1]/div/div[2]/p")
+	public WebElement questionaskedonchildwndw;
+	@FindBy(xpath="//main[@id='AnaLeftSectionControllerId']/div[3]/div[1]/div/div[3]/div/div/div[2]/span")
+	public WebElement sharewithfrnds;
+	@FindBy(xpath="//main[@id='AnaLeftSectionControllerId']/div[3]/div[1]/div/div[3]/div/div/div[2]/ul/li[1]")
+	public WebElement fbicon;
+	@FindBy(xpath="//main[@id='AnaLeftSectionControllerId']/div[3]/div[1]/div/div[3]/div/div/div[2]/ul/li[2]")
+	public WebElement twittericon;
+	@FindBy(xpath="//main[@id='AnaLeftSectionControllerId']/div[3]/div[1]/div/div[3]/div/div/div[2]/ul/li[3]")
+	public WebElement googleicon;
+	@FindBy(xpath="//div[@class='commentContainer']/div[3]/div/div/div[2]/a")
+	public List <WebElement> askedquestions;
+	@FindBy(xpath="//main[@id='AnaLeftSectionControllerId']/div[3]/div[1]/div/div[3]/div/a[1]")
+	public WebElement likebtn;
+	@FindBy(xpath="//main[@id='AnaLeftSectionControllerId']/div[3]/div[1]/div/div[3]/div/a[2]")
+	public WebElement followbtn;
+	@FindBy(xpath="//main[@id='AnaLeftSectionControllerId']/div[3]/div[2]/div")
+	public List <WebElement> allgivenanswers;
+	@FindBy(xpath="//main[@id='AnaLeftSectionControllerId']/div[3]/div[2]/div[1]/div/div[2]/div[1]/div/ul/li[1]")
+	public WebElement wasanswerhelpfultxt;
+	@FindBy(xpath="//main[@id='AnaLeftSectionControllerId']/div[3]/div[2]/div[1]/div/div[2]/div[1]/div/ul/li[2]")
+	public WebElement nobtn;
+	@FindBy(xpath="//main[@id='AnaLeftSectionControllerId']/div[3]/div[2]/div[1]/div/div[2]/div[1]/div/ul/li[3]")
+	public WebElement yesbtn;
+	@FindBy(xpath="//main[@id='AnaLeftSectionControllerId']/div[3]/div[2]/div[1]/div/div[2]/div[1]/div/ul/li[4]")
+	public WebElement usercount;
+	@FindBy(xpath="//main[@id='AnaLeftSectionControllerId']/div[3]/div[3]/div/form/div[2]")
+	public WebElement ansblock;
+	@FindBy(xpath="//main[@id='AnaLeftSectionControllerId']/div[3]/div[3]/div/form/div[2]/div[1]")
+	public WebElement ansblocktitle;
+	@FindBy(xpath="//main[@id='AnaLeftSectionControllerId']/div[3]/div[3]/div/form/div[2]/div[2]/div/div")
+	public WebElement anstxtbx;
+	@FindBy(xpath="//main[@id='AnaLeftSectionControllerId']/div[3]/div[3]/div/form/div[2]/div[3]/button")
+	public WebElement submitbtn;
 	
 	public AsknAnswerPage(WebDriver driver)
 	{
 		PageFactory.initElements(driver, this);
 	}
-	
-	
+
+	public void verifyClildWindowElementsOnQuestionClick(WebDriver driver){
+		Assert.assertTrue(BasePage.isPresentAndDisplayed(sharewithfrnds));
+		Assert.assertEquals(sharewithfrnds.getText(), "Share with your friends");
+		Assert.assertTrue(BasePage.isPresentAndDisplayed(fbicon));
+		Assert.assertTrue(BasePage.isPresentAndDisplayed(twittericon));
+		Assert.assertTrue(BasePage.isPresentAndDisplayed(googleicon));
+		Assert.assertTrue(BasePage.isPresentAndDisplayed(likebtn));
+		likebtn.click();
+		BasePage.sleepForMilliSecond(1000);
+		likebtn.click();
+		Assert.assertTrue(BasePage.isPresentAndDisplayed(followbtn));
+		followbtn.click();
+		BasePage.sleepForMilliSecond(1000);
+		followbtn.click();
+		try{
+			if(BasePage.isPresentAndDisplayed(allgivenanswers.get(0)))
+			{
+			BasePage.scrollDown(wasanswerhelpfultxt, driver);
+			Assert.assertEquals(wasanswerhelpfultxt.getText(), "Was this answer helpful?");
+			Assert.assertTrue(BasePage.isPresentAndDisplayed(nobtn));
+			Assert.assertTrue(BasePage.isPresentAndDisplayed(yesbtn));
+			yesbtn.click();
+			BasePage.sleepForMilliSecond(1000);
+			yesbtn.click();
+			Assert.assertTrue(BasePage.isPresentAndDisplayed(usercount));
+			}
+			}
+		catch(IndexOutOfBoundsException ex){
+			}
+		try{
+			BasePage.scrollDown(ansblock, driver);
+			if(BasePage.isPresentAndDisplayed(ansblock)){
+				Assert.assertEquals(ansblocktitle.getText(), "Add an Answer");
+				Assert.assertTrue(BasePage.isPresentAndDisplayed(anstxtbx));
+				BasePage.scrollDown(submitbtn, driver);
+				Assert.assertTrue(BasePage.isPresentAndDisplayed(submitbtn));
+				submitbtn.click();
+				BasePage.sleepForMilliSecond(1000);
+				driver.switchTo().alert().accept();
+				driver.switchTo().defaultContent();
+			}
+		}
+		catch(NoSuchElementException ex){
+			}
+		}
 
 	public void clickRecommendedQuestions(WebDriver driver)
 	{
@@ -67,33 +172,19 @@ public class AsknAnswerPage {
 		BasePage.focusElement(qadrpdwnbx, driver);
 		BasePage.selectUsingOption(qadrpdwnbx, "Recommended Questions");
 		recommendedprojects.click();
-		try{
-			Thread.sleep(5000);
-			qadrpdwnbx.sendKeys(Keys.ARROW_DOWN);
+		qadrpdwnbx.sendKeys(Keys.ARROW_DOWN);
 		}
-		catch(InterruptedException e)
-		{
-			qadrpdwnbx.sendKeys(Keys.ARROW_DOWN);
-		}
-	}
 	public void clickAsk(WebDriver driver)
 	{
-		WaitStatementLib.implicitWaitForSecond(driver, 5);
+		WaitStatementLib.explicitWaitForVisiblity(driver, 5, redaskbtn);;
 		redaskbtn.click();
-		try{
-			Thread.sleep(5000);
-			}
-		catch(InterruptedException e)
-		{
-			
-		}
 	
 	}
 
 	public void enterQuestion(WebDriver driver) 
 	{
 		try{
-			Thread.sleep(5000);
+			Thread.sleep(2000);
 			String question = ExcelUtils.readData("TestData", 2, 1);
 			question = question + BasePage.randomString() + "?";
 			BasePage.focusElement(questiontxtbx, driver);
@@ -109,42 +200,20 @@ public class AsknAnswerPage {
 	}
 	public void submitQuestion()
 	{
-		try{
 			greenasktbtn.click();
-			Thread.sleep(5000);
-		}
-		catch(InterruptedException e)
-		{
-			greenasktbtn.click();
-		}
-	}
+			}
 	public void tagQuestion()
 	{
-		try{
 			tagphysicsicon.click();
-			Thread.sleep(5000);
-		}
-		catch(InterruptedException e)
-		{
-			tagphysicsicon.click();	
-		}
+			
 	}
 	public void chooseChapter(WebDriver driver)
 	{
-		try{
-			String chaptername = ExcelUtils.readData("TestData", 2, 2);	
-			chaptertxtbx.sendKeys(chaptername);
-			Thread.sleep(2000);
-			chaptertxtbx.sendKeys(Keys.ARROW_DOWN);
-			Thread.sleep(2000);
-			chaptertxtbx.sendKeys(Keys.ENTER);
-			Thread.sleep(2000);
+		String chaptername = ExcelUtils.readData("TestData", 2, 2);	
+		chaptertxtbx.sendKeys(chaptername);
+		chaptertxtbx.sendKeys(Keys.ARROW_DOWN);
+		chaptertxtbx.sendKeys(Keys.ENTER);
 		}
-		catch(InterruptedException e)
-		{
-			
-		}
-	}
 	public void finalSubmit()
 	{
 		try{
@@ -176,14 +245,18 @@ public class AsknAnswerPage {
 		alltabs.get(1).click();
 		BasePage.sleepForMilliSecond(2000);
 		Assert.assertTrue(BasePage.isPresentAndDisplayed(commentcontainer),"Comment container not displayed");
+		Assert.assertTrue(BasePage.isPresentAndDisplayed(allaskedquestions.get(0)));
 		Assert.assertTrue(BasePage.isPresentAndDisplayed(alltabs.get(2)),"Latest Tab ot displayed");
 		BasePage.sleepForMilliSecond(2000);
 		alltabs.get(2).click();
-		BasePage.sleepForMilliSecond(5000);
+		BasePage.sleepForMilliSecond(10000);
 		Assert.assertTrue(BasePage.isPresentAndDisplayed(commentcontainer),"Comment container not displayed");
+		WaitStatementLib.explicitWaitForVisiblity(driver, 10, allaskedquestions.get(0));
+		Assert.assertTrue(BasePage.isPresentAndDisplayed(allaskedquestions.get(0)));
 		alltabs.get(0).click();
 		BasePage.sleepForMilliSecond(2000);
 		Assert.assertTrue(BasePage.isPresentAndDisplayed(commentcontainer),"Comment container not displayed");
+		Assert.assertTrue(BasePage.isPresentAndDisplayed(allaskedquestions.get(0)));
 		Assert.assertTrue(BasePage.isPresentAndDisplayed(classdrpdwn));
 		classdrpdwn.click();
 		for(int i=0;i<subjectlist.size();i++)
@@ -191,20 +264,50 @@ public class AsknAnswerPage {
 			BasePage.sleepForMilliSecond(1000);
 			Assert.assertTrue(BasePage.isPresentAndDisplayed(subjectlist.get(i)), i+"th subject not displayed");
 			subjectlist.get(i).click();
+			Assert.assertTrue(BasePage.isPresentAndDisplayed(allaskedquestions.get(0)));
 			BasePage.sleepForMilliSecond(1000);
 			allclasseslnk.click();
 		}
 		Assert.assertTrue(BasePage.isPresentAndDisplayed(commentcontainer),"Comment container not displayed");
-		BasePage.usingSoftAssert(BasePage.isPresentAndDisplayed(viewmorecomntlnk), "View more comment link not present");
-		viewmorecomntlnk.click();
-		WaitStatementLib.explicitWaitForClickable(driver, 10, icanansbtn);
-		BasePage.sleepForMilliSecond(2000);
+		Assert.assertTrue(BasePage.isPresentAndDisplayed(allaskedquestions.get(0)));
 		Assert.assertTrue(BasePage.isPresentAndDisplayed(icanansbtn));
-		BasePage.pressPageUpKey(driver);
+		BasePage.sleepForMilliSecond(2000);
 		icanansbtn.click();
 		BasePage.sleepForMilliSecond(1000);
 		allbtn.click();
-		
+		Assert.assertTrue(BasePage.isPresentAndDisplayed(leaderboard), "Lederboard not displayed");
+		Assert.assertTrue(BasePage.isPresentAndDisplayed(mnth), "month btn not displayed on right panel");
+		Assert.assertTrue(BasePage.isPresentAndDisplayed(day), "Day btn not displayed on right panel");
+		mnth.click();
+		BasePage.sleepForMilliSecond(1000);
+		day.click();
+		Assert.assertTrue(BasePage.isPresentAndDisplayed(students), "Students header not displayed on right panel");
+		Assert.assertTrue(BasePage.isPresentAndDisplayed(helpfullvotes), "Helpfull Votes header not displayed on right panel");
+		Assert.assertTrue(BasePage.isPresentAndDisplayed(seeyourselfhere), "See Yourself here header not displayed on right panel");
+		Assert.assertTrue(BasePage.isPresentAndDisplayed(mystats), "My Stats header not displayed on right panel");
+		Assert.assertTrue(BasePage.isPresentAndDisplayed(getrewarded), "Get Rewarded header not displayed on right panel");
+		Assert.assertTrue(BasePage.isPresentAndDisplayed(pntsforansweringquestion), "Instruction for answering a question is not displayed");
+		Assert.assertTrue(BasePage.isPresentAndDisplayed(pntsforhelpfulvotefromothers), "Instruction for helpful vote from others not displayed");
+		Assert.assertTrue(BasePage.isPresentAndDisplayed(pntsforhelpfulvotefromexperts), "Instruction for helpful vote from Meritnation Experts not displayed");
+		Assert.assertTrue(BasePage.isPresentAndDisplayed(emailnotification), "Email Notification header on right panel not displayed");
+		if(String.valueOf(BasePage.isPresentAndDisplayed(viewmorecomntlnk)) != "false"){
+			viewmorecomntlnk.click();
+		}
+	}
+	
+	public void clickkUserProfileOnRecommendedQuestions(){
+		questionaskeename.get(0).click();
+		BasePage.sleepForMilliSecond(2000);
+		}
+	public void clickkAskedQuestionOnRecommendedQuestions(WebDriver driver){
+		BasePage.switchToWindow(driver, askedquestions);
+		BasePage.sleepForMilliSecond(2000);
+		}
+	public void verifyQuestionAskeeNameAndQuestion(){
+		String askeename = questionaskeename.get(0).toString();
 		
 	}
+	
 }
+
+

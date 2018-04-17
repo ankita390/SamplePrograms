@@ -1,21 +1,17 @@
 package com.applect.meritnation.pageobject;
 
-import java.awt.AWTException;
-import java.awt.Robot;
 import java.util.List;
 
-import org.openqa.selenium.Keys;
-import org.openqa.selenium.NoSuchElementException;
+import org.openqa.selenium.ElementNotVisibleException;
+import org.openqa.selenium.TimeoutException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import org.testng.Assert;
-
 import com.applect.meritnation.generic.ExcelUtils;
 import com.applect.meritnation.generic.WaitStatementLib;
-import com.thoughtworks.selenium.webdriven.commands.KeyEvent;
+
 
 public class LoginPage {
 	WebDriver driver;
@@ -27,6 +23,8 @@ public class LoginPage {
 	private WebElement pwdtxtbx;
 	@FindBy(id="loginBtn_1")
 	private WebElement signInBtn;
+	
+	
 	@FindBy(xpath="//div[@class='coursesSlider']/ul/a[2]")
 	private WebElement rightarrow;
 	@FindBy(xpath="//div[@id='notification_bar_top']")
@@ -102,19 +100,31 @@ public class LoginPage {
 	private WebElement assignmentsection;
 	@FindBy(xpath="//div[@class='topQue']/section/div/section/div/div[1]/div/div[2]/a")
 	private WebElement topquestion;
+	@FindBy(xpath="//div[@class='headerSearchBox']/div/div/div/form")
+	private WebElement searchbx;
+	@FindBy(xpath="//div[@class='tablerow']")
+	private WebElement boardpprnotification;
+	@FindBy(xpath="//div[@class='tablerow']/div[3]/i")
+	private WebElement closeboardpprnotification;
+	@FindBy(xpath = "//div[@id='webengage-notification-container']/iframe")
+	private WebElement frame;
+	@FindBy(xpath="//div[@class='profilcePic']/div/img")
+	private WebElement profileicon;
+	@FindBy(xpath = "//div[@id='connecto-widget-container']/iframe")
+	private WebElement JeeTestSeriesframe;
+	@FindBy(xpath = "//div[contains(@class,'connecto')]/div/div[@class='close']")
+	private WebElement closeJeeTestSeriesframe;
+	@FindBy(xpath = "//iframe[contains(@id,'container-notification-frame')]")
+	private List<WebElement> newframe;
+	@FindBy(xpath = "//div[@class='wrapper']/div[1]")
+	private WebElement closenewframe;
 	
 	
-
-
-
-
-
-
-
 	public LoginPage(WebDriver driver)
 	{
 		PageFactory.initElements(driver, this);
 	}
+	
 	
 	public void loginButtonClick(WebDriver driver)
 	{
@@ -126,6 +136,22 @@ public class LoginPage {
 		String username = ExcelUtils.readData("TestData", 1, 1);
 		untxtbx.sendKeys(username);
 		WaitStatementLib.implicitWaitForSecond(driver, 2);
+		
+	}
+	public void enterUserName(WebDriver driver, int i, int j)
+	{
+		try{
+			String username = ExcelUtils.readData("TestData", i, j);
+			if(username!=""){
+				untxtbx.sendKeys(username);
+			}
+			WaitStatementLib.implicitWaitForSecond(driver, 2);
+		}
+		catch (NullPointerException ex){
+			
+		}
+		
+		
 		
 	}
 	public void enterUserNameAllClasses(WebDriver driver, int i)
@@ -141,39 +167,69 @@ public class LoginPage {
 		pwdtxtbx.sendKeys(password);
 		WaitStatementLib.implicitWaitForSecond(driver, 2);
 		}
-	public void signInBtnClick()
+	public void signInBtnClick(WebDriver driver)
 	{
 			signInBtn.click();
 			BasePage.sleepForMilliSecond(2000);
-		try{
-			BasePage.isPresentAndDisplayed(topnotification);
-			closenotification.click();
-		}
-		catch(NoSuchElementException e){
+		/*This code needs to uncommented when any webengange notification starts coming.
 			
-		}
-			
-		/*	rightarrow.click();
-			BasePage.sleepForMilliSecond(1000);
-			rightarrow.click();
-			BasePage.sleepForMilliSecond(1000);
-			rightarrow.click();
-		try{	topnotification.isDisplayed();
-			
-				closenotification.click();
-				}
-				
-				finally{
-				BasePage.sleepForMilliSecond(1000);
-				}
-				
-				/*rightarrow.click();
-				BasePage.sleepForMilliSecond(1000);
-				rightarrow.click();
-				BasePage.sleepForMilliSecond(1000);
-				rightarrow.click();
-			}*/
 		
+			if(String.valueOf(BasePage.isPresentAndDisplayed(topnotification))=="true"){
+				closenotification.click();
+				WaitStatementLib.explicitWaitForVisiblity(driver, 5, profileicon);
+			}
+			BasePage.closeJEETestSeriesPopup(driver, JeeTestSeriesframe,closeJeeTestSeriesframe);
+
+		
+		
+			if(String.valueOf(BasePage.isPresentAndDisplayed(frame))=="true"){
+				WaitStatementLib.explicitWaitForVisiblity(driver, 15, frame);
+				try{
+				driver.switchTo().frame(frame);
+				WaitStatementLib.explicitWaitForVisiblity(driver, 5, closeboardpprnotification);
+				closeboardpprnotification.click();
+				BasePage.sleepForMilliSecond(1000);
+				driver.switchTo().defaultContent();
+				}
+				catch(ElementNotVisibleException ex){
+					
+				}
+				catch(TimeoutException ex){
+				driver.switchTo().defaultContent();
+				}*/
+			}
+			
+		
+		
+	
+	public void checkOnlyHeader(WebDriver driver){
+		Assert.assertTrue((String.valueOf(BasePage.isPresentAndDisplayed(header))!= "false"),"Header not ddisplayed");
+		Assert.assertTrue(BasePage.isPresentAndDisplayed(logo), "Logo Not Displayed");
+		Assert.assertTrue(BasePage.isPresentAndDisplayed(phoneno), "Phone number not displayed");
+		Assert.assertTrue(BasePage.isPresentAndDisplayed(ortxt), "OR text not displayed on header");
+		Assert.assertTrue(BasePage.isPresentAndDisplayed(callmebtn),"Call me button not displayed");
+		Assert.assertTrue(BasePage.isPresentAndDisplayed(upgradebtn), "Upgrade button not displayed");
+		Assert.assertTrue(BasePage.isPresentAndDisplayed(coursemenu), "Course menu not displayed");
+		coursemenu.click();
+		BasePage.sleepForMilliSecond(1000);
+		BasePage.verifyCourseMenuContent(coursecontent);
+		Assert.assertTrue(BasePage.isPresentAndDisplayed(studymenu),"Study Menu not displayed");
+		BasePage.moveToElementAndStay(driver, studymenu);
+		BasePage.sleepForMilliSecond(1000);
+		BasePage.verifyStudyMenuContent(studycontent);
+		Assert.assertTrue(BasePage.isPresentAndDisplayed(anamenu), "ana menu not displayed");
+		anamenu.click();
+		BasePage.sleepForMilliSecond(1000);
+		BasePage.verifyAnaMenuContent(anacontent);
+		Assert.assertTrue(BasePage.isPresentAndDisplayed(feed), "feed ot displayed");
+		BasePage.sleepForMilliSecond(1000);
+		Assert.assertTrue(BasePage.isPresentAndDisplayed(memenu),"Me menu not displayed");
+		memenu.click();
+		BasePage.sleepForMilliSecond(1000);
+		BasePage.verifyMeMenuContent(mecontent);
+		//Assert.assertTrue(BasePage.isPresentAndDisplayed(searchbx));
+		Assert.assertTrue(BasePage.isPresentAndDisplayed(fullname),"Full Name not displayed");;
+		Assert.assertTrue(fullname.getText().toString().length()!=0);
 	}
 	
 	public void checkHeaderDisplay(WebDriver driver)
@@ -202,6 +258,7 @@ public class LoginPage {
 			memenu.click();
 			BasePage.sleepForMilliSecond(1000);
 			BasePage.verifyMeMenuContent(mecontent);
+			Assert.assertTrue(BasePage.isPresentAndDisplayed(searchbx));
 			Assert.assertTrue(BasePage.isPresentAndDisplayed(fullname),"Full Name not displayed");;
 			Assert.assertTrue(fullname.getText().toString().length()!=0);
 			Assert.assertTrue(BasePage.isPresentAndDisplayed(rightbanner),"Right side banner on dashboard not displayed");
@@ -246,6 +303,7 @@ public class LoginPage {
 			memenu.click();
 			BasePage.sleepForMilliSecond(1000);
 			BasePage.verifyMeMenuContent(mecontent);
+			Assert.assertTrue(BasePage.isPresentAndDisplayed(searchbx));
 			Assert.assertTrue(BasePage.isPresentAndDisplayed(fullname),"Full Name not displayed");;
 			Assert.assertTrue(fullname.getText().toString().length()!=0);
 			Assert.assertTrue(BasePage.isPresentAndDisplayed(rightbanner),"Right side banner on dashboard not displayed");

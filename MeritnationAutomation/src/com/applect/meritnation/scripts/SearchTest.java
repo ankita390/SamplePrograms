@@ -4,14 +4,13 @@ import org.testng.annotations.Test;
 
 import com.applect.meritnation.generic.BaseLib;
 import com.applect.meritnation.pageobject.BasePage;
-import com.applect.meritnation.pageobject.LoginPage;
 import com.applect.meritnation.pageobject.SearchPage;
 
 
 public class SearchTest extends BaseLib
 {
 	@Test(groups="Regression")
-	public void SearchTest()
+	public void TC_001_SearchTest()
 	{
 		
 		SearchPage searchPage = new SearchPage(driver); 

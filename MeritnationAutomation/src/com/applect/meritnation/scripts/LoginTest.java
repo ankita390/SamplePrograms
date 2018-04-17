@@ -1,32 +1,28 @@
 package com.applect.meritnation.scripts;
 
-import org.openqa.selenium.WebDriver;
 import org.testng.annotations.Test;
-
 import com.applect.meritnation.generic.BaseLib;
-import com.applect.meritnation.generic.RetryAnalyzer;
-import com.applect.meritnation.generic.WaitStatementLib;
-import com.applect.meritnation.pageobject.BasePage;
 import com.applect.meritnation.pageobject.CreateAccountPage;
 import com.applect.meritnation.pageobject.LoginPage;
 
 public class LoginTest extends BaseLib
 {
+	
 	@Test(groups="Regression")
-	public void LoginTest()
+	public void TC_001_LoginTest()
 	{
 		LoginPage loginPage = new LoginPage(driver);
 		CreateAccountPage createAccountPage = new CreateAccountPage(driver);
 		loginPage.loginButtonClick(driver);
 		loginPage.enterUserName(driver);
 		loginPage.enterPassword(driver);
-		loginPage.signInBtnClick();
+		loginPage.signInBtnClick(driver);
 		loginPage.checkHeaderDisplay(driver);
 		createAccountPage.clickProfileIcon(driver);
 		createAccountPage.logoutClick(driver);
 	}
 	@Test(groups="Access")
-	public void AllUserLoginTest()
+	public void TC_002_AllUserLoginTest()
 	{
 		LoginPage loginPage = new LoginPage(driver);
 		CreateAccountPage createAccountPage = new CreateAccountPage(driver);
@@ -35,7 +31,7 @@ public class LoginTest extends BaseLib
 			loginPage.loginButtonClick(driver);
 			loginPage.enterUserNameAllClasses(driver, k);
 			loginPage.enterPassword(driver);
-			loginPage.signInBtnClick();
+			loginPage.signInBtnClick(driver);
 			loginPage.checkHeaderDisplayForAllClasses(driver, k);
 			createAccountPage.verifyPaidAccess(driver);
 			createAccountPage.clickProfileIcon(driver);
@@ -45,7 +41,7 @@ public class LoginTest extends BaseLib
 		}
 	}
 	@Test(groups="Access")
-	public void AllSpecificPackageUserLoginTest(){
+	public void TC_003_AllSpecificPackageUserLoginTest(){
 		LoginPage loginPage = new LoginPage(driver);
 		CreateAccountPage createAccountPage = new CreateAccountPage(driver);
 		for(int k=9;k<=14;k++)
@@ -53,7 +49,7 @@ public class LoginTest extends BaseLib
 			loginPage.loginButtonClick(driver);
 			loginPage.enterUserNameAllClasses(driver, k);
 			loginPage.enterPassword(driver);
-			loginPage.signInBtnClick();
+			loginPage.signInBtnClick(driver);
 			loginPage.checkHeaderDisplayForAllClassesSpecificUsers(driver, k);
 			createAccountPage.verifyPaidAccess(driver);
 			createAccountPage.clickProfileIcon(driver);

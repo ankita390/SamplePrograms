@@ -10,7 +10,7 @@ public class GetPropertyValues {
 	{
 		Properties prop = new Properties();
 		try {
-			prop.load(new FileInputStream(new File("/home/applect/workspace/MeritnationAutomation/config.properties")));
+			prop.load(new FileInputStream(new File("/var/www/mn-testing/MeritnationAutomation/config.properties")));
 		} catch (IOException e) 
 		{
 			e.printStackTrace();

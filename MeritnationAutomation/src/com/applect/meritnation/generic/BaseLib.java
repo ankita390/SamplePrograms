@@ -1,68 +1,68 @@
 package com.applect.meritnation.generic;
 
-import java.util.Properties;
-import java.util.concurrent.TimeUnit;
 
+
+
+import org.apache.log4j.LogManager;
+import org.apache.log4j.Logger;
+import org.openqa.selenium.Capabilities;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.firefox.FirefoxDriver;
-import org.openqa.selenium.remote.DesiredCapabilities;
-import org.openqa.selenium.remote.server.Session;
+import org.openqa.selenium.firefox.FirefoxProfile;
+import org.openqa.selenium.ie.InternetExplorerDriver;
+import org.openqa.selenium.remote.RemoteWebDriver;
 import org.testng.ITestResult;
 import org.testng.Reporter;
 import org.testng.annotations.AfterMethod;
-import org.testng.annotations.AfterSuite;
-import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Parameters;
-import org.testng.reporters.EmailableReporter;
 
+import com.applect.meritnation.pageobject.CreateAccountPage;
 import com.applect.meritnation.pageobject.LoginPage;
-import com.applect.meritnation.pageobject.StudyPage;
+import com.applect.meritnation.pageobject.LogoutPage;
 
-import javax.activation.DataHandler;
-import javax.activation.DataSource;
-import javax.activation.FileDataSource;
-import javax.mail.*;
-import javax.mail.internet.*;
-import java.util.*;
 
 
 
 public class BaseLib {
 	public WebDriver driver;
+	
+
 	@BeforeMethod(alwaysRun =true)
 	@Parameters(value="browser")
 	public void precondition(String browsername){
+		 final Logger logger = LogManager.getLogger(BaseLib.class);
+		 logger.trace("entering into application");
+		 
 		if(browsername.equalsIgnoreCase("firefox"))
 		{
 			System.setProperty("webdriver.gecko.driver", "/home/applect/workspace/MeritnationAutomation/Exe Files/geckodriver");
-			driver = new FirefoxDriver();
+			FirefoxProfile profile = new FirefoxProfile();
+			profile.setPreference("dom.webnotifications.enabled", false);
+			profile.setPreference("geo.enabled", false);
+			driver = new FirefoxDriver(profile);
 			Reporter.log("Firefox Browser launches");
 		}
 		else if (browsername.equalsIgnoreCase("chrome"))
 		{
 			System.setProperty("webdriver.chrome.driver", "/home/applect/workspace/MeritnationAutomation/Exe Files/chromedriver");
 			ChromeOptions options = new ChromeOptions();
-			//options.addArguments("start-maximized");
-			//options.addArguments("test-type");
-			//options.addArguments("enable-strict-powerful-feature-restrictions");
 			options.addArguments("disable-geolocation");
-			DesiredCapabilities cap = DesiredCapabilities.chrome();
-			cap.setCapability(ChromeOptions.CAPABILITY, options);
-			cap = cap.merge(DesiredCapabilities.chrome());
-			driver = new ChromeDriver();
+			options.addArguments("--disable-notifications");
+			options.addArguments("--no-sandbox");
+			driver = new ChromeDriver(options);
 			Reporter.log("Chrome Browser launches");
 		}
-		/*else if (browsername.equalsIgnoreCase("IE"))
+		else if (browsername.equalsIgnoreCase("IE"))
 		{
 			System.setProperty("webdriver.ie.driver", ".\\Exe files\\IEdriverServer.exe");
 			driver = new InternetExplorerDriver();
 			Reporter.log("IE Browser launches");
-		}*/
+		}
 		driver.manage().window().maximize();
-		driver.get(GetPropertyValues.getPropertyValue("stagingURL"));
+		driver.get(GetPropertyValues.getPropertyValue("liveURL"));
 		Reporter.log("Navigate to the URL", true);
 		WaitStatementLib.implicitWaitForSecond(driver, 5);
 	}
@@ -77,9 +77,11 @@ public class BaseLib {
 		}
 		else
 		{
+		    Capabilities cap = ((RemoteWebDriver) driver).getCapabilities();
+		    String browserName = cap.getBrowserName().toLowerCase().toString();
 			String filename = result.getMethod().getMethodName();
 			ScreenShotLib sLib= new ScreenShotLib();
-			sLib.getScreenShot(driver, filename);
+			sLib.getScreenShot(driver, filename, browserName);
 			Reporter.log("Screenshot has been taken",true);
 		}
 		
@@ -147,5 +149,7 @@ public class BaseLib {
 	         mex.printStackTrace();
 	      }
 }*/
+	
+	
 }
 

@@ -1,14 +1,13 @@
 package com.applect.meritnation.scripts;
 
 import java.awt.AWTException;
-
-import org.openqa.selenium.WebDriver;
 import org.testng.annotations.Test;
-
 import com.applect.meritnation.generic.BaseLib;
-import com.applect.meritnation.generic.RetryAnalyzer;
+//import com.applect.meritnation.generic.RetryAnalyzer;
 import com.applect.meritnation.pageobject.BasePage;
+import com.applect.meritnation.pageobject.LoginPage;
 import com.applect.meritnation.pageobject.StudyPage;
+
 
 public class StudyTest extends BaseLib
 {
@@ -86,7 +85,7 @@ public class StudyTest extends BaseLib
 		BasePage.logout(driver);
 		
 	}
-	//@Test(groups="Regression")
+	@Test(groups="Notfortest")
 	public void TC_008_VerifyStudyPhysicsTopicActivitiesTest()
 	{
 		BasePage.login(driver);
@@ -192,7 +191,7 @@ public class StudyTest extends BaseLib
 			BasePage.logout(driver);
 			
 		}
-		//@Test
+		@Test(groups="Notfortest")
 		public void TC_018_VerifyStudyBiologyTopicActivitiesTest()
 		{
 			BasePage.login(driver);
@@ -392,7 +391,7 @@ public class StudyTest extends BaseLib
 			BasePage.logout(driver);
 			
 		}
-		//@Test
+		@Test(groups="Notfortest")
 		public void TC_037_VerifyStudyChemistryTopicActivitiesTest()
 		{
 			BasePage.login(driver);
@@ -433,7 +432,7 @@ public class StudyTest extends BaseLib
 			studyPage.clickFormativeAssesment(driver);
 			BasePage.logout(driver);
 		}
-		@Test(retryAnalyzer = RetryAnalyzer.class)
+/*		@Test(retryAnalyzer = RetryAnalyzer.class)
 		public void TC_041_VerifyStudyEnglishTopicLiveClassesTest(){
 			BasePage.login(driver);
 			StudyPage studyPage = new StudyPage(driver);
@@ -442,7 +441,7 @@ public class StudyTest extends BaseLib
 			studyPage.clickTopicLiveClasses();
 			studyPage.clickTakeTestOnLiveClasses();
 			BasePage.logout(driver);
-			}
+			}*/
 		@Test
 		public void TC_042_VerifyStudyEnglishTopicConceptsTest()
 		{
@@ -485,7 +484,7 @@ public class StudyTest extends BaseLib
 			studyPage.clickPopularQuestionsOnEnglish(driver);
 			BasePage.logout(driver);
 			}
-		//@Test
+		@Test(groups="Notfortest")
 		public void TC_046_VerifyStudyEnglishTopicActivitiesTest()
 		{
 			BasePage.login(driver);
@@ -536,7 +535,7 @@ public class StudyTest extends BaseLib
 			studyPage.clickPopularQuestionsOnEconomics(driver);
 			BasePage.logout(driver);
 			}
-		//@Test
+		@Test(groups="Notfortest")
 		public void TC_051_VerifyStudyEconomicsTopicRevisionNotesTest() throws AWTException
 		{
 			BasePage.login(driver);
@@ -556,5 +555,20 @@ public class StudyTest extends BaseLib
 			studyPage.clickEconomicsSubject(driver);
 			studyPage.clickBoardPaperQuestionsOnEconomics();
 			BasePage.logout(driver);
-	}
+		}
+		@Test(groups="Regression")
+		public void TC_053_VerifyBoardPapterSolutionTest(){
+			LoginPage loginPage = new LoginPage(driver);
+			StudyPage studyPage = new StudyPage(driver);
+			
+			for(int j=1;j<=3;j++)
+			{
+				loginPage.loginButtonClick(driver);
+				loginPage.enterUserName(driver, 39, j);
+				loginPage.enterPassword(driver);
+				loginPage.signInBtnClick(driver);
+				studyPage.verifyBoardPaperSolution(driver);
+				BasePage.logout(driver);
+				}
+		}
 }
