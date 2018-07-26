@@ -2,8 +2,8 @@
 <section name="Workbench">
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog_dialogBounds">
 		<item value="324" key="DIALOG_WIDTH"/>
-		<item value="309" key="DIALOG_Y_ORIGIN"/>
-		<item value="633" key="DIALOG_X_ORIGIN"/>
+		<item value="260" key="DIALOG_Y_ORIGIN"/>
+		<item value="761" key="DIALOG_X_ORIGIN"/>
 		<item value="435" key="DIALOG_HEIGHT"/>
 		<item value="1|Ubuntu|11.0|0|GTK|1|" key="DIALOG_FONT_NAME"/>
 	</section>
@@ -13,16 +13,23 @@
 		<item value="false" key="isRegEx"/>
 		<item value="false" key="incremental"/>
 		<item value="false" key="wholeword"/>
-		<item value="" key="selection"/>
+		<item value="pressUpArrowKey" key="selection"/>
 		<list key="findhistory">
-			<item value="selectusingoption"/>
-			<item value="alert"/>
-			<item value="//div[@class=&apos;tablerow&apos;]/div[3]/i"/>
-			<item value="//div[@class=&apos;tablerow&apos;]/div[3]/i]"/>
-			<item value="finally"/>
-			<item value="frame"/>
+			<item value="pressUpArrowKey"/>
+			<item value="scrollDown"/>
+			<item value="scroll"/>
+			<item value="Regression"/>
+			<item value="price"/>
+			<item value="product"/>
+			<item value="questionaskedonchildwndw"/>
+			<item value="//main[@id=&apos;AnaLeftSectionControllerId&apos;]/div[3]/div[1]/div/div[2]/p"/>
 		</list>
 		<list key="replacehistory">
+			<item value=""/>
 		</list>
+	</section>
+	<section name="org.eclipse.ui.texteditor.GotoLineAction$GotoLineDialog_dialogBounds">
+		<item value="243" key="DIALOG_Y_ORIGIN"/>
+		<item value="376" key="DIALOG_X_ORIGIN"/>
 	</section>
 </section>
