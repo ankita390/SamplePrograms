@@ -1,0 +1,166 @@
+package com.applect.meritnation.pageobject;
+
+import java.sql.SQLException;
+import java.util.List;
+import java.util.Properties;
+
+import org.junit.Assert;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.PageFactory;
+
+import com.applect.meritnation.generic.ConnectDatabase;
+import com.applect.meritnation.generic.ExcelUtils;
+import com.applect.meritnation.generic.GetPropertyValues;
+import com.applect.meritnation.generic.WaitStatementLib;
+
+public class MobileLoginPage {
+	@FindBy(xpath="//div[@class='mainRoot']//div[2]/a[3]/span")
+	private WebElement loginnBtn;
+	@FindBy(xpath="//div[@data-role='fieldcontain']/div/input")
+	private List <WebElement> uNnPasstxtflds;
+	@FindBy(xpath="//div[@class='loggreen-btn']/a/span")
+	private WebElement greenLoginnBtn;
+	@FindBy(xpath="//ul[contains(@class,'subjectList')]/li")
+	private List <WebElement> subList;
+	@FindBy(xpath="//a[@class='logo']")
+	private WebElement logoIcon;
+	@FindBy(xpath="//div[@class='dCourseList']//div[text()='CBSE Class 9']")
+	private WebElement selectedClass;
+	@FindBy(xpath="//a[@class='searchIcon']/i")
+	private WebElement searchBoxIcon;
+	@FindBy(xpath="//div[contains(@class,'searchBox')]/input")
+	private WebElement searchBox;
+	@FindBy(xpath="//div[@class='tablerow']")
+	private WebElement topnotification;
+	@FindBy(xpath="//div[@class='tablerow']/div[2]/i")
+	private WebElement closenotification;
+	@FindBy(xpath="//div[@class='resultBox']/ul/li")
+	private WebElement firstSearchedResult;
+	@FindBy(xpath="//a[text()='Register Now']")
+	private WebElement registerLnk;
+	@FindBy(id="name")
+	private WebElement nameTxtFld;
+	@FindBy(id="email")
+	private WebElement emailTxtFld;
+	@FindBy(id="password")
+	private WebElement passwordTxtFld;
+	@FindBy(id="mobile")
+	private WebElement mobileTxtFld;
+	@FindBy(id="board")
+	private WebElement boardDrpDwn;
+	@FindBy(id="grade")
+	private WebElement gradeDrpDwn;
+	@FindBy(id="pincode")
+	private WebElement pincodeTxtFld;
+	@FindBy(xpath="//div[@id='userType1']/label[1]")
+	private WebElement studentRdioBtn;
+	@FindBy(xpath="//span[@class='ui-btn-inner']/span[text()='Sign up']")
+	private WebElement signUpBtn;
+	@FindBy(xpath="//input[@type='password']")
+	private WebElement otpTxtFld;
+	@FindBy(xpath="//button[text()='verify']")
+	private WebElement verifyBtn;
+	@FindBy(xpath="//strong[text()=' Change Country ']")
+	private WebElement changeCountry;
+	@FindBy(xpath="//input[@placeholder='Select your Country Code']")
+	private WebElement countyCodeTxtFld;
+	@FindBy(xpath="//section[@class='contryCodeFillter']//ul/li")
+	private WebElement mauritiusCountry;
+	@FindBy(xpath="//header[@class='signupMain__header smallHeader']/div[2]/form/input")
+	private WebElement enterSchoolTxtFld;
+	@FindBy(xpath="//div[@class='schoolList']/article")
+	private List <WebElement> selectSchool;
+	@FindBy(xpath="//div[@class='fotterTabWrapper']/button[3]")
+	private WebElement profileIcon;
+	@FindBy(xpath="//div[@class='mainHeader']//div[@class='float-right']/button/div")
+	private WebElement logoutIcon;
+	@FindBy(id="xh-bar")
+	private WebElement frame;
+	@FindBy(xpath="//div[@role='menu']")
+	private WebElement logoutBtn;
+	
+	
+
+	public MobileLoginPage(WebDriver driver){
+		PageFactory.initElements(driver, this);
+	}
+	
+	public void clickLogin(){
+		loginnBtn.click();
+	}
+	public void login(){
+		uNnPasstxtflds.get(0).sendKeys(ExcelUtils.readData("TestData", 1, 6));
+		uNnPasstxtflds.get(1).sendKeys(ExcelUtils.readData("TestData", 0, 3));
+		greenLoginnBtn.click();
+		BasePage.sleepForMilliSecond(5000);
+		if(String.valueOf(BasePage.isPresentAndDisplayed(topnotification))=="true"){
+			closenotification.click();
+			
+		}
+	}
+	public void verifyDashboard(){
+		Assert.assertTrue(BasePage.isPresentAndDisplayed(logoIcon));
+		Assert.assertTrue(BasePage.isPresentAndDisplayed(selectedClass));
+		Assert.assertTrue(BasePage.isPresentAndDisplayed(searchBoxIcon));
+		searchBoxIcon.click();
+		searchBox.click();
+		searchBox.sendKeys(ExcelUtils.readData("TestData", 3, 1));
+		firstSearchedResult.click();
+		}
+	public void fillSignUpForm(WebDriver driver){
+		BasePage.scrollDown(registerLnk, driver);
+		registerLnk.click();
+		nameTxtFld.sendKeys(ExcelUtils.readData("TestData", 0, 1));
+		String emailid = ExcelUtils.readData("TestData", 0, 2);
+		emailid = emailid + BasePage.randomString() + "@applect.com";
+		emailTxtFld.sendKeys(emailid);
+		String password = ExcelUtils.readData("TestData", 0, 3);
+		passwordTxtFld.sendKeys(password);
+		String mobile = ExcelUtils.readData("TestData", 0, 5);
+		mobileTxtFld.sendKeys(mobile);	
+		BasePage.selectDrpdwnByVisibleText(boardDrpDwn, "CBSE");
+		BasePage.selectDrpdwnByVisibleText(gradeDrpDwn, "IX");
+		String pin = ExcelUtils.readData("TestData", 0, 4);
+		pincodeTxtFld.sendKeys(pin);
+		studentRdioBtn.click();
+		signUpBtn.click();
+		String dbUrl = GetPropertyValues.getPropertyValue("dbUrl");
+		String dbusername = GetPropertyValues.getPropertyValue("dbusername");
+		String dbpassword = GetPropertyValues.getPropertyValue("dbpassword");
+		try {
+			String otp = ConnectDatabase.connectToDatabase(dbUrl, dbusername, dbpassword);
+			WaitStatementLib.explicitWaitForVisiblity(driver, 10, otpTxtFld);
+			otpTxtFld.sendKeys(otp);
+		} catch (ClassNotFoundException | SQLException e) {
+			e.printStackTrace();
+		}
+		WaitStatementLib.explicitWaitForClickable(driver, 10, verifyBtn);
+		verifyBtn.click();
+		BasePage.sleepForMilliSecond(8000);
+		}
+	
+	public void enterSchool(WebDriver driver){
+		changeCountry.click();
+		countyCodeTxtFld.sendKeys("Mauritius");
+		WaitStatementLib.explicitWaitForClickable(driver, 10, mauritiusCountry);
+		mauritiusCountry.click();
+		WaitStatementLib.explicitWaitForVisiblity(driver, 10, enterSchoolTxtFld);
+		enterSchoolTxtFld.sendKeys("Meriton");
+		BasePage.sleepForMilliSecond(2000);
+		WaitStatementLib.explicitWaitForClickable(driver, 10, selectSchool.get(0));
+		selectSchool.get(0).click();
+		
+	}
+	public void logout(WebDriver driver){
+		profileIcon.click();
+		logoutIcon.click();
+		logoutBtn.click();
+	
+		
+		
+		
+	}
+
+}

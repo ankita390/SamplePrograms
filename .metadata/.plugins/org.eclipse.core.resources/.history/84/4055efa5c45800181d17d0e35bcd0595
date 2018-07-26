@@ -1,0 +1,216 @@
+package com.automation.page;
+
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Set;
+
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.PageFactory;
+import org.testng.Assert;
+
+import com.applect.meritnation.generic.ExcelUtils;
+import com.applect.meritnation.generic.WaitStatementLib;
+import com.applect.meritnation.pageobject.BasePage;
+
+public class LoginPage {
+	WebDriver driver;
+	@FindBy(xpath="//span[text()='LOGIN']")
+	private WebElement loginbtn;
+	@FindBy(xpath="//input[@id='username_login']")
+	private WebElement untxtbx;
+	@FindBy(xpath="//input[@id='password_login']")
+	private WebElement pwdtxtbx;
+	@FindBy(id="loginBtn_1")
+	private WebElement signInBtn;
+	@FindBy(xpath="//div[@class='coursesSlider']/ul/a[2]")
+	private WebElement rightarrow;
+	@FindBy(xpath="//div[@id='notification_bar_top']")
+	private WebElement topnotification;
+	@FindBy(xpath="//div[@id='notification_bar_top']/div[@id='top-notification-close']")
+	private WebElement closenotification;
+	@FindBy(id="jeeHeader")
+	private WebElement header;
+	@FindBy(xpath="//div[@class='newLogo']")
+	private WebElement logo;
+	@FindBy(xpath="//div[@class='navBox']/nav/div/span[1]")
+	private WebElement phoneno;
+	@FindBy(xpath="//div[@class='navBox']/nav/div/span[2]")
+	private WebElement ortxt;
+	@FindBy(xpath="//div[@class='navBox']/nav/div/button")
+	private WebElement callmebtn;
+	@FindBy(xpath="//div[@class='navBox']/nav/div/a")
+	private WebElement upgradebtn;
+	@FindBy(xpath="//div[@class='navBox']/nav/ul/li[1]")
+	private WebElement coursemenu;
+	@FindBy(xpath="//div[@class='navBox']/nav/ul/li[1]/a/span")
+	private WebElement selectedcoursetext;
+	@FindBy(xpath="//div[@class='navBox']/nav/ul/li[1]/ul/li")
+	private List <WebElement> coursecontent;
+	@FindBy(xpath="//div[@class='navBox']/nav/ul/li[2]")
+	private WebElement studymenu;
+	@FindBy(xpath="//div[@class='navBox']/nav/ul/li[2]/ul/li")
+	private List <WebElement> studycontent;
+	@FindBy(xpath="//div[@class='navBox']/nav/ul/li[3]")
+	private WebElement anamenu;
+	@FindBy(xpath="//div[@class='navBox']/nav/ul/li[3]/ul/li")
+	private List <WebElement> anacontent;
+	@FindBy(xpath="//div[@class='navBox']/nav/ul/li[4]")
+	private WebElement feed;
+	@FindBy(xpath="//div[@class='navBox']/nav/ul/li[5]")
+	private WebElement memenu;
+	@FindBy(xpath="//div[@class='navBox']/nav/ul/li[5]/ul/li")
+	private List <WebElement> mecontent;
+	@FindBy(xpath="//div[@class='profile']/span")
+	private WebElement fullname;
+	@FindBy(xpath="//div[@id='jeeMain']/div/aside/div/div")
+	private WebElement rightbanner;
+	@FindBy(xpath="//div[@id='jeeMain']/div/aside/div/div/section/h3")
+	private List <WebElement> rightbannercontent;
+	@FindBy(xpath="//div[@id='jeeMain']/div/aside/div/div/section[@class='myStats border-box ng-scope']/ul/li")
+	private WebElement statlist;
+	@FindBy(xpath="//div[@id='jeeMain']/div/aside/div/div/section[@class='myStats border-box ng-scope']/div[@class='summaryBox']/button")
+	private WebElement viewallbtn;
+	@FindBy(xpath="//div[@id='jeeMain']/div/aside/div/div/section[@class='myStats border-box ng-scope']/div[@class='rankbox']/div[@class='points']/span")
+	private WebElement points;
+	@FindBy(xpath="//div[@id='jeeMain']/div/aside/div/div/section[@class='myStats border-box ng-scope']/div[@class='rankbox']/div[@class='rank']/span")
+	private WebElement rank;
+	@FindBy(xpath="//div[@class='boxContent']")
+	private WebElement blogconntent;
+	@FindBy(xpath="//section[@class='subjectList']/ul")
+	private WebElement subjectsection;
+	@FindBy(xpath="//section[@id='whatNext']/div[2]/div[1]")
+	private WebElement sessionssection;
+	@FindBy(xpath="//section[@id='whatNext']/div[2]/div[2]")
+	private WebElement videosection;
+	@FindBy(xpath="//section[@id='whatNext']/div[2]/div[3]")
+	private WebElement assignmentsection;
+	@FindBy(xpath="//div[@class='topQue']/section/div/section/div/div[1]/div/div[2]/a")
+	private WebElement topquestion;
+	@FindBy(xpath="//div[@class='headerSearchBox']/div/div/div/form")
+	private WebElement searchbx;
+	@FindBy(xpath="//div[@class='tablerow']")
+	private WebElement boardpprnotification;
+	@FindBy(xpath="//div[@class='tablerow']/div[3]/i")
+	private WebElement closeboardpprnotification;
+	@FindBy(xpath = "//div[@id='webengage-notification-container']/iframe")
+	private WebElement frame;
+	@FindBy(xpath="//div[@class='profilcePic']/div/img")
+	private WebElement profileicon;
+	@FindBy(xpath = "//div[@id='connecto-widget-container']/iframe")
+	private WebElement JeeTestSeriesframe;
+	@FindBy(xpath = "//div[contains(@class,'connecto')]/div/div[@class='close']")
+	private WebElement closeJeeTestSeriesframe;
+	@FindBy(xpath = "//iframe[contains(@id,'container-notification-frame')]")
+	private List<WebElement> newframe;
+	@FindBy(xpath = "//div[@class='wrapper']/div[1]")
+	private WebElement closenewframe;
+	@FindBy(xpath = "//li[@id = 'samplePaper']")
+	private WebElement samplePaper_NeetCatalystUser;
+	@FindBy(xpath = "//li[@id = 'solvedPaper']")
+	private WebElement prvsYrPaper_NeetCatalystUser;
+	@FindBy(xpath = "//li[@id = 'aits']")
+	private WebElement testSession_NeetCatalystUser;
+	@FindBy(xpath = "//ul[@id='testTypeFilter']/li[text()='AIPMT']")
+	private WebElement testSessionValueOne_NeetCatalystUser;
+	@FindBy(xpath = "//ul[@id='testTypeFilter']/li[text()='AIIMS']")
+	private WebElement testSessionValueTwo_NeetCatalystUser;
+	@FindBy(xpath = "//ul[@id='testTypeFilter']/li[text()='NEET']")
+	private WebElement testSessionValueThree_NeetCatalystUser;
+	@FindBy(xpath = "//div[@class='boxesRow group']/div")
+	private List <WebElement> totalTestSessions_NeetCatalystUser;
+	@FindBy(xpath = "//div[@class='boxesRow group']/div/div[2]/div[2]/a")
+	private List <WebElement> viewDetailsBtnOnTestSessions_NeetCatalystUser;
+	@FindBy(xpath = "//div[@class='jsession-card-wrap']/div")
+	private List <WebElement> itemsOnTestSessions_NeetCatalystUser;
+	@FindBy(xpath = "//div[@class='jsession-card-wrap']/div/div/div[2]/div/button[2]")
+	private WebElement viewDetailBtnOnTestSession_NeetCatalystUser;
+	@FindBy(xpath = "//div[@class='overlay-window']/div[1]")
+	private WebElement preNotesOnTestSession_NeetCatalystUser;
+	@FindBy(xpath = "//div[@class='overlay']/button/i")
+	private WebElement closePreNotesOnTestSession_NeetCatalystUser;
+	@FindBy(xpath = "//div[@class='jsession-card-wrap']/div[2]/div/div/div[2]/span[3]/a[text()='View report']")
+	private WebElement viewReportBtnOnTestSession_NeetCatalystUser;
+	@FindBy(xpath = "//div[@class='exit_game_button']/a")
+	private WebElement goBakBtnOnTestSession_NeetCatalystUser;
+	@FindBy(xpath = "//div[@class='text-center']/a")
+	private WebElement viewSyllabusOnTestSession_NeetCatalystUser;
+	@FindBy(xpath = "//div[@id='liveClass']/h3[text()='Sample Papers']")
+	private WebElement samplePapermain_NeetCatalystUser;
+	@FindBy(xpath = "//ul[@id='subjectFilter']/li[text()='AIPMT']")
+	private WebElement samplePapermainvalueone_NeetCatalystUser;
+	@FindBy(xpath = "//ul[@id='subjectFilter']/li[text()='AIIMS']")
+	private WebElement samplePapermainvalueTwo_NeetCatalystUser;
+	@FindBy(xpath = "//div[@class='testPaperSection']/ul/li")
+	private List <WebElement> samplePprLst_NeetCatalystUser;
+	@FindBy(xpath = "//div[@class='testPaperSection']/ul/li/a[@href]")
+	private List <WebElement> allBtnssamplePprLst_NeetCatalystUser;
+	@FindBy(xpath = "//div[@id='liveClass']/h3[contains(text(),'Previous')]")
+	private WebElement previousYrQuestion_NeetCatalystUser;
+	@FindBy(xpath = "//ul[@id='testTypeFilter']/li[text()='JEE-Advanced']")
+	private WebElement testSessionValueOne_IITPowerPrepUser;
+	@FindBy(xpath = "//ul[@id='testTypeFilter']/li[text()='JEE-Mains']")
+	private WebElement testSessionValueTwo_IITPowerPrepUser;
+	@FindBy(xpath = "//ul[@id='subjectFilter']/li[text()='JEE-Advanced']")
+	private WebElement samplePaperMainValueOne_IITPowerPrepUser;
+	@FindBy(xpath = "//ul[@id='subjectFilter']/li[text()='JEE-Mains']")
+	private WebElement samplePaperMainValueTwo_IITPowerPrepUser;
+	@FindBy(xpath = "//ul[@id='subjectFilter']/li[text()='AIEEE']")
+	private WebElement prvsYrQValueOne_IITPowerPrepUser;
+	@FindBy(xpath = "//ul[@id='subjectFilter']/li[text()='JEE-Advanced']")
+	private WebElement prvsYrQValueTwo_IITPowerPrepUser;
+	@FindBy(xpath = "//ul[@id='subjectFilter']/li[text()='JEE-Mains']")
+	private WebElement prvsYrQValueThree_IITPowerPrepUser;
+	
+	
+	
+
+	public LoginPage(WebDriver driver)
+	{
+		PageFactory.initElements(driver, this);
+	}
+	
+	
+	public void loginButtonClick(WebDriver driver)
+	{
+		loginbtn.click();
+		
+	}
+	
+	public void proceedToNext(WebDriver driver)
+	{
+			signInBtn.click();
+			//BasePage.sleepForMilliSecond(2000);
+		/*This code needs to uncommented when any webengange notification starts coming.
+			
+		
+			if(String.valueOf(BasePage.isPresentAndDisplayed(topnotification))=="true"){
+				closenotification.click();
+				WaitStatementLib.explicitWaitForVisiblity(driver, 5, profileicon);
+			}
+			BasePage.closeJEETestSeriesPopup(driver, JeeTestSeriesframe,closeJeeTestSeriesframe);
+
+		
+		
+			if(String.valueOf(BasePage.isPresentAndDisplayed(frame))=="true"){
+				WaitStatementLib.explicitWaitForVisiblity(driver, 15, frame);
+				try{
+				driver.switchTo().frame(frame);
+				WaitStatementLib.explicitWaitForVisiblity(driver, 5, closeboardpprnotification);
+				closeboardpprnotification.click();
+				BasePage.sleepForMilliSecond(1000);
+				driver.switchTo().defaultContent();
+				}
+				catch(ElementNotVisibleException ex){
+					
+				}
+				catch(TimeoutException ex){
+				driver.switchTo().defaultContent();
+				}*/
+			}
+			
+		
+		
+}

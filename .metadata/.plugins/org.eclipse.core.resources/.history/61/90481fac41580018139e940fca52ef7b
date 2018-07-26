@@ -1,0 +1,58 @@
+package com.automation.mn;
+
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Set;
+
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.PageFactory;
+
+public class LoginPage {
+	
+	
+	@FindBy(xpath="//a[@href='/cbse-class-10/12']")
+	private WebElement classTenLnk;
+	@FindBy(xpath="//li[@id='ana_menu_logout']/a/i")
+	private WebElement anaDrpdn;
+	@FindBy(xpath="//*[@id='ana_menu_logout']/ul/li[1]/a")
+	private WebElement latestQueLnk;
+	@FindBy(xpath="//a[contains(@class,'social-btn')]/span[2]")
+	private List<WebElement> ansCount;
+	@FindBy(xpath="//a[@class='view-full-answer']")
+	private WebElement fullAnsLnk;
+	
+	public LoginPage()
+	{
+	PageFactory.initElements(driver, this);
+	}
+	
+	public void proceedToNext(){
+		 classTenLnk.click();
+		    anaDrpdn.click();
+		    latestQueLnk.click(); 
+		    for (int i=0;i <= ansCount.size();i++){
+		    	System.out.println(ansCount.size());
+		    	if(!String.valueOf(ansCount.get(i).getText().toString()).equals("0")){
+		    		System.out.println(String.valueOf(ansCount.get(i).getText().toString()));
+		    		ansCount.get(i).click();   
+		    		break;
+		    	}
+		    	}
+		    /*	    Set <String> allWindow = driver.getWindowHandles();
+		    Iterator<String> itr = allWindow.iterator();
+		    List<String> myl = new ArrayList<String>();
+		    for (int k =0;k<allWindow.size();k++)
+		    {
+		    myl.add(itr.next());
+		    }
+		    driver.switchTo().window(myl.get(1));*/
+		    
+		    fullAnsLnk.click();
+		    }
+	
+}
+		 
+
