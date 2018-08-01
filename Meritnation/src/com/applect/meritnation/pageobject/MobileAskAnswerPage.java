@@ -157,7 +157,7 @@ public class MobileAskAnswerPage {
 			
 			e.printStackTrace();
 		} catch (SQLException e) {
-			
+			//testing
 			e.printStackTrace();
 		}
 	} 
