@@ -95,7 +95,7 @@ public class StudyTest extends BaseLib
 		studyPage.clickActivities();
 		BasePage.logout(driver);
 	}
-	@Test(groups="CurrentTask")
+	@Test(groups="Regression")
 	public void TC_009_VerifyStudyPhysicsTopicRevisionNotesTest() throws AWTException
 	{
 		BasePage.login(driver);
@@ -556,7 +556,7 @@ public class StudyTest extends BaseLib
 			studyPage.clickBoardPaperQuestionsOnEconomics();
 			BasePage.logout(driver);
 		}
-		@Test(groups="Regression")
+		@Test(groups="CurrentTask")
 		public void TC_053_VerifyBoardPapterSolutionTest(){
 			LoginPage loginPage = new LoginPage(driver);
 			StudyPage studyPage = new StudyPage(driver);
