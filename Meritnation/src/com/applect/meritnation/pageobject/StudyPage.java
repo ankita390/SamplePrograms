@@ -200,6 +200,11 @@ public class StudyPage {
 	private WebElement revisionnotescontent;
 	@FindBy(xpath="//div[@id='testdiv']/div[@id='download']/a")
 	private WebElement dwnldpdfbtn;
+	@FindBy(xpath="//button[contains(text(),'Change')]")
+	private WebElement changeBtn;
+	
+	
+	
 	@FindBy(xpath="//div[@id='print-header']/div/button[text()='Save']")
 	private WebElement printpreviewsavebtn;
 	@FindBy(xpath="//div[@class='sidebarInner']/div/div/div[10]/h3[text()='Formative Assessment']")
@@ -1018,10 +1023,11 @@ public class StudyPage {
 			}
 			driver.switchTo().window(myl.get(1));
 			BasePage.sleepForMilliSecond(2000);
-			printpreviewsavebtn.click();
+			changeBtn.click();
 			Set <String> newWindow = driver.getWindowHandles();
 			Iterator<String> itrnew = allWindow.iterator();
 			List<String> mylnew = new ArrayList<String>();
+			System.out.println(newWindow.size());
 			for (int i =0;i<newWindow.size();i++)
 			{
 				mylnew.add(itrnew.next());

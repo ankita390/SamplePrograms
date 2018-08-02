@@ -92,6 +92,9 @@ public class CreateAccountPage
 	private WebElement frame;
 	@FindBy(xpath="//div[@class='display-ib width46per']/select/option")
 	private List <WebElement> allBoards;
+	@FindBy(xpath="//div[@class='close tablecell']")
+	private WebElement closeOrangePopup;
+	
 	
 	
 	
@@ -171,15 +174,14 @@ public class CreateAccountPage
 		WaitStatementLib.explicitWaitForVisiblity(driver, 5, selectlocation.get(2));
 		BasePage.sleepForMilliSecond(2000);
 		BasePage.moveToElementAndClick(driver, selectlocation.get(2));
-		//WaitStatementLib.explicitWaitForVisiblity(driver, 5, city_Mauritius);
 		BasePage.sleepForMilliSecond(2000);
 		BasePage.moveToElementAndClick(driver,city_Mauritius);
 		if(String.valueOf(BasePage.isPresentAndDisplayed(frame))=="true"){
 			WaitStatementLib.explicitWaitForVisiblity(driver, 15, frame);
 			try{
 			driver.switchTo().frame(frame);
-			WaitStatementLib.explicitWaitForVisiblity(driver, 5, closeboardpprnotification);
-			closeboardpprnotification.click();
+			WaitStatementLib.explicitWaitForVisiblity(driver, 5, closeOrangePopup);
+			closeOrangePopup.click();
 			BasePage.sleepForMilliSecond(1000);
 			driver.switchTo().defaultContent();
 			}
@@ -208,37 +210,11 @@ public class CreateAccountPage
 		{
 			schoolnamelist.click();
 		}
-		//WaitStatementLib.explicitWaitForVisiblity(driver, 15, profileicon);
-		//BasePage.sleepForMilliSecond(3000);
-		
-
-		if(String.valueOf(BasePage.isPresentAndDisplayed(topnotification))=="true"){
-			closenotification.click();
-			BasePage.sleepForMilliSecond(2000);
-			//WaitStatementLib.explicitWaitForVisiblity(driver, 5, profileicon);
-		}
-	/*	if(String.valueOf(BasePage.isPresentAndDisplayed(frame))=="true"){
-		
-		try{
-		WaitStatementLib.explicitWaitForVisiblity(driver, 15, frame);
-		driver.switchTo().frame(frame);
-		WaitStatementLib.explicitWaitForVisiblity(driver, 5, closeboardpprnotification);
-		closeboardpprnotification.click();
-		//BasePage.sleepForMilliSecond(2000);
-		driver.switchTo().defaultContent();
-		}
-		catch(ElementNotVisibleException ex){
-			
-		}
-		catch (TimeoutException ex){
-			
-		}
-		}*/
 	}
 	public void clickProfileIcon(WebDriver driver)
 	{
-		/* This code needs to uncommeneted when any webengage notification starts appearing
-			if(String.valueOf(BasePage.isPresentAndDisplayed(topnotification))=="true"){
+		//This code needs to uncommeneted when any webengage notification starts appearing
+			/*if(String.valueOf(BasePage.isPresentAndDisplayed(topnotification))=="true"){
 				closenotification.click();
 			}
 			if(String.valueOf(BasePage.isPresentAndDisplayed(frame))=="true"){

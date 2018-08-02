@@ -186,7 +186,7 @@ public class AsknAnswerPage {
 		try{
 			Thread.sleep(2000);
 			String question = ExcelUtils.readData("TestData", 2, 1);
-			question = question + BasePage.randomString() + "?";
+			question = BasePage.randomString()+ " " + question + BasePage.randomString() + "?";
 			BasePage.focusElement(questiontxtbx, driver);
 			questiontxtbx.sendKeys(question);
 		}

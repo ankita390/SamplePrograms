@@ -1,6 +1,8 @@
 package com.applect.meritnation.pageobject;
 
 
+import java.util.List;
+
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -13,9 +15,9 @@ import com.applect.meritnation.generic.WaitStatementLib;
 public class SearchPage {
 	@FindBy(xpath="//div[@class='headerSearchBox']/div/div/div/form")
 	private WebElement searchbx;
-	@FindBy(xpath="//div[@class='ng-scope']/a[text()='Chapter']")
-	private WebElement firstsearchedoption;
-	@FindBy(xpath="//div[@class='allsession']/h1[text()='Quadratic Equations']")
+	@FindBy(xpath="//div[contains(@class,'suggesionbox-dropdpwn')]/div[@class='queRow item ng-scope']")
+	private List <WebElement> allsearchedoption;
+	@FindBy(xpath="//div[@class='alignmentBox']/div[2]")
 	private WebElement headername;
 	@FindBy(xpath="//div[@id='notification_bar_top']")
 	private WebElement topnotification;
@@ -60,7 +62,7 @@ public class SearchPage {
 	}
 		public void clickFirstSearchedOption()
 		{
-			firstsearchedoption.click();
+			allsearchedoption.get(0).click();
 		}
 	
 		public void verifySearchedResult(WebDriver driver)

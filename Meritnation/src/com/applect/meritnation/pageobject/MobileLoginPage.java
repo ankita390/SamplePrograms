@@ -5,6 +5,8 @@ import java.util.List;
 import java.util.Properties;
 
 import org.junit.Assert;
+import org.openqa.selenium.ElementNotVisibleException;
+import org.openqa.selenium.TimeoutException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -40,14 +42,16 @@ public class MobileLoginPage {
 	private WebElement topnotification;
 	@FindBy(xpath="//div[@class='tablerow']/div[2]/i")
 	private WebElement closenotification;
-	@FindBy(xpath="//div[@class='resultBox']/ul/li")
-	private WebElement firstSearchedResult;
+	@FindBy(xpath="//div[@class='resultBox']/ul/li/a")
+	private List <WebElement> firstSearchedResult;
 	@FindBy(xpath="//div[@class='media-box landing']/div[2]")
 	private WebElement searchedText;
 	@FindBy(xpath="//div[@class='media-box landing']/div[2]/p[2]")
 	private WebElement actualQuestion;
 	@FindBy(xpath="//div[@class='media-box landing']/div[3]/div")
 	private WebElement likeBtn;
+	@FindBy(xpath="//span[@class='followTxt']")
+	private WebElement followBtn;
 	
 	
 	
@@ -89,31 +93,64 @@ public class MobileLoginPage {
 	private WebElement profileIcon;
 	@FindBy(xpath="//div[@class='mainHeader']//div[@class='float-right']/button/div")
 	private WebElement logoutIcon;
-	@FindBy(id="xh-bar")
+	@FindBy(xpath="//div[@id='webengage-notification-container']/iframe")
 	private WebElement frame;
+	@FindBy(xpath="//div[@class='close tablecell']")
+	private WebElement closeOrangePopup;
+	
+	
 	@FindBy(xpath="//div[@role='menu']")
 	private WebElement logoutBtn;
+	@FindBy(xpath="//span[@class='input-group-btn close-black']")
+	private WebElement closeSearchBox;
+	@FindBy(xpath="//span[@class='back-btn ana-back-btn']")
+	private WebElement backArrow;
 	
 	
 
 	public MobileLoginPage(WebDriver driver){
 		PageFactory.initElements(driver, this);
 	}
-	
 	public void clickLogin(){
 		loginnBtn.click();
 	}
-	public void login(){
+	
+	public void clickLoginAndClosePopup(WebDriver driver){
+		loginnBtn.click();
+		WaitStatementLib.explicitWaitForVisiblity(driver, 15, frame);
+		try{
+			driver.switchTo().frame(frame);
+			BasePage.sleepForMilliSecond(1000);
+			closeOrangePopup.click();
+			BasePage.sleepForMilliSecond(1000);
+			driver.switchTo().defaultContent();
+			}
+			catch(ElementNotVisibleException ex){				
+			}
+			catch(TimeoutException ex){
+			driver.switchTo().defaultContent();
+		}
+		
+	}
+	public void login(WebDriver driver){
 		uNnPasstxtflds.get(0).sendKeys(ExcelUtils.readData("TestData", 1, 6));
 		uNnPasstxtflds.get(1).sendKeys(ExcelUtils.readData("TestData", 0, 3));
 		greenLoginnBtn.click();
-		BasePage.sleepForMilliSecond(5000);
-		if(String.valueOf(BasePage.isPresentAndDisplayed(topnotification))=="true"){
-			closenotification.click();
-			
-		}
+			WaitStatementLib.explicitWaitForVisiblity(driver, 15, frame);
+			try{
+				driver.switchTo().frame(frame);
+				BasePage.sleepForMilliSecond(1000);
+				closeOrangePopup.click();
+				BasePage.sleepForMilliSecond(1000);
+				driver.switchTo().defaultContent();
+				}
+				catch(ElementNotVisibleException ex){				
+				}
+				catch(TimeoutException ex){
+				driver.switchTo().defaultContent();
+			}
 	}
-	public void verifyDashboard(){
+	public void verifyDashboard(WebDriver driver){
 		Assert.assertTrue(BasePage.isPresentAndDisplayed(logoIcon));
 		Assert.assertTrue(BasePage.isPresentAndDisplayed(selectedClass));
 		Assert.assertTrue(BasePage.isPresentAndDisplayed(searchBoxIcon));
@@ -121,14 +158,20 @@ public class MobileLoginPage {
 		searchBox.click();
 		innerSearchBox.sendKeys(ExcelUtils.readData("TestData", 3, 1));
 		BasePage.sleepForMilliSecond(1000);
-		firstSearchedResult.click();
+		BasePage.switchToWindow(driver, firstSearchedResult);
 		Assert.assertTrue(searchedText.toString().length()!=0);
 		if(BasePage.isPresentAndDisplayed(actualQuestion)){
 			likeBtn.click();
 			BasePage.sleepForMilliSecond(1000);
 			likeBtn.click();
+			followBtn.click();
+			BasePage.sleepForMilliSecond(1000);
+			followBtn.click();
+			
 		}
-		}
+		driver.close();
+		BasePage.switchToParentWindow(driver);
+	}
 	public void fillSignUpForm(WebDriver driver){
 		BasePage.scrollDown(registerLnk, driver);
 		registerLnk.click();
@@ -144,8 +187,37 @@ public class MobileLoginPage {
 		BasePage.selectDrpdwnByVisibleText(gradeDrpDwn, "IX");
 		String pin = ExcelUtils.readData("TestData", 0, 4);
 		pincodeTxtFld.sendKeys(pin);
+		BasePage.sleepForMilliSecond(1000);
 		studentRdioBtn.click();
 		signUpBtn.click();
+		WaitStatementLib.explicitWaitForVisiblity(driver, 15, frame);
+		try{
+			driver.switchTo().frame(frame);
+			BasePage.sleepForMilliSecond(1000);
+			closeOrangePopup.click();
+			BasePage.sleepForMilliSecond(1000);
+			driver.switchTo().defaultContent();
+			}
+			catch(ElementNotVisibleException ex){				
+			}
+			catch(TimeoutException ex){
+			driver.switchTo().defaultContent();
+		}
+		
+		/*if(String.valueOf(BasePage.isPresentAndDisplayed(frame))=="true"){
+			WaitStatementLib.explicitWaitForVisiblity(driver, 15, frame);
+			try{
+			driver.switchTo().frame(frame);
+			WaitStatementLib.explicitWaitForVisiblity(driver, 5, closeboardpprnotification);
+			closeboardpprnotification.click();
+			BasePage.sleepForMilliSecond(1000);
+			driver.switchTo().defaultContent();
+			}
+			catch(ElementNotVisibleException ex){	
+			}
+			catch(TimeoutException ex){
+			driver.switchTo().defaultContent();
+			}*/
 		String dbUrl = GetPropertyValues.getPropertyValue("dbUrl");
 		String dbusername = GetPropertyValues.getPropertyValue("dbusername");
 		String dbpassword = GetPropertyValues.getPropertyValue("dbpassword");
@@ -174,8 +246,12 @@ public class MobileLoginPage {
 		
 	}
 	public void logout(WebDriver driver){
+		BasePage.sleepForMilliSecond(2000);
+		WaitStatementLib.explicitWaitForClickable(driver, 10, profileIcon);
 		profileIcon.click();
+		WaitStatementLib.explicitWaitForClickable(driver, 10, logoutIcon);
 		logoutIcon.click();
+		WaitStatementLib.explicitWaitForClickable(driver, 10, logoutBtn);
 		logoutBtn.click();
 	
 		

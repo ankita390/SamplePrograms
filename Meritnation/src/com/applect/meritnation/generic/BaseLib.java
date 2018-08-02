@@ -52,7 +52,7 @@ public class BaseLib {
 	
 	@BeforeMethod(alwaysRun =false, groups = "MobileRegression")
 	@Parameters({"browser"})
-	public void precondition(String browsername){
+	public void preconditionMobile(String browsername){
 		 final Logger logger = LogManager.getLogger(BaseLib.class);
 		 logger.trace("entering into application");
 		 
@@ -106,7 +106,7 @@ public class BaseLib {
 		}
 	@BeforeMethod(alwaysRun =false, groups = "Regression")
 	@Parameters({"browser"})
-	public void preConditionMobileRegression(String browsername){
+	public void preConditionWeb(String browsername){
 		 final Logger logger = LogManager.getLogger(BaseLib.class);
 		 logger.trace("entering into application");
 		 if(browsername.equalsIgnoreCase("firefox"))
@@ -160,7 +160,61 @@ public class BaseLib {
 			WaitStatementLib.implicitWaitForSecond(driver, 5);
 		}
 	
-	
+
+	@BeforeMethod(alwaysRun =false, groups = "CurrentTask")
+	@Parameters({"browser"})
+	public void precondition(String browsername){
+		 final Logger logger = LogManager.getLogger(BaseLib.class);
+		 logger.trace("entering into application");
+		 
+		if(browsername.equalsIgnoreCase("firefox"))
+		{
+			System.setProperty("webdriver.gecko.driver", "/var/www/mn-testing/Meritnation/Exe Files/geckodriver");
+			FirefoxProfile profile = new FirefoxProfile();
+			profile.setPreference("dom.webnotifications.enabled", false);
+			profile.setPreference("geo.enabled", false);
+		/*	String Node = "http://10.0.2.83:6666/wd/hub";
+	 		DesiredCapabilities cap = DesiredCapabilities.firefox();
+	 
+	 		try {
+				driver = new RemoteWebDriver(new URL(Node), cap);
+			} catch (MalformedURLException e) {
+				e.printStackTrace();
+			}*/
+			
+			driver = new FirefoxDriver(profile);
+			Reporter.log("Firefox Browser launches");
+		}
+		else if (browsername.equalsIgnoreCase("chrome"))
+		{
+			System.setProperty("webdriver.chrome.driver", "/var/www/mn-testing/Meritnation/Exe Files/chromedriver");
+			ChromeOptions options = new ChromeOptions();
+			options.addArguments("disable-geolocation");
+			options.addArguments("--disable-notifications");
+			options.addArguments("--no-sandbox");
+			
+			/*	String Node = "http://10.0.7.202:9999/wd/hub";
+	 		DesiredCapabilities cap = DesiredCapabilities.chrome();
+	 		try {
+				driver = new RemoteWebDriver(new URL(Node), cap);
+			} catch (MalformedURLException e) {
+				e.printStackTrace();
+			}*/
+			
+			driver = new ChromeDriver(options);
+			Reporter.log("Chrome Browser launches");
+		}
+		else if (browsername.equalsIgnoreCase("IE"))
+		{
+			System.setProperty("webdriver.ie.driver", ".\\Exe files\\IEdriverServer.exe");
+			driver = new InternetExplorerDriver();
+			Reporter.log("IE Browser launches");
+		}
+		driver.manage().window().maximize();
+		driver.get(GetPropertyValues.getPropertyValue("liveURL"));
+		Reporter.log("Navigate to the URL", true);
+		WaitStatementLib.implicitWaitForSecond(driver, 5);
+		}
 	
 	
 	

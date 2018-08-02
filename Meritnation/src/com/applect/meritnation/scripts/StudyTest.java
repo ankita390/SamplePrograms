@@ -95,7 +95,7 @@ public class StudyTest extends BaseLib
 		studyPage.clickActivities();
 		BasePage.logout(driver);
 	}
-	@Test(groups="Regression")
+	@Test(groups="CurrentTask")
 	public void TC_009_VerifyStudyPhysicsTopicRevisionNotesTest() throws AWTException
 	{
 		BasePage.login(driver);
