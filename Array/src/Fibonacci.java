@@ -3,15 +3,20 @@ import java.util.Scanner;
 public class Fibonacci {
 	  public static void main(String[] args) 
 	    {
-	      
+
+		  /* 
+
 	      //to find fibonicci series
-	       int n, a = 0, b = 0, c = 1;
+	       int n, a = 0, b = 1, c ;
 	        Scanner s = new Scanner(System.in);
 	        System.out.print("Enter value of n:");
 	        n = s.nextInt();
 	        System.out.print("Fibonacci Series:");
-	        for(int i = 1; i <= n; i++)
+	        System.out.println(a);
+	        System.out.println(b);
+	        for(int i = 2; i <= n; i++)
 	        {
+
 	        		
 	        		a=a+b;
 	        		System.out.println(a);
@@ -20,6 +25,17 @@ public class Fibonacci {
 	            
 	        }
 	        /*
+
+	            
+	           
+	            c= a+b;
+	            System.out.println(c);
+	            a=b;
+	            b=c;
+	          
+	        }
+	        
+
 		  //to remove junk chanracters
 		  String str = "@#$&&&Anup";
 		  System.out.println(str.replaceAll("[^a-zA-Z0-9]", ""));

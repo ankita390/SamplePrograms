@@ -1,24 +1,28 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
-<suite guice-stage="DEVELOPMENT" name="Failed suite [Main Test Suite]">
+<suite name="Failed suite [Main Test Suite]">
   <parameter name="browser" value="chrome"/>
   <test name="Meritnation Mobile Web Regression(failed)">
     <parameter name="browser" value="chrome"/>
     <groups>
       <run>
-        <include name="MobileRegression"/>
+        <include name="CurrentTask"/>
       </run>
     </groups>
     <classes>
       <class name="com.applect.meritnationmobile.scripts.MobileLoginTest">
         <methods>
-          <include name="TC_002_MobileSignup"/>
           <include name="deleteOutputDirectory"/>
           <include name="sendEmail"/>
+        </methods>
+      </class> <!-- com.applect.meritnationmobile.scripts.MobileLoginTest -->
+      <class name="com.applect.meritnationmobile.scripts.MobileAskAnswerTest">
+        <methods>
+          <include name="TC001_SignUpOnAsknAnsTest"/>
           <include name="precondition"/>
           <include name="postCondition"/>
         </methods>
-      </class> <!-- com.applect.meritnationmobile.scripts.MobileLoginTest -->
+      </class> <!-- com.applect.meritnationmobile.scripts.MobileAskAnswerTest -->
     </classes>
   </test> <!-- Meritnation Mobile Web Regression(failed) -->
 </suite> <!-- Failed suite [Main Test Suite] -->
