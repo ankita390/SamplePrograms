@@ -203,6 +203,9 @@ public class StudyPage {
 	@FindBy(xpath="//button[contains(text(),'Change')]")
 	private WebElement changeBtn;
 	
+	@FindBy(xpath="//span[text()='Save as PDF']")
+	private WebElement saveAsPdfBtn;
+	
 	
 	
 	@FindBy(xpath="//div[@id='print-header']/div/button[text()='Save']")
@@ -277,27 +280,30 @@ public class StudyPage {
 	public WebElement usrgrade;
 	@FindBy(tagName="iframe")
 	private WebElement frameOnFormativeAssesmnt;	
+	@FindBy(xpath="//div[@class='close tablecell']")
+	private WebElement closeOrangePopup;
 	
 	public StudyPage(WebDriver driver)
 	{
 		PageFactory.initElements(driver, this);
 	}
 	
-	public void verifyBoardPaperSolution(WebDriver driver){
-		
+	public void verifyBoardPaperSolution(WebDriver driver)
+	{
 		CreateAccountPage createAccountPage = new CreateAccountPage(driver);
-		if(String.valueOf(BasePage.isPresentAndDisplayed(frame))=="true"){
+		if(String.valueOf(BasePage.isPresentAndDisplayed(frame))=="true")
+			{
 			WaitStatementLib.explicitWaitForVisiblity(driver, 15, frame);
-			try{
+			try
+			{
 			driver.switchTo().frame(frame);
-			WaitStatementLib.explicitWaitForVisiblity(driver, 15, closeboardpprnotification);
-			closeboardpprnotification.click();
+			WaitStatementLib.explicitWaitForVisiblity(driver, 15, closeOrangePopup);
+			closeOrangePopup.click();
 			BasePage.sleepForMilliSecond(1000);
 			driver.switchTo().defaultContent();
 			}
 			catch(ElementNotVisibleException ex){
-				
-			}
+				}
 			catch(TimeoutException ex){
 				driver.switchTo().defaultContent();
 				}
@@ -316,8 +322,8 @@ public class StudyPage {
 				WaitStatementLib.explicitWaitForVisiblity(driver, 15, frame);
 				try{
 				driver.switchTo().frame(frame);
-				WaitStatementLib.explicitWaitForVisiblity(driver, 15, closeboardpprnotification);
-				closeboardpprnotification.click();
+				WaitStatementLib.explicitWaitForVisiblity(driver, 15, closeOrangePopup);
+				closeOrangePopup.click();
 				BasePage.sleepForMilliSecond(1000);
 				driver.switchTo().defaultContent();
 				}
@@ -352,8 +358,8 @@ public class StudyPage {
 				WaitStatementLib.explicitWaitForVisiblity(driver, 15, frame);
 				try{
 				driver.switchTo().frame(frame);
-				WaitStatementLib.explicitWaitForVisiblity(driver, 15, closeboardpprnotification);
-				closeboardpprnotification.click();
+				WaitStatementLib.explicitWaitForVisiblity(driver, 15, closeOrangePopup);
+				closeOrangePopup.click();
 				BasePage.sleepForMilliSecond(1000);
 				driver.switchTo().defaultContent();
 				}
@@ -387,8 +393,8 @@ public class StudyPage {
 				WaitStatementLib.explicitWaitForVisiblity(driver, 15, frame);
 				try{
 				driver.switchTo().frame(frame);
-				WaitStatementLib.explicitWaitForVisiblity(driver, 15, closeboardpprnotification);
-				closeboardpprnotification.click();
+				WaitStatementLib.explicitWaitForVisiblity(driver, 15, closeOrangePopup);
+				closeOrangePopup.click();
 				BasePage.sleepForMilliSecond(1000);
 				driver.switchTo().defaultContent();
 				}
@@ -398,7 +404,7 @@ public class StudyPage {
 				catch(TimeoutException ex){
 					driver.switchTo().defaultContent();
 					}
-			}
+				}
 			moveToStudyBoxAndClickHindi(driver);
 			testsonsubject_hindilnk.click();
 			WaitStatementLib.explicitWaitForVisiblity(driver, 5, brdpprsolnradiobtn_classten_hindi);
@@ -429,27 +435,23 @@ public class StudyPage {
 		WaitStatementLib.implicitWaitForSecond(driver, 10);
 		BasePage.sleepForMilliSecond(2000);
 		BasePage.moveToElementAndClick(driver,studybx,hindiicon);
-		
 		}
 	public void moveToStudyBoxAndClickScience(WebDriver driver)
 	{
 		WaitStatementLib.implicitWaitForSecond(driver, 10);
 		BasePage.sleepForMilliSecond(2000);
 		BasePage.moveToElementAndClick(driver,studybx,scienceicon);
-		
 		}
 	public void moveToStudyBoxAndClickBusinessStudies(WebDriver driver)
 	{
 		WaitStatementLib.implicitWaitForSecond(driver, 10);
 		BasePage.sleepForMilliSecond(2000);
 		BasePage.moveToElementAndClick(driver,studybx,business_studiesicon);
-		
 		}
 	public void moveToStudyBoxAndClickChemistry(WebDriver driver)
 	{
 		BasePage.sleepForMilliSecond(2000);
 		BasePage.moveToElementAndClick(driver,studybx,chemistryicon);
-		
 		}
 	public void moveToStudyBoxAndClickBiology(WebDriver driver)
 	{
@@ -461,33 +463,26 @@ public class StudyPage {
 	{
 		BasePage.sleepForMilliSecond(2000);
 		BasePage.moveToElementAndClick(driver,studybx,mathicon);
-		
 		}
 	public void moveToStudyBoxAndClickEnglish(WebDriver driver)
 	{
 		BasePage.sleepForMilliSecond(2000);
 		BasePage.moveToElementAndClick(driver,studybx,englishicon);
-		
 		}
-	
 	public void moveToStudyBoxAndClickEconomics(WebDriver driver)
 	{
 		BasePage.sleepForMilliSecond(2000);
 		BasePage.moveToElementAndClick(driver,studybx,economicsicon);
 		
 		}
-
-	
 	public void clickPhysicsSubject(WebDriver driver)
 		{
 		BasePage.isSelected(physicspart1radionbtn, "checked");
 		electricchargesandfields.click();
 			
 		}
-	
 	public void verifyPhysicsPage(WebDriver driver)
 	{
-		
 		BasePage.sleepForMilliSecond(2000);
 		Assert.assertTrue(BasePage.isPresentAndDisplayed(liveclassesonsubjectlnk), "Live Classes link not present");
 		liveclassesonsubjectlnk.click();
@@ -610,14 +605,13 @@ public class StudyPage {
 				
 		}
 	
-		
-		public void exitTest() 
+	public void exitTest() 
 		{
 			BasePage.sleepForMilliSecond(2000);
 			exittestbtn.click();
 			BasePage.sleepForMilliSecond(2000);
 		}
-		public void clickConcepts()
+	public void clickConcepts()
 		{
 			conceptslnk.click();
 			Assert.assertTrue(conceptspagecontent.getText().toString().length() >20);
@@ -628,7 +622,7 @@ public class StudyPage {
 			BasePage.sleepForMilliSecond(2000);
 			taketopictestbtn.get(taketopictestbtn.size()-1).click();	
 		}
-		public void clickConceptsOnEnglish(WebDriver driver)
+	public void clickConceptsOnEnglish(WebDriver driver)
 		{
 			conceptsonenglishlnk.click();
 			BasePage.sleepForMilliSecond(2000);
@@ -641,7 +635,7 @@ public class StudyPage {
 			BasePage.moveToElementAndClick(driver, taketopictestbtn.get(0));
 			BasePage.sleepForMilliSecond(2000);	
 		}
-		public void clickConceptsOnEconomics()
+	public void clickConceptsOnEconomics()
 		{
 			conceptsoneconomicslnk.click();
 			Assert.assertTrue(conceptspagecontent.getText().toString().length() >20);
@@ -651,7 +645,7 @@ public class StudyPage {
 			lastdrpdwntopicmenu.get(size-1).click();
 			BasePage.sleepForMilliSecond(2000);	
 		}
-		public void answerTopicTest()
+	public void answerTopicTest()
 		{
 			try{
 			for (int i=0;i<topictest1stquestionoptions.size()-2;i++)
@@ -697,7 +691,7 @@ public class StudyPage {
 			//BasePage.sleepForMilliSecond(2000);
 			
 			
-		public void clickPractice(WebDriver driver)
+	public void clickPractice(WebDriver driver)
 		{
 			practicelnk.click();
 			WaitStatementLib.implicitWaitForSecond(driver, 10);
@@ -718,17 +712,17 @@ public class StudyPage {
 			BasePage.sleepForMilliSecond(2000);
 			}
 		
-		public void clickAssignment()
+	public void clickAssignment()
 		{
 			assignmentlnk.click();
 			BasePage.sleepForMilliSecond(4000);
 		}
-		public void clickAssignmentOnEnglish()
+	public void clickAssignmentOnEnglish()
 		{
 			assignmentonenglishlnk.click();
 			BasePage.sleepForMilliSecond(4000);
 		}
-		public void takeTestOnAssignment(){
+	public void takeTestOnAssignment(){
 			if(taketestassignmentbtn.size()!=0){
 			
 				for(int k=0;k<=taketestassignmentbtn.size();k++){
@@ -795,11 +789,7 @@ public class StudyPage {
 					Assert.assertTrue(norecordfoundonliveclasses.getText().equalsIgnoreCase("No Record Found"));				
 				}
 		}
-			 
-				
-			
-		
-		public void clickTest()
+	public void clickTest()
 		{
 			testslnk.click();
 			BasePage.sleepForMilliSecond(2000);
@@ -827,7 +817,7 @@ public class StudyPage {
 							}
 				}
 		}
-		public void clickTestOnEnglish()
+	public void clickTestOnEnglish()
 		{
 			testsonenglishlnk.click();
 			BasePage.sleepForMilliSecond(2000);
@@ -855,7 +845,7 @@ public class StudyPage {
 							}
 				}
 		}
-		public void clickTestOnEconomics()
+	public void clickTestOnEconomics()
 		{
 			testsoneconomicslnk.click();
 			BasePage.sleepForMilliSecond(2000);
@@ -884,7 +874,7 @@ public class StudyPage {
 				}
 		}
 		
-		public void clickPopularQuestions(WebDriver driver)
+	public void clickPopularQuestions(WebDriver driver)
 		{
 			pupolarquestionslnk.click();
 			Assert.assertFalse(BasePage.isPresentAndDisplayed(logoutbx));
@@ -915,7 +905,7 @@ public class StudyPage {
 			
 			
 		}
-		public void clickPopularQuestionsOnEnglish(WebDriver driver)
+	public void clickPopularQuestionsOnEnglish(WebDriver driver)
 		{
 			pupolarquestionsonenglishlnk.click();
 			Assert.assertFalse(BasePage.isPresentAndDisplayed(logoutbx));
@@ -940,7 +930,7 @@ public class StudyPage {
 			
 			
 		}
-		public void clickPopularQuestionsOnEconomics(WebDriver driver)
+	public void clickPopularQuestionsOnEconomics(WebDriver driver)
 		{
 			pupolarquestionsoneconomicslnk.click();
 			Assert.assertFalse(BasePage.isPresentAndDisplayed(logoutbx));
@@ -965,7 +955,7 @@ public class StudyPage {
 			
 			
 		}
-		public void clickActivities()
+	public void clickActivities()
 		{
 			activitieslnk.click();
 			BasePage.sleepForMilliSecond(4000);
@@ -978,7 +968,7 @@ public class StudyPage {
 			puzzlepopup.get(0).sendKeys(Keys.ENTER);
 			closepuzzle.get(0).click();
 		}
-		public void clickActivitiesOnEnglish()
+	public void clickActivitiesOnEnglish()
 		{
 			activitiesonenglishlnk.click();
 			BasePage.sleepForMilliSecond(4000);
@@ -991,23 +981,23 @@ public class StudyPage {
 			puzzlepopup.get(0).sendKeys(Keys.ENTER);
 			closepuzzle.get(0).click();
 		}
-		public void clickRevisionNotes(){
+	public void clickRevisionNotes(){
 			revisionnoteslnk.click();
 			BasePage.sleepForMilliSecond(2000);
 		}
-		public void clickRevisionNotesOnEnglish(){
+	public void clickRevisionNotesOnEnglish(){
 			revisionnotesonenglishlnk.click();
 			BasePage.sleepForMilliSecond(2000);
 		}
-		public void clickRevisionNotesOnEconomics(){
+	public void clickRevisionNotesOnEconomics(){
 			revisionnotesoneconomicslnk.click();
 			BasePage.sleepForMilliSecond(2000);
 		}
-		public void clickRevisioNotesOnMath(){
+	public void clickRevisioNotesOnMath(){
 			revisionnotesonmath.click();
 			BasePage.sleepForMilliSecond(2000);
 		}
-		public void downloadPDF(WebDriver driver) throws AWTException
+	public void downloadPDF(WebDriver driver) throws AWTException
 		{
 			Assert.assertFalse(BasePage.isPresentAndDisplayed(logoutbx));
 			BasePage.sleepForMilliSecond(1000);
@@ -1033,6 +1023,7 @@ public class StudyPage {
 				mylnew.add(itrnew.next());
 			}
 			driver.switchTo().window(myl.get(2));
+			//saveAsPdfBtn.click();
 			Robot robot = new Robot();
 			BasePage.sleepForMilliSecond(2000);
 			robot.keyPress(KeyEvent.VK_ENTER);
@@ -1042,7 +1033,7 @@ public class StudyPage {
 			driver.switchTo().window(myl.get(0));	
 				
 			}
-		public void clickBoardPaperQuestionsOnMath()
+	public void clickBoardPaperQuestionsOnMath()
 		{
 			boardpaperquestiononmathlnk.click();
 			BasePage.sleepForMilliSecond(2000);
@@ -1052,7 +1043,7 @@ public class StudyPage {
 				}
 		}
 			
-		public void clickBoardPaperQueestions()
+	public void clickBoardPaperQueestions()
 		{
 			boardpaperquestionlnk.click();
 			BasePage.sleepForMilliSecond(2000);
@@ -1060,7 +1051,7 @@ public class StudyPage {
 			viewsolnbtns.get(0).click();
 			BasePage.sleepForMilliSecond(2000);
 		}
-		public void clickBoardPaperQuestionsOnEconomics()
+	public void clickBoardPaperQuestionsOnEconomics()
 		{
 			boardpaperquestiononeconomicslnk.click();
 			BasePage.sleepForMilliSecond(2000);
@@ -1068,7 +1059,7 @@ public class StudyPage {
 			viewsolnbtns.get(0).click();
 			BasePage.sleepForMilliSecond(2000);
 		}
-		public void clickFormativeAssesment(WebDriver driver)
+	public void clickFormativeAssesment(WebDriver driver)
 		{
 			formativeassessmentlnk.click();
 			Assert.assertFalse(BasePage.isPresentAndDisplayed(logoutbx));
@@ -1098,7 +1089,7 @@ public class StudyPage {
 				}
 			driver.switchTo().defaultContent();
 			}
-		public void clickFormativeAssesmentOnMath(WebDriver driver)
+	public void clickFormativeAssesmentOnMath(WebDriver driver)
 		{
 			formativeassessmentonmathlnk.click();
 			Assert.assertFalse(BasePage.isPresentAndDisplayed(logoutbx));
@@ -1126,13 +1117,11 @@ public class StudyPage {
 					driver.switchTo().defaultContent();
 					}
 			}
-		public void verifyOptionsOnTopicPage(){
+	public void verifyOptionsOnTopicPage(){
 					liveclasssesonenglish.click();
 					BasePage.sleepForMilliSecond(2000);
 					clickTakeTestOnLiveClasses();
 					BasePage.sleepForMilliSecond(2000);
-//					clickEnglishSubject(driver);
-//					BasePage.sleepForMilliSecond(2000);
 					conceptsonenglish.click();
 					BasePage.sleepForMilliSecond(2000);
 					Assert.assertTrue(conceptspagecontent.getText().toString().length() >0);
@@ -1141,10 +1130,8 @@ public class StudyPage {
 					int size = lastdrpdwntopicmenu.size();
 					lastdrpdwntopicmenu.get(size-1).click();
 					taketopictestbtn.get(taketopictestbtn.size()-1).click();
-		}
-					
-					
-}
+				}
+	}
 
 			
 		

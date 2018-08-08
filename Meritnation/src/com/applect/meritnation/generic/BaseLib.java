@@ -299,7 +299,7 @@ public void testSetUpForFullRegression(){
 			for (String f : srcFile.list()) {
 		        BasePage.copy(new File(srcFile, f), new File(destFile, f));
 		    }
-			BasePage.sendEmail();
+		//	BasePage.sendEmail();
 		
 	}
 }

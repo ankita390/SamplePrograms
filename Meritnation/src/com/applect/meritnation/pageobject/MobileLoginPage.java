@@ -97,8 +97,6 @@ public class MobileLoginPage {
 	private WebElement frame;
 	@FindBy(xpath="//div[@class='close tablecell']")
 	private WebElement closeOrangePopup;
-	
-	
 	@FindBy(xpath="//div[@role='menu']")
 	private WebElement logoutBtn;
 	@FindBy(xpath="//span[@class='input-group-btn close-black']")

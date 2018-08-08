@@ -115,7 +115,7 @@ public class StudyTest extends BaseLib
 		studyPage.clickPhysicsSubject(driver);
 		studyPage.clickBoardPaperQueestions();
 		BasePage.logout(driver);
-}
+	}
 	@Test(groups="Regression")
 	public void TC_011_VerifyStudyPhysicsTopicFormativeAssesmentTest()
 	{
@@ -556,7 +556,7 @@ public class StudyTest extends BaseLib
 			studyPage.clickBoardPaperQuestionsOnEconomics();
 			BasePage.logout(driver);
 		}
-		@Test(groups="CurrentTask")
+		@Test(groups="Regression")
 		public void TC_053_VerifyBoardPapterSolutionTest(){
 			LoginPage loginPage = new LoginPage(driver);
 			StudyPage studyPage = new StudyPage(driver);

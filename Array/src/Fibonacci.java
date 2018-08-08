@@ -3,7 +3,7 @@ import java.util.Scanner;
 public class Fibonacci {
 	  public static void main(String[] args) 
 	    {
-	     /*  
+	      
 	      //to find fibonicci series
 	       int n, a = 0, b = 0, c = 1;
 	        Scanner s = new Scanner(System.in);
@@ -12,11 +12,14 @@ public class Fibonacci {
 	        System.out.print("Fibonacci Series:");
 	        for(int i = 1; i <= n; i++)
 	        {
-	            a = b;
-	            b = c;
-	            c = a + b;
-	            System.out.print(a);
+	        		
+	        		a=a+b;
+	        		System.out.println(a);
+	            	b=c;
+	            	c=a;
+	            
 	        }
+	        /*
 		  //to remove junk chanracters
 		  String str = "@#$&&&Anup";
 		  System.out.println(str.replaceAll("[^a-zA-Z0-9]", ""));

@@ -233,15 +233,15 @@ public class LogoutPage {
 	private WebElement classDrpdwn;
 	@FindBy(xpath="//nav/ul/li[2]/ul/li")
 	private List <WebElement> classesLst;
-	@FindBy(xpath="//div[@class='row2']/div[@class = 'inline-block addOnsPrice']")
+	@FindBy(xpath="//div[@class='row2']/div[@class = 'inline-block addOnsPrice']/tt")
 	private WebElement checkOutPrice;
 	@FindBy(xpath="//button[text()='checkout ']")
 	private WebElement checkOutBtn;
-	@FindBy(xpath="//div[@class='study-pack-box group']/div/span[@class='amt']")
-	private WebElement atualPrice;
+	@FindBy(xpath="//div[@class='priceBox group']/div[@class='pPrice']/span")
+	private List <WebElement> atualPrice;
 	@FindBy(xpath="//a[text()='Class XII']")
 	private WebElement class12Lnk;
-	@FindBy(xpath="//a[text()='UPGRADE']")
+	@FindBy(xpath="//a[text()='PURCHASE']")
 	private WebElement upgradeBtn;
 	@FindBy(xpath="//div[@class='close']")
 	private WebElement closeSideBarPopup;
@@ -358,10 +358,15 @@ public class LogoutPage {
 				chooseCourseRadioBtnn.get(k).click();
 				String checkoutprice = checkOutPrice.getText();
 				checkOutPrice.click();
-				BasePage.sleepForMilliSecond(3000);
+				BasePage.sleepForMilliSecond(2000);
 				checkOutBtn.click();
-				Assert.assertTrue(checkoutprice.contains(atualPrice.getText()), "Price of product is not same for class " +(i+6));
+				Assert.assertTrue(checkoutprice.equals(atualPrice.get(1).getText()), "Price of product is not same for class " +(i+6));
 				driver.navigate().back();
+				BasePage.scrollDown(chooseCourseRadioBtnn.get(0), driver);
+				BasePage.sleepForMilliSecond(1000);
+				BasePage.pressUpArrowKey(driver);
+				BasePage.pressUpArrowKey(driver);
+				WaitStatementLib.explicitWaitForClickable(driver, 15, chooseCourseRadioBtnn.get(0));
 				chooseCourseRadioBtnn.get(0).click();
 				chooseCourseRadioBtnn.get(k).click();
 				for(int j=0;j<=availableProducts.size();j++){
@@ -382,9 +387,15 @@ public class LogoutPage {
 						
 					}
 					String newCheckoutprice = checkOutPrice.getText();
+					BasePage.sleepForMilliSecond(2000);
 					checkOutBtn.click();
-					Assert.assertTrue(newCheckoutprice.contains(atualPrice.getText()), "Price of product is not same for class " +(i+6));
+					Assert.assertTrue(newCheckoutprice.contains(atualPrice.get(1).getText()), "Price of product is not same for class " +(i+6));
 					driver.navigate().back();
+					BasePage.scrollDown(chooseCourseRadioBtnn.get(0), driver);
+					BasePage.sleepForMilliSecond(1000);
+					BasePage.pressUpArrowKey(driver);
+					BasePage.pressUpArrowKey(driver);
+					WaitStatementLib.explicitWaitForClickable(driver, 15, chooseCourseRadioBtnn.get(0));
 					chooseCourseRadioBtnn.get(0).click();
 					chooseCourseRadioBtnn.get(k).click();
 					
