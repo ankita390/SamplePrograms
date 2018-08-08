@@ -63,9 +63,12 @@ public class MobileAskAnswerPage {
 	private WebElement frame;
 	@FindBy(xpath="//div[@class='close tablecell']")
 	private WebElement closeOrangePopup;
-	
+	@FindBy(xpath="//div[@class='media-box landing']/div[@class='media-footer']/div")
+	private WebElement dragger;
+	@FindBy(xpath= "//div/div[@class='side_main_menu']/a[text()='Home']")
+	private WebElement hometextclick;
 	public MobileAskAnswerPage(WebDriver driver){
-		PageFactory.initElements(driver, this);
+		PageFactory.initElements(driver, this); 
 	}
 	
 	
@@ -150,7 +153,13 @@ public class MobileAskAnswerPage {
 			verifyOtp.click();
 			MobileLoginPage loginPage = new MobileLoginPage(driver);
 			loginPage.enterSchool(driver);
-			BasePage.sleepForMilliSecond(1000);
+			WaitStatementLib.explicitWaitForVisiblity(driver, 10, dragger);
+			BasePage.sleepForMilliSecond(2000);
+			dragger.click();
+			BasePage.sleepForMilliSecond(5000);
+			hometextclick.click();
+			BasePage.sleepForMilliSecond(2000);
+			loginPage.logout(driver);
 			//loginPage.logout(driver);
 			//allowForSchoollocation.click();
 		} catch (ClassNotFoundException e) {

@@ -210,8 +210,8 @@ public class BaseLib {
 			driver = new InternetExplorerDriver();
 			Reporter.log("IE Browser launches");
 		}
-		driver.manage().window().maximize();
-		driver.get(GetPropertyValues.getPropertyValue("liveURL"));
+		driver.manage().window().setSize(new Dimension (412, 732));
+		driver.get(GetPropertyValues.getPropertyValue("MobileURL"));
 		Reporter.log("Navigate to the URL", true);
 		WaitStatementLib.implicitWaitForSecond(driver, 5);
 		}
