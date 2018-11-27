@@ -5,8 +5,9 @@ import com.applect.meritnation.generic.BaseLib;
 import com.applect.meritnation.pageobject.MobileLoginPage;
 
 public class MobileLoginTest extends BaseLib{ 
-	@Test(groups = "MobileRegression")
-	public void TC_001_VerifyValidLogin(){
+	@Test(groups = "MobileRegressio")
+	public void TC_001_VerifyValidLogin()
+	{
 		MobileLoginPage mobileLoginPage = new MobileLoginPage(driver);
 		mobileLoginPage.clickLogin();
 		mobileLoginPage.login(driver);
@@ -14,7 +15,8 @@ public class MobileLoginTest extends BaseLib{
 		mobileLoginPage.logout(driver);
 		}
 	@Test(groups = "MobileRegression")
-	public void TC_002_MobileSignup(){
+	public void TC_002_MobileSignup()
+	{
 		MobileLoginPage mobileLoginPage = new MobileLoginPage(driver);
 		mobileLoginPage.clickLogin();
 		mobileLoginPage.fillSignUpForm(driver);

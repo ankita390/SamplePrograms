@@ -95,6 +95,11 @@ public class LoginPage {
 	private WebElement closeboardpprnotification;
 	@FindBy(xpath = "//div[@id='webengage-notification-container']/iframe")
 	private WebElement frame;
+	@FindBy(xpath = "//div[contains(@id,'connecto-modal')]/iframe")
+	private WebElement connectoFrame;
+	@FindBy(xpath = "//div[@class='icon close']")
+	private WebElement closeFrame;
+	
 	@FindBy(xpath="//div[@class='profilcePic']/div/img")
 	private WebElement profileicon;
 	@FindBy(xpath = "//div[@id='connecto-widget-container']/iframe")
@@ -216,7 +221,7 @@ public class LoginPage {
 	{
 			signInBtn.click();
 			BasePage.sleepForMilliSecond(2000);
-	/*	This code needs to uncommented when any webengange notification starts coming.
+	//	This code needs to uncommented when any webengange notification starts coming.
 			
 		
 			if(String.valueOf(BasePage.isPresentAndDisplayed(topnotification))=="true"){
@@ -239,7 +244,25 @@ public class LoginPage {
 				}
 				catch(TimeoutException ex){
 				driver.switchTo().defaultContent();
-				}*/
+				}
+			}
+			else if(BasePage.isPresentAndDisplayed(connectoFrame)){
+				WaitStatementLib.explicitWaitForVisiblity(driver, 15, connectoFrame);
+				try{
+					driver.switchTo().frame(connectoFrame);
+					WaitStatementLib.explicitWaitForVisiblity(driver, 5, closeFrame);
+					closeFrame.click();
+					BasePage.sleepForMilliSecond(1000);
+					driver.switchTo().defaultContent();
+				}
+				catch(ElementNotVisibleException ex){
+					
+				}
+				catch(TimeoutException ex){
+				driver.switchTo().defaultContent();
+				}
+				
+			}
 			}
 			
 		

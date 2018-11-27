@@ -60,6 +60,7 @@ public abstract class BasePage {
 	    } 
 	    catch (Exception e) {
 	        return false;
+	        
 	    } 
 	}
 	

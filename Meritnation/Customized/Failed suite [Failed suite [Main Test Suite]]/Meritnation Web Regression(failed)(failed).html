@@ -57,9 +57,9 @@ function toggleAllBoxes() {
 <tr>
 <td>Tests passed/Failed/Skipped:</td><td>0/1/0</td>
 </tr><tr>
-<td>Started on:</td><td>Fri Aug 03 12:59:20 IST 2018</td>
+<td>Started on:</td><td>Tue Nov 27 14:57:58 IST 2018</td>
 </tr>
-<tr><td>Total time:</td><td>136 seconds (136383 ms)</td>
+<tr><td>Total time:</td><td>11 seconds (11581 ms)</td>
 </tr><tr>
 <td>Included groups:</td><td>Regression </td>
 </tr><tr>
@@ -76,41 +76,34 @@ function toggleAllBoxes() {
 </tr>
 <tr>
 <td title='com.applect.meritnation.scripts.StudyTest.TC_053_VerifyBoardPapterSolutionTest()'><b>TC_053_VerifyBoardPapterSolutionTest</b><br>Test class: com.applect.meritnation.scripts.StudyTest</td>
-<td><div><pre>org.openqa.selenium.NoSuchElementException: no such element: Unable to locate element: {&quot;method&quot;:&quot;xpath&quot;,&quot;selector&quot;:&quot;//div[@class=&apos;sidebarInner&apos;]/div/div[6]/h3[text()=&apos;Tests&apos;]&quot;}
-  (Session info: chrome=67.0.3396.87)
-  (Driver info: chromedriver=2.40.565383 (76257d1ab79276b2d53ee976b2c3e3b9f335cde7),platform=Linux 3.19.0-25-generic x86_64) (WARNING: The server did not provide any stacktrace information)
-Command duration or timeout: 10.07 seconds
-For documentation on this error, please visit: http://seleniumhq.org/exceptions/no_such_element.html
+<td><div><pre>org.openqa.selenium.WebDriverException: unknown error: Element &lt;button class=&quot;green--button&quot; type=&quot;submit&quot; id=&quot;loginBtn_1&quot; data-subscription=&quot;submit&quot; onclick=&quot;return submitmn...(&amp;quot;loginBtn_1&amp;quot;,&amp;quot;mnLoginP&amp;quot;,null)&quot;&gt;Login&lt;/button&gt; is not clickable at point (1089, 482). Other element would receive the click: &lt;span class=&quot;purechat-widget-title-link&quot; data-trigger=&quot;collapsedClick&quot; data-resourcekey=&quot;title_unavailable_initial&quot;&gt;...&lt;/span&gt;
+  (Session info: chrome=70.0.3538.102)
+  (Driver info: chromedriver=2.40.565383 (76257d1ab79276b2d53ee976b2c3e3b9f335cde7),platform=Linux 3.19.0-80-generic x86_64) (WARNING: The server did not provide any stacktrace information)
+Command duration or timeout: 157 milliseconds
 Build info: version: &apos;2.53.1&apos;, revision: &apos;a36b8b1&apos;, time: &apos;2016-06-30 17:37:03&apos;
-System info: host: &apos;58-s07&apos;, ip: &apos;127.0.1.1&apos;, os.name: &apos;Linux&apos;, os.arch: &apos;amd64&apos;, os.version: &apos;3.19.0-25-generic&apos;, java.version: &apos;1.7.0_151&apos;
-*** Element info: {Using=xpath, value=//div[@class=&apos;sidebarInner&apos;]/div/div[6]/h3[text()=&apos;Tests&apos;]}
-Session ID: d245ae9e69b2ac5f37485c7529f8b042
+System info: host: &apos;58-s07&apos;, ip: &apos;127.0.1.1&apos;, os.name: &apos;Linux&apos;, os.arch: &apos;amd64&apos;, os.version: &apos;3.19.0-80-generic&apos;, java.version: &apos;1.7.0_181&apos;
+Session ID: 36b286e45180d701abe5392a4f5bba5d
 Driver info: org.openqa.selenium.chrome.ChromeDriver
-Capabilities [{platform=LINUX, acceptSslCerts=false, javascriptEnabled=true, browserName=chrome, chrome={userDataDir=/tmp/.org.chromium.Chromium.LMYkSx, chromedriverVersion=2.40.565383 (76257d1ab79276b2d53ee976b2c3e3b9f335cde7)}, networkConnectionEnabled=false, unexpectedAlertBehaviour=, rotatable=false, setWindowRect=true, mobileEmulationEnabled=false, locationContextEnabled=true, pageLoadStrategy=normal, version=67.0.3396.87, takesHeapSnapshot=true, cssSelectorsEnabled=true, databaseEnabled=false, handlesAlerts=true, browserConnectionEnabled=false, webStorageEnabled=true, nativeEvents=true, hasTouchScreen=false, applicationCacheEnabled=false, takesScreenshot=true, acceptInsecureCerts=false}]
+Capabilities [{platform=LINUX, acceptSslCerts=false, javascriptEnabled=true, browserName=chrome, chrome={userDataDir=/tmp/.org.chromium.Chromium.YgYPga, chromedriverVersion=2.40.565383 (76257d1ab79276b2d53ee976b2c3e3b9f335cde7)}, networkConnectionEnabled=false, unexpectedAlertBehaviour=, rotatable=false, setWindowRect=true, mobileEmulationEnabled=false, locationContextEnabled=true, pageLoadStrategy=normal, version=70.0.3538.102, takesHeapSnapshot=true, cssSelectorsEnabled=true, databaseEnabled=false, handlesAlerts=true, browserConnectionEnabled=false, webStorageEnabled=true, nativeEvents=true, hasTouchScreen=false, applicationCacheEnabled=false, takesScreenshot=true, acceptInsecureCerts=false}]
 	at org.openqa.selenium.remote.ErrorHandler.createThrowable(ErrorHandler.java:206)
 	at org.openqa.selenium.remote.ErrorHandler.throwIfResponseFailed(ErrorHandler.java:158)
 	at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:678)
-	at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:363)
-	at org.openqa.selenium.remote.RemoteWebDriver.findElementByXPath(RemoteWebDriver.java:500)
-	at org.openqa.selenium.By$ByXPath.findElement(By.java:361)
-	at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:355)
-	at org.openqa.selenium.support.pagefactory.DefaultElementLocator.findElement(DefaultElementLocator.java:69)
-	at org.openqa.selenium.support.pagefactory.internal.LocatingElementHandler.invoke(LocatingElementHandler.java:38)
+	at org.openqa.selenium.remote.RemoteWebElement.execute(RemoteWebElement.java:327)
+	at org.openqa.selenium.remote.RemoteWebElement.click(RemoteWebElement.java:85)
+	at org.openqa.selenium.support.pagefactory.internal.LocatingElementHandler.invoke(LocatingElementHandler.java:51)
 	at com.sun.proxy.$Proxy10.click(Unknown Source)
-	at com.applect.meritnation.pageobject.StudyPage.verifyBoardPaperSolution(StudyPage.java:350)
-	at com.applect.meritnation.scripts.StudyTest.TC_053_VerifyBoardPapterSolutionTest(StudyTest.java:570)
-... Removed 28 stack frames</pre></div><a href='#' onClick='toggleBox("stack-trace81183573", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
-<div class='stack-trace' id='stack-trace81183573'><pre>org.openqa.selenium.NoSuchElementException: no such element: Unable to locate element: {&quot;method&quot;:&quot;xpath&quot;,&quot;selector&quot;:&quot;//div[@class=&apos;sidebarInner&apos;]/div/div[6]/h3[text()=&apos;Tests&apos;]&quot;}
-  (Session info: chrome=67.0.3396.87)
-  (Driver info: chromedriver=2.40.565383 (76257d1ab79276b2d53ee976b2c3e3b9f335cde7),platform=Linux 3.19.0-25-generic x86_64) (WARNING: The server did not provide any stacktrace information)
-Command duration or timeout: 10.07 seconds
-For documentation on this error, please visit: http://seleniumhq.org/exceptions/no_such_element.html
+	at com.applect.meritnation.pageobject.LoginPage.signInBtnClick(LoginPage.java:222)
+	at com.applect.meritnation.scripts.StudyTest.TC_053_VerifyBoardPapterSolutionTest(StudyTest.java:571)
+... Removed 32 stack frames</pre></div><a href='#' onClick='toggleBox("stack-trace877888697", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
+<div class='stack-trace' id='stack-trace877888697'><pre>org.openqa.selenium.WebDriverException: unknown error: Element &lt;button class=&quot;green--button&quot; type=&quot;submit&quot; id=&quot;loginBtn_1&quot; data-subscription=&quot;submit&quot; onclick=&quot;return submitmn...(&amp;quot;loginBtn_1&amp;quot;,&amp;quot;mnLoginP&amp;quot;,null)&quot;&gt;Login&lt;/button&gt; is not clickable at point (1089, 482). Other element would receive the click: &lt;span class=&quot;purechat-widget-title-link&quot; data-trigger=&quot;collapsedClick&quot; data-resourcekey=&quot;title_unavailable_initial&quot;&gt;...&lt;/span&gt;
+  (Session info: chrome=70.0.3538.102)
+  (Driver info: chromedriver=2.40.565383 (76257d1ab79276b2d53ee976b2c3e3b9f335cde7),platform=Linux 3.19.0-80-generic x86_64) (WARNING: The server did not provide any stacktrace information)
+Command duration or timeout: 157 milliseconds
 Build info: version: &apos;2.53.1&apos;, revision: &apos;a36b8b1&apos;, time: &apos;2016-06-30 17:37:03&apos;
-System info: host: &apos;58-s07&apos;, ip: &apos;127.0.1.1&apos;, os.name: &apos;Linux&apos;, os.arch: &apos;amd64&apos;, os.version: &apos;3.19.0-25-generic&apos;, java.version: &apos;1.7.0_151&apos;
-*** Element info: {Using=xpath, value=//div[@class=&apos;sidebarInner&apos;]/div/div[6]/h3[text()=&apos;Tests&apos;]}
-Session ID: d245ae9e69b2ac5f37485c7529f8b042
+System info: host: &apos;58-s07&apos;, ip: &apos;127.0.1.1&apos;, os.name: &apos;Linux&apos;, os.arch: &apos;amd64&apos;, os.version: &apos;3.19.0-80-generic&apos;, java.version: &apos;1.7.0_181&apos;
+Session ID: 36b286e45180d701abe5392a4f5bba5d
 Driver info: org.openqa.selenium.chrome.ChromeDriver
-Capabilities [{platform=LINUX, acceptSslCerts=false, javascriptEnabled=true, browserName=chrome, chrome={userDataDir=/tmp/.org.chromium.Chromium.LMYkSx, chromedriverVersion=2.40.565383 (76257d1ab79276b2d53ee976b2c3e3b9f335cde7)}, networkConnectionEnabled=false, unexpectedAlertBehaviour=, rotatable=false, setWindowRect=true, mobileEmulationEnabled=false, locationContextEnabled=true, pageLoadStrategy=normal, version=67.0.3396.87, takesHeapSnapshot=true, cssSelectorsEnabled=true, databaseEnabled=false, handlesAlerts=true, browserConnectionEnabled=false, webStorageEnabled=true, nativeEvents=true, hasTouchScreen=false, applicationCacheEnabled=false, takesScreenshot=true, acceptInsecureCerts=false}]
+Capabilities [{platform=LINUX, acceptSslCerts=false, javascriptEnabled=true, browserName=chrome, chrome={userDataDir=/tmp/.org.chromium.Chromium.YgYPga, chromedriverVersion=2.40.565383 (76257d1ab79276b2d53ee976b2c3e3b9f335cde7)}, networkConnectionEnabled=false, unexpectedAlertBehaviour=, rotatable=false, setWindowRect=true, mobileEmulationEnabled=false, locationContextEnabled=true, pageLoadStrategy=normal, version=70.0.3538.102, takesHeapSnapshot=true, cssSelectorsEnabled=true, databaseEnabled=false, handlesAlerts=true, browserConnectionEnabled=false, webStorageEnabled=true, nativeEvents=true, hasTouchScreen=false, applicationCacheEnabled=false, takesScreenshot=true, acceptInsecureCerts=false}]
 	at sun.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
 	at sun.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:57)
 	at sun.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)
@@ -118,15 +111,16 @@ Capabilities [{platform=LINUX, acceptSslCerts=false, javascriptEnabled=true, bro
 	at org.openqa.selenium.remote.ErrorHandler.createThrowable(ErrorHandler.java:206)
 	at org.openqa.selenium.remote.ErrorHandler.throwIfResponseFailed(ErrorHandler.java:158)
 	at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:678)
-	at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:363)
-	at org.openqa.selenium.remote.RemoteWebDriver.findElementByXPath(RemoteWebDriver.java:500)
-	at org.openqa.selenium.By$ByXPath.findElement(By.java:361)
-	at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:355)
-	at org.openqa.selenium.support.pagefactory.DefaultElementLocator.findElement(DefaultElementLocator.java:69)
-	at org.openqa.selenium.support.pagefactory.internal.LocatingElementHandler.invoke(LocatingElementHandler.java:38)
+	at org.openqa.selenium.remote.RemoteWebElement.execute(RemoteWebElement.java:327)
+	at org.openqa.selenium.remote.RemoteWebElement.click(RemoteWebElement.java:85)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:57)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:606)
+	at org.openqa.selenium.support.pagefactory.internal.LocatingElementHandler.invoke(LocatingElementHandler.java:51)
 	at com.sun.proxy.$Proxy10.click(Unknown Source)
-	at com.applect.meritnation.pageobject.StudyPage.verifyBoardPaperSolution(StudyPage.java:350)
-	at com.applect.meritnation.scripts.StudyTest.TC_053_VerifyBoardPapterSolutionTest(StudyTest.java:570)
+	at com.applect.meritnation.pageobject.LoginPage.signInBtnClick(LoginPage.java:222)
+	at com.applect.meritnation.scripts.StudyTest.TC_053_VerifyBoardPapterSolutionTest(StudyTest.java:571)
 	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
 	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:57)
 	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
@@ -152,8 +146,8 @@ Capabilities [{platform=LINUX, acceptSslCerts=false, javascriptEnabled=true, bro
 	at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:251)
 	at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:77)
 </pre></div></td>
-<td>106</td>
-<td>com.applect.meritnation.scripts.StudyTest@706aa01a</td></tr>
+<td>3</td>
+<td>com.applect.meritnation.scripts.StudyTest@124724ea</td></tr>
 </table><p>
 </body>
 </html>

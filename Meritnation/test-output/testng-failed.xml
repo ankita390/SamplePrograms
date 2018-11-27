@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite thread-count="-1" guice-stage="DEVELOPMENT" name="Failed suite [Main Test Suite]">
+  <test name="Meritnation Web Regression(failed)">
+    <parameter name="browser" value="chrome"/>
+    <groups>
+      <run>
+        <include name="Regression"/>
+      </run>
+    </groups>
+    <classes>
+      <class name="com.applect.meritnation.scripts.SearchTest">
+        <methods>
+          <include name="preConditionWeb"/>
+          <include name="deleteOutputDirectory"/>
+          <include name="sendEmail"/>
+          <include name="TC_001_SearchTest"/>
+          <include name="postCondition"/>
+        </methods>
+      </class> <!-- com.applect.meritnation.scripts.SearchTest -->
+      <class name="com.applect.meritnation.scripts.CreateAccountTest">
+        <methods>
+          <include name="preConditionWeb"/>
+          <include name="deleteOutputDirectory"/>
+          <include name="sendEmail"/>
+          <include name="TC_001_CreateAccountTest"/>
+          <include name="postCondition"/>
+        </methods>
+      </class> <!-- com.applect.meritnation.scripts.CreateAccountTest -->
+    </classes>
+  </test> <!-- Meritnation Web Regression(failed) -->
+  <test name="Meritnation Mobile Web Regression(failed)">
+    <parameter name="browser" value="chrome"/>
+    <groups>
+      <run>
+        <include name="MobileRegression"/>
+      </run>
+    </groups>
+    <classes>
+      <class name="com.applect.meritnationmobile.scripts.MobileLoginTest">
+        <methods>
+          <include name="TC_002_MobileSignup"/>
+          <include name="deleteOutputDirectory"/>
+          <include name="sendEmail"/>
+          <include name="preconditionMobile"/>
+          <include name="postCondition"/>
+        </methods>
+      </class> <!-- com.applect.meritnationmobile.scripts.MobileLoginTest -->
+    </classes>
+  </test> <!-- Meritnation Mobile Web Regression(failed) -->
+</suite> <!-- Failed suite [Main Test Suite] -->

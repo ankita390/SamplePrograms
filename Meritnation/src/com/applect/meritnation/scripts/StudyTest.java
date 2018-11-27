@@ -119,10 +119,12 @@ public class StudyTest extends BaseLib
 	@Test(groups="Regression")
 	public void TC_011_VerifyStudyPhysicsTopicFormativeAssesmentTest()
 	{
-		BasePage.login(driver);
+		//BasePage.login(driver);
+		BasePage.loginAsClassTenUser(driver);
 		StudyPage studyPage = new StudyPage(driver);
-		studyPage.moveToStudyBoxAndClickPhysics(driver);
-		studyPage.clickPhysicsSubject(driver);
+		studyPage.moveToStudyBoxAndClickScience(driver);
+		studyPage.clickChaptersAClassTen();
+		studyPage.clickScienceSubject(driver);
 		studyPage.clickFormativeAssesment(driver);
 		BasePage.logout(driver);
 		

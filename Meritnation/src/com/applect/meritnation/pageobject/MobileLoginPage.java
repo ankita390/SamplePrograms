@@ -2,8 +2,6 @@ package com.applect.meritnation.pageobject;
 
 import java.sql.SQLException;
 import java.util.List;
-import java.util.Properties;
-
 import org.junit.Assert;
 import org.openqa.selenium.ElementNotVisibleException;
 import org.openqa.selenium.TimeoutException;
@@ -11,14 +9,15 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
-
 import com.applect.meritnation.generic.ConnectDatabase;
 import com.applect.meritnation.generic.ExcelUtils;
 import com.applect.meritnation.generic.GetPropertyValues;
 import com.applect.meritnation.generic.WaitStatementLib;
 
 public class MobileLoginPage {
-	@FindBy(xpath="//div[@class='mainRoot']//div[2]/a[3]/span")
+	
+	
+	@FindBy(xpath="//span[text()='Login']")
 	private WebElement loginnBtn;
 	@FindBy(xpath="//div[@data-role='fieldcontain']/div/input")
 	private List <WebElement> uNnPasstxtflds;
@@ -36,8 +35,6 @@ public class MobileLoginPage {
 	private WebElement searchBox;
 	@FindBy(xpath="//div[@class='table-cell']/input")
 	private WebElement innerSearchBox;
-	
-	
 	@FindBy(xpath="//div[@class='tablerow']")
 	private WebElement topnotification;
 	@FindBy(xpath="//div[@class='tablerow']/div[2]/i")
@@ -52,9 +49,6 @@ public class MobileLoginPage {
 	private WebElement likeBtn;
 	@FindBy(xpath="//span[@class='followTxt']")
 	private WebElement followBtn;
-	
-	
-	
 	@FindBy(xpath="//a[text()='Register Now']")
 	private WebElement registerLnk;
 	@FindBy(id="name")
@@ -85,7 +79,7 @@ public class MobileLoginPage {
 	private WebElement countyCodeTxtFld;
 	@FindBy(xpath="//section[@class='contryCodeFillter']//ul/li")
 	private WebElement mauritiusCountry;
-	@FindBy(xpath="//header[@class='signupMain__header smallHeader']/div[2]/form/input")
+	@FindBy(xpath="//div[@class='schoolList']/div[2]/form/input")
 	private WebElement enterSchoolTxtFld;
 	@FindBy(xpath="//div[@class='schoolList']/article")
 	private List <WebElement> selectSchool;
@@ -153,7 +147,11 @@ public class MobileLoginPage {
 		Assert.assertTrue(BasePage.isPresentAndDisplayed(selectedClass));
 		Assert.assertTrue(BasePage.isPresentAndDisplayed(searchBoxIcon));
 		searchBoxIcon.click();
-		searchBox.click();
+//		searchBox.click();
+		System.out.println(GetPropertyValues.getPropertyValue("liveURL"));
+		if(driver.getCurrentUrl()==GetPropertyValues.getPropertyValue("liveURL")){
+			driver.manage().window().maximize();
+		}
 		innerSearchBox.sendKeys(ExcelUtils.readData("TestData", 3, 1));
 		BasePage.sleepForMilliSecond(1000);
 		BasePage.switchToWindow(driver, firstSearchedResult);

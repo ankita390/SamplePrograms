@@ -6,7 +6,6 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.text.SimpleDateFormat;
 import java.util.Date;
-
 import org.apache.commons.io.FileUtils;
 import org.apache.log4j.LogManager;
 import org.apache.log4j.Logger;
@@ -24,7 +23,6 @@ import org.testng.ITestResult;
 import org.testng.Reporter;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.AfterSuite;
-import org.testng.annotations.BeforeGroups;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.BeforeSuite;
 import org.testng.annotations.Parameters;
@@ -210,8 +208,9 @@ public class BaseLib {
 			driver = new InternetExplorerDriver();
 			Reporter.log("IE Browser launches");
 		}
-		driver.manage().window().setSize(new Dimension (412, 732));
-		driver.get(GetPropertyValues.getPropertyValue("MobileURL"));
+		driver.manage().window().maximize();
+		//driver.manage().window().setSize(new Dimension (412, 732));
+		driver.get(GetPropertyValues.getPropertyValue("liveURL"));
 		Reporter.log("Navigate to the URL", true);
 		WaitStatementLib.implicitWaitForSecond(driver, 5);
 		}

@@ -7,7 +7,7 @@ import com.applect.meritnation.pageobject.MobileAskAnswerPage;
 
 public class MobileAskAnswerTest extends BaseLib {
 	
-	@Test(groups = "CurrentTask")
+	@Test(groups = "MobileRegressio")
 	public void TC001_SignUpOnAsknAnsTest(){
 		MobileAskAnswerPage mobileAnswerPage = new MobileAskAnswerPage(driver);
 		

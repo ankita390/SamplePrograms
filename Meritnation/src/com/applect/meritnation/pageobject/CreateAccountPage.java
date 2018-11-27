@@ -233,7 +233,7 @@ public class CreateAccountPage
 				driver.switchTo().defaultContent();
 				}
 			}*/
-			WaitStatementLib.explicitWaitForVisiblity(driver, 5, profileicon);
+			WaitStatementLib.explicitWaitForVisiblity(driver, 15, profileicon);
 			profileicon.click();
 	}
 	public void verifyPaidSubscription(WebDriver driver)

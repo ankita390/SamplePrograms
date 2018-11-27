@@ -44,8 +44,15 @@ public class StudyPage {
 	private WebElement economicsicon;
 	@FindBy(xpath="//div[@class='mysessionFilter']/div/div/ul/li/a[text()=' Physics Part-I ']")
 	private WebElement physicspart1radionbtn;
+	@FindBy(xpath="//div[@class='mysessionFilter']/div/div/ul/li/a[text()=' Science ']")
+	private WebElement scienceradionbtn;
+	
+	
 	@FindBy(xpath="//div[@class='allsession']/ul/li/div/img[@title='Electric Charges And Fields']")
 	private WebElement electricchargesandfields;
+	@FindBy(xpath="//div[@class='allsession']/ul/li/div/img[contains(@title,'Chemical Reaction')]")
+	private WebElement chemicalReactionAndEquation;
+	
 	@FindBy(xpath="//div[@class='allsession']/ul/li/div/img[@title='Current Electricity']")
 	private WebElement physics3rdsubject;
 	@FindBy(xpath="//div[@class='mysessionFilter']/div/div/ul/li/a[text()=' Chemistry Part-I ']")
@@ -228,7 +235,7 @@ public class StudyPage {
 	private WebElement viewsolnsbtn;
 	@FindBy(xpath = "//div[@id='TB_window']/div/div[@id='TB_closeAjaxWindow']/a")
 	private WebElement closeviewsolns;
-	@FindBy(xpath="//div[@class='sidebarInner']/div/div/div[11]/h3")
+	@FindBy(xpath="//div[@class='sidebarInner']/div/div/div[10]/h3")
 	private WebElement boardpaperquestionlnk;
 	@FindBy(xpath="//div[@class='sidebarInner']/div/div/div[6]/h3[text()='Board Paper Questions']")
 	private WebElement boardpaperquestiononeconomicslnk;
@@ -282,12 +289,18 @@ public class StudyPage {
 	private WebElement frameOnFormativeAssesmnt;	
 	@FindBy(xpath="//div[@class='close tablecell']")
 	private WebElement closeOrangePopup;
+	@FindBy(xpath="//div[@class='sidebarInner']/div/div[4]/h3[text()='Chapters']")
+	private WebElement clickChapter;
+	
 	
 	public StudyPage(WebDriver driver)
 	{
 		PageFactory.initElements(driver, this);
 	}
-	
+	public void clickChaptersAClassTen(){
+		clickChapter.click();
+		
+	}
 	public void verifyBoardPaperSolution(WebDriver driver)
 	{
 		CreateAccountPage createAccountPage = new CreateAccountPage(driver);
@@ -481,6 +494,12 @@ public class StudyPage {
 		electricchargesandfields.click();
 			
 		}
+	public void clickScienceSubject(WebDriver driver)
+	{
+	BasePage.isSelected(scienceradionbtn, "checked");
+	chemicalReactionAndEquation.click();
+		
+	}
 	public void verifyPhysicsPage(WebDriver driver)
 	{
 		BasePage.sleepForMilliSecond(2000);
