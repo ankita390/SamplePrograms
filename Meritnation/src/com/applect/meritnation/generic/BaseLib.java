@@ -281,7 +281,7 @@ public void testSetUpForFullRegression(){
 			sLib.getScreenShot(driver, filename, browserName, chromeFolder);
 			Reporter.log("Screenshot has been taken",true);
 		}
-		driver.close();
+		driver.quit();
 		Reporter.log("Browser closed",true);
 	}
 	@AfterSuite(alwaysRun=true)

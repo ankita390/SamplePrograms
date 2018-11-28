@@ -72,6 +72,4 @@ public class AsknAnswerTest extends BaseLib
 		BasePage.switchToParentWindow(driver);
 		BasePage.logout(driver);
 		}
-	
-	
 }

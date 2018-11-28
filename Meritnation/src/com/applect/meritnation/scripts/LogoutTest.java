@@ -12,7 +12,7 @@ public class LogoutTest extends BaseLib{
 		LogoutPage logoutPage = new LogoutPage(driver);
 		logoutPage.clickLinkAndVerifyURL(driver);
 		}
-	@Test(groups = "CurrentTask")
+	@Test(groups = "CurrentTa")
 	public void TC_002_VerifyPurchasedProductPrice(){
 		LogoutPage logoutPage = new LogoutPage(driver);
 		logoutPage.verifyPriceForPurchasedProduct(driver);

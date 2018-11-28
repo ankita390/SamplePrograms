@@ -1,13 +1,20 @@
 package com.applect.meritnation.pageobject;
 
+import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
+import java.util.Set;
 
 import org.openqa.selenium.ElementNotVisibleException;
 import org.openqa.selenium.TimeoutException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.Select;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 import com.applect.meritnation.generic.ExcelUtils;
 import com.applect.meritnation.generic.WaitStatementLib;
@@ -166,6 +173,126 @@ public class LoginPage {
 	private WebElement prvsYrQValueTwo_IITPowerPrepUser;
 	@FindBy(xpath = "//ul[@id='subjectFilter']/li[text()='JEE-Mains']")
 	private WebElement prvsYrQValueThree_IITPowerPrepUser;
+	@FindBy(xpath="//a[@href='/cbse-class-10/12']")
+	private WebElement classTenLnk;
+	@FindBy(xpath="//li[@id='ana_menu_logout']/a/i")
+	private WebElement anaDrpdn;
+	@FindBy(xpath="//*[@id='ana_menu_logout']/ul/li[1]/a")
+	private WebElement latestQueLnk;
+	@FindBy(xpath="//a[contains(@class,'social-btn')]/span[2]")
+	private List<WebElement> ansCount;
+	@FindBy(xpath="//a[@class='view-full-answer']")
+	private WebElement fullAnsLnk;
+	@FindBy(xpath="//li[@class='gradient-1']")
+	private WebElement subjlnk;
+	@FindBy(xpath="//div[@id='test']")
+	private WebElement testlnk;
+	@FindBy(xpath="//div[@class='sidebarInner']/div/div[6]/div[2]/div/ul/li[3]/a")
+	private WebElement brdsollnk;
+	@FindBy(xpath="//div[@class='testPaperSection']/ul/li[1]/a")
+	private WebElement viewsollnk;
+	@FindBy(xpath="//div[@id='q338387']/a")
+	private WebElement viewsolbtn;
+	@FindBy(xpath="//div[@class='navBox_top']/a")
+	private WebElement demolnk;
+	@FindBy(xpath="//button[@class='line-btn']")
+	private WebElement checkoutbtn;
+	@FindBy(xpath="//div[@class='payment-box']/div/div[2]/div/button[1]")
+	private WebElement signupbtn;
+	@FindBy(xpath="//ul[@class='newChapterList']/li[2]/div/div[2]/div/a")
+	private WebElement scndchaplnk;
+	@FindBy(xpath="//a[@class='create_new']")
+	private WebElement newaccount;
+	@FindBy(xpath="//a[@class='psa_bg']")
+	private WebElement ncrtsollnk;
+	@FindBy(xpath="//a[@id='sign-in']")
+	private WebElement createbtn;
+	@FindBy(xpath="//input[@id='username_authReg']")
+	private WebElement nametxt;
+	@FindBy(xpath="//input[@id='userEmail_authReg']")
+	private WebElement emailtxt;
+	@FindBy(xpath="//input[@id='userPassword_authReg']")
+	private WebElement passtxt;
+	@FindBy(xpath="//input[@id='userPincode_authReg']")
+	private WebElement pintxt;
+	@FindBy(xpath="//select[@id='userCurriculum_authReg']")
+	private WebElement brddrpdwn;
+	@FindBy(xpath="//select[@id='userGrade_authReg']")
+	private WebElement classselect;
+	@FindBy(xpath="//div[@class='userType1']/label[1]")
+	private WebElement usertype;
+	@FindBy(xpath="//button[@id='subBtn_0']")
+	private WebElement joinfree;
+	@FindBy(xpath="//a[@class='bps_bg']")
+	private WebElement entranceexam;
+	@FindBy(xpath="//li[@class='signUp-link']")
+	private WebElement signup;
+	@FindBy(xpath="//a[@href='/live-new']")
+	private WebElement livenew;
+	@FindBy(xpath="//a[@class='signinBtn']")
+	private WebElement signfree;
+	@FindBy(xpath="//a[@href='/live']")
+	private WebElement livesign;
+	@FindBy(xpath="//a[@id='createAccount1']")
+	private WebElement createacc;
+	@FindBy(xpath="//a[@href='/junior/grade-5']")
+	private WebElement gradefive;
+	@FindBy(xpath="//div[@class='header_btns']/a[2]")
+	private WebElement junacc;
+	@FindBy(xpath="//div[@class='register_form']/div[1]/form/div[1]/input")
+	private WebElement stuid;
+	@FindBy(xpath="//div[@class='register_form']/div[1]/form/div[2]/input[1]")
+	private WebElement juniemail;
+	@FindBy(xpath="//div[@class='register_form']/div[1]/form/div[3]/input")
+	private WebElement junipass;
+	@FindBy(xpath="//div[@class='register_form']/div[1]/form/div[4]/input")
+	private WebElement junimobno;
+	@FindBy(xpath="//select[@id='curboard_popup']")
+	private WebElement joniboarddrpdwn;
+	@FindBy(xpath="//select[@id='regGradeId_popup']")
+	private WebElement joniclassdrpdwn;
+	@FindBy(xpath="//div[@class='register_form']/div[1]/form/div[6]/input")
+	private WebElement junipin;
+	@FindBy(xpath="//div[@class='register_form']/div[1]/form/div[7]/div/input")
+	private WebElement junifree;
+	@FindBy(xpath="//span[@class='editBtn']")
+	private WebElement juniedcon;
+	@FindBy(xpath="//div[@id='UserSchoolCountry']/div[1]")
+	private WebElement juniselcon;
+	@FindBy(xpath="//div[@id='UserSchoolCountry']/div[2]/div/div")
+	private WebElement juniconsel;
+	@FindBy(xpath="//div[@class='bs-col-md-4']/div/div/div/span")
+	private List <WebElement> selectlocation;
+	@FindBy(xpath="//div[contains(@class,'ui-select-choices')]/span")
+	private WebElement junicitysel;
+	@FindBy(xpath="//div[@class='bs-col-md-12 text-center']/div/div/div/span[@class = 'ng-binding ng-scope']")
+	private WebElement junischname;
+	@FindBy(xpath="//div[@class='ui-select-choices-content selectize-dropdown-content']/div/div[@role='option']/div/div/div/div/div[@title='a221, okhla phase - 1']")
+	private WebElement schoolselclick;
+	@FindBy(xpath="//input[@id='UserDetailFullname']")
+	private WebElement chapuid;
+	@FindBy(xpath="//input[@id='UserEmailHeaderRegPopup']")
+	private WebElement chapemail;
+	@FindBy(xpath="//input[@id='UserPassword']")
+	private WebElement chapuidpass;
+	@FindBy(xpath="//select[@id='selectboard-popup']")
+	private WebElement chapregboard;
+	@FindBy(xpath="//select[@id='classNpopup']")
+	private WebElement chapregclass;
+	@FindBy(xpath="//input[@id='UserDetailMobile']")
+	private WebElement chapregmob;
+	@FindBy(xpath="//input[@id='pincode']")
+	private WebElement chappincode;
+	@FindBy(xpath="//div[@class='radio-btns']/label[1]/input")
+	private WebElement chapusersel;
+	@FindBy(xpath="//div[@class='row row1']/button[2]")
+	private WebElement chapjoinfree;
+	@FindBy(id="textbook_solution")
+	private WebElement txtbooklnk;
+	@FindBy(xpath="//a[@href='/cbse-class-10/science/science-ncert-solutions/chemical-reactions-and-equations/ncert-solutions/12_2_1321_145_123_95467']")
+	private WebElement fsttxtbooklnk;
+	
+	
 	
 	
 	
@@ -173,6 +300,23 @@ public class LoginPage {
 	public LoginPage(WebDriver driver)
 	{
 		PageFactory.initElements(driver, this);
+	}
+	
+	public void createAccount(){
+		CreateAccountPage createAccountPage = new CreateAccountPage(driver);
+		createAccountPage.enterName();
+		createAccountPage.enterEmail();
+		createAccountPage.enterPassword();
+		createAccountPage.enterPincode();
+		createAccountPage.enterMobile();
+		createAccountPage.enterUserCourse();
+		createAccountPage.enterUserClass();
+		createAccountPage.selectUserAsStudent();
+		createAccountPage.joinNow(driver);
+		createAccountPage.enterSchoolName(driver);
+		BasePage.logout(driver);
+		
+		
 	}
 	
 	
@@ -529,4 +673,254 @@ public class LoginPage {
 		}
 			
 	}
+	
+	
+	public void proceedToNext(WebDriver driver){
+		ArrayList<WebElement> str = new ArrayList<WebElement>();
+		 classTenLnk.click();
+		    anaDrpdn.click();
+		    latestQueLnk.click(); 
+		    for (int i=0;i <= ansCount.size();i++){
+		    	if(!String.valueOf(ansCount.get(i).getText().toString()).equals("0")){  
+		   		str.add(ansCount.get(i));
+		   		str.get(0).click();
+		   		break;
+		    	}
+		    	
+		    	}
+		    
+		    	    Set <String> allWindow = driver.getWindowHandles();
+		    Iterator<String> itr = allWindow.iterator();
+		    List<String> myl = new ArrayList<String>();
+		    for (int k =0;k<allWindow.size();k++)
+		    {
+		    myl.add(itr.next());
+		    }
+		    driver.switchTo().window(myl.get(1));
+		     fullAnsLnk.click(); 
+		    }
+	public void BrdLogIN(){
+		classTenLnk.click();
+		subjlnk.click();
+		testlnk.click();
+		brdsollnk.click();
+		viewsollnk.click();
+		viewsolbtn.click();		
+	}
+	public void demologin() {
+		classTenLnk.click();
+		demolnk.click();
+		checkoutbtn.click();
+		try {
+			Thread.sleep(2000);
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+		}
+		signupbtn.click();	
+	}
+	public void chapterregistration(){
+		classTenLnk.click();
+		subjlnk.click();
+		scndchaplnk.click();
+		newaccount.click();
+	}
+	public void ncertregistration(){
+		ncrtsollnk.click();
+		createbtn.click();
+		nametxt.sendKeys("werty");
+		emailtxt.sendKeys("werty@mn.com");
+		passtxt.sendKeys("123456");
+		pintxt.sendKeys("110089");
+		Select board = new Select(brddrpdwn);
+		board.selectByValue("1");
+		Select stn =new Select (classselect);
+		stn.selectByValue("10");
+		usertype.click();
+		joinfree.click();
+	}
+	public void testprep(WebDriver driver){
+		entranceexam.click();
+		Set <String> allWindow = driver.getWindowHandles();
+	    Iterator<String> itr = allWindow.iterator();
+	    List<String> myl = new ArrayList<String>();
+	    for (int k =0;k<allWindow.size();k++)
+	    {
+	    myl.add(itr.next());
+	    }
+	    driver.switchTo().window(myl.get(1));
+		signup.click();
+		}
+	public void livenewreg(){
+		livenew.click();
+		signfree.click();
+			}
+	public void livereg(){
+	livesign.click();
+	createacc.click();
+	}
+	
+	public void juniorregistration(WebDriver driver) throws Exception{
+		gradefive.click();
+		junacc.click();
+		stuid.sendKeys("ertyu");
+		juniemail.sendKeys("ffgvf@gmail.com");
+		junipass.sendKeys("123456");
+		junimobno.sendKeys("9634346819");	
+		Select board = new Select(joniboarddrpdwn);
+		board.selectByValue("1");
+		Select stn =new Select (joniclassdrpdwn);
+		stn.selectByValue("3");
+		junipin.sendKeys("201017");	
+		junifree.click();
+		try {
+			Thread.sleep(5000);
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+		}
+		juniedcon.click();
+		juniselcon.click();
+		Actions act=new Actions(driver);
+		act.moveToElement(juniselcon).click().sendKeys("Mauri").build().perform();
+		juniconsel.click();	
+		try {
+			Thread.sleep(3000);
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		Actions actcity=new Actions(driver);
+		actcity.moveToElement(selectlocation.get(2)).click().sendKeys("port").build().perform();
+		junicitysel.click();
+		Actions actions = new Actions(driver);
+		actions.moveToElement(junischname);
+		actions.click();
+		try {
+			Thread.sleep(3000);
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		actions.sendKeys("Meriton");
+		actions.build().perform();
+		try {
+			Thread.sleep(1000);
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+      schoolselclick.click();
+	}
+       
+	public void chapwaitreg(WebDriver driver){
+		classTenLnk.click();																																																																																																																											
+		subjlnk.click();
+		scndchaplnk.click();
+		WebDriverWait register=new WebDriverWait(driver, 300);
+		register.until(ExpectedConditions.visibilityOf(chapuid));
+		chapuid.sendKeys("uiopa");
+		chapemail.sendKeys("uiopa@mn.com");
+		chapuidpass.sendKeys("123456");
+		Select board = new Select(chapregboard);
+		board.selectByValue("1");
+		Select stn =new Select (chapregclass);
+		stn.selectByValue("10");
+		chapregmob.sendKeys("9634346819");
+		chappincode.sendKeys("201017");
+	    chapusersel.click();
+	    chapjoinfree.click();
+	    juniedcon.click();
+		juniselcon.click();
+		Actions act=new Actions(driver);
+		act.moveToElement(juniselcon).click().sendKeys("Mauri").build().perform();
+		juniconsel.click();	
+		try {
+			Thread.sleep(3000);
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		Actions actcity=new Actions(driver);
+		actcity.moveToElement(selectlocation.get(2)).click().sendKeys("port").build().perform();
+		junicitysel.click();
+		Actions actions = new Actions(driver);
+		actions.moveToElement(junischname);
+		actions.click();
+		try {
+			Thread.sleep(3000);
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		actions.sendKeys("Meriton");
+		actions.build().perform();
+		try {
+			Thread.sleep(1000);
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+      schoolselclick.click();
+	}
+	
+	public void ncertwaitreg(WebDriver driver){
+		classTenLnk.click();																																																																																																																											
+		subjlnk.click();
+		txtbooklnk.click();
+		fsttxtbooklnk.click();
+		WebDriverWait register=new WebDriverWait(driver, 300);
+	register.until(ExpectedConditions.visibilityOf(chapuid));
+	chapuid.sendKeys("tyuio");
+	chapemail.sendKeys("tyuio@mn.com");
+	chapuidpass.sendKeys("123456");
+	Select board = new Select(chapregboard);
+	board.selectByValue("1");
+	Select stn =new Select (chapregclass);
+	stn.selectByValue("10");
+	chapregmob.sendKeys("9634346819");
+	chappincode.sendKeys("201017");
+   chapusersel.click();
+   chapjoinfree.click();
+   juniedcon.click();
+	juniselcon.click();
+	Actions act=new Actions(driver);
+	act.moveToElement(juniselcon).click().sendKeys("Mauri").build().perform();
+	juniconsel.click();	
+	try {
+		Thread.sleep(3000);
+	} catch (InterruptedException e) {
+		// TODO Auto-generated catch block
+		e.printStackTrace();
+	}
+	Actions actcity=new Actions(driver);
+	actcity.moveToElement(selectlocation.get(2)).click().sendKeys("port").build().perform();
+	junicitysel.click();
+	Actions actions = new Actions(driver);
+	actions.moveToElement(junischname);
+	actions.click();
+	try {
+		Thread.sleep(3000);
+	} catch (InterruptedException e) {
+		// TODO Auto-generated catch block
+		e.printStackTrace();
+	}
+	actions.sendKeys("Meriton");
+	actions.build().perform();
+	try {
+		Thread.sleep(1000);
+	} catch (InterruptedException e) {
+		// TODO Auto-generated catch block
+		e.printStackTrace();
+	}
+  schoolselclick.click();
+}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 }

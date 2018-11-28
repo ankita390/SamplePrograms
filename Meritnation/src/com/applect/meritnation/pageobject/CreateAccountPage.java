@@ -26,6 +26,10 @@ public class CreateAccountPage
 	private WebElement emailtxtbx;
 	@FindBy(id="userPassword")
 	private WebElement pwdtxtbx;
+	@FindBy(xpath="//section[@class='fieldSec']/div[4]/input[@id='userPassword']")
+	private WebElement pwdtxtbx1;
+	
+	
 	@FindBy(id="userPincode")
 	private WebElement pincodebx;
 	@FindBy(xpath="//input[@name='data[UserDetail][mobile]' and @id='userMobile']") 
@@ -40,6 +44,10 @@ public class CreateAccountPage
 	private WebElement teacher;
 	@FindBy(id="subBtn_0") 
 	private WebElement joinbtn;
+	@FindBy(id="subBtn_2") 
+	private WebElement joinbtn1;
+	
+	
 	@FindBy(xpath="//div[@class='information-box group']/div/div/div/div/span[4]") 
 	private WebElement changelocationicon;
 	@FindBy(xpath="//div[@class='bs-col-md-4']/div/div/div/span") 
@@ -121,7 +129,15 @@ public class CreateAccountPage
 	public void enterPassword()
 	{
 		String password = ExcelUtils.readData("TestData", 0, 3);
+	//	WaitStatementLib.explicitWaitForVisiblity(driver, 5, pwdtxtbx);
+		try{
 		pwdtxtbx.sendKeys(password);	
+		}
+		catch(ElementNotVisibleException e){
+			BasePage.sleepForMilliSecond(5000);
+			pwdtxtbx1.sendKeys(password);
+			
+		}
 	}
 	public void enterPincode ()
 	{
@@ -160,8 +176,15 @@ public class CreateAccountPage
 	}
 	public void joinNow(WebDriver driver)
 	{
-		BasePage.scrollDown(joinbtn, driver);
+		
+		try{
+			BasePage.scrollDown(joinbtn, driver);
 		joinbtn.click();
+		}
+		catch (Exception e){
+			BasePage.scrollDown(joinbtn1, driver);
+			joinbtn1.click();
+		}
 	}
 	
 	public void enterSchoolName (WebDriver driver)  
