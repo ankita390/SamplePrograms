@@ -10,6 +10,18 @@
       </run>
     </groups>
     <classes>
+      <class name="com.applect.meritnation.scripts.StudyTest">
+        <methods>
+          <include name="preConditionWeb"/>
+          <include name="postCondition"/>
+        </methods>
+      </class> <!-- com.applect.meritnation.scripts.StudyTest -->
+      <class name="com.applect.meritnation.scripts.CreateAccountTest">
+        <methods>
+          <include name="preConditionWeb"/>
+          <include name="postCondition"/>
+        </methods>
+      </class> <!-- com.applect.meritnation.scripts.CreateAccountTest -->
       <class name="com.applect.meritnation.scripts.SearchTest">
         <methods>
           <include name="preConditionWeb"/>
@@ -22,27 +34,15 @@
           <include name="postCondition"/>
         </methods>
       </class> <!-- com.applect.meritnation.scripts.LoginTest -->
-      <class name="com.applect.meritnation.scripts.CreateAccountTest">
-        <methods>
-          <include name="preConditionWeb"/>
-          <include name="postCondition"/>
-        </methods>
-      </class> <!-- com.applect.meritnation.scripts.CreateAccountTest -->
       <class name="com.applect.meritnationmobile.scripts.MobileLoginTest">
         <methods>
+          <include name="TC_002_MobileSignup"/>
           <include name="deleteOutputDirectory"/>
           <include name="sendEmail"/>
-          <include name="TC_001_VerifyValidLogin"/>
           <include name="preconditionMobile"/>
           <include name="postCondition"/>
         </methods>
       </class> <!-- com.applect.meritnationmobile.scripts.MobileLoginTest -->
-      <class name="com.applect.meritnation.scripts.StudyTest">
-        <methods>
-          <include name="preConditionWeb"/>
-          <include name="postCondition"/>
-        </methods>
-      </class> <!-- com.applect.meritnation.scripts.StudyTest -->
       <class name="com.applect.meritnation.scripts.AsknAnswerTest">
         <methods>
           <include name="preConditionWeb"/>

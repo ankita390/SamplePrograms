@@ -28,8 +28,6 @@ public class CreateAccountPage
 	private WebElement pwdtxtbx;
 	@FindBy(xpath="//section[@class='fieldSec']/div[4]/input[@id='userPassword']")
 	private WebElement pwdtxtbx1;
-	
-	
 	@FindBy(id="userPincode")
 	private WebElement pincodebx;
 	@FindBy(xpath="//input[@name='data[UserDetail][mobile]' and @id='userMobile']") 
@@ -46,8 +44,6 @@ public class CreateAccountPage
 	private WebElement joinbtn;
 	@FindBy(id="subBtn_2") 
 	private WebElement joinbtn1;
-	
-	
 	@FindBy(xpath="//div[@class='information-box group']/div/div/div/div/span[4]") 
 	private WebElement changelocationicon;
 	@FindBy(xpath="//div[@class='bs-col-md-4']/div/div/div/span") 
@@ -102,8 +98,6 @@ public class CreateAccountPage
 	private List <WebElement> allBoards;
 	@FindBy(xpath="//div[@class='close tablecell']")
 	private WebElement closeOrangePopup;
-	
-	
 	
 	
 	public CreateAccountPage(WebDriver driver)

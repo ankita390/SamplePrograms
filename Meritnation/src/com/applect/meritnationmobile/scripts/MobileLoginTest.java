@@ -14,7 +14,7 @@ public class MobileLoginTest extends BaseLib{
 		mobileLoginPage.verifyDashboard(driver);
 		mobileLoginPage.logout(driver);
 		}
-	@Test(groups = "MobileRegression")
+	@Test(groups = "MobileRegressio")
 	public void TC_002_MobileSignup()
 	{
 		MobileLoginPage mobileLoginPage = new MobileLoginPage(driver);

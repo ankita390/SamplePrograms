@@ -1,7 +1,5 @@
 package com.applect.meritnation.scripts;
 
-import java.io.IOException;
-
 import org.testng.annotations.Test;
 import com.applect.meritnation.generic.BaseLib;
 import com.applect.meritnation.pageobject.CreateAccountPage;

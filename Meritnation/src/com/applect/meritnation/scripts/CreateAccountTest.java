@@ -38,7 +38,7 @@ public class CreateAccountTest extends BaseLib
 	
 	@Test(groups="Regression")
 
-	public void TC_001_ANARegistrationTest() throws IOException{
+	public void TC_002_ANARegistrationTest() throws IOException{
 		CreateAccountPage createAccountPage = new CreateAccountPage(driver);
 		LoginPage loginPage = new LoginPage(driver);
 		loginPage.proceedToNext(driver);
