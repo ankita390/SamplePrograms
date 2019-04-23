@@ -1,174 +1,218 @@
 package com.applect.meritnation.pageobject;
 
-import java.sql.Driver;
-import java.sql.SQLException;
-import java.util.List;
-import java.util.concurrent.TimeoutException;
 
-import org.openqa.selenium.ElementNotVisibleException;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Set;
+
+import org.openqa.selenium.NoSuchElementException;
+import org.openqa.selenium.TimeoutException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
-import org.testng.Assert;
 
 import com.applect.meritnation.generic.ConnectDatabase;
 import com.applect.meritnation.generic.ExcelUtils;
 import com.applect.meritnation.generic.GetPropertyValues;
 import com.applect.meritnation.generic.WaitStatementLib;
 
-public class MobileAskAnswerPage {
-	
-	@FindBy(xpath = "//div[@class='sticky-tab']/a[2]/span[text()='Ask N Ans']")
-	private WebElement clickAskAns;
-	@FindBy(xpath = "//nav[@id='mainTabs']/ul[@class='mobile-tab swiper-wrapper']/li")
-	private List<WebElement> elementsOnDashboard ;
-	@FindBy(xpath = "//div[@class ='anaFilterTabs ' ]/ul/li/a")
-	private List<WebElement> popularQuestionTab;
-	@FindBy(xpath = "//div[@id='questionsList']/div")
-	private List<WebElement> popularQuestionsList;
-	@FindBy(xpath="//div[contains(@class,'swiper-main-box swiper-container')]//div[@class='media-box']")
-	private List<WebElement> latestQuestionList;
-	@FindBy(xpath = "//div[@class='media-title']/p/strong")
-	private List<WebElement> QuestionAskedByuser; 
-	@FindBy(xpath = "//div[@class='view-full-answer']/a")
-	private WebElement ViewfullAnswerLink;
-	@FindBy(xpath = "//div[@class='inputRow']/input[@id='name']")
-	private WebElement nameTextBox;
-	@FindBy(xpath = "//div[@class='inputRow']/input[@id='email']")
-	private WebElement emailTextbook;
-	@FindBy(xpath = "//div[@class='inputRow']/input[@id='password']")
-	private WebElement pwdtxtbx;
-	@FindBy(xpath = "//div[@class='float-r dropDownmenu']/input[@id='mobile']")
-	private WebElement mobileNumberForSignup;
-	@FindBy(xpath = "//div/div/select[@id='board']")
-	private WebElement courseName;
-	@FindBy(xpath = "//div[@class = 'float-r dropDownmenu']/select[@id='grade']")
-	private WebElement EnterClass;
-	@FindBy(xpath = "//div[@class='inputRow mb10 pincodeRow']/input[@id='pincode']")
-	private WebElement enterPincode;
-	@FindBy(xpath="//div[@id='userType1']/label/input[@id='UserDetailUserType1']")
-	private WebElement chooseOptionStudent;
-	@FindBy(xpath = "//div[@class='login-btn']/div/a[@id='registerBtn']")
-	private WebElement registerButton;
-	@FindBy(xpath="//div[@class='inputRow group mB25Px']/input[@placeholder='Enter OTP']")
-	private WebElement enterOtpField;
-	@FindBy(xpath = "//div[@class='inputRow mT30Px']/button[@type='submit']")
-	private WebElement verifyOtp;
-	@FindBy(xpath = "//section/div/button[@type ='button' ]")
-	private WebElement allowForSchoollocation;
-	
-	@FindBy(xpath="//div[@id='webengage-notification-container']/iframe")
-	private WebElement frame;
-	@FindBy(xpath="//div[@class='close tablecell']")
-	private WebElement closeOrangePopup;
-	@FindBy(xpath="//div[@class='media-box landing']/div[@class='media-footer']/div")
-	private WebElement dragger;
-	@FindBy(xpath= "//div/div[@class='side_main_menu']/a[text()='Home']")
-	private WebElement hometextclick;
-	public MobileAskAnswerPage(WebDriver driver){
-		PageFactory.initElements(driver, this); 
-	}
-	
-	
-	
-	public void clickAskAnswer(){
-		BasePage.sleepForMilliSecond(3000);
-		clickAskAns.click();
-		
-		}
-	
-	public void verifyDashboardOptions(WebDriver driver){
+import io.appium.java_client.AppiumDriver;
+import io.appium.java_client.MobileBy;
+import io.appium.java_client.MobileElement;
+import io.appium.java_client.pagefactory.AndroidFindBy;
+import io.appium.java_client.pagefactory.AppiumFieldDecorator;
 
-			Assert.assertEquals(elementsOnDashboard.get(0).getText(), "QUESTIONS");
-			
-			Assert.assertEquals(popularQuestionTab.get(0).getText(), "Popular");
-			Assert.assertFalse(popularQuestionsList.isEmpty());
-			//popularQuestionsList.get(0).click();
-			BasePage.sleepForMilliSecond(3000);
-			popularQuestionTab.get(1).click();
-			BasePage.sleepForMilliSecond(3000);
-			String usernameOfaskedQuestion=QuestionAskedByuser.get(0).getText().toString();
-		    latestQuestionList.get(0).click();
-		   // System.out.println(QuestionAskedByuser.get(0).getText());
-		    //Assert.assertTrue(QuestionAskedByuser.get(0).getText().equalsIgnoreCase(usernameOfaskedQuestion));
-		   // System.out.println(usernameOfaskedQuestion);
-		    BasePage.sleepForMilliSecond(2000);
-		   driver.navigate().back();
-		   popularQuestionTab.get(0).click();
-		   BasePage.sleepForMilliSecond(2000);
-		   latestQuestionList.get(0).click();
-		   BasePage.scrollDown(ViewfullAnswerLink, driver);
-		   ViewfullAnswerLink.click();
-		   BasePage.sleepForMilliSecond(2000);
-		   
+public class MobileAskAnswerPage {
+	private AppiumDriver<MobileElement> _driver;
+	
+	@FindBy(xpath = "//div[@class='top-row group']/div[1]/div/span")
+	private MobileElement classDrpdwn;
+	@FindBy(xpath = "//nav[@class='nav-bar']//ul/li/a[text()='Class IX']")
+	private MobileElement classNine;
+	@FindBy(xpath = "//footer[@class='page-footer']/div[2]/a[2]/span")
+	private MobileElement asknAnsFooter;
+	@FindBy(xpath = "//div[@class='media-box']//div[@class='media-footer']//button/em")
+	private List <MobileElement> ansCount;
+	@FindBy(xpath = "//div[@class='view-full-answer']")
+	private MobileElement fullAnsLnk;
+	@FindBy(id = "fullnameStep")
+	private MobileElement fullName;
+	@FindBy(id = "mobileStep")
+	private MobileElement mobileNumber;
+	@FindBy(id = "passwordStep")
+	private MobileElement password;
+	@FindBy(id = "pincodeStep")
+	private MobileElement pinCode;
+	@FindBy(className = "fillButton")
+	private MobileElement signUpBtn;
+	
+	@FindBy(xpath = "//div [contains(@id,'connecto-modal-overlay')]")
+	private MobileElement connectoPopup;
+	@FindBy(xpath = "//iframe[contains(@id,'container-notification-frame')]")
+	private MobileElement ConnectoFrame;
+	@FindBy(xpath = "//div[@class='icon close']")
+	private MobileElement closeConnectoPopup;
+	@FindBy(id = "webengage-notification-container")
+	private MobileElement webEngageNotfn;
+	@FindBy(id = "webklipper-publisher-widget-container-notification-frame")
+	private MobileElement webEngageNotfnActual;
+	@FindBy(xpath = "//div[@class='close tablecell']/i")
+	private MobileElement closeWebEngagePopup;
+	@FindBy(xpath = "//div[@class='selectBoard']//span[@class='cbse']")
+	private MobileElement cbseCourse;
+	@FindBy(xpath = "//div[@class='selectClass']/button[text()='IX']")
+	private MobileElement classNinee;
+	@FindBy(xpath = "//input[@placeholder='Enter OTP']")
+	private MobileElement otpTxtBx;
+	@FindBy(xpath = "//button[text()='verify']")
+	private MobileElement verifyBtn;
+	@FindBy(id = "android:id/button1")
+	private MobileElement allowBtn;
+	@FindBy(xpath = "//strong[contains(text(),' Change Country ')]")
+	private MobileElement changeCountry;
+	@FindBy(name = "Change Country")
+	private MobileElement changeCountryNew;
+	@FindBy(xpath = "//input[@placeholder='Select your Country Code']")
+	private MobileElement typeCountryName;
+	@FindBy(xpath = "//span[text()='Mauritius']")
+	private MobileElement selectCountry;
+	@FindBy(xpath = "//input[@placeholder='Enter your school here']")
+	private MobileElement typeSchoolName;
+	@FindBy(xpath = "//h2[text()='Meriton']")
+	private MobileElement selectSchool;
+	@FindBy(xpath = "//a[@class='backButn']")
+	private MobileElement backBtn;
+	@FindBy(xpath = "//a[text()='Home']")
+	private MobileElement HomeBtn;
+	@FindBy(xpath = "//div[@class='fotterTabWrapper']/button[3]/div")
+	private MobileElement profileFooter;
+	@FindBy(xpath = "//div[@class='mainHeader']//button/div")
+	private MobileElement clickToLogout;
+	@FindBy(xpath = "//div[text()='Logout']")
+	private MobileElement LogoutBtn;
+	
+	
+	
+	public MobileAskAnswerPage(AppiumDriver<MobileElement> _driver){
+		this._driver=_driver;
+		PageFactory.initElements(new AppiumFieldDecorator(this._driver), this); 
 	}
-	public void createAccountOnMobile(WebDriver driver){
-		nameTextBox.click();
-		String name = ExcelUtils.readData("TestData", 0, 1);
-		nameTextBox.sendKeys(name);
+	
+	public void closeConnectoPopup(AppiumDriver<MobileElement> _driver){
 		BasePage.sleepForMilliSecond(2000);
-		emailTextbook.click();
-		String email = ExcelUtils.readData("TestData", 0, 2);
-		email = email +BasePage.randomString() + "@applect.com";
-		emailTextbook.sendKeys(email);
-		BasePage.sleepForMilliSecond(2000);
-		pwdtxtbx.click();
-		String password = ExcelUtils.readData("TestData", 0, 3);
-		pwdtxtbx.sendKeys(password);
-		mobileNumberForSignup.click();
-		String mobileNumber = ExcelUtils.readData("TestData", 0, 5);
-		mobileNumberForSignup.sendKeys(mobileNumber);
-		BasePage.sleepForMilliSecond(2000);
-		BasePage.selectDrpdwnByVisibleText(courseName, "CBSE");
-		BasePage.sleepForMilliSecond(2000);
-		enterPincode.click();
-		String pincode = ExcelUtils.readData("TestData", 0, 4);
-		BasePage.selectDrpdwnByVisibleText(EnterClass, "X");
-		enterPincode.sendKeys(pincode);
-		BasePage.sleepForMilliSecond(2000);
-		chooseOptionStudent.click();
-		registerButton.click();
-		BasePage.sleepForMilliSecond(8000);
-		String dbUrl = GetPropertyValues.getPropertyValue("dbUrl");
-		String dbusername = GetPropertyValues.getPropertyValue("dbusername");
-		String dbpassword = GetPropertyValues.getPropertyValue("dbpassword");
-		try {
-			String otp = ConnectDatabase.connectToDatabase(dbUrl, dbusername, dbpassword);
-			WaitStatementLib.explicitWaitForVisiblity(driver, 15, frame);
-			try{
-			driver.switchTo().frame(frame);
-			BasePage.sleepForMilliSecond(1000);
-			closeOrangePopup.click();
-			BasePage.sleepForMilliSecond(1000);
-			driver.switchTo().defaultContent();
-			}
-			catch(ElementNotVisibleException ex){
-			}
-			/*catch(TimeoutException ex){
-			driver.switchTo().defaultContent();
-			}*/
-			enterOtpField.sendKeys(otp);
-			verifyOtp.click();
-			MobileLoginPage loginPage = new MobileLoginPage(driver);
-			loginPage.enterSchool(driver);
-			WaitStatementLib.explicitWaitForVisiblity(driver, 10, dragger);
-			BasePage.sleepForMilliSecond(2000);
-			dragger.click();
-			BasePage.sleepForMilliSecond(5000);
-			hometextclick.click();
-			BasePage.sleepForMilliSecond(2000);
-			loginPage.logout(driver);
-			//loginPage.logout(driver);
-			//allowForSchoollocation.click();
-		} catch (ClassNotFoundException e) {
-			
-			e.printStackTrace();
-		} catch (SQLException e) {
-			e.printStackTrace();
+		if(BasePage.isPresentAndDisplayed(connectoPopup)){
+			_driver.switchTo().frame(ConnectoFrame);
+			closeConnectoPopup.click();
+			_driver.switchTo().defaultContent();
 		}
-	} 
+	}	
+	public void closeWebEngageNotification(AppiumDriver<MobileElement> _driver){
+		BasePage.sleepForMilliSecond(2000);
+		if(BasePage.isPresentAndDisplayed(webEngageNotfn)){
+			WaitStatementLib.explicitWaitForVisiblity(_driver, 10, webEngageNotfn);
+			BasePage.sleepForMilliSecond(2000);
+			_driver.switchTo().frame(webEngageNotfnActual);
+			closeWebEngagePopup.click();
+			_driver.switchTo().defaultContent();
+		}
+	}
+	
+	public void navigatingToAnaListingLogoutPage(){
+		try{
+			classDrpdwn.click();
+		}
+		catch(NoSuchElementException e){
+			BasePage.sleepForMilliSecond(2000);
+			classDrpdwn.click();
+		}
+		classNine.click();
+		
+		asknAnsFooter.click();
+		closeConnectoPopup(_driver);
+		ArrayList<WebElement> str = new ArrayList<WebElement>();
+		 for (int i=0;i <= ansCount.size();i++){
+			 if(!String.valueOf(ansCount.get(i).getText().toString()).equals("0")){  
+			  str.add(ansCount.get(i));
+			  str.get(0).click();
+			  break;
+			  	}
+			  }
+	}
+	public void MobileRegistrationOnAnaListingLogoutPage(){
+		 fullAnsLnk.click(); 
+		 fullName.sendKeys(ExcelUtils.readData("TestData", 0, 1));
+		 String mobile = "55612"+ BasePage.randomNumber();
+		 mobileNumber.sendKeys(mobile);
+		 password.sendKeys(ExcelUtils.readData("TestData", 0, 3));
+		 pinCode.sendKeys(ExcelUtils.readData("TestData", 0, 4));
+		 signUpBtn.click();
+		 WaitStatementLib.explicitWaitForVisiblity(_driver, 5, cbseCourse);
+		 closeWebEngageNotification(_driver);
+		 WaitStatementLib.explicitWaitForVisiblity(_driver, 15, cbseCourse);
+		 cbseCourse.click();
+		 closeWebEngageNotification(_driver);
+		 classNinee.click();
+		 String dbUrl = GetPropertyValues.getPropertyValue("dbUrl");
+			String dbusername = GetPropertyValues.getPropertyValue("dbusername");
+			String dbpassword = GetPropertyValues.getPropertyValue("dbpassword");
+			try {
+				String otp = ConnectDatabase.connectToDatabase(dbUrl, dbusername, dbpassword, mobile);
+				WaitStatementLib.explicitWaitForVisiblity(_driver, 10, otpTxtBx);
+				otpTxtBx.sendKeys(otp);
+			} catch (ClassNotFoundException | SQLException e) {
+				e.printStackTrace();
+			}
+			verifyBtn.click();
+			BasePage.sleepForMilliSecond(4000);
+		 	BasePage.closeLocationPopupinMobileSite(_driver, allowBtn);
+		    BasePage.sleepForMilliSecond(1000);
+		    try{
+		    WaitStatementLib.explicitWaitForVisiblity(_driver, 15, changeCountry);
+		    changeCountry.click();
+		   
+		    }
+		    catch(TimeoutException e){
+		    	changeCountryNew.click();
+		    }
+		    BasePage.sleepForMilliSecond(1000);
+		    typeCountryName.sendKeys("Mauritius");
+		    BasePage.sleepForMilliSecond(1000);
+		    selectCountry.click();
+		    BasePage.sleepForMilliSecond(1000);
+		    typeSchoolName.sendKeys(ExcelUtils.readData("TestData", 0, 6));
+		    BasePage.sleepForMilliSecond(1000);
+		    selectSchool.click();
+		    BasePage.sleepForMilliSecond(7000);
+		    BasePage.closeLocationPopupinMobileSite(_driver, allowBtn);
+		    backBtn.click();
+		    BasePage.sleepForMilliSecond(1000);
+		    HomeBtn.click();
+		    closeConnectoPopup(_driver);
+		    BasePage.sleepForMilliSecond(1000);
+		    }
+
+	public void logOutFromMobileDashboard(){
+		profileFooter.click();
+		BasePage.sleepForMilliSecond(1000);
+		clickToLogout.click();
+		LogoutBtn.click();
+	}
+	public void registrationByGoogleLink(){
+		
+		for(int i =1;i<2;i++){
+			closeConnectoPopup(_driver);
+			_driver.get(ExcelUtils.readData("TestData", 145, i));
+			closeConnectoPopup(_driver);
+			MobileRegistrationOnAnaListingLogoutPage();
+			closeConnectoPopup(_driver);
+			logOutFromMobileDashboard();
+			//closeConnectoPopup(_driver);
+		}
+	}
+	
 
 }
 

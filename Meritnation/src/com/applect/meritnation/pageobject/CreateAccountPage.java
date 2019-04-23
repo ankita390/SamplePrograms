@@ -2,8 +2,6 @@ package com.applect.meritnation.pageobject;
 
 
 import java.util.List;
-
-import org.junit.Assert;
 import org.openqa.selenium.ElementNotVisibleException;
 import org.openqa.selenium.StaleElementReferenceException;
 import org.openqa.selenium.TimeoutException;
@@ -13,22 +11,24 @@ import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.Select;
+import org.testng.Assert;
+
 import com.applect.meritnation.generic.ExcelUtils;
 import com.applect.meritnation.generic.WaitStatementLib;
 
 public class CreateAccountPage
 {
-	@FindBy(xpath="//a[contains(text(), 'Create account')]")
+	@FindBy(xpath="//button[contains(text(), 'Create account')]")
 	private WebElement createaccountbtn;
-	@FindBy(id="username")
+	@FindBy(xpath="//div[@class='inputGroup hideElement']/input[contains(@id,'username')]")
 	private WebElement nametxtbx;
 	@FindBy(xpath="//input[@name='data[UserDetail][email]']")
 	private WebElement emailtxtbx;
-	@FindBy(id="userPassword")
+	@FindBy(id="userPassword_1")
 	private WebElement pwdtxtbx;
 	@FindBy(xpath="//section[@class='fieldSec']/div[4]/input[@id='userPassword']")
 	private WebElement pwdtxtbx1;
-	@FindBy(id="userPincode")
+	@FindBy(id="userPincode_1")
 	private WebElement pincodebx;
 	@FindBy(xpath="//input[@name='data[UserDetail][mobile]' and @id='userMobile']") 
 	private WebElement mobbx;
@@ -306,6 +306,8 @@ public class CreateAccountPage
   }
 	public void logoutClick(WebDriver driver)
 	{
+	//	LoginPage loginpage = new LoginPage(driver);
+	//	loginpage.closeBoardPaperSolutionpopup();
 		WaitStatementLib.explicitWaitForVisiblity(driver, 5, logoutbtn);
 	//	BasePage.sleepForMilliSecond(2000);
 		logoutbtn.click();

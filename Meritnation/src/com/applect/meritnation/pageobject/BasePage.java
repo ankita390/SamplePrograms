@@ -14,6 +14,7 @@ import java.util.List;
 import java.util.Properties;
 import java.util.Random;
 import java.util.Set;
+import java.util.concurrent.ThreadLocalRandom;
 
 import javax.activation.DataHandler;
 import javax.activation.DataSource;
@@ -46,6 +47,9 @@ import org.testng.TestRunner;
 import org.testng.asserts.SoftAssert;
 import com.applect.meritnation.generic.ExcelUtils;
 import com.applect.meritnation.generic.WaitStatementLib;
+
+import io.appium.java_client.AppiumDriver;
+import io.appium.java_client.MobileElement;
 
 
 
@@ -102,6 +106,11 @@ public abstract class BasePage {
 		String generatedString = buffer.toString();
 		return (generatedString);
 	}
+	public static int randomNumber()
+	{
+		int randomNum = ThreadLocalRandom.current().nextInt(10000, 99999 + 1);
+		return(randomNum);
+	}
 	public static void login (WebDriver driver)
 	{
 		LoginPage loginPage = new LoginPage(driver);
@@ -121,6 +130,7 @@ public abstract class BasePage {
 	public static void logout(WebDriver driver)
 	{
 		CreateAccountPage createAccountPage = new CreateAccountPage(driver);
+		
 		createAccountPage.clickProfileIcon(driver);
 		createAccountPage.logoutClick(driver);
 	}
@@ -198,6 +208,13 @@ public abstract class BasePage {
 		}
 	}
 	public static boolean isPresentAndDisplayed(final WebElement element) {
+		  try {
+		    return element.isDisplayed();
+		  } catch (NoSuchElementException e) {
+		    return false;
+		  }
+		}
+	public static boolean isPresentAndDisplayed(final MobileElement element) {
 		  try {
 		    return element.isDisplayed();
 		  } catch (NoSuchElementException e) {
@@ -503,39 +520,26 @@ public static void pressUpArrowKey(WebDriver driver){
 			{
 			throw new RuntimeException(e);
 			}
-}
+		}
+	public static void closeLocationPopupinMobileSite(AppiumDriver<MobileElement> _driver, MobileElement element){
+		try{
+		String webContext = _driver.getContext();
+		    Set<String> contexts = _driver.getContextHandles();
+		    for (String context: contexts){
+		        if (context.contains("NATIVE_APP")){
+		            _driver.context(context);
+		            break;
+		        }
+		    }
+		    element.click();
+		    _driver.context(webContext);
+		}
+		catch(NoSuchElementException ex){
+			
+		}
+	}
 	
 	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-
 	public BasePage (WebDriver driver)
 	{
 		PageFactory.initElements(driver, this);

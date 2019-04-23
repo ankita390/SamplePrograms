@@ -23,7 +23,7 @@ public class LogoutPage {
 	WebDriver driver;
 	@FindBy(xpath="//header[@class='main-header']/div/div/a[2]")
 	private WebElement logo;
-	@FindBy(xpath="//a[text()='Purchase']")
+	@FindBy(xpath="//button[text()='Purchase']")
 	private WebElement purchaseBtn;
 	@FindBy(xpath="//button[text()='Call me']")
 	private WebElement callmeBtn;
@@ -239,8 +239,8 @@ public class LogoutPage {
 	private WebElement checkOutBtn;
 	@FindBy(xpath="//div[@class='priceBox group']/div[@class='pPrice']/span")
 	private List <WebElement> atualPrice;
-	@FindBy(xpath="//a[text()='Class XII']")
-	private WebElement class12Lnk;
+	@FindBy(xpath="//a[text()='Class XI']")
+	private WebElement class11Lnk;
 	@FindBy(xpath="//a[text()='PURCHASE']")
 	private WebElement upgradeBtn;
 	@FindBy(xpath="//div[@class='close']")
@@ -253,11 +253,19 @@ public class LogoutPage {
 	private WebElement insideLogo;
 	@FindBy(xpath="//div[@id='main-frame-error']")
 	private WebElement pageLoadError;
+	@FindBy(tagName="a")
+	private List <WebElement> lnks;
 	
+	
+	public void getURLS(){
+		for(int i = 0;i<lnks.size();i++){
+			System.out.println(lnks.get(i).getText());
+		}
+	}
 	
 	public void clickLinkAndVerifyURL(WebDriver driver){	
 	
-	WebElement[] strs = {logo,purchaseBtn,ncertSolnLnk,entranceExmLnk,classTwlveLnk,classElvnLnk,
+	WebElement[] strs = {purchaseBtn,ncertSolnLnk,entranceExmLnk,classTwlveLnk,classElvnLnk,
 						classTenLnk,classNineLnk,classEightLnk,classSevenLnk,classSixLnk,classFiveLnk,
 						classFourLnk,classThreeLnk,classTwoLnk,classOneLnk,classFour_TwelveBtn,
 						entranceExmBtn,onlineTutionnsLnk,freeNcertSolnLnk,smartStudyLnk,
@@ -337,8 +345,9 @@ public class LogoutPage {
 	}
 	
 	public void verifyPriceForPurchasedProduct(WebDriver driver){
-		class12Lnk.click();
+		class11Lnk.click();
 		upgradeBtn.click();
+		BasePage.isPresentAndDisplayed(classesLst.get(0));
 		for(int i=0;i<classesLst.size();i++){
 			if(BasePage.isPresentAndDisplayed(closeSideBarPopup)){
 				closeSideBarPopup.click();

@@ -10,6 +10,9 @@ import org.openqa.selenium.support.ui.FluentWait;
 import org.openqa.selenium.support.ui.Wait;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
+import io.appium.java_client.AppiumDriver;
+import io.appium.java_client.MobileElement;
+
 public class WaitStatementLib {
 	
 	public static void implicitWaitForSecond (WebDriver driver, int time )
@@ -29,6 +32,11 @@ public class WaitStatementLib {
 	public static void explicitWaitForVisiblity (WebDriver driver, int time, WebElement element)
 	{
 		WebDriverWait wait = new WebDriverWait (driver, time);
+		wait.until(ExpectedConditions.visibilityOf(element));
+	}
+	public static void explicitWaitForVisiblity (AppiumDriver<MobileElement> _driver, int time, WebElement element)
+	{
+		WebDriverWait wait = new WebDriverWait (_driver, time);
 		wait.until(ExpectedConditions.visibilityOf(element));
 	}
 	/*public static void fluentWait(WebDriver driver, final WebElement element){

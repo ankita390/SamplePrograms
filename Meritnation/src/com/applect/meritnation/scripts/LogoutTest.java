@@ -7,9 +7,10 @@ import com.applect.meritnation.pageobject.LogoutPage;
 
 public class LogoutTest extends BaseLib{
 	
-	@Test(groups = "lol")
+	@Test(groups = "CurrentTas")
 	public void TC_001_VerifyHomePageTest(){
 		LogoutPage logoutPage = new LogoutPage(driver);
+	//	logoutPage.getURLS();
 		logoutPage.clickLinkAndVerifyURL(driver);
 		}
 	@Test(groups = "CurrentTask")

@@ -2,13 +2,14 @@ package com.applect.meritnation.pageobject;
 
 import java.sql.SQLException;
 import java.util.List;
-import org.junit.Assert;
 import org.openqa.selenium.ElementNotVisibleException;
 import org.openqa.selenium.TimeoutException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+import org.testng.Assert;
+
 import com.applect.meritnation.generic.ConnectDatabase;
 import com.applect.meritnation.generic.ExcelUtils;
 import com.applect.meritnation.generic.GetPropertyValues;

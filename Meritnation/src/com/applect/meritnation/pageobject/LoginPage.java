@@ -24,9 +24,9 @@ public class LoginPage {
 	WebDriver driver;
 	@FindBy(xpath="//span[text()='LOGIN']")
 	private WebElement loginbtn;
-	@FindBy(xpath="//input[@id='username_login']")
+	@FindBy(xpath="//input[@id='username_login_1']")
 	private WebElement untxtbx;
-	@FindBy(xpath="//input[@id='password_login']")
+	@FindBy(xpath="//input[@id='password_login_1']")
 	private WebElement pwdtxtbx;
 	@FindBy(id="loginBtn_1")
 	private WebElement signInBtn;
@@ -295,13 +295,57 @@ public class LoginPage {
 	
 	
 	
-	
 
 	public LoginPage(WebDriver driver)
 	{
 		PageFactory.initElements(driver, this);
 	}
-	
+	public void closeBoardPaperSolutionpopup(){
+		
+		if(String.valueOf(BasePage.isPresentAndDisplayed(topnotification))=="true"){
+			closenotification.click();
+			WaitStatementLib.explicitWaitForVisiblity(driver, 5, profileicon);
+		}
+		BasePage.closeJEETestSeriesPopup(driver, JeeTestSeriesframe,closeJeeTestSeriesframe);
+
+		
+		if(String.valueOf(BasePage.isPresentAndDisplayed(frame))=="true"){
+			WaitStatementLib.explicitWaitForVisiblity(driver, 15, frame);
+			
+			try{
+			driver.switchTo().frame(frame);
+			WaitStatementLib.explicitWaitForVisiblity(driver, 5, closeboardpprnotification);
+			closeboardpprnotification.click();
+			BasePage.sleepForMilliSecond(1000);
+			driver.switchTo().defaultContent();
+			}
+			catch(ElementNotVisibleException ex){
+				
+			}
+			catch(TimeoutException ex){
+			driver.switchTo().defaultContent();
+			}
+		}
+		else if(BasePage.isPresentAndDisplayed(connectoFrame)){
+			WaitStatementLib.explicitWaitForVisiblity(driver, 15, connectoFrame);
+			try{
+				driver.switchTo().frame(connectoFrame);
+				WaitStatementLib.explicitWaitForVisiblity(driver, 5, closeFrame);
+				closeFrame.click();
+				BasePage.sleepForMilliSecond(1000);
+				driver.switchTo().defaultContent();
+			}
+			catch(ElementNotVisibleException ex){
+				
+			}
+			catch(TimeoutException ex){
+			driver.switchTo().defaultContent();
+			}
+			
+		}
+		
+		
+	}
 	public void createAccount(){
 		CreateAccountPage createAccountPage = new CreateAccountPage(driver);
 		createAccountPage.enterName();
@@ -836,7 +880,7 @@ public class LoginPage {
 		try {
 			Thread.sleep(3000);
 		} catch (InterruptedException e) {
-			// TODO Auto-generated catch block
+
 			e.printStackTrace();
 		}
 		Actions actcity=new Actions(driver);
@@ -848,7 +892,7 @@ public class LoginPage {
 		try {
 			Thread.sleep(3000);
 		} catch (InterruptedException e) {
-			// TODO Auto-generated catch block
+		
 			e.printStackTrace();
 		}
 		actions.sendKeys("Meriton");
@@ -856,7 +900,7 @@ public class LoginPage {
 		try {
 			Thread.sleep(1000);
 		} catch (InterruptedException e) {
-			// TODO Auto-generated catch block
+		
 			e.printStackTrace();
 		}
       schoolselclick.click();
@@ -878,9 +922,9 @@ public class LoginPage {
 	stn.selectByValue("10");
 	chapregmob.sendKeys("9634346819");
 	chappincode.sendKeys("201017");
-   chapusersel.click();
-   chapjoinfree.click();
-   juniedcon.click();
+	chapusersel.click();
+	chapjoinfree.click();
+	juniedcon.click();
 	juniselcon.click();
 	Actions act=new Actions(driver);
 	act.moveToElement(juniselcon).click().sendKeys("Mauri").build().perform();
@@ -888,7 +932,7 @@ public class LoginPage {
 	try {
 		Thread.sleep(3000);
 	} catch (InterruptedException e) {
-		// TODO Auto-generated catch block
+		
 		e.printStackTrace();
 	}
 	Actions actcity=new Actions(driver);

@@ -26,4 +26,23 @@ public class ConnectDatabase {
 		}
 		return otp;
 		}
+	
+	public static String connectToDatabase(String dbUrl,String dbusername, String dbpassword, String mobileNumber) throws  ClassNotFoundException, SQLException 
+	{
+		String query = "SELECT * FROM mobile_otps m WHERE m.`mobile` = 91" + mobileNumber;
+		String query1 = "SELECT otp FROM mobile_otps m WHERE m.`mobile` = 91" + mobileNumber;
+		
+		String otp="";
+		
+		Class.forName("com.mysql.jdbc.Driver");
+		Connection con = DriverManager.getConnection(dbUrl,dbusername,dbpassword);
+		Statement stmt = con.createStatement();
+		stmt.executeQuery(query);	
+		ResultSet rs= stmt.executeQuery(query1);	
+		while (rs.next())
+		{
+    	otp = rs.getString(1);
+		}
+		return otp;
+		}
 }

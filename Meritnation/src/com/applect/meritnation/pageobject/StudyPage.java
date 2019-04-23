@@ -251,7 +251,7 @@ public class StudyPage {
 	public WebElement logoutbx;
 	@FindBy(xpath="//div[@class='sidebarInner']/div/div[5]/h3[text()='Textbook Solutions']")
 	public WebElement textbooksolutionsonsubjectlnk;
-	@FindBy(xpath="//div[@class='allsession']/ul/li/div/div[2]/div/a")
+	@FindBy(xpath="//div[@class='c_name']/a")
 	public List <WebElement> topicstextbooksolutionson;
 	@FindBy(xpath="//div[@class='sidebarInner']/div/div[6]/h3")
 	public WebElement testslink;	
@@ -297,7 +297,23 @@ public class StudyPage {
 	{
 		PageFactory.initElements(driver, this);
 	}
-	public void clickChaptersAClassTen(){
+	public void clickChaptersAClassTen(WebDriver driver){
+		if(String.valueOf(BasePage.isPresentAndDisplayed(frame))=="true"){
+			WaitStatementLib.explicitWaitForVisiblity(driver, 15, frame);
+			try{
+			driver.switchTo().frame(frame);
+			WaitStatementLib.explicitWaitForVisiblity(driver, 5, closeOrangePopup);
+			closeOrangePopup.click();
+			BasePage.sleepForMilliSecond(1000);
+			driver.switchTo().defaultContent();
+			}
+			catch(ElementNotVisibleException ex){
+				
+			}
+			catch(TimeoutException ex){
+			driver.switchTo().defaultContent();
+			}
+		}
 		clickChapter.click();
 		
 	}
@@ -328,9 +344,9 @@ public class StudyPage {
 			WaitStatementLib.explicitWaitForVisiblity(driver, 5, brdpprsolnradiobtn_science);
 			brdpprsolnradiobtn_science.click();
 			WaitStatementLib.explicitWaitForVisiblity(driver, 5, brdpprsolnyearrwise.get(0));
-			Assert.assertTrue(brdpprsolnyearrwise.get(0).getText().contains("Physics 2018 Delhi Set 1: Solutions"), "Class-12 science physics delhi set 1: Board paper solution link not available");
-			Assert.assertTrue(brdpprsolnyearrwise.get(1).getText().contains("Physics 2018 Delhi Set 2: Solutions"), "Class-12 science physics delhi set 2: Board paper solution link not available");
-			Assert.assertTrue(brdpprsolnyearrwise.get(2).getText().contains("Physics 2018 Delhi Set 3: Solutions"), "Class-12 science physics delhi set 3: Board paper solution link not available");
+			Assert.assertTrue(brdpprsolnyearrwise.get(0).getText().contains("Board Paper of Class 12-Science 2018 Physics (SET 1) - Solutions"), "Class-12 science physics set 1: Board paper solution link not available");
+			Assert.assertTrue(brdpprsolnyearrwise.get(1).getText().contains("Board Paper of Class 12-Science 2018 Physics (SET 2) - Solutions"), "Class-12 science physics set 2: Board paper solution link not available");
+			Assert.assertTrue(brdpprsolnyearrwise.get(2).getText().contains("Board Paper of Class 12-Science 2018 Physics (SET 3) - Solutions"), "Class-12 science physics set 3: Board paper solution link not available");
 			if(String.valueOf(BasePage.isPresentAndDisplayed(frame))=="true"){
 				WaitStatementLib.explicitWaitForVisiblity(driver, 15, frame);
 				try{
@@ -352,9 +368,9 @@ public class StudyPage {
 			WaitStatementLib.explicitWaitForVisiblity(driver, 5, brdpprsolnradiobtn_science);
 			brdpprsolnradiobtn_science.click();
 			WaitStatementLib.explicitWaitForVisiblity(driver, 5, brdpprsolntitle);
-			Assert.assertTrue(brdpprsolnyearrwise.get(0).getText().contains("Chemistry 2018 Delhi Set-1: Solutions"), "Class-12 science chemistry delhi set 1: Board paper solution link not available");
-			Assert.assertTrue(brdpprsolnyearrwise.get(1).getText().contains("Chemistry 2018 Delhi Set-2: Solutions"), "Class-12 science chemistry delhi set 2: Board paper solution link not available");
-			Assert.assertTrue(brdpprsolnyearrwise.get(2).getText().contains("Chemistry 2018 Delhi Set-3: Solutions"), "Class-12 science chemistry delhi set 3: Board paper solution link not available");
+			Assert.assertTrue(brdpprsolnyearrwise.get(0).getText().contains("Board Paper of Class 12-Science 2018 Chemistry (SET 1) - Solutions"), "Class-12 science chemistry set 1: Board paper solution link not available");
+			Assert.assertTrue(brdpprsolnyearrwise.get(1).getText().contains("Board Paper of Class 12-Science 2018 Chemistry (SET 2) - Solutions"), "Class-12 science chemistry set 2: Board paper solution link not available");
+			Assert.assertTrue(brdpprsolnyearrwise.get(2).getText().contains("Board Paper of Class 12-Science 2018 Chemistry (SET 3) - Solutions"), "Class-12 science chemistry set 3: Board paper solution link not available");
 			
 			
 		}
@@ -364,9 +380,9 @@ public class StudyPage {
 			WaitStatementLib.explicitWaitForVisiblity(driver, 5, brdpprsolnradiobtn_commerce);
 			brdpprsolnradiobtn_commerce.click();
 			WaitStatementLib.explicitWaitForVisiblity(driver, 5, brdpprsolnyearrwise.get(0));
-			Assert.assertTrue(brdpprsolnyearrwise.get(0).getText().contains("Accountancy 2018 Delhi Set 1: Solutions"), "Class-12 Commerce Accountancy delhi set 1: Board paper solution link not available");
-			Assert.assertTrue(brdpprsolnyearrwise.get(1).getText().contains("Accountancy 2018 Delhi Set 2: Solutions"), "Class-12 Commerce Accountancy delhi set 2: Board paper solution link not available");
-			Assert.assertTrue(brdpprsolnyearrwise.get(2).getText().contains("Accountancy 2018 Delhi Set 3: Solutions"), "Class-12 Commerce Accountancy delhi set 3: Board paper solution link not available");
+			Assert.assertTrue(brdpprsolnyearrwise.get(0).getText().contains("Board Paper of Class 12-Commerce 2018 Accountancy (SET 1) - Solutions"), "Class-12 Commerce Accountancy set 1: Board paper solution link not available");
+			Assert.assertTrue(brdpprsolnyearrwise.get(1).getText().contains("Board Paper of Class 12-Commerce 2018 Accountancy (SET 2) - Solutions"), "Class-12 Commerce Accountancy set 2: Board paper solution link not available");
+			Assert.assertTrue(brdpprsolnyearrwise.get(2).getText().contains("Board Paper of Class 12-Commerce 2018 Accountancy (SET 3) - Solutions"), "Class-12 Commerce Accountancy set 3: Board paper solution link not available");
 			if(String.valueOf(BasePage.isPresentAndDisplayed(frame))=="true"){
 				WaitStatementLib.explicitWaitForVisiblity(driver, 15, frame);
 				try{
@@ -388,9 +404,9 @@ public class StudyPage {
 			WaitStatementLib.explicitWaitForVisiblity(driver, 5, brdpprsolnradiobtn_commerce);
 			brdpprsolnradiobtn_commerce.click();
 			WaitStatementLib.explicitWaitForVisiblity(driver, 5, brdpprsolnyearrwise.get(0));
-			Assert.assertTrue(brdpprsolnyearrwise.get(0).getText().contains("Business Studies 2018 Delhi Set 1: Solutions"), "Class-12 Commerce Business Studies delhi set 1: Board paper solution link not available");
-			Assert.assertTrue(brdpprsolnyearrwise.get(1).getText().contains("Business Studies 2018 Delhi Set 2: Solutions"), "Class-12 Commerce Business Studies delhi set 2: Board paper solution link not available");
-			Assert.assertTrue(brdpprsolnyearrwise.get(2).getText().contains("Business Studies 2018 Delhi Set 3: Solutions"), "Class-12 Commerce Business Studies delhi set 3: Board paper solution link not available");
+			Assert.assertTrue(brdpprsolnyearrwise.get(0).getText().contains("Board Paper of Class 12-Commerce 2018 Business Studies (SET 1) - Solutions"), "Class-12 Commerce Business Studies set 1: Board paper solution link not available");
+			Assert.assertTrue(brdpprsolnyearrwise.get(1).getText().contains("Board Paper of Class 12-Commerce 2018 Business Studies (SET 2) - Solutions"), "Class-12 Commerce Business Studies set 2: Board paper solution link not available");
+			Assert.assertTrue(brdpprsolnyearrwise.get(2).getText().contains("Board Paper of Class 12-Commerce 2018 Business Studies (SET 3) - Solutions"), "Class-12 Commerce Business Studies set 3: Board paper solution link not available");
 			
 			}
 		else if (usrgrade.getText().contains("CBSE X")){
@@ -399,9 +415,9 @@ public class StudyPage {
 			WaitStatementLib.explicitWaitForVisiblity(driver, 5, brdpprsolnradiobtn_science);
 			brdpprsolnradiobtn_science.click();
 			WaitStatementLib.explicitWaitForVisiblity(driver, 5, brdpprsolnyearrwise.get(0));
-			Assert.assertTrue(brdpprsolnyearrwise.get(0).getText().contains("Science 2018 Delhi Set 1: Solutions"), "Class-10 Science delhi set 1: Board paper solution link not available");
-			Assert.assertTrue(brdpprsolnyearrwise.get(1).getText().contains("Science 2018 Delhi Set 2: Solutions"), "Class-10 Science delhi set 2: Board paper solution link not available");
-			Assert.assertTrue(brdpprsolnyearrwise.get(2).getText().contains("Science 2018 Delhi Set 3: Solutions"), "Class-10 Science delhi set 3: Board paper solution link not available");
+			Assert.assertTrue(brdpprsolnyearrwise.get(0).getText().contains("Board Paper of Class 10 2018 Science (SET 1) - Solutions"), "Class-10 Science set 1: Board paper solution link not available");
+			Assert.assertTrue(brdpprsolnyearrwise.get(1).getText().contains("Board Paper of Class 10 2018 Science (SET 2) - Solutions"), "Class-10 Science set 2: Board paper solution link not available");
+			Assert.assertTrue(brdpprsolnyearrwise.get(2).getText().contains("Board Paper of Class 10 2018 Science (SET 3) - Solutions"), "Class-10 Science set 3: Board paper solution link not available");
 			if(String.valueOf(BasePage.isPresentAndDisplayed(frame))=="true"){
 				WaitStatementLib.explicitWaitForVisiblity(driver, 15, frame);
 				try{
@@ -423,17 +439,20 @@ public class StudyPage {
 			WaitStatementLib.explicitWaitForVisiblity(driver, 5, brdpprsolnradiobtn_classten_hindi);
 			brdpprsolnradiobtn_classten_hindi.click();
 			WaitStatementLib.explicitWaitForVisiblity(driver, 5, brdpprsolnyearrwise.get(0));
-			Assert.assertTrue(brdpprsolnyearrwise.get(0).getText().contains("Hindi 2018 Delhi Set 1 A: Solutions"), "Class-10 Hindi delhi set 1: Board paper solution link not available");
-			Assert.assertTrue(brdpprsolnyearrwise.get(1).getText().contains("Hindi 2018 Delhi Set 2 A: Solutions"), "Class-10 Hindi delhi set 2: Board paper solution link not available");
-			Assert.assertTrue(brdpprsolnyearrwise.get(2).getText().contains("Hindi 2018 Delhi Set 3 A: Solutions"), "Class-10 Hindi delhi set 3: Board paper solution link not available");
+			Assert.assertTrue(brdpprsolnyearrwise.get(0).getText().contains("Board Paper of Class 10 2018 Hindi (SET 1) - Solutions"), "Class-10 Hindi set 1: Board paper solution link not available");
+			Assert.assertTrue(brdpprsolnyearrwise.get(1).getText().contains("Board Paper of Class 10 2018 Hindi (SET 2) - Solutions"), "Class-10 Hindi set 2: Board paper solution link not available");
+			Assert.assertTrue(brdpprsolnyearrwise.get(2).getText().contains("Board Paper of Class 10 2018 Hindi (SET 3) - Solutions"), "Class-10 Hindi set 3: Board paper solution link not available");
 			}
 		}
 	
 	public void moveToStudyBoxAndClickPhysics(WebDriver driver)
 	{
+	//	LoginPage loginpage = new LoginPage(driver);
+	//	loginpage.closeBoardPaperSolutionpopup();
 		WaitStatementLib.implicitWaitForSecond(driver, 10);
 		BasePage.sleepForMilliSecond(2000);
 		BasePage.moveToElementAndClick(driver,studybx,physicsicon);
+//		loginpage.closeBoardPaperSolutionpopup();
 		
 		}
 	public void moveToStudyBoxAndClickAccountancy(WebDriver driver)
@@ -506,7 +525,7 @@ public class StudyPage {
 		Assert.assertTrue(BasePage.isPresentAndDisplayed(liveclassesonsubjectlnk), "Live Classes link not present");
 		liveclassesonsubjectlnk.click();
 		BasePage.sleepForMilliSecond(2000);
-		clickTakeTestOnLiveClasses();
+		clickTakeTestOnLiveClasses(driver);
 		BasePage.sleepForMilliSecond(2000);
 		moveToStudyBoxAndClickPhysics(driver);
 		BasePage.sleepForMilliSecond(2000);
@@ -606,7 +625,7 @@ public class StudyPage {
 		BasePage.sleepForMilliSecond(2000);
 		liveclasseslnk.click();
 	}	
-	public void clickTakeTestOnLiveClasses()
+	public void clickTakeTestOnLiveClasses(WebDriver driver)
 	{
 		try{
 		BasePage.isPresentAndDisplayed(fistdisplayedtest);
@@ -616,7 +635,7 @@ public class StudyPage {
 		BasePage.isPresentAndDisplayed(taketestbtn);	
 		taketestbtn.click();
 		BasePage.sleepForMilliSecond(2000);
-		exitTest();
+		exitTest(driver);
 		}
 		catch(NoSuchElementException e){
 			Assert.assertTrue(norecordfoundonliveclasses.getText().equalsIgnoreCase("No Record Found"));
@@ -624,8 +643,10 @@ public class StudyPage {
 				
 		}
 	
-	public void exitTest() 
+	public void exitTest(WebDriver driver) 
 		{
+		LoginPage loginpage = new LoginPage(driver);
+		loginpage.closeBoardPaperSolutionpopup();
 			BasePage.sleepForMilliSecond(2000);
 			exittestbtn.click();
 			BasePage.sleepForMilliSecond(2000);
@@ -1136,10 +1157,10 @@ public class StudyPage {
 					driver.switchTo().defaultContent();
 					}
 			}
-	public void verifyOptionsOnTopicPage(){
+	public void verifyOptionsOnTopicPage(WebDriver driver){
 					liveclasssesonenglish.click();
 					BasePage.sleepForMilliSecond(2000);
-					clickTakeTestOnLiveClasses();
+					clickTakeTestOnLiveClasses(driver);
 					BasePage.sleepForMilliSecond(2000);
 					conceptsonenglish.click();
 					BasePage.sleepForMilliSecond(2000);

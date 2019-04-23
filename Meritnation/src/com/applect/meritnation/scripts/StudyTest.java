@@ -28,7 +28,7 @@ public class StudyTest extends BaseLib
 		studyPage.moveToStudyBoxAndClickPhysics(driver);
 		studyPage.clickPhysicsSubject(driver);
 		studyPage.clickTopicLiveClasses();
-		studyPage.clickTakeTestOnLiveClasses();
+		studyPage.clickTakeTestOnLiveClasses(driver);
 		BasePage.logout(driver);
 	}
 	
@@ -95,7 +95,7 @@ public class StudyTest extends BaseLib
 		studyPage.clickActivities();
 		BasePage.logout(driver);
 	}
-	@Test(groups="Regression")
+	@Test(groups="Not Regression")
 	public void TC_009_VerifyStudyPhysicsTopicRevisionNotesTest() throws AWTException
 	{
 		BasePage.login(driver);
@@ -123,7 +123,7 @@ public class StudyTest extends BaseLib
 		BasePage.loginAsClassTenUser(driver);
 		StudyPage studyPage = new StudyPage(driver);
 		studyPage.moveToStudyBoxAndClickScience(driver);
-		studyPage.clickChaptersAClassTen();
+		studyPage.clickChaptersAClassTen(driver);
 		studyPage.clickScienceSubject(driver);
 		studyPage.clickFormativeAssesment(driver);
 		BasePage.logout(driver);
@@ -137,7 +137,7 @@ public class StudyTest extends BaseLib
 			studyPage.moveToStudyBoxAndClickBiology(driver);
 			studyPage.clickBiologySubject(driver);
 			studyPage.clickTopicLiveClasses();
-			studyPage.clickTakeTestOnLiveClasses();
+			studyPage.clickTakeTestOnLiveClasses(driver);
 			BasePage.logout(driver);
 		}
 		@Test
@@ -242,7 +242,7 @@ public class StudyTest extends BaseLib
 			studyPage.moveToStudyBoxAndClickMath(driver);
 			studyPage.clickMathSubject(driver);
 			studyPage.clickTopicLiveClasses();
-			studyPage.clickTakeTestOnLiveClasses();
+			studyPage.clickTakeTestOnLiveClasses(driver);
 			BasePage.logout(driver);
 		}
 		@Test
@@ -337,7 +337,7 @@ public class StudyTest extends BaseLib
 			studyPage.moveToStudyBoxAndClickChemistry(driver);
 			studyPage.clickChemistrySubject(driver);
 			studyPage.clickTopicLiveClasses();
-			studyPage.clickTakeTestOnLiveClasses();
+			studyPage.clickTakeTestOnLiveClasses(driver);
 			BasePage.logout(driver);
 		}
 		@Test

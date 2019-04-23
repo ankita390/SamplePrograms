@@ -11,12 +11,14 @@ import org.apache.log4j.LogManager;
 import org.apache.log4j.Logger;
 import org.openqa.selenium.Capabilities;
 import org.openqa.selenium.Dimension;
+import org.openqa.selenium.SessionNotCreatedException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.firefox.FirefoxProfile;
 import org.openqa.selenium.ie.InternetExplorerDriver;
+import org.openqa.selenium.remote.CapabilityType;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.remote.RemoteWebDriver;
 import org.testng.ITestResult;
@@ -26,7 +28,11 @@ import org.testng.annotations.AfterSuite;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.BeforeSuite;
 import org.testng.annotations.Parameters;
-import com.applect.meritnation.pageobject.BasePage; 
+import com.applect.meritnation.pageobject.BasePage;
+
+import io.appium.java_client.AppiumDriver;
+import io.appium.java_client.MobileElement;
+import io.appium.java_client.android.AndroidDriver; 
 
 
 
@@ -34,6 +40,7 @@ import com.applect.meritnation.pageobject.BasePage;
 
 public class BaseLib {
 	public WebDriver driver;
+	public AppiumDriver<MobileElement> _driver;
 	@BeforeSuite(alwaysRun=true)
 	
 	public void deleteOutputDirectory(){
@@ -46,6 +53,30 @@ public class BaseLib {
 			e.printStackTrace();
 		}
 		
+	}
+	
+	@BeforeMethod(alwaysRun = false, groups = "MainApp")
+	public void preCondition() throws InterruptedException, MalformedURLException{
+		 File appDir = new File("/var/www/mn-testing/Meritnation/Apps/");
+		 File app = new File(appDir, "86.apk");
+		 DesiredCapabilities capabilities = new DesiredCapabilities();
+		 capabilities.setCapability(CapabilityType.BROWSER_NAME, "");
+		 capabilities.setCapability("deviceName", "Anup");
+		 capabilities.setCapability("platformVersion", "7.0");
+		 capabilities.setCapability("platformName", "Android");
+		 capabilities.setCapability("app", app.getAbsolutePath());
+		 capabilities.setCapability("appPackage", "com.meritnation.school");
+		 capabilities.setCapability("appActivity", "com.meritnation.school.modules.app_init_auth.controller.SplashActivity");
+		 capabilities.setCapability("noReset","false");
+		 capabilities.setCapability("automationName" , "UiAutomator2");
+		 driver = new AndroidDriver<MobileElement>(new URL("http://127.0.0.1:4723/wd/hub"), capabilities);
+		
+		 
+		 } 
+	@AfterMethod(alwaysRun = false, groups = "MainApp")
+	public void postCondition(){
+		driver.quit();
+	
 	}
 	
 	@BeforeMethod(alwaysRun =false, groups = "MobileRegression")
@@ -69,27 +100,54 @@ public class BaseLib {
 				e.printStackTrace();
 			}*/
 			
-			driver = new FirefoxDriver(profile);
+		//	driver = new FirefoxDriver(profile);
 			Reporter.log("Firefox Browser launches");
 		}
 		else if (browsername.equalsIgnoreCase("chrome"))
 		{
-			System.setProperty("webdriver.chrome.driver", "/var/www/mn-testing/Meritnation/Exe Files/chromedriver");
-			ChromeOptions options = new ChromeOptions();
-			options.addArguments("disable-geolocation");
+			System.out.println("Mobile Site Regression Started...");
+			DesiredCapabilities caps = new DesiredCapabilities();
+			ChromeOptions options=new ChromeOptions();
+		    options.setExperimentalOption("androidPackage", "com.android.chrome");
+		    options.addArguments("disable-geolocation");
 			options.addArguments("--disable-notifications");
-			options.addArguments("--no-sandbox");
+		    caps.setCapability(ChromeOptions.CAPABILITY, options);
+			caps.setCapability("deviceName", "Anup");
+			caps.setCapability("locationServicesAuthorized", false);
+			caps.setCapability("clearSystemFiles", true);
 			
-			/*	String Node = "http://10.0.7.202:9999/wd/hub";
-	 		DesiredCapabilities cap = DesiredCapabilities.chrome();
-	 		try {
-				driver = new RemoteWebDriver(new URL(Node), cap);
-			} catch (MalformedURLException e) {
-				e.printStackTrace();
-			}*/
+		
+			caps.setCapability("udid", "330010ba128373cb"); //Give Device ID of your mobile phone
+			caps.setCapability("platformName", "Android");
+			caps.setCapability(CapabilityType.VERSION, "7.0");
+		//	caps.setCapability("appPackage", "com.rivigo.zoombp.rivigozoombpapp");
+		//	caps.setCapability("appActivity", "com.rivigo.zoombp.rivigozoombpapp.activity.Activity.RivigoHomeActivity");
 			
-			driver = new ChromeDriver(options);
-			Reporter.log("Chrome Browser launches");
+
+		//	caps.setCapability("browserName", "Chrome");
+			caps.setCapability("noReset", true);
+			System.setProperty("webdriver.http.factory", "apache");
+			//AppiumDriver<MobileElement> driver = null;
+			
+			try {
+				_driver = new AndroidDriver<MobileElement>(new URL("http:/0.0.0.0:4723/wd/hub"),caps);
+				Reporter.log("Chrome Browser launches");
+				_driver.get(GetPropertyValues.getPropertyValue("liveURL"));
+				
+			} catch (MalformedURLException  | SessionNotCreatedException ex) {
+				
+				try {
+					_driver = new AndroidDriver<MobileElement>(new URL("http:/0.0.0.0:4723/wd/hub"),caps);
+				} catch (MalformedURLException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+				Reporter.log("Chrome Browser launches");
+				
+				//_driver.get(GetPropertyValues.getPropertyValue("newURL"));
+			}
+		
+			
 		}
 		else if (browsername.equalsIgnoreCase("IE"))
 		{
@@ -97,10 +155,10 @@ public class BaseLib {
 			driver = new InternetExplorerDriver();
 			Reporter.log("IE Browser launches");
 		}
-		driver.manage().window().setSize(new Dimension (412, 732));
-		driver.get(GetPropertyValues.getPropertyValue("MobileURL"));
-		Reporter.log("Navigate to the URL", true);
-		WaitStatementLib.implicitWaitForSecond(driver, 5);
+	//	driver.manage().window().setSize(new Dimension (412, 732));
+	//	driver.get(GetPropertyValues.getPropertyValue("MobileURL"));
+	//	Reporter.log("Navigate to the URL", true);
+	//	WaitStatementLib.implicitWaitForSecond(driver, 5);
 		}
 	@BeforeMethod(alwaysRun =false, groups = "Regression")
 	@Parameters({"browser"})
@@ -180,7 +238,7 @@ public class BaseLib {
 				e.printStackTrace();
 			}*/
 			
-			driver = new FirefoxDriver(profile);
+		//	driver = new FirefoxDriver(profile);
 			Reporter.log("Firefox Browser launches");
 		}
 		else if (browsername.equalsIgnoreCase("chrome"))
@@ -258,7 +316,7 @@ public void testSetUpForFullRegression(){
 	
 	
 
-	@AfterMethod(alwaysRun =true)
+	@AfterMethod(alwaysRun =false, groups = "Regression")
 	public void postCondition(ITestResult result)
 	{
 		if (result.isSuccess())
@@ -284,6 +342,34 @@ public void testSetUpForFullRegression(){
 		driver.quit();
 		Reporter.log("Browser closed",true);
 	}
+	
+	@AfterMethod(alwaysRun =false, groups = "MobileRegression")
+	public void postConditionMobile(ITestResult result)
+	{
+		if (result.isSuccess())
+		{
+				Reporter.log("Script passed",true);
+		}
+		else
+		{
+			Capabilities cap = ((RemoteWebDriver) _driver).getCapabilities();
+		    String browserName = cap.getBrowserName().toLowerCase().toString();
+			String filename = result.getMethod().getMethodName();
+			SimpleDateFormat formatter = new SimpleDateFormat("dd_MM_yyyy");  
+			Date date = new Date();
+			String chromeFolder = "/var/www/mn-testing/Meritnation/Screenshot/Chrome/" + formatter.format(date);  
+			File file1 = new File(chromeFolder);
+			if(!file1.exists()){
+				file1.mkdir();
+			}
+			ScreenShotLib sLib= new ScreenShotLib();
+			sLib.getScreenShot(_driver, filename, browserName, chromeFolder);
+		   
+			Reporter.log("Screenshot has been taken",true);
+		}
+		_driver.quit();
+		Reporter.log("Browser closed",true);
+	}
 	@AfterSuite(alwaysRun=true)
 	public static void sendEmail()
 	{
@@ -298,7 +384,7 @@ public void testSetUpForFullRegression(){
 			for (String f : srcFile.list()) {
 		        BasePage.copy(new File(srcFile, f), new File(destFile, f));
 		    }
-		//	BasePage.sendEmail();
+			//BasePage.sendEmail();
 		
 	}
 }
