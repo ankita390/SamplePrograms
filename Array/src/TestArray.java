@@ -7,7 +7,42 @@ import java.util.Scanner;
 import org.testng.annotations.Test;
 
 public class TestArray {
+	
 	@Test
+	
+	public int primitiveFloatedTwoDimentionalArray()
+
+	{
+
+	int[][] arr = new int [5] [10];
+	for(int i = 0; i <=arr.length; i++)
+	{
+	for(int j =0; j<=arr.length; j++)
+	{
+	arr[i][j] = j;
+	System.out.print(arr[i][j]+" ");
+	}
+	System.out.println("");
+	}
+	return(arr[i][j]);
+
+	/*Integer[] newArray = new Integer[arr.length];
+	for (int i=0;i<arr.length;i++){
+	newArray[i]= new int (arr.g)Integer.valueOf(arr[i]);
+	}
+	
+	int i = 0; 
+	for (String value : arr) {
+	newArray[i++] = Integer.valueOf(value);
+
+	}*/
+	//Integer[] newArray = ArrayUtils.toObject(oldArray);
+
+	}
+	
+	
+	
+	/*@Test
 	
 
 	public void hello() {
@@ -17,7 +52,7 @@ public class TestArray {
 		    System.out.println(formatter.format(date));  
 	}*/
 		
-				System.out.println("Enter the string");
+			/*	System.out.println("Enter the string");
 		        Scanner scr = new Scanner(System.in);
 		        String str = scr.nextLine();
 		        String revString = "";
@@ -71,6 +106,6 @@ public class TestArray {
 		System.out.print(x[0]);
 		System.out.print(x[1]);
 		System.out.print(x[2]);
-	}
+	}*/
 
 }

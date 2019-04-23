@@ -1,11 +1,22 @@
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Random;
 import java.util.Scanner;
 
 public class Fibonacci {
 	  public static void main(String[] args) 
 	    {
-		  	for (int m=8;m>1;m--)
+		  
+		  
+		  
+		  
+		  Random rand;
+		  int randomNum = rand.nextInt((1000 - 1) + 1) + 1;
+
+		   System.out.println(randomNum);
+		    
+		    
+		  /*	for (int m=8;m>1;m--)
 		  		
 		  	  {
 			  for (int n=1;n<m;n++)
@@ -18,8 +29,8 @@ public class Fibonacci {
 				  System.out.print("* ");
 			  }
 			  	 System.out.println("");
-			  	 m=m-1;
-		  	  }
+			  	 m=m-1;*/
+		  	  
 		  
 
 	     
