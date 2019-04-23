@@ -7,21 +7,20 @@ import com.applect.meritnation.pageobject.MobileAskAnswerPage;
 
 public class MobileAskAnswerTest extends BaseLib {
 	
-	@Test(groups = "MobileRegressio")
+	@Test(groups = "MobileRegression")
 	public void TC001_SignUpOnAsknAnsTest(){
-		MobileAskAnswerPage mobileAnswerPage = new MobileAskAnswerPage(driver);
 		
-		mobileAnswerPage.clickAskAnswer();
-		mobileAnswerPage.verifyDashboardOptions(driver);
-		mobileAnswerPage.createAccountOnMobile(driver);
-		
-	}
+		MobileAskAnswerPage mobileAskAnswerPage = new MobileAskAnswerPage(_driver);
+		mobileAskAnswerPage.closeConnectoPopup(_driver);
+		mobileAskAnswerPage.navigatingToAnaListingLogoutPage();
+		mobileAskAnswerPage.MobileRegistrationOnAnaListingLogoutPage();
+		mobileAskAnswerPage.logOutFromMobileDashboard();
+		}
+	@Test(groups = "MobileRegression")
+	public void TC001_UserRegistraionDirectlyFromGoogleLink(){
+		MobileAskAnswerPage mobileAskAnswerPage = new MobileAskAnswerPage(_driver);
+		mobileAskAnswerPage.registrationByGoogleLink();
+		}
 	
-	/*public void VerifyDashboardTest(){
-		
-		MobileAskAnswerPage mobileAnswerPage = new MobileAskAnswerPage(driver);	
-		
-		
-	}*/
 
 }

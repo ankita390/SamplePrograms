@@ -75,28 +75,28 @@ public class CreateAccountTest extends BaseLib
 		}
 		
 
-	@Test(groups="CurrentTas")
+	@Test(groups="")
 	public void TC_003_demoRegistrationTest(){
 		LoginPage lp=new LoginPage(driver);
 		lp.demologin();
 		lp.createAccount();
 	}
 		
-	@Test(groups="CurrentTas")
+	@Test(groups="")
 	public void TC_004_chapterRegistrationTest(){
 		LoginPage lp = new LoginPage(driver);
 		lp.chapterregistration();
 		lp.createAccount();
 		
 	}
-		    @Test(groups="CurrentTas")
+		    @Test(groups="")
 	public void TC_005_ncertregistration(){
-			  LoginPage lp=new LoginPage(driver) ;
+			  LoginPage lp=new LoginPage(driver);
 			  lp.ncertregistration();
 			  lp.createAccount();
 		  }
 		  
-		  @Test(groups="CurrentTas")
+		  @Test(groups="")
 	public void TC_006_testregistration(){
 			  LoginPage lp = new LoginPage(driver);
 			  lp.testprep(driver);
@@ -133,5 +133,7 @@ public class CreateAccountTest extends BaseLib
 		LoginPage lp=new LoginPage(driver);
 		lp.ncertwaitreg(driver);
 	}
+	
+	
 	
 }
