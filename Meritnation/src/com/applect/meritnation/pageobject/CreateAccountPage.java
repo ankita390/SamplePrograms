@@ -20,27 +20,27 @@ public class CreateAccountPage
 {
 	@FindBy(xpath="//button[contains(text(), 'Create account')]")
 	private WebElement createaccountbtn;
-	@FindBy(xpath="//div[@class='inputGroup hideElement']/input[contains(@id,'username')]")
+	@FindBy(xpath="//*[text()='Name']/preceding-sibling::input")
 	private WebElement nametxtbx;
-	@FindBy(xpath="//input[@name='data[UserDetail][email]']")
+	@FindBy(xpath="//*[text()='E-mail']/preceding-sibling::input")
 	private WebElement emailtxtbx;
-	@FindBy(id="userPassword_1")
+	@FindBy(xpath="//*[text()='Password']/preceding-sibling::input[@autocomplete='current-password']")
 	private WebElement pwdtxtbx;
 	@FindBy(xpath="//section[@class='fieldSec']/div[4]/input[@id='userPassword']")
 	private WebElement pwdtxtbx1;
-	@FindBy(id="userPincode_1")
+	@FindBy(xpath="//*[text()='Area PIN Code']/preceding-sibling::input")
 	private WebElement pincodebx;
-	@FindBy(xpath="//input[@name='data[UserDetail][mobile]' and @id='userMobile']") 
+	@FindBy(xpath="//*[text()='Mobile No.']/preceding-sibling::input") 
 	private WebElement mobbx;
-	@FindBy(id="userCurriculum")
+	@FindBy(xpath="//select[contains(@id,'userCurriculum')]")
 	private WebElement coursename;
-	@FindBy(id="userGrade") 
+	@FindBy(xpath="//select[contains(@id,'userGrade')]")
 	private WebElement classname;
-	@FindBy(xpath="//*[@id='userType1']/label[1]") 
+	@FindBy(xpath="//div[@class='userType mb35']/label[1]")
 	private WebElement student;
-	@FindBy(xpath="//*[@id='userType1']/label[3]") 
+	@FindBy(xpath="//div[@class='userType mb35']/label[3]") 
 	private WebElement teacher;
-	@FindBy(id="subBtn_0") 
+	@FindBy(id="subBtn_1")  
 	private WebElement joinbtn;
 	@FindBy(id="subBtn_2") 
 	private WebElement joinbtn1;
