@@ -20,27 +20,27 @@ public class CreateAccountPage
 {
 	@FindBy(xpath="//button[contains(text(), 'Create account')]")
 	private WebElement createaccountbtn;
-	@FindBy(xpath="//*[text()='Name']/preceding-sibling::input")
+	@FindBy(xpath="//*[contains(@class,'popupForm')]//*[text()='Name']/preceding-sibling::input")
 	private WebElement nametxtbx;
-	@FindBy(xpath="//*[text()='E-mail']/preceding-sibling::input")
+	@FindBy(xpath="//*[contains(@class,'popupForm')]//*[text()='E-mail']/preceding-sibling::input")
 	private WebElement emailtxtbx;
-	@FindBy(xpath="//*[text()='Password']/preceding-sibling::input[@autocomplete='current-password']")
+	@FindBy(xpath="//*[contains(@class,'popupForm')]//*[text()='Password']/preceding-sibling::input[@autocomplete='current-password']")
 	private WebElement pwdtxtbx;
 	@FindBy(xpath="//section[@class='fieldSec']/div[4]/input[@id='userPassword']")
 	private WebElement pwdtxtbx1;
-	@FindBy(xpath="//*[text()='Area PIN Code']/preceding-sibling::input")
+	@FindBy(xpath="//*[contains(@class,'popupForm')]//*[text()='Area PIN Code']/preceding-sibling::input")
 	private WebElement pincodebx;
-	@FindBy(xpath="//*[text()='Mobile No.']/preceding-sibling::input") 
+	@FindBy(xpath="//*[contains(@class,'popupForm')]//*[text()='Mobile No.']/preceding-sibling::input") 
 	private WebElement mobbx;
-	@FindBy(xpath="//select[contains(@id,'userCurriculum')]")
+	@FindBy(xpath="//*[contains(@class,'popupForm')]//select[contains(@id,'userCurriculum')]")
 	private WebElement coursename;
-	@FindBy(xpath="//select[contains(@id,'userGrade')]")
+	@FindBy(xpath="//*[contains(@class,'popupForm')]//select[contains(@id,'userGrade')]")
 	private WebElement classname;
-	@FindBy(xpath="//div[@class='userType mb35']/label[1]")
+	@FindBy(xpath="//*[contains(@class,'popupForm')]//label[@data-type='Student']")
 	private WebElement student;
-	@FindBy(xpath="//div[@class='userType mb35']/label[3]") 
+	@FindBy(xpath="//*[contains(@class,'popupForm')]//label[@data-type='Teacher']") 
 	private WebElement teacher;
-	@FindBy(id="subBtn_1")  
+	@FindBy(xpath="//*[contains(@class,'popupForm')]//button[text()='join for free']")  
 	private WebElement joinbtn;
 	@FindBy(id="subBtn_2") 
 	private WebElement joinbtn1;

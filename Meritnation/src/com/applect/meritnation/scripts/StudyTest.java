@@ -12,7 +12,7 @@ import com.applect.meritnation.pageobject.StudyPage;
 public class StudyTest extends BaseLib
 {
 	
-	@Test(groups="Regression")
+	@Test(groups="CurrentTask")
 	public void TC_001_VerifyStudyPhysicsPageTest(){
 		BasePage.login(driver);
 		StudyPage studyPage = new StudyPage(driver);

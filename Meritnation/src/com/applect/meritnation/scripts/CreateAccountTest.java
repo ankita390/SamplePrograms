@@ -36,7 +36,7 @@ public class CreateAccountTest extends BaseLib
 		
 	}
 	
-	@Test(groups="CurrentTask")
+	@Test(groups="Regression")
 
 	public void TC_002_ANARegistrationTest() throws IOException{
 		CreateAccountPage createAccountPage = new CreateAccountPage(driver);
