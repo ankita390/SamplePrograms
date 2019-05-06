@@ -82,7 +82,7 @@ public class CreateAccountTest extends BaseLib
 		lp.createAccount();
 	}
 		
-	@Test(groups="")
+	@Test(groups="CurrentTask")
 	public void TC_004_chapterRegistrationTest(){
 		LoginPage lp = new LoginPage(driver);
 		lp.chapterregistration();

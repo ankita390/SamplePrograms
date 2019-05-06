@@ -42,7 +42,7 @@ public class StudyPage {
 	private WebElement englishicon;
 	@FindBy(xpath="//div[@class='navBox']/nav/ul/li[2]/ul/li[6]/a[text()='Economics']")
 	private WebElement economicsicon;
-	@FindBy(xpath="//div[@class='mysessionFilter']/div/div/ul/li/a[text()=' Physics Part-I ']")
+	@FindBy(xpath="//ul[@class='radioli']//a[text()=' Physics Part-I ']")
 	private WebElement physicspart1radionbtn;
 	@FindBy(xpath="//div[@class='mysessionFilter']/div/div/ul/li/a[text()=' Science ']")
 	private WebElement scienceradionbtn;
