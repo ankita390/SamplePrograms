@@ -29,13 +29,6 @@ public class CreateAccountTest extends BaseLib
 		BasePage.logout(driver);
 		}
 	
-	@Test
-	public void TC_002_CreateAccountAllBoardTest(){
-		
-		
-		
-	}
-	
 	@Test(groups="Regression")
 
 	public void TC_002_ANARegistrationTest() throws IOException{
@@ -57,7 +50,7 @@ public class CreateAccountTest extends BaseLib
 	}
 		
 	 @Test(groups="")
-	public void TC_002_brdRegistrationTest(){
+	public void TC_003_brdRegistrationTest(){
 		LoginPage loginPage=new LoginPage(driver);
 		CreateAccountPage createAccountPage = new CreateAccountPage(driver);
 		loginPage.BrdLogIN();
@@ -76,60 +69,58 @@ public class CreateAccountTest extends BaseLib
 		
 
 	@Test(groups="")
-	public void TC_003_demoRegistrationTest(){
+	public void TC_004_demoRegistrationTest(){
 		LoginPage lp=new LoginPage(driver);
 		lp.demologin();
 		lp.createAccount();
 	}
 		
 	@Test(groups="")
-	public void TC_004_chapterRegistrationTest(){
+	public void TC_005_chapterRegistrationTest(){
 		LoginPage lp = new LoginPage(driver);
 		lp.chapterregistration();
 		lp.createAccount();
-		
 	}
 		    @Test(groups="")
-	public void TC_005_ncertregistration(){
+	public void TC_006_ncertregistration(){
 			  LoginPage lp=new LoginPage(driver);
 			  lp.ncertregistration();
 			  lp.createAccount();
 		  }
 		  
 		  @Test(groups="")
-	public void TC_006_testregistration(){
+	public void TC_008_testregistration(){
 			  LoginPage lp = new LoginPage(driver);
 			  lp.testprep(driver);
 			  lp.createAccount();
 		  }
 		 @Test(groups="")
-	public void TC_007_livenewregistration(){
+	public void TC_009_livenewregistration(){
 			  LoginPage lp= new LoginPage(driver);
 			  lp.livenewreg();
 		  }
-	@Test(groups="CurrentTas")
-	public void TC_008_liveregistration(){
+	@Test(groups="")
+	public void TC_010_liveregistration(){
 		LoginPage lp=new LoginPage(driver);
 		lp.livereg();
 		lp.createAccount();
 	}
 			  
-	@Test(groups="CurrentTas")
-	public void TC_009_juniorregis() throws Exception{
+	@Test(groups="CurrentTask")
+	public void TC_011_juniorregis() throws Exception{
 		LoginPage lp=new LoginPage(driver);
 		lp.juniorregistration(driver);
-		lp.createAccount();
 		
 	}
 
 	@Test(groups="") 
-	public void TC_010_chapwaitreg(){
+	public void TC_012_chapwaitreg(){
 		LoginPage lp=new LoginPage(driver);
 		lp.chapwaitreg(driver);
 	}
 		    
 	@Test(groups="")
-	public void TC_011_ncrtwaitreg(){
+	public void TC_013_ncrtwaitreg(){
 		LoginPage lp=new LoginPage(driver);
 		lp.ncertwaitreg(driver);
 	}
