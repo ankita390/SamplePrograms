@@ -20,8 +20,8 @@ public class CreateAccountPage
 {
 	@FindBy(xpath="//button[contains(text(), 'Create account')]")
 	private WebElement createaccountbtn;
-	@FindBy(xpath="//*[contains(@class,'popupForm')]//*[text()='Name']/preceding-sibling::input")
-	private WebElement nametxtbx;
+	@FindBy(xpath="//*[contains(@class,'popupForm')]//*[text()='Name']/preceding-sibling::input") 
+	public WebElement nametxtbx;
 	@FindBy(xpath="//*[contains(@class,'popupForm')]//*[text()='E-mail']/preceding-sibling::input")
 	private WebElement emailtxtbx;
 	@FindBy(xpath="//*[contains(@class,'popupForm')]//*[text()='Password']/preceding-sibling::input[@autocomplete='current-password']")

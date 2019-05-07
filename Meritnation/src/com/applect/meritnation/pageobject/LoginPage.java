@@ -5,6 +5,7 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Set;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.ElementNotVisibleException;
 import org.openqa.selenium.TimeoutException;
 import org.openqa.selenium.WebDriver;
@@ -18,12 +19,15 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 import com.applect.meritnation.generic.ExcelUtils;
 import com.applect.meritnation.generic.WaitStatementLib;
+import com.thoughtworks.selenium.Wait;
 
 
 public class LoginPage {
 	WebDriver driver;
 	@FindBy(xpath="//span[text()='LOGIN']")
 	private WebElement loginbtn;
+	@FindBy(xpath="//*[contains(@class,'popupForm')]//*[text()='Name']/preceding-sibling::input") 
+	public WebElement nametxtbx;
 	@FindBy(xpath="//input[@id='username_login_1']")
 	private WebElement untxtbx;
 	@FindBy(xpath="//input[@id='password_login_1']")
@@ -189,9 +193,9 @@ public class LoginPage {
 	private WebElement testlnk;
 	@FindBy(xpath="//div[@class='sidebarInner']/div/div[6]/div[2]/div/ul/li[3]/a")
 	private WebElement brdsollnk;
-	@FindBy(xpath="//div[@class='testPaperSection']/ul/li[1]/a")
+	@FindBy(xpath="//div[@class='testPaperSection']/ul/li[1]")
 	private WebElement viewsollnk;
-	@FindBy(xpath="//div[@id='q338387']/a")
+	@FindBy(xpath="//ul[@id='ques_1']/li/div/a")
 	private WebElement viewsolbtn;
 	@FindBy(xpath="//div[@class='navBox_top']/a")
 	private WebElement demolnk;
@@ -269,7 +273,7 @@ public class LoginPage {
 	private WebElement junischname;
 	@FindBy(xpath="//div[@class='ui-select-choices-content selectize-dropdown-content']/div/div[@role='option']/div/div/div/div/div[@title='a221, okhla phase - 1']")
 	private WebElement schoolselclick;
-	@FindBy(xpath="//input[@id='UserDetailFullname']")
+	@FindBy(xpath="//*[contains(@class,'popupForm')]//*[text()='Name']/preceding-sibling::input")
 	private WebElement chapuid;
 	@FindBy(xpath="//input[@id='UserEmailHeaderRegPopup']")
 	private WebElement chapemail;
@@ -289,7 +293,7 @@ public class LoginPage {
 	private WebElement chapjoinfree;
 	@FindBy(id="textbook_solution")
 	private WebElement txtbooklnk;
-	@FindBy(xpath="//a[@href='/cbse-class-10/science/science-ncert-solutions/chemical-reactions-and-equations/ncert-solutions/12_2_1321_145_123_95467']")
+	@FindBy(xpath="//a[@href=\"/cbse-class-10/science/science-ncert-solutions/chemical-reactions-and-equations/ncert-solutions/12_2_1321_145\"]")
 	private WebElement fsttxtbooklnk;
 	
 	
@@ -359,8 +363,6 @@ public class LoginPage {
 		createAccountPage.joinNow(driver);
 		createAccountPage.enterSchoolName(driver);
 		BasePage.logout(driver);
-		
-		
 	}
 	
 	
@@ -772,7 +774,7 @@ public class LoginPage {
 	public void ncertregistration(){
 		ncrtsollnk.click();
 		createbtn.click();
-		nametxt.sendKeys("werty");
+		/*nametxt.sendKeys("werty");
 		emailtxt.sendKeys("werty@mn.com");
 		passtxt.sendKeys("123456");
 		pintxt.sendKeys("110089");
@@ -781,7 +783,7 @@ public class LoginPage {
 		Select stn =new Select (classselect);
 		stn.selectByValue("10");
 		usertype.click();
-		joinfree.click();
+		joinfree.click();*/
 	}
 	public void testprep(WebDriver driver){
 		entranceexam.click();
@@ -805,18 +807,19 @@ public class LoginPage {
 	}
 	
 	public void juniorregistration(WebDriver driver) throws Exception{
+		CreateAccountPage createAccountPage = new CreateAccountPage(driver);
 		gradefive.click();
 		junacc.click();
-		stuid.sendKeys("ertyu");
-		juniemail.sendKeys("ffgvf@gmail.com");
-		junipass.sendKeys("123456");
-		junimobno.sendKeys("9634346819");	
-		Select board = new Select(joniboarddrpdwn);
-		board.selectByValue("1");
-		Select stn =new Select (joniclassdrpdwn);
-		stn.selectByValue("3");
-		junipin.sendKeys("201017");	
-		junifree.click();
+		WaitStatementLib.explicitWaitForVisiblity(driver, 30, nametxtbx);
+		createAccountPage.enterName();
+		createAccountPage.enterEmail();
+		createAccountPage.enterPassword();
+		createAccountPage.enterPincode();
+		createAccountPage.enterMobile();
+		createAccountPage.enterUserCourse();
+		createAccountPage.enterUserClass();
+		createAccountPage.selectUserAsStudent();
+		createAccountPage.joinNow(driver);
 		try {
 			Thread.sleep(5000);
 		} catch (InterruptedException e) {
@@ -857,22 +860,20 @@ public class LoginPage {
 	}
        
 	public void chapwaitreg(WebDriver driver){
+		CreateAccountPage createAccountPage = new CreateAccountPage(driver);
 		classTenLnk.click();																																																																																																																											
 		subjlnk.click();
 		scndchaplnk.click();
-		WebDriverWait register=new WebDriverWait(driver, 300);
-		register.until(ExpectedConditions.visibilityOf(chapuid));
-		chapuid.sendKeys("uiopa");
-		chapemail.sendKeys("uiopa@mn.com");
-		chapuidpass.sendKeys("123456");
-		Select board = new Select(chapregboard);
-		board.selectByValue("1");
-		Select stn =new Select (chapregclass);
-		stn.selectByValue("10");
-		chapregmob.sendKeys("9634346819");
-		chappincode.sendKeys("201017");
-	    chapusersel.click();
-	    chapjoinfree.click();
+		WaitStatementLib.explicitWaitForVisiblity(driver, 300, nametxtbx);
+		createAccountPage.enterName();
+		createAccountPage.enterEmail();
+		createAccountPage.enterPassword();
+		createAccountPage.enterPincode();
+		createAccountPage.enterMobile();
+		createAccountPage.enterUserCourse();
+		createAccountPage.enterUserClass();
+		createAccountPage.selectUserAsStudent();
+		createAccountPage.joinNow(driver);
 	    juniedcon.click();
 		juniselcon.click();
 		Actions act=new Actions(driver);
@@ -908,23 +909,23 @@ public class LoginPage {
 	}
 	
 	public void ncertwaitreg(WebDriver driver){
+		CreateAccountPage createAccountPage = new CreateAccountPage(driver);
 		classTenLnk.click();																																																																																																																											
 		subjlnk.click();
 		txtbooklnk.click();
 		fsttxtbooklnk.click();
-		WebDriverWait register=new WebDriverWait(driver, 300);
-	register.until(ExpectedConditions.visibilityOf(chapuid));
-	chapuid.sendKeys("tyuio");
-	chapemail.sendKeys("tyuio@mn.com");
-	chapuidpass.sendKeys("123456");
-	Select board = new Select(chapregboard);
-	board.selectByValue("1");
-	Select stn =new Select (chapregclass);
-	stn.selectByValue("10");
-	chapregmob.sendKeys("9634346819");
-	chappincode.sendKeys("201017");
-	chapusersel.click();
-	chapjoinfree.click();
+		/*WebDriverWait register=new WebDriverWait(driver, 300);
+		register.until(ExpectedConditions.visibilityOf());*/
+		WaitStatementLib.explicitWaitForVisiblity(driver, 300, nametxtbx);
+		createAccountPage.enterName();
+		createAccountPage.enterEmail();
+		createAccountPage.enterPassword();
+		createAccountPage.enterPincode();
+		createAccountPage.enterMobile();
+		createAccountPage.enterUserCourse();
+		createAccountPage.enterUserClass();
+		createAccountPage.selectUserAsStudent();
+		createAccountPage.joinNow(driver);
 	juniedcon.click();
 	juniselcon.click();
 	Actions act=new Actions(driver);
