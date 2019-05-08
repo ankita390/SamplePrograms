@@ -14,10 +14,8 @@ public class MainAppLoginPage {
 	public MainAppLoginPage(WebDriver driver){
 		PageFactory.initElements(driver, this);
 	}
-	
 	public void validLogin(){
 		BasePage.sleepForMilliSecond(2000);
 		loginBtn.click();
-		
-	}
+		}
 }
