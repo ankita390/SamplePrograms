@@ -44,7 +44,7 @@ public class StudyPage {
 	private WebElement economicsicon;
 	@FindBy(xpath="//ul[@class='radioli']//a[text()=' Physics Part-I ']")
 	private WebElement physicspart1radionbtn;
-	@FindBy(xpath="//div[@class='mysessionFilter']/div/div/ul/li/a[text()=' Science ']")
+	@FindBy(xpath="//ul[@class='radioli']/li/a[text()=' Science ']")
 	private WebElement scienceradionbtn;
 	
 	
@@ -139,7 +139,7 @@ public class StudyPage {
 	private WebElement assignmentonsubjectlnk;
 	@FindBy(xpath="//div[@class='sidebarInner']/div/div[6]/h3[text()='Tests']")
 	private WebElement testsonsubjectlnk;
-	@FindBy(xpath="//div[@class='sidebarInner']/div/div[4]/h3[text()='Tests']")
+	@FindBy(xpath="//div[@class='mysessionFilter']/h3[text()='Tests']")
 	private WebElement testsonsubject_hindilnk;
 	@FindBy(xpath="//div[@class='bottomRow']/a[contains(text(),'Take test')]")
 	private List <WebElement> taketestassignmentbtn;
@@ -277,7 +277,7 @@ public class StudyPage {
 	public WebElement brdpprsolnradiobtn_science;
 	@FindBy(xpath="//div[@class='sidebarInner']/div/div[6]/div/div/ul/li[2]")
 	public WebElement brdpprsolnradiobtn_commerce;
-	@FindBy(xpath="//div[@class='sidebarInner']/div/div[4]/div/div/ul/li[2]")
+	@FindBy(xpath="//a[text()='Board Paper Solutions']")
 	public WebElement brdpprsolnradiobtn_classten_hindi;
 	@FindBy(xpath="//main[@id='mainContent']/div/h1")
 	public WebElement brdpprsolntitle;

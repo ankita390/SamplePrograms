@@ -107,7 +107,7 @@ public class CreateAccountTest extends BaseLib
 		lp.createAccount();
 	}
 			  
-	@Test(groups="CurrentTask")
+	@Test(groups="CurrentTas")
 	public void TC_011_juniorregis() throws Exception{
 		LoginPage lp=new LoginPage(driver);
 		lp.juniorregistration(driver);
