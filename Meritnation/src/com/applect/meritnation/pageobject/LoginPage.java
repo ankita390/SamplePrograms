@@ -19,7 +19,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 import com.applect.meritnation.generic.ExcelUtils;
 import com.applect.meritnation.generic.WaitStatementLib;
-import com.thoughtworks.selenium.Wait;
+
 
 
 public class LoginPage {

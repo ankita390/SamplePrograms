@@ -14,8 +14,8 @@
        </packages>
 </test>
 -->
+
 <!--
--->
 <test name="Meritnation Mobile Regression">
     <parameter name="browser" value="chrome"/>
     	<groups>
@@ -27,6 +27,7 @@
        	<package name="com.applect.meritnationmobile.scripts"/>
        </packages>
 </test>
+-->
 
 <test name="Meritnation Main App">
     

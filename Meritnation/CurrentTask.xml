@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
 <suite name="Main Test Suite" parallel="false">
- <!--
+ 
   <test name="Meritnation Web Regression">
     <parameter name="browser" value="chrome"/>
     	<groups>
@@ -13,8 +13,8 @@
        		<package name="com.applect.meritnation.scripts"/>
        </packages>
     </test> 
-     -->
-   
+     
+   <!--
  <test name="Meritnation Mobile Web Regression">
     <parameter name="browser" value="chrome"/>
     	<groups>
@@ -26,5 +26,5 @@
        		<package name="com.applect.meritnationmobile.scripts"/>
        </packages>
     </test>
- 
+ -->
 </suite>

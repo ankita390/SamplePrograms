@@ -6,6 +6,7 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+
 import org.apache.commons.io.FileUtils;
 import org.apache.log4j.LogManager;
 import org.apache.log4j.Logger;
@@ -61,7 +62,7 @@ public class BaseLib {
 		 DesiredCapabilities capabilities = new DesiredCapabilities();
 		 capabilities.setCapability(CapabilityType.BROWSER_NAME, "");
 		 capabilities.setCapability("deviceName", "Anup");
-		 capabilities.setCapability("platformVersion", "7.0");
+		 capabilities.setCapability("platformVersion", "7.0.0");
 		 capabilities.setCapability("platformName", "Android");
 		 capabilities.setCapability("app", app.getAbsolutePath());
 		 capabilities.setCapability("appPackage", "com.meritnation.school");
@@ -111,14 +112,13 @@ public class BaseLib {
 		    options.addArguments("disable-geolocation");
 			options.addArguments("--disable-notifications");
 		    caps.setCapability(ChromeOptions.CAPABILITY, options);
-			caps.setCapability("deviceName", "Anup");
+			caps.setCapability("deviceName", GetPropertyValues.getPropertyValue("anupPhoneName"));
 			caps.setCapability("locationServicesAuthorized", false);
 			caps.setCapability("clearSystemFiles", true);
-			
-		
-			caps.setCapability("udid", "330010ba128373cb"); //Give Device ID of your mobile phone
+			caps.setCapability("udid", GetPropertyValues.getPropertyValue("anupPhoneUDID")); //Give Device ID of your mobile phone
 			caps.setCapability("platformName", "Android");
-			caps.setCapability(CapabilityType.VERSION, "7.0");
+			caps.setCapability("automationName" , "UiAutomator1");
+			caps.setCapability(CapabilityType.VERSION, GetPropertyValues.getPropertyValue("anupPhoneOSName"));
 		//	caps.setCapability("appPackage", "com.rivigo.zoombp.rivigozoombpapp");
 		//	caps.setCapability("appActivity", "com.rivigo.zoombp.rivigozoombpapp.activity.Activity.RivigoHomeActivity");
 			

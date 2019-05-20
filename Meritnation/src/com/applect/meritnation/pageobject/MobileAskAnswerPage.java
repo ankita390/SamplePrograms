@@ -36,7 +36,7 @@ public class MobileAskAnswerPage {
 	private MobileElement asknAnsFooter;
 	@FindBy(xpath = "//div[@class='media-box']//div[@class='media-footer']//button/em")
 	private List <MobileElement> ansCount;
-	@FindBy(xpath = "//div[@class='view-full-answer']")
+	@FindBy(className = "view-full-answer")
 	private MobileElement fullAnsLnk;
 	@FindBy(id = "fullnameStep")
 	private MobileElement fullName;
@@ -162,6 +162,7 @@ public class MobileAskAnswerPage {
 				String otp = ConnectDatabase.connectToDatabase(dbUrl, dbusername, dbpassword, mobile);
 				WaitStatementLib.explicitWaitForVisiblity(_driver, 10, otpTxtBx);
 				otpTxtBx.sendKeys(otp);
+				System.out.println(otp);
 			} catch (ClassNotFoundException | SQLException e) {
 				e.printStackTrace();
 			}
