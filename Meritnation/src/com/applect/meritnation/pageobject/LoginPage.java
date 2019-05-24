@@ -22,7 +22,7 @@ public class LoginPage {
 	private WebElement loginbtn;
 	@FindBy(xpath="//*[contains(@class,'popupForm')]//*[text()='Name']/preceding-sibling::input") 
 	public WebElement nametxtbx;
-	@FindBy(xpath="//input[@class='regLogErr']")
+	@FindBy(xpath="//input[@id='username_login_1']")
 	private WebElement untxtbx;
 	@FindBy(xpath="//input[@id='password_login_1']")
 	private WebElement pwdtxtbx;
