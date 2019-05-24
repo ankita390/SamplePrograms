@@ -5,7 +5,6 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Set;
 
-import org.openqa.selenium.By;
 import org.openqa.selenium.ElementNotVisibleException;
 import org.openqa.selenium.TimeoutException;
 import org.openqa.selenium.WebDriver;
@@ -13,14 +12,9 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.Select;
-import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 import com.applect.meritnation.generic.ExcelUtils;
 import com.applect.meritnation.generic.WaitStatementLib;
-
-
 
 public class LoginPage {
 	WebDriver driver;
@@ -28,7 +22,7 @@ public class LoginPage {
 	private WebElement loginbtn;
 	@FindBy(xpath="//*[contains(@class,'popupForm')]//*[text()='Name']/preceding-sibling::input") 
 	public WebElement nametxtbx;
-	@FindBy(xpath="//input[@id='username_login_1']")
+	@FindBy(xpath="//input[@class='regLogErr']")
 	private WebElement untxtbx;
 	@FindBy(xpath="//input[@id='password_login_1']")
 	private WebElement pwdtxtbx;
@@ -229,7 +223,7 @@ public class LoginPage {
 	private WebElement joinfree;
 	@FindBy(xpath="//a[@class='bps_bg']")
 	private WebElement entranceexam;
-	@FindBy(xpath="//li[@class='signUp-link']")
+	@FindBy(xpath="//li[@class='signUp-link mnRegistrationPopup']/a")
 	private WebElement signup;
 	@FindBy(xpath="//a[@href='/live-new']")
 	private WebElement livenew;
@@ -293,9 +287,12 @@ public class LoginPage {
 	private WebElement chapjoinfree;
 	@FindBy(id="textbook_solution")
 	private WebElement txtbooklnk;
-	@FindBy(xpath="//a[@href=\"/cbse-class-10/science/science-ncert-solutions/chemical-reactions-and-equations/ncert-solutions/12_2_1321_145\"]")
+	@FindBy(xpath="//ul[@class=\"newChapterList\"]/li[1]/a")
 	private WebElement fsttxtbooklnk;
-	
+	@FindBy(xpath="//span[@class='userimg']/img")
+	private WebElement userimg;
+	@FindBy(xpath="//a[text()='Log out']")
+	private WebElement testlogout;
 	
 	
 	
@@ -800,6 +797,7 @@ public class LoginPage {
 	public void livenewreg(){
 		livenew.click();
 		signfree.click();
+		
 			}
 	public void livereg(){
 	livesign.click();
@@ -810,16 +808,16 @@ public class LoginPage {
 		CreateAccountPage createAccountPage = new CreateAccountPage(driver);
 		gradefive.click();
 		junacc.click();
-		WaitStatementLib.explicitWaitForVisiblity(driver, 30, nametxtbx);
-		createAccountPage.enterName();
-		createAccountPage.enterEmail();
-		createAccountPage.enterPassword();
-		createAccountPage.enterPincode();
-		createAccountPage.enterMobile();
-		createAccountPage.enterUserCourse();
-		createAccountPage.enterUserClass();
-		createAccountPage.selectUserAsStudent();
-		createAccountPage.joinNow(driver);
+		WaitStatementLib.implicitWaitForSecond(driver, 5);
+		createAccountPage.enterJuniorName();
+		createAccountPage.enterjuniorEmail();
+		createAccountPage.enterjuniorPassword();
+		createAccountPage.enterjuniorPincode();
+		createAccountPage.enterjuniorMobile();
+		createAccountPage.enterjuniorUserCourse();
+		createAccountPage.enterjuniorUserClass();
+		createAccountPage.selectjuniorUserAsStudent();
+		createAccountPage.juniorjoinNow(driver);
 		try {
 			Thread.sleep(5000);
 		} catch (InterruptedException e) {
@@ -914,8 +912,6 @@ public class LoginPage {
 		subjlnk.click();
 		txtbooklnk.click();
 		fsttxtbooklnk.click();
-		/*WebDriverWait register=new WebDriverWait(driver, 300);
-		register.until(ExpectedConditions.visibilityOf());*/
 		WaitStatementLib.explicitWaitForVisiblity(driver, 300, nametxtbx);
 		createAccountPage.enterName();
 		createAccountPage.enterEmail();
@@ -959,7 +955,12 @@ public class LoginPage {
 	}
   schoolselclick.click();
 }
-	
+	public void logout ()
+	{
+		userimg.click();
+		testlogout.click();
+		
+	}
 	
 	
 	

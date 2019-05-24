@@ -117,6 +117,21 @@ public abstract class BasePage {
 		loginPage.enterPassword(driver);
 		loginPage.signInBtnClick(driver);
 	}
+	public static void signup(WebDriver driver) {
+		 CreateAccountPage createAccountPage = new CreateAccountPage(driver);
+			createAccountPage.enterName();
+			createAccountPage.enterEmail();
+			createAccountPage.enterPassword();
+			createAccountPage.enterPincode();
+			createAccountPage.enterMobile();
+			createAccountPage.enterUserCourse();
+			createAccountPage.enterUserClass();
+			createAccountPage.selectUserAsStudent();
+			createAccountPage.joinNow(driver);
+			createAccountPage.enterSchoolName(driver);
+	}
+	
+	
 	public static void loginAsClassTenUser (WebDriver driver)
 	{
 		LoginPage loginPage = new LoginPage(driver);
@@ -128,10 +143,11 @@ public abstract class BasePage {
 	public static void logout(WebDriver driver)
 	{
 		CreateAccountPage createAccountPage = new CreateAccountPage(driver);
-		
-		createAccountPage.clickProfileIcon(driver);
+		 
+		  createAccountPage.clickProfileIcon(driver);
 		createAccountPage.logoutClick(driver);
 	}
+	
 	public static void focusElement(WebElement element, WebDriver driver)
 	{
 	 

@@ -98,7 +98,28 @@ public class CreateAccountPage
 	private List <WebElement> allBoards;
 	@FindBy(xpath="//div[@class='close tablecell']")
 	private WebElement closeOrangePopup;
-	
+	@FindBy(xpath="//form[@id='popup_registration']//*[@id='UserDetailFullname']")
+	private WebElement untxtbx;
+	@FindBy(xpath="//form[@id='popup_registration']//*[@id='UserEmail']")
+	private WebElement junemailtxtbx;
+	@FindBy(xpath="//form[@id='popup_registration']//*[@id='UserPassword']")
+	private WebElement junpwdtxtbx;
+	@FindBy(xpath="//form[@id='popup_registration']//*[@id='UserDetailMobile']") 
+	private WebElement junmobbx;
+	@FindBy(xpath="//form[@id='popup_registration']//*[@id='pincode1']")
+	private WebElement junpincodebx;
+	@FindBy(xpath="//form[@id='popup_registration']//*[@id='curboard_popup']")
+	private WebElement juncoursename;
+	@FindBy(xpath="//form[@id='popup_registration']//*[@id='regGradeId_popup']")
+	private WebElement junclassname;
+	@FindBy(xpath="//form[@id='popup_registration']//*[@id='curboard_popup']")
+	private WebElement junstudent;
+	@FindBy(xpath="//form[@id='popup_registration']//*[@id='juniorRegBtn']")  
+	private WebElement junjoinbtn;
+	@FindBy(id="subBtn_2") 
+	private WebElement junjoinbtn1;
+	@FindBy(xpath="//a[@class='signinBtn']")
+	private WebElement gotobtn;
 	
 	public CreateAccountPage(WebDriver driver)
 	{
@@ -113,13 +134,15 @@ public class CreateAccountPage
 	{
 		String fullname = ExcelUtils.readData("TestData", 0, 1);
 		nametxtbx.sendKeys(fullname);
-	}
+	}	
+	
 	public void enterEmail()
 	{
 		String emailid = ExcelUtils.readData("TestData", 0, 2);
 		emailid = emailid + BasePage.randomString() + "@applect.com";
 		emailtxtbx.sendKeys(emailid);
 	}
+	
 	public void enterPassword()
 	{
 		String password = ExcelUtils.readData("TestData", 0, 3);
@@ -168,6 +191,11 @@ public class CreateAccountPage
 	{
 		teacher.click();
 	}
+	public void gotodashboard(WebDriver driver)
+	{
+		gotobtn.click();
+		BasePage.sleepForMilliSecond(1000);
+	}
 	public void joinNow(WebDriver driver)
 	{
 		
@@ -178,6 +206,65 @@ public class CreateAccountPage
 		catch (Exception e){
 			BasePage.scrollDown(joinbtn1, driver);
 			joinbtn1.click();
+		}
+	}
+	public void enterJuniorName()
+	{
+		String fullname = ExcelUtils.readData("TestData", 0, 1);
+		untxtbx.sendKeys(fullname);
+}
+	public void enterjuniorEmail()
+	{
+		String emailid = ExcelUtils.readData("TestData", 0, 2);
+		emailid = emailid + BasePage.randomString() + "@applect.com";
+		junemailtxtbx.sendKeys(emailid);
+	}
+	public void enterjuniorPassword()
+	{
+		String password = ExcelUtils.readData("TestData", 0, 3);
+	//	WaitStatementLib.explicitWaitForVisiblity(driver, 5, pwdtxtbx);
+		try{
+			junpwdtxtbx.sendKeys(password);	
+		}
+		catch(ElementNotVisibleException e){
+			BasePage.sleepForMilliSecond(5000);
+			junpwdtxtbx.sendKeys(password);
+		}
+	}
+	public void enterjuniorPincode ()
+	{
+		String pin = ExcelUtils.readData("TestData", 0, 4);
+		junpincodebx.sendKeys(pin);	
+	}
+	public void enterjuniorMobile ()
+	{
+		String mobile = ExcelUtils.readData("TestData", 0, 5);
+		junmobbx.sendKeys(mobile);	
+	}
+	public void enterjuniorUserCourse ()
+	{
+		Select sel = new Select(juncoursename);
+		sel.selectByVisibleText("CBSE");	
+	}
+	public void enterjuniorUserClass ()
+	{
+		Select sel = new Select(junclassname);
+		sel.selectByVisibleText("V");	
+	}
+	public void selectjuniorUserAsStudent()
+	{
+		junstudent.click();
+	}
+	public void juniorjoinNow(WebDriver driver)
+	{
+		
+		try{
+			BasePage.scrollDown(junjoinbtn, driver);
+			junjoinbtn.click();
+		}
+		catch (Exception e){
+			BasePage.scrollDown(junjoinbtn, driver);
+			junjoinbtn.click();
 		}
 	}
 	
@@ -250,8 +337,11 @@ public class CreateAccountPage
 				driver.switchTo().defaultContent();
 				}
 			}*/
+		 
 			WaitStatementLib.explicitWaitForVisiblity(driver, 15, profileicon);
-			profileicon.click();
+	
+
+		profileicon.click();
 	}
 	public void verifyPaidSubscription(WebDriver driver)
 	{
@@ -312,6 +402,5 @@ public class CreateAccountPage
 	//	BasePage.sleepForMilliSecond(2000);
 		logoutbtn.click();
 	}
-	
 	
 }
