@@ -61,8 +61,8 @@ public class BaseLib {
 		 File app = new File(appDir, "86.apk");
 		 DesiredCapabilities capabilities = new DesiredCapabilities();
 		 capabilities.setCapability(CapabilityType.BROWSER_NAME, "");
-		 capabilities.setCapability("deviceName", "Anup");
-		 capabilities.setCapability("platformVersion", "7.0.0");
+		 capabilities.setCapability("deviceName", GetPropertyValues.getPropertyValue("anupPhoneName"));
+		 capabilities.setCapability("platformVersion", GetPropertyValues.getPropertyValue("anupPhoneOSName"));
 		 capabilities.setCapability("platformName", "Android");
 		 capabilities.setCapability("app", app.getAbsolutePath());
 		 capabilities.setCapability("appPackage", "com.meritnation.school");
