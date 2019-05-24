@@ -43,6 +43,7 @@ public class BaseLib {
 	public AppiumDriver<MobileElement> _driver;
 	@BeforeSuite(alwaysRun=true)
 	
+	
 	public void deleteOutputDirectory(){
 		
 		String filepath = "/var/www/mn-testing/Meritnation/test-output";
