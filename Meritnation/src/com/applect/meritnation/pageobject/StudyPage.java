@@ -291,7 +291,12 @@ public class StudyPage {
 	private WebElement closeOrangePopup;
 	@FindBy(xpath="//div[@class='sidebarInner']/div/div[4]/h3[text()='Chapters']")
 	private WebElement clickChapter;
-	
+	@FindBy(xpath="//a[@href=\'/etutor/etutor_class_student_maps/classList\']")
+	private WebElement Livebtn;
+	@FindBy(xpath="//div[@id='main_section']/table/tbody/tr[2]/td[5]/a[1]/span")
+	private WebElement start;
+	@FindBy(xpath="//div[@class='ng-scope layout-row']")
+	private WebElement crystal;
 	
 	public StudyPage(WebDriver driver)
 	{
@@ -1170,6 +1175,13 @@ public class StudyPage {
 					lastdrpdwntopicmenu.get(size-1).click();
 					taketopictestbtn.get(taketopictestbtn.size()-1).click();
 				}
+	public void verifyJuniorLive(WebDriver driver) {
+		BasePage.scrollDown(Livebtn, driver);
+		Livebtn.click();
+		start.click();
+	    WaitStatementLib.explicitWaitForVisiblity(driver, 5, crystal);
+	    
+	}
 	}
 
 			

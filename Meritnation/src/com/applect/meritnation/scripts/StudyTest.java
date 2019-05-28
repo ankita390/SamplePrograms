@@ -191,7 +191,6 @@ public class StudyTest extends BaseLib
 			studyPage.clickBiologySubject(driver);
 			studyPage.clickPopularQuestions(driver);
 			BasePage.logout(driver);
-			
 		}
 		@Test(groups="Notfortest")
 		public void TC_018_VerifyStudyBiologyTopicActivitiesTest()
@@ -391,7 +390,6 @@ public class StudyTest extends BaseLib
 			studyPage.clickChemistrySubject(driver);
 			studyPage.clickPopularQuestions(driver);
 			BasePage.logout(driver);
-			
 		}
 		@Test(groups="Notfortest")
 		public void TC_037_VerifyStudyChemistryTopicActivitiesTest()
@@ -423,7 +421,7 @@ public class StudyTest extends BaseLib
 			studyPage.clickChemistrySubject(driver);
 			studyPage.clickBoardPaperQueestions();
 			BasePage.logout(driver);
-	}
+		}
 		@Test
 		public void TC_040_VerifyStudyChemistryTopicFormativeAssesmentTest()
 		{
@@ -573,4 +571,16 @@ public class StudyTest extends BaseLib
 				BasePage.logout(driver);
 				}
 		}
+		@Test(groups="CurrentTask")
+		 public void TC_054_VerifyJuniorLiveClass() {
+			StudyPage studyPage = new StudyPage(driver);
+			LoginPage loginPage = new LoginPage(driver);
+			loginPage.loginButtonClick(driver);
+			loginPage.enterUserName(driver,1,15);
+			loginPage.enterPassword(driver);
+			loginPage.signInBtnClick(driver);
+			studyPage.verifyJuniorLive(driver);			
+			
+		}
 }
+
