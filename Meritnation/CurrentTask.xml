@@ -13,6 +13,17 @@
        		<package name="com.applect.meritnation.scripts"/>
        </packages>
     </test> 
+      <test name="Meritnation ETutor Regression">
+    <parameter name="browser" value="chrome"/>
+    	<groups>
+   			<run>
+   				<include name = "CurrentTask" /> 
+			</run>
+   		</groups>
+       <packages>
+       		<package name="com.applect.meritnationetutor.scripts"/>
+       </packages>
+    </test> 
      
    <!--
  <test name="Meritnation Mobile Web Regression">

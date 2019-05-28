@@ -4,7 +4,6 @@ import java.io.IOException;
 
 import org.testng.annotations.Test;
 import com.applect.meritnation.generic.BaseLib;
-import com.applect.meritnation.generic.WaitStatementLib;
 import com.applect.meritnation.pageobject.BasePage;
 import com.applect.meritnation.pageobject.CreateAccountPage;
 import com.applect.meritnation.pageobject.LoginPage;
@@ -14,11 +13,13 @@ public class CreateAccountTest extends BaseLib
 	@Test(invocationCount=1, groups="Regression", priority =1)
 	public void TC_001_CreateAccountTest() 
 	{
+		CreateAccountPage createAccoutPage = new CreateAccountPage(driver);
+		createAccoutPage.createAccount();
 		BasePage.signup(driver);
 		BasePage.logout(driver);
 		}
 	
-	@Test(groups="")
+	@Test(groups="CurrentTas")
 
 	public void TC_002_ANARegistrationTest() throws IOException{
 		LoginPage loginPage = new LoginPage(driver);
@@ -28,7 +29,7 @@ public class CreateAccountTest extends BaseLib
 		
 	}
 		
-	 @Test(groups="")
+	 @Test(groups="CurrentTas")
 	public void TC_003_brdRegistrationTest(){
 		LoginPage loginPage=new LoginPage(driver);
 		loginPage.BrdLogIN();
@@ -46,7 +47,7 @@ public class CreateAccountTest extends BaseLib
 	}
 		
 
-	@Test(groups="")
+	@Test(groups="CurrentTas")
 	public void TC_005_chapterRegistrationTest(){
 		LoginPage lp = new LoginPage(driver);
 		lp.chapterregistration();
@@ -63,14 +64,14 @@ public class CreateAccountTest extends BaseLib
 			  
 		  }
 		  
-		  @Test(groups="")
+		  @Test(groups="CurrentTas")
 	public void TC_008_testregistration(){
 			  LoginPage lp = new LoginPage(driver);
 			  lp.testprep(driver);
 			  BasePage.signup(driver);
 			  lp.logout();
 		  }
-		 @Test(groups="")
+		 @Test(groups="CurrentTas")
 	public void TC_009_livenewregistration(){
 			  LoginPage lp= new LoginPage(driver);
 			  lp.livenewreg();
@@ -81,20 +82,20 @@ public class CreateAccountTest extends BaseLib
 		  }
 			  
 
-	@Test(groups="")
+	@Test(groups="CurrentTas")
 	public void TC_010_juniorregis() throws Exception{
 		LoginPage lp=new LoginPage(driver);
 		lp.juniorregistration(driver);
 		
 	}
 
-	@Test(groups="") 
+	@Test(groups="CurrentTas") 
 	public void TC_011_chapwaitreg(){
 		LoginPage lp=new LoginPage(driver);
 		lp.chapwaitreg(driver);
 	}
 		    
-	@Test(groups="CurrentTask")
+	@Test(groups="CurrentTas")
 	public void TC_012_ncrtwaitreg(){
 		LoginPage lp=new LoginPage(driver);
 		lp.ncertwaitreg(driver);

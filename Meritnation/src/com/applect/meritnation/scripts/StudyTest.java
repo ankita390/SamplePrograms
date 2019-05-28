@@ -571,7 +571,7 @@ public class StudyTest extends BaseLib
 				BasePage.logout(driver);
 				}
 		}
-		@Test(groups="CurrentTask")
+		@Test(groups="Regression")
 		 public void TC_054_VerifyJuniorLiveClass() {
 			StudyPage studyPage = new StudyPage(driver);
 			LoginPage loginPage = new LoginPage(driver);

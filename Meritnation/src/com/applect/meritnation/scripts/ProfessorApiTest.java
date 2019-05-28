@@ -10,7 +10,7 @@ import com.applect.meritnation.pageobject.ProfessorApiPage;
 
 public class ProfessorApiTest extends BaseLib{
 	
-	@Test(invocationCount=1, groups="CurrentTask", priority =1)
+	@Test(invocationCount=1, groups="CurrentTas", priority =1)
 	public void TC_001_ProfessorIDTest() 
 	{
 		
