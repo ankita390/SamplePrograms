@@ -312,10 +312,6 @@ public void testSetUpForFullRegression(){
 }
 	
 */
-		
-	
-	
-
 	@AfterMethod(alwaysRun =false, groups = "Regression")
 	public void postCondition(ITestResult result)
 	{

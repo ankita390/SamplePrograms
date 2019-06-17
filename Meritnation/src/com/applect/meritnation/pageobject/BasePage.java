@@ -205,6 +205,30 @@ public abstract class BasePage {
 			
 		}
 	}
+	
+	public static void switchToWindow(WebDriver driver,WebElement element1, List<WebElement> element)
+	
+	{
+		
+		Actions act = new Actions(driver);
+		act.moveToElement(element1).moveToElement(element.get(0)).click().build().perform();
+		
+
+		try{
+			Set <String> allWindow = driver.getWindowHandles();
+			Iterator<String> itr = allWindow.iterator();
+			List<String> myl = new ArrayList<String>();
+			for (int i =0;i<allWindow.size();i++)
+			{
+				myl.add(itr.next());
+			}
+			driver.switchTo().window(myl.get(1));
+			//BasePage.sleepForMilliSecond(2000);
+			}
+		catch(RuntimeException ex){
+			
+		}
+	}
 	public static void switchToParentWindow(WebDriver driver){
 		
 		try{

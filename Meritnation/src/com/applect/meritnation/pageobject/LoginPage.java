@@ -18,6 +18,8 @@ import com.applect.meritnation.generic.WaitStatementLib;
 
 public class LoginPage {
 	WebDriver driver;
+	
+	
 	@FindBy(xpath="//span[text()='LOGIN']")
 	private WebElement loginbtn;
 	@FindBy(xpath="//*[contains(@class,'popupForm')]//*[text()='Name']/preceding-sibling::input") 
@@ -104,7 +106,6 @@ public class LoginPage {
 	private WebElement connectoFrame;
 	@FindBy(xpath = "//div[@class='icon close']")
 	private WebElement closeFrame;
-	
 	@FindBy(xpath="//div[@class='profilcePic']/div/img")
 	private WebElement profileicon;
 	@FindBy(xpath = "//div[@id='connecto-widget-container']/iframe")
