@@ -293,6 +293,37 @@ public class LoginPage {
 	private WebElement userimg;
 	@FindBy(xpath="//a[text()='Log out']")
 	private WebElement testlogout;
+	private WebElement profileImage;
+	@FindBy(xpath ="//div[@class='usr_grade']/i")
+	private WebElement editGradeFromProfileIcon;
+	@FindBy(xpath ="//div[@id='currIdDropDown']")
+	private WebElement clickOnCurrentBoard;
+	@FindBy(xpath ="//*[@id='currList']/li")
+	private List<WebElement> allBoardListFromProlieIcon;
+	@FindBy(xpath ="//span[@id ='gradeSelected']")
+	private WebElement grade;
+	@FindBy(xpath ="//*[@id ='gradeList']/li")
+	   
+	private List<WebElement> allgradelist;
+	@FindBy(xpath = "//div[@class='gradeEditBox']/div/div/a/i")
+	private WebElement SubmitBtnOfGradeChange;
+	@FindBy(xpath = "//span[text()= '011-40705070']")
+	private WebElement phoneNoOnDashboard;
+	@FindBy(xpath = "//span[text()=' or']")
+	private WebElement or;
+	@FindBy(xpath = "//button[text()= 'Call me']")
+	private WebElement Call_me;
+	@FindBy(xpath = "//div[@id='callMeBox']/div/div/div")
+	private WebElement call_me_popUp;
+	@FindBy(xpath="//span[@class='close-btn btn-modal-close']")
+	private WebElement cancelIconOfCall_me_popUp;
+	@FindBy(xpath ="//a[text()='PURCHASE']")
+	private WebElement PurchaseButton;
+	@FindBy(xpath ="//a[text()='PURCHASE']/@href")
+	private WebElement PurchaseButtonLink;
+	@FindBy(xpath="//a[@class='logo']")
+	private WebElement logo1;
+
 	
 	
 	
@@ -451,6 +482,67 @@ public class LoginPage {
 				
 			}
 			}
+	
+	public void loginUserForchangeGradeFromProfile (WebDriver driver)
+	{
+	String username = ExcelUtils.readData("TestData", 1, 3);	
+	untxtbx.sendKeys(username);
+	WaitStatementLib.implicitWaitForSecond(driver, 2);	
+	}
+
+	public void clickOnProfileFromDashboardHeader (WebDriver driver)
+	{
+	BasePage.sleepForMilliSecond(2000);	
+	profileicon.click();
+	}
+
+	public void changeGradeFromProfile (WebDriver driver)
+	{
+	editGradeFromProfileIcon.click();
+	clickOnCurrentBoard.click();
+	WaitStatementLib.explicitWaitForClickable(driver, 3, allBoardListFromProlieIcon.get(1));
+	allBoardListFromProlieIcon.get(1).click();
+	grade.click();
+	allgradelist.get(12).click();
+	SubmitBtnOfGradeChange.click();
+	WaitStatementLib.implicitWaitForMinute(driver, 2);
+
+	}
+
+	public void againChangeGradeFromProfile (WebDriver driver)
+	{
+	editGradeFromProfileIcon.click();
+	clickOnCurrentBoard.click();
+	WaitStatementLib.explicitWaitForClickable(driver, 3, allBoardListFromProlieIcon.get(1));
+	allBoardListFromProlieIcon.get(1).click();
+	grade.click();
+	allgradelist.get(6).click();
+	SubmitBtnOfGradeChange.click();
+	WaitStatementLib.implicitWaitForMinute(driver, 2);
+	}
+
+	public void verifyHeaderTest (WebDriver driver)
+	{
+	phoneNoOnDashboard.isDisplayed();
+	or.isDisplayed();
+	Call_me.isEnabled();
+	Call_me.click();
+	call_me_popUp.isDisplayed();
+	WaitStatementLib.explicitWaitForClickable(driver, 1000, cancelIconOfCall_me_popUp);
+	cancelIconOfCall_me_popUp.click();
+    BasePage.isPresentAndDisplayed(PurchaseButton);
+	BasePage.sleepForMilliSecond(2000);
+	PurchaseButton.click();
+	WaitStatementLib.implicitWaitForMinute(driver, 2);
+	String displayedURL = driver.getCurrentUrl();
+	String actualPurchaseURL = ExcelUtils.readData("Sheet2", 0, 1);
+	Assert.assertTrue(displayedURL.equals(actualPurchaseURL),"Incorrect URL");
+	Assert.assertTrue(BasePage.isPresentAndDisplayed(logo1), "Logo Not Displayed");
+	logo1.click();
+
+
+	}
+
 			
 		
 		
