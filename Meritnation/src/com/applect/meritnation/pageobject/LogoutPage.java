@@ -379,11 +379,12 @@ public class LogoutPage {
 				chooseCourseRadioBtnn.get(0).click();
 				chooseCourseRadioBtnn.get(k).click();
 				for(int j=0;j<=availableProducts.size();j++){
-					while(j==availableProducts.size()){
-						for(int l=0;l<availableProducts.size();l++){
-							availableProducts.get(l).click();
-						}
-						break;
+				while(j==availableProducts.size()){
+				for(int l=0;l<availableProducts.size();l++)
+				{
+					availableProducts.get(l).click();
+				}
+				break;
 					}
 					try{
 					availableProducts.get(j).click();

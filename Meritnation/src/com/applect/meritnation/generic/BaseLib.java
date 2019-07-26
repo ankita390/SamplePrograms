@@ -12,6 +12,7 @@ import org.apache.log4j.LogManager;
 import org.apache.log4j.Logger;
 import org.openqa.selenium.Capabilities;
 import org.openqa.selenium.Dimension;
+import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.SessionNotCreatedException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -30,6 +31,8 @@ import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.BeforeSuite;
 import org.testng.annotations.Parameters;
 import com.applect.meritnation.pageobject.BasePage;
+import com.applect.meritnation.pageobject.MainAppLoginPage;
+
 import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.MobileElement;
 import io.appium.java_client.android.AndroidDriver; 
@@ -68,12 +71,23 @@ public class BaseLib {
 		 capabilities.setCapability("app", app.getAbsolutePath());
 		 capabilities.setCapability("appPackage", "com.meritnation.school");
 		 capabilities.setCapability("appActivity", "com.meritnation.school.modules.app_init_auth.controller.SplashActivity");
-		 capabilities.setCapability("noReset","false");
+		 capabilities.setCapability("noReset","true");
+		 
 		 capabilities.setCapability("automationName" , "UiAutomator2");
 		 driver = new AndroidDriver<MobileElement>(new URL("http://127.0.0.1:4723/wd/hub"), capabilities);
+		try{
+			MainAppLoginPage mainAppLoginPage = new MainAppLoginPage(driver);
+			Thread.sleep(5000);
+			mainAppLoginPage.validLogin();
+			Thread.sleep(10000);
+			mainAppLoginPage.clickIAmStudent();
+		}
+		catch(NoSuchElementException e){
+			
+		}
 		
 		 
-		 } 
+		} 
 	@AfterMethod(alwaysRun = false, groups = "MainApp")
 	public void postCondition(){
 		driver.quit();

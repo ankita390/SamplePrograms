@@ -48,6 +48,10 @@ import com.applect.meritnation.generic.WaitStatementLib;
 
 import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.MobileElement;
+import io.appium.java_client.android.AndroidDriver;
+import io.appium.java_client.android.AndroidKeyCode;
+import io.appium.java_client.android.nativekey.AndroidKey;
+import io.appium.java_client.android.nativekey.KeyEvent;
 
 
 
@@ -552,6 +556,15 @@ public static void pressUpArrowKey(WebDriver driver){
 			
 		}
 	}
+/*	public static void presssAndroidBackButton(WebDriver _driver){
+		_driver.pressKey(new KeyEvent(AndroidKey.BACK));
+	} */
+	
+	public static void scrollToExactElement(String str) {
+        ((AndroidDriver<MobileElement>) driver).findElementByAndroidUIAutomator(
+                "new UiScrollable(new UiSelector().scrollable(true).instance(0)).scrollIntoView(new UiSelector().text(\""
+                        + str + "\").instance(0))").click();
+    }
 	
 	
 	public BasePage (WebDriver driver)

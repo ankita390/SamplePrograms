@@ -79,7 +79,7 @@ public class StudyPage {
 	private WebElement liveclasseslnk;
 	@FindBy(xpath="//div[@class='sidebarInner']/div/div[2]/h3[text()='Live Classes']")
 	private WebElement liveclassesonsubjectlnk;
-	@FindBy(xpath="//section[@class='whatNext']/div[@class='boxesRow group']/div/article[1]")
+	@FindBy(xpath="//section[@class='whatNext']/div[@class='boxesRow group']/div/article[2]")
 	private WebElement fistdisplayedtest;
 	@FindBy(xpath="//div[@class='group margBottom35 ng-scope']/div/div[@class='classTestwrap textCenter ng-scope']/a")
 	private WebElement taketestbtn;
