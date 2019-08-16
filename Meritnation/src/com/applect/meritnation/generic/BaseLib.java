@@ -60,13 +60,13 @@ public class BaseLib {
 	}
 	
 	@BeforeMethod(alwaysRun = false, groups = "MainApp")
-	public void preCondition() throws InterruptedException, MalformedURLException{
+	public void preConditionMainApp() throws InterruptedException, MalformedURLException{
 		 File appDir = new File("/var/www/mn-testing/Meritnation/Apps/");
 		 File app = new File(appDir, "86.apk");
 		 DesiredCapabilities capabilities = new DesiredCapabilities();
 		 capabilities.setCapability(CapabilityType.BROWSER_NAME, "");
-		 capabilities.setCapability("deviceName", GetPropertyValues.getPropertyValue("anupPhoneName"));
-		 capabilities.setCapability("platformVersion", GetPropertyValues.getPropertyValue("anupPhoneOSName"));
+		 capabilities.setCapability("deviceName", GetPropertyValues.getPropertyValue("galaxyOn5ProUDIDDeviceName"));
+		 capabilities.setCapability("platformVersion", GetPropertyValues.getPropertyValue("galaxyOn5ProOSName"));
 		 capabilities.setCapability("platformName", "Android");
 		 capabilities.setCapability("app", app.getAbsolutePath());
 		 capabilities.setCapability("appPackage", "com.meritnation.school");
@@ -88,6 +88,41 @@ public class BaseLib {
 		
 		 
 		} 
+	
+	public void preConditionExpertApp()
+	{
+		try
+		{ 
+		 File appDir = new File("/var/www/mn-testing/Meritnation/Apps/");
+		 File app = new File(appDir, "86.apk");
+		 DesiredCapabilities capabilities = new DesiredCapabilities();
+		 capabilities.setCapability(CapabilityType.BROWSER_NAME, "");
+		 capabilities.setCapability("deviceName", GetPropertyValues.getPropertyValue("anupPhoneName"));
+		 capabilities.setCapability("platformVersion", GetPropertyValues.getPropertyValue("anupPhoneOSName"));
+		 capabilities.setCapability("platformName", "Android");
+		 capabilities.setCapability("app", app.getAbsolutePath());
+		 capabilities.setCapability("appPackage", "com.meritnation.mn_expert");
+		 capabilities.setCapability("appActivity", "com.meritnation.chat.modules.dashboard.controller.DashboardActivity");
+		 capabilities.setCapability("noReset","true");
+		 capabilities.setCapability("automationName" , "UiAutomator2");
+		 driver = new AndroidDriver<MobileElement>(new URL("http://127.0.0.1:4723/wd/hub"), capabilities);
+		try{
+			MainAppLoginPage mainAppLoginPage = new MainAppLoginPage(driver);
+			Thread.sleep(5000);
+			mainAppLoginPage.validLogin();
+			Thread.sleep(10000);
+			mainAppLoginPage.clickIAmStudent();
+		}
+		catch(NoSuchElementException ex){
+			
+		}
+	}
+		catch(InterruptedException | MalformedURLException e){
+			
+		}
+	}
+	
+	
 	@AfterMethod(alwaysRun = false, groups = "MainApp")
 	public void postCondition(){
 		driver.quit();
@@ -200,7 +235,7 @@ public class BaseLib {
 		}
 		else if (browsername.equalsIgnoreCase("chrome"))
 		{
-			System.setProperty("webdriver.chrome.driver", "/var/www/mn-testing/Meritnation/Exe Files/chromedriver");
+			System.setProperty("webdriver.chrome.driver", "/var/www/mn-testing/Meritnation/Exe Files/chromedriver_newest");
 			ChromeOptions options = new ChromeOptions();
 			options.addArguments("disable-geolocation");
 			options.addArguments("--disable-notifications");
@@ -257,7 +292,7 @@ public class BaseLib {
 		}
 		else if (browsername.equalsIgnoreCase("chrome"))
 		{
-			System.setProperty("webdriver.chrome.driver", "/var/www/mn-testing/Meritnation/Exe Files/chromedriver");
+			System.setProperty("webdriver.chrome.driver", "/var/www/mn-testing/Meritnation/Exe Files/chromedriver_newest");
 			ChromeOptions options = new ChromeOptions();
 			options.addArguments("disable-geolocation");
 			options.addArguments("--disable-notifications");
@@ -308,8 +343,8 @@ public class BaseLib {
 		Reporter.log("Navigate to the URL", true);
 		WaitStatementLib.implicitWaitForSecond(driver, 5);
 	}
-@BeforeGroups(alwaysRun =true, groups = "Regression")
 
+@BeforeGroups(alwaysRun =true, groups = "Regression")
 public void testSetUpForFullRegression(){
 	System.out.println("sakkdjsdnsn");
 	System.setProperty("webdriver.chrome.driver", "/home/applect/workspace/MeritnationAutomation/Exe Files/chromedriver");
