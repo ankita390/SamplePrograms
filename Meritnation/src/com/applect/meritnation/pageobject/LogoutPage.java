@@ -255,6 +255,28 @@ public class LogoutPage {
 	private WebElement pageLoadError;
 	@FindBy(tagName="a")
 	private List <WebElement> lnks;
+	@FindBy(xpath = "//div[@class='conDetails']//*[text()='Proceed']")
+	private WebElement proceedButton;
+	@FindBy(xpath = "//div[contains(@class,'show-only-on-unminimize')]")
+	private WebElement mobilePopup;
+	@FindBy(xpath = "//div[@class='card filled'][1]//label[text()='Choose']")
+	private WebElement chooseButton;
+	@FindBy (xpath = "//*[@id='proceedBtn_2']")
+	private WebElement proceedButton_2;
+	@FindBy(xpath = "//span[text()='Credit Card(Domestic)']")
+	private WebElement paymentMode;
+	@FindBy (xpath = "//div[@class='credit-debit']//button[text()='Make Payment']")
+	private WebElement creditDebitPayment;
+	@FindBy(xpath ="//p[text()='Choose a payment method']")
+	private WebElement paymentPageText;
+	@FindBy (xpath = "//a[text()='Net Banking']")
+	private WebElement netBanking;
+	@FindBy(xpath="//span[@class='bank-img icici']")
+	private WebElement bankImage;
+	@FindBy(xpath="//div[@class='net-banking']//button[text()='Make Payment']")
+	private WebElement netBankingPayment;
+	@FindBy(xpath="//label[text()='Payment through ICICI Bank']")
+	private WebElement iciciBankPageText;
 	
 	
 	public void getURLS(){
@@ -417,4 +439,42 @@ public class LogoutPage {
 			{
 				PageFactory.initElements(driver, this);
 			}
+		
+		public void verifyEneToEndPurchase(WebDriver driver) {
+
+			upgradeBtn.click();
+			if (BasePage.isPresentAndDisplayed(mobilePopup)) {
+				mobilePopup.click();
+
+			}
+			BasePage.scrollDownPage(driver);
+			checkOutBtn.click();
+
+			// Payment through Credit/ Debit Card
+			proceedButton.click();
+			chooseButton.click();
+			BasePage.scrollDownPage(driver);
+			proceedButton_2.click();
+			BasePage.sleepForMilliSecond(2000);
+			paymentMode.click();
+			creditDebitPayment.click();
+			WaitStatementLib.explicitWaitForVisiblity(driver, 40, paymentPageText);
+			Assert.assertEquals(paymentPageText.getText(), "Choose a payment method");
+			driver.navigate().back();
+
+			// Payment through Net banking
+			proceedButton.click();
+			chooseButton.click();
+			BasePage.scrollDownPage(driver);
+			proceedButton_2.click();
+			WaitStatementLib.explicitWaitForVisiblity(driver, 5, netBanking);
+			BasePage.sleepForMilliSecond(2000);
+			netBanking.click();
+			bankImage.click();
+			
+			netBankingPayment.click();
+			WaitStatementLib.explicitWaitForVisiblity(driver, 40, iciciBankPageText);
+			Assert.assertEquals(iciciBankPageText.getText(), "Payment through ICICI Bank");
+
+		}
 	}

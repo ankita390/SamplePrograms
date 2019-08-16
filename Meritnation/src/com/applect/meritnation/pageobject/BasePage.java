@@ -572,6 +572,10 @@ public static void pressUpArrowKey(WebDriver driver){
 		PageFactory.initElements(driver, this);
 	}
 	
+	public static void scrollDownPage(WebDriver driver) {
+		((JavascriptExecutor) driver).executeScript("window.scrollBy(0,1000)");
+
+	}
 	
 	
 	

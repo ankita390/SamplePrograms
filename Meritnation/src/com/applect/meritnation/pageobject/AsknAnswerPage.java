@@ -1,6 +1,8 @@
 package com.applect.meritnation.pageobject;
 
 
+import java.awt.AWTException;
+import java.awt.Robot;
 import java.util.List;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.NoSuchElementException;
@@ -114,6 +116,16 @@ public class AsknAnswerPage {
 	public WebElement anstxtbx;
 	@FindBy(xpath="//main[@id='AnaLeftSectionControllerId']/div[3]/div[3]/div/form/div[2]/div[3]/button")
 	public WebElement submitbtn;
+	@FindBy(xpath = "//*[@class='cke_button_label cke_button__image_label']/../.")
+	public WebElement imageIcon;
+	@FindBy(xpath="//input[contains(@id,'_fileInput_input')]")
+	public WebElement chooseFileButton;
+	@FindBy(xpath="//div[contains(@class,'dialog_ui_input_file')]/iframe")
+	public WebElement fileUploadPopupFrame;
+	@FindBy(xpath="//span[text()='Send it to the Server']")
+	public WebElement sendToServerButton;
+	@FindBy(xpath="//table[contains(@class,'cke_dialog cke_')]//*[text()='OK']")
+	public WebElement okButton;
 	
 	public AsknAnswerPage(WebDriver driver)
 	{
@@ -202,7 +214,7 @@ public class AsknAnswerPage {
 	{
 			greenasktbtn.click();
 			}
-	public void tagQuestion()
+	public void tagQuestion(WebDriver driver)
 	{
 			tagphysicsicon.click();
 			
@@ -306,6 +318,219 @@ public class AsknAnswerPage {
 	public void verifyQuestionAskeeNameAndQuestion(){
 		String askeename = questionaskeename.get(0).toString();
 		
+	}
+	
+	public void uploadImage(WebDriver driver) throws AWTException {
+		imageIcon.click();
+		driver.switchTo().frame(fileUploadPopupFrame);
+		chooseFileButton.click();
+		driver.switchTo().defaultContent();
+		BasePage.sleepForMilliSecond(3000);
+
+		Robot r = new Robot();
+		r.keyPress(java.awt.event.KeyEvent.VK_SLASH);
+		r.keyRelease(java.awt.event.KeyEvent.VK_SLASH);
+
+		r.keyPress(java.awt.event.KeyEvent.VK_V);
+		r.keyRelease(java.awt.event.KeyEvent.VK_V);
+
+		r.keyPress(java.awt.event.KeyEvent.VK_A);
+		r.keyRelease(java.awt.event.KeyEvent.VK_A);
+
+		r.keyPress(java.awt.event.KeyEvent.VK_R);
+		r.keyRelease(java.awt.event.KeyEvent.VK_R);
+
+		r.keyPress(java.awt.event.KeyEvent.VK_SLASH);
+		r.keyRelease(java.awt.event.KeyEvent.VK_SLASH);
+
+		r.keyPress(java.awt.event.KeyEvent.VK_W);
+		r.keyRelease(java.awt.event.KeyEvent.VK_W);
+
+		r.keyPress(java.awt.event.KeyEvent.VK_W);
+		r.keyRelease(java.awt.event.KeyEvent.VK_W);
+
+		r.keyPress(java.awt.event.KeyEvent.VK_W);
+		r.keyRelease(java.awt.event.KeyEvent.VK_W);
+
+		r.keyPress(java.awt.event.KeyEvent.VK_SLASH);
+		r.keyRelease(java.awt.event.KeyEvent.VK_SLASH);
+
+		r.keyPress(java.awt.event.KeyEvent.VK_M);
+		r.keyRelease(java.awt.event.KeyEvent.VK_M);
+
+		r.keyPress(java.awt.event.KeyEvent.VK_N);
+		r.keyRelease(java.awt.event.KeyEvent.VK_N);
+
+		r.keyPress(java.awt.event.KeyEvent.VK_SUBTRACT);
+		r.keyRelease(java.awt.event.KeyEvent.VK_SUBTRACT);
+
+		r.keyPress(java.awt.event.KeyEvent.VK_T);
+		r.keyRelease(java.awt.event.KeyEvent.VK_T);
+
+		r.keyPress(java.awt.event.KeyEvent.VK_E);
+		r.keyRelease(java.awt.event.KeyEvent.VK_E);
+
+		r.keyPress(java.awt.event.KeyEvent.VK_S);
+		r.keyRelease(java.awt.event.KeyEvent.VK_S);
+
+		r.keyPress(java.awt.event.KeyEvent.VK_T);
+		r.keyRelease(java.awt.event.KeyEvent.VK_T);
+
+		r.keyPress(java.awt.event.KeyEvent.VK_I);
+		r.keyRelease(java.awt.event.KeyEvent.VK_I);
+
+		r.keyPress(java.awt.event.KeyEvent.VK_N);
+		r.keyRelease(java.awt.event.KeyEvent.VK_N);
+
+		r.keyPress(java.awt.event.KeyEvent.VK_G);
+		r.keyRelease(java.awt.event.KeyEvent.VK_G);
+
+		r.keyPress(java.awt.event.KeyEvent.VK_SLASH);
+		r.keyRelease(java.awt.event.KeyEvent.VK_SLASH);
+
+		r.keyPress(java.awt.event.KeyEvent.VK_SHIFT);
+		r.keyPress(java.awt.event.KeyEvent.VK_M);
+		r.keyRelease(java.awt.event.KeyEvent.VK_SHIFT);
+		r.keyRelease(java.awt.event.KeyEvent.VK_M);
+
+		r.keyPress(java.awt.event.KeyEvent.VK_E);
+		r.keyRelease(java.awt.event.KeyEvent.VK_E);
+
+		r.keyPress(java.awt.event.KeyEvent.VK_R);
+		r.keyRelease(java.awt.event.KeyEvent.VK_R);
+
+		r.keyPress(java.awt.event.KeyEvent.VK_I);
+		r.keyRelease(java.awt.event.KeyEvent.VK_I);
+
+		r.keyPress(java.awt.event.KeyEvent.VK_T);
+		r.keyRelease(java.awt.event.KeyEvent.VK_T);
+
+		r.keyPress(java.awt.event.KeyEvent.VK_N);
+		r.keyRelease(java.awt.event.KeyEvent.VK_N);
+
+		r.keyPress(java.awt.event.KeyEvent.VK_A);
+		r.keyRelease(java.awt.event.KeyEvent.VK_A);
+
+		r.keyPress(java.awt.event.KeyEvent.VK_T);
+		r.keyRelease(java.awt.event.KeyEvent.VK_T);
+
+		r.keyPress(java.awt.event.KeyEvent.VK_I);
+		r.keyRelease(java.awt.event.KeyEvent.VK_I);
+
+		r.keyPress(java.awt.event.KeyEvent.VK_O);
+		r.keyRelease(java.awt.event.KeyEvent.VK_O);
+
+		r.keyPress(java.awt.event.KeyEvent.VK_N);
+		r.keyRelease(java.awt.event.KeyEvent.VK_N);
+
+		r.keyPress(java.awt.event.KeyEvent.VK_SLASH);
+		r.keyRelease(java.awt.event.KeyEvent.VK_SLASH);
+
+		r.keyPress(java.awt.event.KeyEvent.VK_SHIFT);
+		r.keyPress(java.awt.event.KeyEvent.VK_T);
+		r.keyRelease(java.awt.event.KeyEvent.VK_SHIFT);
+		r.keyRelease(java.awt.event.KeyEvent.VK_T);
+
+		r.keyPress(java.awt.event.KeyEvent.VK_E);
+		r.keyRelease(java.awt.event.KeyEvent.VK_E);
+
+		r.keyPress(java.awt.event.KeyEvent.VK_S);
+		r.keyRelease(java.awt.event.KeyEvent.VK_S);
+
+		r.keyPress(java.awt.event.KeyEvent.VK_T);
+		r.keyRelease(java.awt.event.KeyEvent.VK_T);
+
+		r.keyPress(java.awt.event.KeyEvent.VK_SPACE);
+		r.keyRelease(java.awt.event.KeyEvent.VK_SPACE);
+
+		r.keyPress(java.awt.event.KeyEvent.VK_SHIFT);
+		r.keyPress(java.awt.event.KeyEvent.VK_D);
+		r.keyRelease(java.awt.event.KeyEvent.VK_SHIFT);
+		r.keyRelease(java.awt.event.KeyEvent.VK_D);
+
+		r.keyPress(java.awt.event.KeyEvent.VK_A);
+		r.keyRelease(java.awt.event.KeyEvent.VK_A);
+
+		r.keyPress(java.awt.event.KeyEvent.VK_T);
+		r.keyRelease(java.awt.event.KeyEvent.VK_T);
+
+		r.keyPress(java.awt.event.KeyEvent.VK_A);
+		r.keyRelease(java.awt.event.KeyEvent.VK_A);
+
+		r.keyPress(java.awt.event.KeyEvent.VK_SLASH);
+		r.keyRelease(java.awt.event.KeyEvent.VK_SLASH);
+
+		r.keyPress(java.awt.event.KeyEvent.VK_SHIFT);
+		r.keyPress(java.awt.event.KeyEvent.VK_I);
+		r.keyRelease(java.awt.event.KeyEvent.VK_SHIFT);
+		r.keyRelease(java.awt.event.KeyEvent.VK_I);
+
+		r.keyPress(java.awt.event.KeyEvent.VK_M);
+		r.keyRelease(java.awt.event.KeyEvent.VK_M);
+
+		r.keyPress(java.awt.event.KeyEvent.VK_A);
+		r.keyRelease(java.awt.event.KeyEvent.VK_A);
+
+		r.keyPress(java.awt.event.KeyEvent.VK_G);
+		r.keyRelease(java.awt.event.KeyEvent.VK_G);
+
+		r.keyPress(java.awt.event.KeyEvent.VK_E);
+		r.keyRelease(java.awt.event.KeyEvent.VK_E);
+
+		r.keyPress(java.awt.event.KeyEvent.VK_S);
+		r.keyRelease(java.awt.event.KeyEvent.VK_S);
+
+		r.keyPress(java.awt.event.KeyEvent.VK_SLASH);
+		r.keyRelease(java.awt.event.KeyEvent.VK_SLASH);
+
+		r.keyPress(java.awt.event.KeyEvent.VK_D);
+		r.keyRelease(java.awt.event.KeyEvent.VK_D);
+
+		r.keyPress(java.awt.event.KeyEvent.VK_O);
+		r.keyRelease(java.awt.event.KeyEvent.VK_O);
+
+		r.keyPress(java.awt.event.KeyEvent.VK_W);
+		r.keyRelease(java.awt.event.KeyEvent.VK_W);
+
+		r.keyPress(java.awt.event.KeyEvent.VK_N);
+		r.keyRelease(java.awt.event.KeyEvent.VK_N);
+
+		r.keyPress(java.awt.event.KeyEvent.VK_L);
+		r.keyRelease(java.awt.event.KeyEvent.VK_L);
+
+		r.keyPress(java.awt.event.KeyEvent.VK_O);
+		r.keyRelease(java.awt.event.KeyEvent.VK_O);
+
+		r.keyPress(java.awt.event.KeyEvent.VK_A);
+		r.keyRelease(java.awt.event.KeyEvent.VK_A);
+
+		r.keyPress(java.awt.event.KeyEvent.VK_D);
+		r.keyRelease(java.awt.event.KeyEvent.VK_D);
+
+		r.keyPress(java.awt.event.KeyEvent.VK_DECIMAL);
+		r.keyRelease(java.awt.event.KeyEvent.VK_DECIMAL);
+
+		r.keyPress(java.awt.event.KeyEvent.VK_J);
+		r.keyRelease(java.awt.event.KeyEvent.VK_J);
+
+		r.keyPress(java.awt.event.KeyEvent.VK_P);
+		r.keyRelease(java.awt.event.KeyEvent.VK_P);
+
+		r.keyPress(java.awt.event.KeyEvent.VK_E);
+		r.keyRelease(java.awt.event.KeyEvent.VK_E);
+
+		r.keyPress(java.awt.event.KeyEvent.VK_G);
+		r.keyRelease(java.awt.event.KeyEvent.VK_G);
+
+		BasePage.sleepForMilliSecond(2000);
+		r.keyPress(java.awt.event.KeyEvent.VK_ENTER);
+		r.keyRelease(java.awt.event.KeyEvent.VK_ENTER);
+		
+		BasePage.sleepForMilliSecond(2000);
+
+		sendToServerButton.click();
+		okButton.click();
+
 	}
 	
 }

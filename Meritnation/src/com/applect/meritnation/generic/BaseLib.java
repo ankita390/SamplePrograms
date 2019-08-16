@@ -209,7 +209,7 @@ public class BaseLib {
 	//	Reporter.log("Navigate to the URL", true);
 	//	WaitStatementLib.implicitWaitForSecond(driver, 5);
 		}
-	@BeforeMethod(alwaysRun =false, groups = "Regression")
+	@BeforeMethod(alwaysRun =false, groups = { "Regression","Purchase"})
 	@Parameters({"browser"})
 	public void preConditionWeb(String browsername){
 		 final Logger logger = LogManager.getLogger(BaseLib.class);
@@ -436,5 +436,7 @@ public void testSetUpForFullRegression(){
 			//BasePage.sendEmail();
 		
 	}
+	
+	
 }
 
