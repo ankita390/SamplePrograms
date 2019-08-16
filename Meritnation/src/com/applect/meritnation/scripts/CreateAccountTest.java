@@ -19,7 +19,7 @@ public class CreateAccountTest extends BaseLib
 		BasePage.logout(driver);
 		}
 	
-	@Test(groups="CurrentTask")
+	@Test(groups="CurrentTas")
 
 	public void TC_002_ANARegistrationTest() throws IOException{
 		LoginPage loginPage = new LoginPage(driver);
@@ -29,7 +29,7 @@ public class CreateAccountTest extends BaseLib
 		
 	}
 		
-	 @Test(groups="CurrentTask")
+	 @Test(groups="CurrentTas")
 	public void TC_003_brdRegistrationTest(){
 		LoginPage loginPage=new LoginPage(driver);
 		loginPage.BrdLogIN();
@@ -47,7 +47,7 @@ public class CreateAccountTest extends BaseLib
 	}
 		
 
-	@Test(groups="CurrentTask")
+	@Test(groups="CurrentTas")
 	public void TC_005_chapterRegistrationTest(){
 		LoginPage lp = new LoginPage(driver);
 		lp.chapterregistration();
@@ -64,14 +64,14 @@ public class CreateAccountTest extends BaseLib
 			  
 		  }
 		  
-		  @Test(groups="CurrentTask")
+		  @Test(groups="CurrentTas")
 	public void TC_008_testregistration(){
 			  LoginPage lp = new LoginPage(driver);
 			  lp.testprep(driver);
 			  BasePage.signup(driver);
 			  lp.logout();
 		  }
-		 @Test(groups="CurrentTask")
+		 @Test(groups="CurrentTas")
 	public void TC_009_livenewregistration(){
 			  LoginPage lp= new LoginPage(driver);
 			  lp.livenewreg();
@@ -82,20 +82,20 @@ public class CreateAccountTest extends BaseLib
 		  }
 			  
 
-	@Test(groups="CurrentTask")
+	@Test(groups="CurrentTas")
 	public void TC_010_juniorregis() throws Exception{
 		LoginPage lp=new LoginPage(driver);
 		lp.juniorregistration(driver);
 		
 	}
 
-	@Test(groups="CurrentTask") 
+	@Test(groups="CurrentTas") 
 	public void TC_011_chapwaitreg(){
 		LoginPage lp=new LoginPage(driver);
 		lp.chapwaitreg(driver);
 	}
 		    
-	@Test(groups="CurrentTask")
+	@Test(groups="CurrentTas")
 	public void TC_012_ncrtwaitreg(){
 		LoginPage lp=new LoginPage(driver);
 		lp.ncertwaitreg(driver);

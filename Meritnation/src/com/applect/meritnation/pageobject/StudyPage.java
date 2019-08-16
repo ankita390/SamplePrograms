@@ -275,7 +275,7 @@ public class StudyPage {
 	public WebElement norecordfoundonliveclasses;
 	@FindBy(xpath="//div[@class='sidebarInner']/div/div[6]/div/div/ul/li[3]")
 	public WebElement brdpprsolnradiobtn_science;
-	@FindBy(xpath="//div[@class='sidebarInner']/div/div[6]/div/div/ul/li[2]")
+	@FindBy(xpath="//div[@class='sidebarInner']/div/div[6]/div/div/ul/li[3]")
 	public WebElement brdpprsolnradiobtn_commerce;
 	@FindBy(xpath="//a[text()='Board Paper Solutions']")
 	public WebElement brdpprsolnradiobtn_classten_hindi;
@@ -1107,12 +1107,10 @@ public class StudyPage {
 		{
 			formativeassessmentlnk.click();
 			Assert.assertFalse(BasePage.isPresentAndDisplayed(logoutbx));
-			BasePage.sleepForMilliSecond(2000);
+			WaitStatementLib.explicitWaitForVisiblity(driver, 20, frameOnFormativeAssesmnt);
 			driver.switchTo().frame(frameOnFormativeAssesmnt);
-	//  	BasePage.sleepForMilliSecond(2000);
 			try{	
 				BasePage.isPresentAndDisplayed(startevaluationbtn);
-				System.out.println(String.valueOf(BasePage.isPresentAndDisplayed(startevaluationbtn)));
 				startevaluationbtn.click();
 				BasePage.sleepForMilliSecond(2000);
 				try

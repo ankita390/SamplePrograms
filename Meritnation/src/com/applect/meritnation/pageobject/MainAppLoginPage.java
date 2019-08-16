@@ -1,10 +1,14 @@
 package com.applect.meritnation.pageobject;
 
+import java.net.MalformedURLException;
+import java.util.List;
+
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
+import com.applect.meritnation.generic.BaseLib;
 import com.applect.meritnation.generic.ExcelUtils;
 import com.applect.meritnation.generic.WaitStatementLib;
 
@@ -36,8 +40,12 @@ public class MainAppLoginPage {
 	private WebElement selectSubject;
 	@FindBy(id="com.meritnation.school:id/spinnerChapter")
 	private WebElement selectChapter;
-	@FindBy(xpath="//android.widget.TextView[@text='Math']")
-	private WebElement math;
+	@FindBy(xpath="//android.widget.TextView")
+	private List<WebElement> sujectList;
+	@FindBy(xpath="//android.widget.TextView")
+	private List<WebElement> chapterList;
+	@FindBy(id="com.meritnation.school:id/bt_connect")
+	private WebElement connectExpertBtn;
 	
 	
 	
@@ -55,7 +63,7 @@ public class MainAppLoginPage {
 	public void clickIAmStudent(){
 		iAmStudent.click();
 	}
-	public void askQuestionOnDOC(WebDriver driver){
+	public void askQuestionOnDOC(WebDriver driver) throws MalformedURLException, InterruptedException{
 		doubtIcon.click();
 		BasePage.sleepForMilliSecond(2000);
 		tapToAskIcon.click();
@@ -68,7 +76,20 @@ public class MainAppLoginPage {
 		nextBtn.click();
 		BasePage.sleepForMilliSecond(2000);
 		selectSubject.click();
-		math.click();
+		BasePage.sleepForMilliSecond(1000);
+		sujectList.get(1).click();
+		BasePage.sleepForMilliSecond(1000);
+		selectChapter.click();
+		BasePage.sleepForMilliSecond(1000);
+		sujectList.get(2).click();
+		BasePage.sleepForMilliSecond(1000);
+		connectExpertBtn.click();
+		BasePage.sleepForMilliSecond(5000);
+		
+		
+		BaseLib base = new BaseLib();
+		
+		base.preConditionExpertApp();
 	//	BasePage.selectDrpdwnByVisibleText(selectSubject, "Select Subject");
 	//	BasePage.scrollToExactElement("Math");
 		

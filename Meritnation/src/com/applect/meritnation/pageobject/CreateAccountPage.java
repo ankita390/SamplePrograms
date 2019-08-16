@@ -1,8 +1,11 @@
 package com.applect.meritnation.pageobject;
 
 
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import org.openqa.selenium.ElementNotVisibleException;
+import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.StaleElementReferenceException;
 import org.openqa.selenium.TimeoutException;
 import org.openqa.selenium.WebDriver;
@@ -54,8 +57,13 @@ public class CreateAccountPage
 	private WebElement city_Mauritius;
 	@FindBy(xpath ="//div[@class='bs-col-md-12 text-center']/div/div/div/span[@class = 'ng-binding ng-scope']") 
 	private WebElement schoolnamebx;
-	@FindBy(xpath ="//div[@class='ui-select-choices-content selectize-dropdown-content']/div/div[@role='option']/div/div/div/div/div[@title='a221, okhla phase - 1']")
+	@FindBy(xpath ="//div[contains(@class,'selectize-dropdown-content')]/div/div[2]")
 	private WebElement schoolnamelist;
+	
+	
+	
+	@FindBy(xpath ="//div[@class='ui-select-choices-content selectize-dropdown-content']/div/div[@role='option']/div/div/div/div/div[@title='a221, okhla phase - 1']")
+	private WebElement schoolnamelist1;
 	@FindBy(xpath="//div[@class='profilcePic']/div/img")
 	private WebElement profileicon;
 	@FindBy(xpath="//a[text()='Logout']")
@@ -120,6 +128,16 @@ public class CreateAccountPage
 	private WebElement junjoinbtn1;
 	@FindBy(xpath="//a[@class='signinBtn']")
 	private WebElement gotobtn;
+	@FindBy(xpath = "//div[@id='connecto-widget-container']/iframe")
+	private WebElement JeeTestSeriesframe;
+	@FindBy(xpath = "//div[contains(@class,'connecto')]/div/div[@class='close']")
+	private WebElement closeJeeTestSeriesframe;
+	@FindBy (xpath = "//div[@class='close tablecell']")
+	private WebElement closePopup;
+	@FindBy(xpath = "//div[contains(@id,'connecto-modal')]/iframe")
+	private WebElement connectoFrame;
+	@FindBy(xpath = "//div[@class='icon close']")
+	private WebElement closeFrame;
 	
 	public CreateAccountPage(WebDriver driver)
 	{
@@ -296,24 +314,62 @@ public class CreateAccountPage
 			driver.switchTo().defaultContent();
 			}
 		}
+			schoolnamebx.click();
+			String school = ExcelUtils.readData("TestData", 0, 6);
+			Actions actions = new Actions(driver);
+			actions.moveToElement(schoolnamebx);
+		//	actions.click();
+			BasePage.sleepForMilliSecond(2000);
+			actions.sendKeys(school);
+			actions.build().perform();
+			BasePage.sleepForMilliSecond(2000); 
+			schoolnamelist.click();
 		
-		schoolnamebx.click();
-		String school = ExcelUtils.readData("TestData", 0, 6);
-		Actions actions = new Actions(driver);
-		actions.moveToElement(schoolnamebx);
-		actions.click();
-		BasePage.sleepForMilliSecond(2000);
-		actions.sendKeys(school);
-		actions.build().perform();
-		BasePage.sleepForMilliSecond(1000);
-		try
-		{
-			schoolnamelist.click();
+		if(String.valueOf(BasePage.isPresentAndDisplayed(topnotification))=="true"){
+			closenotification.click();
+			WaitStatementLib.explicitWaitForVisiblity(driver, 5, profileicon);
 		}
-		catch(StaleElementReferenceException e)
-		{
-			schoolnamelist.click();
+		BasePage.closeJEETestSeriesPopup(driver, JeeTestSeriesframe,closeJeeTestSeriesframe);
+
+		if(String.valueOf(BasePage.isPresentAndDisplayed(frame))=="true"){
+			WaitStatementLib.explicitWaitForVisiblity(driver, 15, frame);
+			try{
+			driver.switchTo().frame(frame);
+		//	WaitStatementLib.explicitWaitForVisiblity(driver, 5, closeboardpprnotification);
+			closeboardpprnotification.click();
+			BasePage.sleepForMilliSecond(1000);
+			driver.switchTo().defaultContent();
+			}
+			catch(ElementNotVisibleException ex){
+				
+			}
+			catch(TimeoutException | NoSuchElementException ex){
+				if (BasePage.isPresentAndDisplayed(closePopup)){
+					closePopup.click();
+					BasePage.sleepForMilliSecond(1000);
+				}
+					
+			driver.switchTo().defaultContent();
+			}
 		}
+		else if(BasePage.isPresentAndDisplayed(connectoFrame)){
+			WaitStatementLib.explicitWaitForVisiblity(driver, 15, connectoFrame);
+			try{
+				driver.switchTo().frame(connectoFrame);
+				WaitStatementLib.explicitWaitForVisiblity(driver, 5, closeFrame);
+				closeFrame.click();
+				BasePage.sleepForMilliSecond(1000);
+				driver.switchTo().defaultContent();
+			}
+			catch(ElementNotVisibleException ex){
+				
+			}
+			catch(TimeoutException ex){
+			driver.switchTo().defaultContent();
+			}
+			
+		}
+	
 	}
 	public void clickProfileIcon(WebDriver driver)
 	{
@@ -326,7 +382,7 @@ public class CreateAccountPage
 				try{
 				driver.switchTo().frame(frame);
 				WaitStatementLib.explicitWaitForVisiblity(driver, 5, closeboardpprnotification);
-				closeboardpprnotification.click();
+				closeboardpprnotification.click();x	
 				BasePage.sleepForMilliSecond(1000);
 				driver.switchTo().defaultContent();
 				}

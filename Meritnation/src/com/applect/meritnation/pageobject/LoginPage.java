@@ -6,6 +6,7 @@ import java.util.List;
 import java.util.Set;
 
 import org.openqa.selenium.ElementNotVisibleException;
+import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.TimeoutException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -36,7 +37,7 @@ public class LoginPage {
 	private WebElement closenotification;
 	@FindBy(id="jeeHeader")
 	private WebElement header;
-	@FindBy(xpath="//div[@class='newLogo']")
+	@FindBy(xpath="//a[@class='mnlogo']")
 	private WebElement logo;
 	@FindBy(xpath="//div[@class='navBox']/nav/div/span[1]")
 	private WebElement phoneno;
@@ -66,8 +67,11 @@ public class LoginPage {
 	private WebElement memenu;
 	@FindBy(xpath="//div[@class='navBox']/nav/ul/li[5]/ul/li")
 	private List <WebElement> mecontent;
-	@FindBy(xpath="//div[@class='profile']/span")
+	@FindBy(xpath="//span[@class='userName']")
 	private WebElement fullname;
+	@FindBy(xpath="//div[@class='profile']/span")
+	private WebElement fullName;
+	
 	@FindBy(xpath="//div[@id='jeeMain']/div/aside/div/div")
 	private WebElement rightbanner;
 	@FindBy(xpath="//div[@id='jeeMain']/div/aside/div/div/section/h3")
@@ -293,6 +297,10 @@ public class LoginPage {
 	private WebElement userimg;
 	@FindBy(xpath="//a[text()='Log out']")
 	private WebElement testlogout;
+	@FindBy (xpath = "//div[@class='close tablecell']")
+	private WebElement closePopup;
+	@FindBy (xpath = "//div[@class='newLogo']")
+	private WebElement newLogo;
 	
 	
 	
@@ -421,7 +429,7 @@ public class LoginPage {
 				WaitStatementLib.explicitWaitForVisiblity(driver, 15, frame);
 				try{
 				driver.switchTo().frame(frame);
-				WaitStatementLib.explicitWaitForVisiblity(driver, 5, closeboardpprnotification);
+			//	WaitStatementLib.explicitWaitForVisiblity(driver, 5, closeboardpprnotification);
 				closeboardpprnotification.click();
 				BasePage.sleepForMilliSecond(1000);
 				driver.switchTo().defaultContent();
@@ -429,7 +437,12 @@ public class LoginPage {
 				catch(ElementNotVisibleException ex){
 					
 				}
-				catch(TimeoutException ex){
+				catch(TimeoutException | NoSuchElementException ex){
+					if (BasePage.isPresentAndDisplayed(closePopup)){
+						closePopup.click();
+						BasePage.sleepForMilliSecond(1000);
+					}
+						
 				driver.switchTo().defaultContent();
 				}
 			}
@@ -458,28 +471,28 @@ public class LoginPage {
 	public void checkOnlyHeader(WebDriver driver){
 		Assert.assertTrue((String.valueOf(BasePage.isPresentAndDisplayed(header))!= "false"),"Header not ddisplayed");
 		Assert.assertTrue(BasePage.isPresentAndDisplayed(logo), "Logo Not Displayed");
-		Assert.assertTrue(BasePage.isPresentAndDisplayed(phoneno), "Phone number not displayed");
-		Assert.assertTrue(BasePage.isPresentAndDisplayed(ortxt), "OR text not displayed on header");
-		Assert.assertTrue(BasePage.isPresentAndDisplayed(callmebtn),"Call me button not displayed");
-		Assert.assertTrue(BasePage.isPresentAndDisplayed(upgradebtn), "Upgrade button not displayed");
-		Assert.assertTrue(BasePage.isPresentAndDisplayed(coursemenu), "Course menu not displayed");
-		coursemenu.click();
+		Assert.assertFalse(BasePage.isPresentAndDisplayed(phoneno), "Phone number not displayed");
+		Assert.assertFalse(BasePage.isPresentAndDisplayed(ortxt), "OR text not displayed on header");
+		Assert.assertFalse(BasePage.isPresentAndDisplayed(callmebtn),"Call me button not displayed");
+		Assert.assertFalse(BasePage.isPresentAndDisplayed(upgradebtn), "Upgrade button not displayed");
+		Assert.assertFalse(BasePage.isPresentAndDisplayed(coursemenu), "Course menu not displayed");
+	/*	coursemenu.click();
 		BasePage.sleepForMilliSecond(1000);
-		BasePage.verifyCourseMenuContent(coursecontent);
-		Assert.assertTrue(BasePage.isPresentAndDisplayed(studymenu),"Study Menu not displayed");
-		BasePage.moveToElementAndStay(driver, studymenu);
+		BasePage.verifyCourseMenuContent(coursecontent); */
+		Assert.assertFalse(BasePage.isPresentAndDisplayed(studymenu),"Study Menu not displayed");
+	/*	BasePage.moveToElementAndStay(driver, studymenu);
 		BasePage.sleepForMilliSecond(1000);
-		BasePage.verifyStudyMenuContent(studycontent);
-		Assert.assertTrue(BasePage.isPresentAndDisplayed(anamenu), "ana menu not displayed");
-		anamenu.click();
+		BasePage.verifyStudyMenuContent(studycontent); */
+		Assert.assertFalse(BasePage.isPresentAndDisplayed(anamenu), "ana menu not displayed");
+	/*	anamenu.click();
 		BasePage.sleepForMilliSecond(1000);
-		BasePage.verifyAnaMenuContent(anacontent);
-		Assert.assertTrue(BasePage.isPresentAndDisplayed(feed), "feed not displayed");
+		BasePage.verifyAnaMenuContent(anacontent); */
+		Assert.assertFalse(BasePage.isPresentAndDisplayed(feed), "feed not displayed");
 		BasePage.sleepForMilliSecond(1000);
-		Assert.assertTrue(BasePage.isPresentAndDisplayed(memenu),"Me menu not displayed");
-		memenu.click();
+		Assert.assertFalse(BasePage.isPresentAndDisplayed(memenu),"Me menu not displayed");
+	/*	memenu.click();
 		BasePage.sleepForMilliSecond(1000);
-		BasePage.verifyMeMenuContent(mecontent);
+		BasePage.verifyMeMenuContent(mecontent); */
 		//Assert.assertTrue(BasePage.isPresentAndDisplayed(searchbx));
 		Assert.assertTrue(BasePage.isPresentAndDisplayed(fullname),"Full Name not displayed");;
 		Assert.assertTrue(fullname.getText().toString().length()!=0);
@@ -488,7 +501,7 @@ public class LoginPage {
 	public void checkHeaderDisplay(WebDriver driver)
 	{
 			Assert.assertTrue((String.valueOf(BasePage.isPresentAndDisplayed(header))!= "false"),"Header not ddisplayed");
-			Assert.assertTrue(BasePage.isPresentAndDisplayed(logo), "Logo Not Displayed");
+			Assert.assertTrue(BasePage.isPresentAndDisplayed(newLogo), "Logo Not Displayed");
 			Assert.assertTrue(BasePage.isPresentAndDisplayed(phoneno), "Phone number not displayed");
 			Assert.assertTrue(BasePage.isPresentAndDisplayed(ortxt), "OR text not displayed on header");
 			Assert.assertTrue(BasePage.isPresentAndDisplayed(callmebtn),"Call me button not displayed");
@@ -512,8 +525,8 @@ public class LoginPage {
 			BasePage.sleepForMilliSecond(1000);
 			BasePage.verifyMeMenuContent(mecontent);
 			Assert.assertTrue(BasePage.isPresentAndDisplayed(searchbx));
-			Assert.assertTrue(BasePage.isPresentAndDisplayed(fullname),"Full Name not displayed");;
-			Assert.assertTrue(fullname.getText().toString().length()!=0);
+			Assert.assertTrue(BasePage.isPresentAndDisplayed(fullName),"Full Name not displayed");;
+			Assert.assertTrue(fullName.getText().toString().length()!=0);
 			Assert.assertTrue(BasePage.isPresentAndDisplayed(rightbanner),"Right side banner on dashboard not displayed");
 		//	Assert.assertTrue(BasePage.isPresentAndDisplayed(rightbannercontent.get(0)),"Right side banner content not displayed");
 			Assert.assertTrue(BasePage.isPresentAndDisplayed(rightbannercontent.get(1)),"Right side banner content not displayed");
