@@ -59,5 +59,24 @@ public class LoginTest extends BaseLib
 		}
 	}
 	
+	@Test(groups = "CurrentTask")
+	public void TC_004_VerifyHeaderMenuInDifferentGrade(){
+	LoginPage loginPage = new LoginPage(driver);
+	CreateAccountPage createAccountPage = new CreateAccountPage(driver);
+	loginPage.loginButtonClick(driver);
+	loginPage.loginUserForchangeGradeFromProfile(driver);
+	loginPage.enterPassword(driver);
+	loginPage.signInBtnClick(driver);
+	loginPage.clickOnProfileFromDashboardHeader(driver);
+	loginPage.changeGradeFromProfile(driver);
+	loginPage.checkOnlyHeader(driver);
+	loginPage.verifyHeaderTest(driver);
+	loginPage.clickOnProfileFromDashboardHeader(driver);
+	loginPage.againChangeGradeFromProfile(driver);
+	loginPage.clickOnProfileFromDashboardHeader(driver);
+	createAccountPage.logoutClick(driver);
+	}
+
+	
 	
 }
