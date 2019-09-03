@@ -52,4 +52,10 @@ public class WaitStatementLib {
 			     }
 
 			   });}*/
+	
+	public static void explicitWaitForInVisiblity (WebDriver driver, int time, WebElement element)
+	{
+		WebDriverWait wait = new WebDriverWait (driver, time);
+		wait.until(ExpectedConditions.invisibilityOf(element));
+	}
 	}
