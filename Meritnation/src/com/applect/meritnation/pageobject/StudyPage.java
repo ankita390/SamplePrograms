@@ -297,6 +297,14 @@ public class StudyPage {
 	private WebElement start;
 	@FindBy(xpath="//div[@class='ng-scope layout-row']")
 	private WebElement crystal;
+	@FindBy (xpath = "//div[@id='main_section']/table/tbody/tr[2]/td[5]/a[2]/span")
+	private WebElement viewRecording;
+	@FindBy (xpath = "//*[@class='material-icons flex']")
+	private WebElement playButton;
+	@FindBy (xpath = "//*[contains(@class,'full-screen-loader ')]")
+	private WebElement pageLoader;
+	@FindBy (xpath = "//video[@id='recording-video']")
+	private WebElement videoScreen;
 	
 	public StudyPage(WebDriver driver)
 	{
@@ -1172,15 +1180,26 @@ public class StudyPage {
 					int size = lastdrpdwntopicmenu.size();
 					lastdrpdwntopicmenu.get(size-1).click();
 					taketopictestbtn.get(taketopictestbtn.size()-1).click();
-				}
+	}
+
 	public void verifyJuniorLive(WebDriver driver) {
 		BasePage.scrollDown(Livebtn, driver);
 		Livebtn.click();
+		if (viewRecording.isDisplayed()) {
+			viewRecording.click();
+			playButton.click();
+			WaitStatementLib.explicitWaitForInVisiblity(driver, 50, pageLoader);
+			Assert.assertEquals(true, videoScreen.isDisplayed());
+
+		}
+		else {
 		start.click();
-	    WaitStatementLib.explicitWaitForVisiblity(driver, 5, crystal);
-	    
+		WaitStatementLib.explicitWaitForVisiblity(driver, 5, crystal);
+		}
+		
+
 	}
-	}
+}
 
 			
 		
