@@ -77,9 +77,9 @@ public class StudyPage {
 	private WebElement economicsfirsttopic;
 	@FindBy(xpath="//div[@class='sidebarInner']/div/div/div[2]/h3[text()='Live Classes']")
 	private WebElement liveclasseslnk;
-	@FindBy(xpath="//div[@class='sidebarInner']/div/div[2]/h3[text()='Live Classes']")
+	@FindBy(xpath="//div[@id='liveClass']")
 	private WebElement liveclassesonsubjectlnk;
-	@FindBy(xpath="//section[@class='whatNext']/div[@class='boxesRow group']/div/article[2]")
+	@FindBy(xpath="//div[@id='listingView']/article[2]")
 	private WebElement fistdisplayedtest;
 	@FindBy(xpath="//div[@class='group margBottom35 ng-scope']/div/div[@class='classTestwrap textCenter ng-scope']/a")
 	private WebElement taketestbtn;
@@ -163,7 +163,7 @@ public class StudyPage {
 	private WebElement testsonenglishlnk;
 	@FindBy(xpath="//div[@class='sidebarInner']/div/div/div[3]/h3[text()='Tests']")
 	private WebElement testsoneconomicslnk;
-	@FindBy(xpath="//div[@class='test-card__action']/div/button[text()=' START TEST']")
+	@FindBy(xpath="//div[@class='test-card__action']//button[text()='  START TEST']")
 	private List <WebElement> starttestbtn;
 	@FindBy(xpath="//div[@class='test-card__action']/div/button")
 	private List <WebElement> starttestbtnOnTests;
@@ -845,12 +845,12 @@ public class StudyPage {
 		{
 			testslnk.click();
 			BasePage.sleepForMilliSecond(2000);
-			boolean str = BasePage.isPresentAndDisplayed(starttestbtnOnTests.get(0));
+			boolean str = BasePage.isPresentAndDisplayed(starttestbtn.get(0));
 			String str1 = String.valueOf(str);
 				if(str1 != "false")
 				{
 					BasePage.sleepForMilliSecond(2000);
-					starttestbtnOnTests.get(0).click();
+					starttestbtn.get(0).click();
 					BasePage.sleepForMilliSecond(2000);
 					proceeedbtn.click();
 					BasePage.sleepForMilliSecond(2000);
