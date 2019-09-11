@@ -407,6 +407,22 @@ public class LoginPage {
 	
 	public void loginButtonClick(WebDriver driver)
 	{
+		if(BasePage.isPresentAndDisplayed(connectoFrame)){
+			WaitStatementLib.explicitWaitForVisiblity(driver, 15, connectoFrame);
+			try{
+				driver.switchTo().frame(connectoFrame);
+				WaitStatementLib.explicitWaitForVisiblity(driver, 5, closeFrame);
+				closeFrame.click();
+				BasePage.sleepForMilliSecond(1000);
+				driver.switchTo().defaultContent();
+			}
+			catch(ElementNotVisibleException ex){
+				
+			}
+			catch(TimeoutException ex){
+			
+			}
+		}
 		loginbtn.click();
 		WaitStatementLib.implicitWaitForSecond(driver, 2);
 	}
