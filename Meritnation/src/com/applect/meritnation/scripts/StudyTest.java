@@ -3,6 +3,7 @@ package com.applect.meritnation.scripts;
 import java.awt.AWTException;
 import org.testng.annotations.Test;
 import com.applect.meritnation.generic.BaseLib;
+import com.applect.meritnation.generic.RetryAnalyzer;
 //import com.applect.meritnation.generic.RetryAnalyzer;
 import com.applect.meritnation.pageobject.BasePage;
 import com.applect.meritnation.pageobject.LoginPage;
@@ -579,7 +580,8 @@ public class StudyTest extends BaseLib
 			loginPage.enterUserName(driver,1,15);
 			loginPage.enterPassword(driver);
 			loginPage.signInBtnClick(driver);
-			studyPage.verifyJuniorLive(driver);			
+			studyPage.verifyJuniorLive(driver);	
+			
 			
 		}
 }

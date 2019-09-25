@@ -14,7 +14,7 @@ public class CreateAccountTest extends BaseLib
 	public void TC_001_CreateAccountTest() 
 	{
 		CreateAccountPage createAccoutPage = new CreateAccountPage(driver);
-		createAccoutPage.createAccount();
+		createAccoutPage.createAccount(driver);
 		BasePage.signup(driver);
 		BasePage.logout(driver);
 		}

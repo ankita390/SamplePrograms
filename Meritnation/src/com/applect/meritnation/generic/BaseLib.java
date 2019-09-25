@@ -162,22 +162,15 @@ public class BaseLib {
 		    options.addArguments("disable-geolocation");
 			options.addArguments("--disable-notifications");
 		    caps.setCapability(ChromeOptions.CAPABILITY, options);
-			caps.setCapability("deviceName", GetPropertyValues.getPropertyValue("anupPhoneName"));
+			caps.setCapability("deviceName", GetPropertyValues.getPropertyValue("LenovoPhoneName"));
 			caps.setCapability("locationServicesAuthorized", false);
 			caps.setCapability("clearSystemFiles", true);
-			caps.setCapability("udid", GetPropertyValues.getPropertyValue("anupPhoneUDID")); //Give Device ID of your mobile phone
+			caps.setCapability("udid", GetPropertyValues.getPropertyValue("LenovoPhoneUDID")); //Give Device ID of your mobile phone
 			caps.setCapability("platformName", "Android");
 			caps.setCapability("automationName" , "UiAutomator1");
-			caps.setCapability(CapabilityType.VERSION, GetPropertyValues.getPropertyValue("anupPhoneOSName"));
-		//	caps.setCapability("appPackage", "com.rivigo.zoombp.rivigozoombpapp");
-		//	caps.setCapability("appActivity", "com.rivigo.zoombp.rivigozoombpapp.activity.Activity.RivigoHomeActivity");
-			
-
-		//	caps.setCapability("browserName", "Chrome");
+			caps.setCapability(CapabilityType.VERSION, GetPropertyValues.getPropertyValue("LenovoPhoneOSName"));
 			caps.setCapability("noReset", true);
 			System.setProperty("webdriver.http.factory", "apache");
-			//AppiumDriver<MobileElement> driver = null;
-			
 			try {
 				_driver = new AndroidDriver<MobileElement>(new URL("http:/0.0.0.0:4723/wd/hub"),caps);
 				Reporter.log("Chrome Browser launches");
@@ -362,6 +355,33 @@ public void testSetUpForFullRegression(){
 	
 */
 		
+	@AfterMethod(alwaysRun =false, groups = "CurrentTask")
+	public void postConditionCurrentTask(ITestResult result)
+	{
+		if (result.isSuccess())
+		{
+				Reporter.log("Script passed",true);
+		}
+		else
+		{
+		    Capabilities cap = ((RemoteWebDriver) driver).getCapabilities();
+		    String browserName = cap.getBrowserName().toLowerCase().toString();
+			String filename = result.getMethod().getMethodName();
+			SimpleDateFormat formatter = new SimpleDateFormat("dd_MM_yyyy");  
+			Date date = new Date();
+			String chromeFolder = "/var/www/mn-testing/Meritnation/Screenshot/Chrome/" + formatter.format(date);  
+			File file1 = new File(chromeFolder);
+			if(!file1.exists()){
+				file1.mkdir();
+			}
+			ScreenShotLib sLib= new ScreenShotLib();
+			sLib.getScreenShot(driver, filename, browserName, chromeFolder);
+			Reporter.log("Screenshot has been taken",true);
+			
+		}
+		driver.quit();
+		Reporter.log("Browser closed",true);
+	}
 	
 	
 

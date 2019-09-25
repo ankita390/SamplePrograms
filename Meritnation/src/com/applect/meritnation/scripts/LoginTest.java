@@ -59,7 +59,7 @@ public class LoginTest extends BaseLib
 		}
 	}
 	
-	@Test(groups = "CurrentTask")
+	@Test(groups = "CurrentTas")
 	public void TC_004_VerifyHeaderMenuInDifferentGrade(){
 	LoginPage loginPage = new LoginPage(driver);
 	CreateAccountPage createAccountPage = new CreateAccountPage(driver);

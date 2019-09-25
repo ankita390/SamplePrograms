@@ -1,0 +1,15 @@
+
+							Retry the failed tests automatically
+Ability to re-run only failed test cases automatically by following 2 ways:
+Either pass annotation retryAnalyzer = com.applect.meritnation.generic.RetryAnalyzer.class in @Test OR add below listener in you XML in between Suite and Test
+ <listeners>
+        <listener class-name="com.applect.meritnation.generic.RetryListenerClasss"/>
+  </listeners>
+The respective classes has been added into Generic package.
+FailedTests retry count can noe be easily set in config.properties file.
+
+
+                            How to Open UIAutomator
+After installing the required software, run below command on CLI
+./Android/Sdk/tools/bin/uiautomatorviewer
+                            

@@ -1187,9 +1187,20 @@ public class StudyPage {
 		Livebtn.click();
 		if (viewRecording.isDisplayed()) {
 			viewRecording.click();
+			BasePage.sleepForMilliSecond(2000);
+			try{
 			playButton.click();
-			WaitStatementLib.explicitWaitForInVisiblity(driver, 50, pageLoader);
+			WaitStatementLib.explicitWaitForInVisiblity(driver, 20, pageLoader);
+			}
+			catch(TimeoutException e)
+			{
+				driver.navigate().refresh();
+				BasePage.sleepForMilliSecond(2000);
+				playButton.click();
+			}
+			WaitStatementLib.explicitWaitForInVisiblity(driver, 20, pageLoader);
 			Assert.assertEquals(true, videoScreen.isDisplayed());
+			
 
 		}
 		else {

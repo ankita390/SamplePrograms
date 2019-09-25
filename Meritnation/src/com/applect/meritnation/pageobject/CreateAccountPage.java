@@ -139,14 +139,31 @@ public class CreateAccountPage
 	@FindBy(xpath = "//div[@class='icon close']")
 	private WebElement closeFrame;
 	
+	
 	public CreateAccountPage(WebDriver driver)
 	{
 		PageFactory.initElements(driver, this);
 	}
-	public void createAccount()
+	public void createAccount(WebDriver driver)
 	{
+		if(BasePage.isPresentAndDisplayed(connectoFrame)){
+			WaitStatementLib.explicitWaitForVisiblity(driver, 15, connectoFrame);
+			try{
+				driver.switchTo().frame(connectoFrame);
+				WaitStatementLib.explicitWaitForVisiblity(driver, 5, closeFrame);
+				closeFrame.click();
+				BasePage.sleepForMilliSecond(1000);
+				driver.switchTo().defaultContent();
+			}
+			catch(ElementNotVisibleException ex){
+				
+			}
+			catch(TimeoutException ex){
+			
+			}
 		BasePage.sleepForMilliSecond(2000);
 		createaccountbtn.click();
+		}
 	}
 	public void enterName()
 	{

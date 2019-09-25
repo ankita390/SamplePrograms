@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
 <suite name="Main Test Suite" parallel="false">
+ <listeners>
+        <listener class-name="com.applect.meritnation.generic.RetryListenerClasss"/>
+  </listeners>
 <!--
 <test name="Meritnation Web Regression">
    <parameter name="browser" value="chrome"/>
@@ -15,7 +18,7 @@
 </test>
 -->
 
-<!--
+
 <test name="Meritnation Mobile Regression">
     <parameter name="browser" value="chrome"/>
     	<groups>
@@ -27,8 +30,8 @@
        	<package name="com.applect.meritnationmobile.scripts"/>
        </packages>
 </test>
--->
 
+<!--
 <test name="Meritnation Main App">
     
     	<groups>
@@ -40,6 +43,6 @@
        	<package name="com.applect.meritnationmainapp.scripts"/>
        </packages>
 </test>
-
+-->
 
 </suite>

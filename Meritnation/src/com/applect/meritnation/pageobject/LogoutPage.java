@@ -367,6 +367,7 @@ public class LogoutPage {
 	}
 	
 	public void verifyPriceForPurchasedProduct(WebDriver driver){
+		BasePage.sleepForMilliSecond(5000);
 		class11Lnk.click();
 		upgradeBtn.click();
 		BasePage.isPresentAndDisplayed(classesLst.get(0));
