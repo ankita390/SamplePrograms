@@ -15,7 +15,7 @@ import com.applect.meritnation.generic.WaitStatementLib;
 public class SearchPage {
 	@FindBy(xpath="//div[@class='headerSearchBox']/div/div/div/form")
 	private WebElement searchbx;
-	@FindBy(xpath="//div[contains(@class,'suggesionbox-dropdpwn')]/div[@class='queRow item ng-scope']")
+	@FindBy(xpath="//div[contains(@class,'drop')]//div")
 	private List <WebElement> allsearchedoption;
 	@FindBy(xpath="//div[@class='alignmentBox']/div[2]")
 	private WebElement headername;
