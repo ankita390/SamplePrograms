@@ -21,6 +21,7 @@ import com.applect.meritnation.generic.WaitStatementLib;
 
 public class CreateAccountPage
 {
+	WebDriver driver;
 	@FindBy(xpath="//button[contains(text(), 'Create account')]")
 	private WebElement createaccountbtn;
 	@FindBy(xpath="//*[contains(@class,'popupForm')]//*[text()='Name']/preceding-sibling::input") 
@@ -143,8 +144,11 @@ public class CreateAccountPage
 	public CreateAccountPage(WebDriver driver)
 	{
 		PageFactory.initElements(driver, this);
+	//	this.driver = driver;
 	}
-	public void createAccount(WebDriver driver)
+	
+	
+	public void createAccount()
 	{
 		if(BasePage.isPresentAndDisplayed(connectoFrame)){
 			WaitStatementLib.explicitWaitForVisiblity(driver, 15, connectoFrame);
@@ -162,8 +166,9 @@ public class CreateAccountPage
 			
 			}
 		BasePage.sleepForMilliSecond(2000);
-		createaccountbtn.click();
+		
 		}
+		createaccountbtn.click();
 	}
 	public void enterName()
 	{

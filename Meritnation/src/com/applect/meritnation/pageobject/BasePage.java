@@ -57,7 +57,7 @@ import io.appium.java_client.android.nativekey.KeyEvent;
 
 
 public abstract class BasePage {
-	static WebDriver driver;
+	public static WebDriver driver;
 	
 	public static boolean isAlertPresent(WebDriver driver) {
 	    try {
@@ -69,6 +69,7 @@ public abstract class BasePage {
 	        
 	    } 
 	}
+	
 	
 	public static void closeJEETestSeriesPopup(WebDriver driver, WebElement element, WebElement element1){
 		if(String.valueOf(BasePage.isPresentAndDisplayed(element))=="true"){
@@ -561,10 +562,11 @@ public static void pressUpArrowKey(WebDriver driver){
 	} */
 	
 	public static void scrollToExactElement(String str) {
-        ((AndroidDriver<MobileElement>) driver).findElementByAndroidUIAutomator(
+        ((AndroidDriver<MobileElement>)driver).findElementByAndroidUIAutomator(
                 "new UiScrollable(new UiSelector().scrollable(true).instance(0)).scrollIntoView(new UiSelector().text(\""
                         + str + "\").instance(0))").click();
     }
+	
 	
 	
 	public BasePage (WebDriver driver)

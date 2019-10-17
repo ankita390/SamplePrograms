@@ -5,17 +5,16 @@ import org.testng.annotations.Test;
 import com.applect.meritnation.generic.BaseLib;
 import com.applect.meritnation.pageobject.LogoutPage;
 
-public class LogoutTest extends BaseLib{
-	
+public class LogoutTest extends BaseLib {
+
 	@Test(groups = "CurrentTas")
-	public void TC_001_VerifyHomePageTest(){
-		LogoutPage logoutPage = new LogoutPage(driver);
-	//	logoutPage.getURLS();
+	public void TC_001_VerifyHomePageTest() {
+		// logoutPage.getURLS();
 		logoutPage.clickLinkAndVerifyURL(driver);
-		}
+	}
+
 	@Test(groups = "CurrentTas")
-	public void TC_002_VerifyPurchasedProductPrice(){
-		LogoutPage logoutPage = new LogoutPage(driver);
+	public void TC_002_VerifyPurchasedProductPrice() {
 		logoutPage.verifyPriceForPurchasedProduct(driver);
 	}
 

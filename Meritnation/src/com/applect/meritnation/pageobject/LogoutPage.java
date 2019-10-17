@@ -7,7 +7,10 @@ import java.util.List;
 import java.util.Set;
 
 import org.openqa.selenium.Alert;
+import org.openqa.selenium.ElementNotVisibleException;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.Keys;
+import org.openqa.selenium.TimeoutException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -277,6 +280,10 @@ public class LogoutPage {
 	private WebElement netBankingPayment;
 	@FindBy(xpath="//label[text()='Payment through ICICI Bank']")
 	private WebElement iciciBankPageText;
+	@FindBy(xpath = "//div[contains(@id,'connecto-modal')]/iframe")
+	private WebElement connectoFrame;
+	@FindBy(xpath = "//div[@class='icon close']")
+	private WebElement closeFrame;
 	
 	
 	public void getURLS(){
@@ -286,6 +293,22 @@ public class LogoutPage {
 	}
 	
 	public void clickLinkAndVerifyURL(WebDriver driver){	
+		if(BasePage.isPresentAndDisplayed(connectoFrame)){
+			WaitStatementLib.explicitWaitForVisiblity(driver, 15, connectoFrame);
+			try{
+				driver.switchTo().frame(connectoFrame);
+				WaitStatementLib.explicitWaitForVisiblity(driver, 5, closeFrame);
+				closeFrame.click();
+				BasePage.sleepForMilliSecond(1000);
+				driver.switchTo().defaultContent();
+			}
+			catch(ElementNotVisibleException ex){
+				
+			}
+			catch(TimeoutException ex){
+			
+			}
+		}
 	
 	WebElement[] strs = {purchaseBtn,ncertSolnLnk,entranceExmLnk,classTwlveLnk,classElvnLnk,
 						classTenLnk,classNineLnk,classEightLnk,classSevenLnk,classSixLnk,classFiveLnk,
@@ -310,9 +333,13 @@ public class LogoutPage {
 		List<WebElement> list = new ArrayList<WebElement>(Arrays.asList(strs));
 		for(int i =0; i < strs.length;i++){
 			list.get(i).click();
+			Long loadtime = (Long)((JavascriptExecutor)driver).executeScript(
+				    "return performance.timing.loadEventEnd - performance.timing.navigationStart;");
+			System.out.println(loadtime);
 			Set <String> allWindow = driver.getWindowHandles();
 			if(allWindow.size()==1){
 				String displayedURL = driver.getCurrentUrl();
+				
 				SoftAssert sf = new SoftAssert();
 			//	sf.assertFalse(BasePage.isPresentAndDisplayed(pageLoadError),"Blank Page displays");
 				
