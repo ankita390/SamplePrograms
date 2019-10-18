@@ -95,7 +95,7 @@ public class BaseLib {
 		}
 		else if (browsername.equalsIgnoreCase("chrome"))
 		{
-			System.setProperty("webdriver.chrome.driver", "/var/www/mn-testing/Meritnation/Exe Files/chromedriver_newest");
+			System.setProperty("webdriver.chrome.driver", "/var/www/mn-testing/Meritnation/Exe Files/chromedriver76");
 			ChromeOptions options = new ChromeOptions();
 			options.addArguments("disable-geolocation");
 			options.addArguments("--disable-notifications");
@@ -184,7 +184,7 @@ public class BaseLib {
 		}
 		else if (browsername.equalsIgnoreCase("chrome"))
 		{
-			System.setProperty("webdriver.chrome.driver", "/var/www/mn-testing/Meritnation/Exe Files/chromedriver_newest");
+			System.setProperty("webdriver.chrome.driver", "/var/www/mn-testing/Meritnation/Exe Files/chromedriver76");
 			ChromeOptions options = new ChromeOptions();
 			options.addArguments("disable-geolocation");
 			options.addArguments("--disable-notifications");
@@ -402,7 +402,7 @@ public void testSetUpForFullRegression(){
 			}
 			ScreenShotLib sLib= new ScreenShotLib();
 			sLib.getScreenShot(driver, filename, browserName, chromeFolder);
-			Reporter.log("Screenshot has been taken",true);
+			Reporter.log(filename + " has beeen failed and Screenshot has been taken",true);
 			
 		}
 		driver.quit();
@@ -411,7 +411,7 @@ public void testSetUpForFullRegression(){
 	
 	
 
-	@AfterMethod(alwaysRun =false, groups = "Regression")
+	@AfterMethod(alwaysRun =false, groups = {"Regression","Purchase"})
 	public void postCondition(ITestResult result)
 	{
 		if (result.isSuccess())
@@ -432,7 +432,7 @@ public void testSetUpForFullRegression(){
 			}
 			ScreenShotLib sLib= new ScreenShotLib();
 			sLib.getScreenShot(driver, filename, browserName, chromeFolder);
-			Reporter.log("Screenshot has been taken",true);
+			Reporter.log(filename + " has beeen failed and Screenshot has been taken",true);
 		}
 		driver.quit();
 		Reporter.log("Browser closed",true);
@@ -460,7 +460,7 @@ public void testSetUpForFullRegression(){
 			ScreenShotLib sLib= new ScreenShotLib();
 			sLib.getScreenShot(_driver, filename, browserName, chromeFolder);
 		   
-			Reporter.log("Screenshot has been taken",true);
+			Reporter.log(filename + " has beeen failed and Screenshot has been taken",true);
 		}
 		_driver.quit();
 		Reporter.log("Browser closed",true);
@@ -485,3 +485,4 @@ public void testSetUpForFullRegression(){
 	
 }
 
+ 
