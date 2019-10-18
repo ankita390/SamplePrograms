@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<qualifiedTypeNameHistroy>
+<fullyQualifiedTypeName name="com.applect.meritnation.generic.WaitStatementLib"/>
+<fullyQualifiedTypeName name="org.openqa.selenium.TimeoutException"/>
+<fullyQualifiedTypeName name="com.applect.meritnation.pageobject.BasePage.RetryAnalyzer"/>
+<fullyQualifiedTypeName name="com.applect.meritnation.generic.RetryAnalyzer"/>
+<fullyQualifiedTypeName name="com.applect.meritnation.generic.GetPropertyValues"/>
+<fullyQualifiedTypeName name="org.openqa.selenium.JavascriptExecutor"/>
+<fullyQualifiedTypeName name="org.openqa.selenium.WebDriver"/>
+<fullyQualifiedTypeName name="com.applect.meritnation.scripts.CreateAccountTest"/>
+<fullyQualifiedTypeName name="com.applect.meritnation.pageobject.CreateAccountPage"/>
+<fullyQualifiedTypeName name="org.openqa.selenium.support.PageFactory"/>
+<fullyQualifiedTypeName name="com.applect.meritnation.pageobject.StudyPage"/>
+</qualifiedTypeNameHistroy>

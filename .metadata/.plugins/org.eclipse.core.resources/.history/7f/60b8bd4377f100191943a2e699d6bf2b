@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+<suite name="Main Test Suite" parallel="false">
+ <listeners>
+        <listener class-name="com.applect.meritnation.generic.RetryListenerClasss"/>
+  </listeners>
+
+<test name="Meritnation Web Regression">
+   <parameter name="browser" value="chrome"/>
+ 
+    	<groups>
+   			<run>
+   				<include name = "Regression" /> 
+			</run>
+   		</groups>
+       <packages>
+       		<package name="com.applect.meritnation.scripts"/>
+       		<package name="com.applect.meritnation.pageobjects"/>
+       		<package name="com.applect.meritnation.generic"/>
+       		<package name="com.applect.meritnationetutor.scripts"/>
+       		<package name="com.applect.meritnationmainapp.scripts"/>
+       		<package name="com.applect.meritnationmobile.scripts"/>
+       </packages>
+</test>
+
+<!--
+<test name="Meritnation Mobile Mobile Regression">
+    <parameter name="browser" value="chrome"/>
+    	<groups>
+   			<run>
+				<include name = "MobileRegression" /> 
+			</run>
+   		</groups>
+       <packages>
+       	<package name="com.applect.meritnationmobile.scripts"/>
+       </packages>
+</test>
+
+-->
+
+</suite>

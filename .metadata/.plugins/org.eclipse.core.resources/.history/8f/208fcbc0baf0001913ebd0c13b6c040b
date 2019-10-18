@@ -1,0 +1,26 @@
+
+							Retry the failed tests automatically
+Ability to re-run only failed test cases automatically by following 2 ways:
+Either pass annotation retryAnalyzer = com.applect.meritnation.generic.RetryAnalyzer.class in @Test OR add below listener in you XML in between Suite and Test
+ <listeners>
+        <listener class-name="com.applect.meritnation.generic.RetryListenerClasss"/>
+  </listeners>
+The respective classes has been added into Generic package.
+FailedTests retry count can noe be easily set in config.properties file.
+
+
+                            How to Open UIAutomator
+After installing the required software, run below command on CLI
+./Android/Sdk/tools/bin/uiautomatorviewer
+      
+   						   Provide "applect" user permisison to jenkins
+ Go to : /etc/default/
+ Open jenkins: sudo vim jenkins
+ Change $JENKINS_USER="applect" >> Save and Quit
+ Change permisison, execute below commands
+ 		sudo chown -R applect:applect /var/lib/jenkins
+ 		sudo chown -R applect:applect /var/cache/jenkins/
+ 		sudo chown -R applect:applect /var/log/jenkins/
+ Restart jenkins server: /etc/init.d/jenkins restart
+ Verify the "applect" user: ps -ef | grep jenkins
+                            
