@@ -14,6 +14,11 @@
    		</groups>
        <packages>
        		<package name="com.applect.meritnation.scripts"/>
+       		<package name="com.applect.meritnation.pageobjects"/>
+       		<package name="com.applect.meritnation.generic"/>
+       		<package name="com.applect.meritnationetutor.scripts"/>
+       		<package name="com.applect.meritnationmainapp.scripts"/>
+       		<package name="com.applect.meritnationmobile.scripts"/>
        </packages>
 </test>
 
