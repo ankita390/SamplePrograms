@@ -27,7 +27,6 @@ import org.testng.annotations.AfterSuite;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.BeforeSuite;
 import org.testng.annotations.Parameters;
-
 import com.applect.meritnation.pageobject.AsknAnswerPage;
 import com.applect.meritnation.pageobject.BasePage;
 import com.applect.meritnation.pageobject.CreateAccountPage;
@@ -41,7 +40,8 @@ import com.applect.meritnation.pageobject.SearchPage;
 import com.applect.meritnation.pageobject.StudyPage;
 import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.MobileElement;
-import io.appium.java_client.android.AndroidDriver; 
+import io.appium.java_client.android.AndroidDriver;
+import io.github.bonigarcia.wdm.WebDriverManager; 
 
 
 
@@ -95,7 +95,8 @@ public class BaseLib {
 		}
 		else if (browsername.equalsIgnoreCase("chrome"))
 		{
-			System.setProperty("webdriver.chrome.driver", "/var/lib/jenkins/workspace/MeritnationWebAutomation/Meritnation/Exe Files/chromedriver76");
+			WebDriverManager.chromedriver().version("71.0.3578.80").setup();
+		//	System.setProperty("webdriver.chrome.driver", "/var/lib/jenkins/workspace/MeritnationWebAutomation/Meritnation/Exe Files/chromedriver76");
 			ChromeOptions options = new ChromeOptions();
 			options.addArguments("disable-geolocation");
 			options.addArguments("--disable-notifications");
@@ -184,7 +185,9 @@ public class BaseLib {
 		}
 		else if (browsername.equalsIgnoreCase("chrome"))
 		{
-			System.setProperty("webdriver.chrome.driver", "/var/lib/jenkins/workspace/MeritnationWebAutomation/Meritnation/Exe Files/chromedriver76");
+			WebDriverManager.chromedriver().version("71.0.3578.80").setup();
+			
+		//	System.setProperty("webdriver.chrome.driver", "/var/www/mn-testing/Meritnation/Exe Files/chromedriver2_46");
 			ChromeOptions options = new ChromeOptions();
 			options.addArguments("disable-geolocation");
 			options.addArguments("--disable-notifications");
