@@ -5,7 +5,7 @@
  <listeners>
         <listener class-name="com.applect.meritnation.generic.RetryListenerClasss"/>
   </listeners>
-  -->
+   -->
   <test name="Meritnation Web Regression">
     <parameter name="browser" value="chrome"/>
     	<groups>
@@ -17,6 +17,7 @@
        		<package name="com.applect.meritnation.scripts"/>
        </packages>
     </test> 
+    <!--
       <test name="Meritnation ETutor Regression">
     <parameter name="browser" value="chrome"/>
     	<groups>
@@ -28,7 +29,7 @@
        		<package name="com.applect.meritnationetutor.scripts"/>
        </packages>
     </test> 
-     
+      -->
    <!--
  <test name="Meritnation Mobile Web Regression">
     <parameter name="browser" value="chrome"/>
