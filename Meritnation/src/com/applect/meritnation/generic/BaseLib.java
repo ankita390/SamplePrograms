@@ -95,8 +95,8 @@ public class BaseLib {
 		}
 		else if (browsername.equalsIgnoreCase("chrome"))
 		{
-			WebDriverManager.chromedriver().version("71.0.3578.80").setup();
-		//	System.setProperty("webdriver.chrome.driver", "/var/lib/jenkins/workspace/MeritnationWebAutomation/Meritnation/Exe Files/chromedriver76");
+		//	WebDriverManager.chromedriver().version("71.0.3578.80").setup();
+			System.setProperty("webdriver.chrome.driver", "/var/www/mn-testing/Meritnation/Exe Files/chromedriver");
 			ChromeOptions options = new ChromeOptions();
 			options.addArguments("disable-geolocation");
 			options.addArguments("--disable-notifications");
@@ -185,9 +185,9 @@ public class BaseLib {
 		}
 		else if (browsername.equalsIgnoreCase("chrome"))
 		{
-			WebDriverManager.chromedriver().version("71.0.3578.80").setup();
+		//	WebDriverManager.chromedriver().version("71.0.3578.80").setup();
 			
-		//	System.setProperty("webdriver.chrome.driver", "/var/www/mn-testing/Meritnation/Exe Files/chromedriver2_46");
+			System.setProperty("webdriver.chrome.driver", "/var/www/mn-testing/Meritnation/Exe Files/chromedriver");
 			ChromeOptions options = new ChromeOptions();
 			options.addArguments("disable-geolocation");
 			options.addArguments("--disable-notifications");
