@@ -1,5 +1,6 @@
 package com.applect.meritnation.scripts;
 
+import org.openqa.selenium.remote.server.log.LoggingOptions;
 import org.testng.annotations.Test;
 import com.applect.meritnation.generic.BaseLib;
 import com.applect.meritnation.pageobject.CreateAccountPage;
@@ -59,7 +60,7 @@ public class LoginTest extends BaseLib
 		}
 	}
 	
-	@Test(groups = "CurrentTask")
+	@Test(groups = "CurrentTas")
 	public void TC_004_VerifyHeaderMenuInDifferentGrade(){
 	LoginPage loginPage = new LoginPage(driver);
 	CreateAccountPage createAccountPage = new CreateAccountPage(driver);
@@ -77,6 +78,15 @@ public class LoginTest extends BaseLib
 	createAccountPage.logoutClick(driver);
 	}
 
-	
+	@Test(groups = "Regression")
+	public void TC_005_VerifyDashboard() {
+		LoginPage loginPage = new LoginPage(driver);
+		loginPage.loginButtonClick(driver);
+		loginPage.enterUserName(driver, 1,16);
+		loginPage.enterPassword(driver);
+		loginPage.signInBtnClick(driver);
+		loginPage.verifyDashboard(driver);
+		
+	}
 	
 }
