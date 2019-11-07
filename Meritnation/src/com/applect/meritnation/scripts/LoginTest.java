@@ -85,7 +85,7 @@ public class LoginTest extends BaseLib
 		loginPage.enterUserName(driver, 1,16);
 		loginPage.enterPassword(driver);
 		loginPage.signInBtnClick(driver);
-		loginPage.verifyDashboard(driver);
+		loginPage.verifyDashboard(driver); 
 		
 	}
 	

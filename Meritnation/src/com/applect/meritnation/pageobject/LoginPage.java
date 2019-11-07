@@ -28,7 +28,7 @@ public class LoginPage {
 	private WebElement untxtbx;
 	@FindBy(xpath = "//input[@id='password_login_1']")
 	private WebElement pwdtxtbx;
-	@FindBy(id = "loginBtn_1")
+	@FindBy(id = "loginBtn_1") 
 	private WebElement signInBtn;
 	@FindBy(xpath = "//div[@class='coursesSlider']/ul/a[2]")
 	private WebElement rightarrow;
