@@ -9,6 +9,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Properties;
@@ -30,6 +31,8 @@ import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeBodyPart;
 import javax.mail.internet.MimeMessage;
 import javax.mail.internet.MimeMultipart;
+
+import org.openqa.selenium.By;
 import org.openqa.selenium.ElementNotVisibleException;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.NoSuchElementException;
@@ -566,6 +569,20 @@ public static void pressUpArrowKey(WebDriver driver){
                 "new UiScrollable(new UiSelector().scrollable(true).instance(0)).scrollIntoView(new UiSelector().text(\""
                         + str + "\").instance(0))").click();
     }
+	
+	public static void selectElementByText(WebDriver driver, String inputText) {
+		
+		WebElement selectedElement = driver.findElement(By.xpath("//span[text()='"+inputText+"']"));
+		
+		selectedElement.click();
+		
+	}
+	
+	public static void clickUsingJavaScriptExecutor(WebDriver driver, String clickableElement) {
+		
+		JavascriptExecutor executor = (JavascriptExecutor)driver;
+		executor.executeScript("arguments[0].click();", clickableElement);
+	}
 	
 	
 	
