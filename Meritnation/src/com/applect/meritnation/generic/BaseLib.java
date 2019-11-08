@@ -471,8 +471,10 @@ public void testSetUpForFullRegression(){
 	@AfterSuite(alwaysRun=true)
 	public static void sendEmail()
 	{
+		SimpleDateFormat formatter = new SimpleDateFormat("dd_MM_yyyy");  
+		Date date = new Date();
 		File srcFile = new File("/var/www/mn-testing/Meritnation/test-output");
-		String filepath = "/var/www/mn-testing/Meritnation/Customized";
+		String filepath = "/var/www/mn-testing/Meritnation/Customized/"+ formatter.format(date);
 		File file = new File(filepath);
 		if(!file.exists()){
 			file.mkdir();
@@ -482,7 +484,7 @@ public void testSetUpForFullRegression(){
 			for (String f : srcFile.list()) {
 		        BasePage.copy(new File(srcFile, f), new File(destFile, f));
 		    }
-			//BasePage.sendEmail();
+			BasePage.sendEmail();
 		
 	}
 	
