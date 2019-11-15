@@ -20,7 +20,13 @@ import com.google.common.base.Predicate;
 
 public class LoginPage {
 	WebDriver driver;
+<<<<<<< HEAD
 	@FindBy(xpath = "//span[text()='LOGIN']")
+=======
+	
+	
+	@FindBy(xpath="//span[text()='LOGIN']")
+>>>>>>> eaabc1f9bb1579b94975daa3b197b697d29ffff9
 	private WebElement loginbtn;
 	@FindBy(xpath = "//*[contains(@class,'popupForm')]//*[text()='Name']/preceding-sibling::input")
 	public WebElement nametxtbx;
@@ -109,8 +115,12 @@ public class LoginPage {
 	private WebElement connectoFrame;
 	@FindBy(xpath = "//div[@class='icon close']")
 	private WebElement closeFrame;
+<<<<<<< HEAD
 
 	@FindBy(xpath = "//div[@class='profilcePic']/div/img")
+=======
+	@FindBy(xpath="//div[@class='profilcePic']/div/img")
+>>>>>>> eaabc1f9bb1579b94975daa3b197b697d29ffff9
 	private WebElement profileicon;
 	@FindBy(xpath = "//div[@id='connecto-widget-container']/iframe")
 	private WebElement JeeTestSeriesframe;
