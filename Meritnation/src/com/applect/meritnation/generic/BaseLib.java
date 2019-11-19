@@ -383,7 +383,7 @@ public void testSetUpForFullRegression(){
 }
 	
 */
-<<<<<<< HEAD
+
 		
 	@AfterMethod(alwaysRun =false, groups = "CurrentTask")
 	public void postConditionCurrentTask(ITestResult result)
@@ -416,9 +416,7 @@ public void testSetUpForFullRegression(){
 	
 
 	@AfterMethod(alwaysRun =false, groups = {"Regression","Purchase"})
-=======
-	@AfterMethod(alwaysRun =false, groups = "Regression")
->>>>>>> eaabc1f9bb1579b94975daa3b197b697d29ffff9
+
 	public void postCondition(ITestResult result)
 	{
 		if (result.isSuccess())
