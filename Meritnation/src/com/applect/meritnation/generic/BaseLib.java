@@ -38,9 +38,12 @@ import com.applect.meritnation.pageobject.MyProfilePage;
 import com.applect.meritnation.pageobject.ProfessorApiPage;
 import com.applect.meritnation.pageobject.SearchPage;
 import com.applect.meritnation.pageobject.StudyPage;
+import com.applect.meritnation.pageobject.TrackingAPIPage;
+
 import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.MobileElement;
 import io.appium.java_client.android.AndroidDriver;
+import io.github.bonigarcia.wdm.PhantomJsDriverManager;
 import io.github.bonigarcia.wdm.WebDriverManager; 
 
 
@@ -61,7 +64,7 @@ public class BaseLib {
 	protected MyProfilePage myprofilepage;
 	protected ProfessorApiPage professorApiPage;
 	protected SearchPage searchPage;
-	
+	protected TrackingAPIPage trackingApiPage;
 	
 	
 	
@@ -135,7 +138,7 @@ public class BaseLib {
 			myprofilepage = PageFactory.initElements(driver, MyProfilePage.class);
 			professorApiPage = PageFactory.initElements(driver, ProfessorApiPage.class);
 			searchPage = PageFactory.initElements(driver, SearchPage.class);
-			
+			trackingApiPage = PageFactory.initElements(driver, TrackingAPIPage.class);
 			
 			
 			
@@ -157,6 +160,11 @@ public class BaseLib {
 			
 			 
 		}
+	
+	@BeforeMethod(alwaysRun=false, groups = "api")
+	public void preconditionapi() {
+		trackingApiPage = PageFactory.initElements(driver, TrackingAPIPage.class);
+	}
 	
 
 	@BeforeMethod(alwaysRun =false, groups = "CurrentTask")
@@ -191,15 +199,15 @@ public class BaseLib {
 			ChromeOptions options = new ChromeOptions();
 			options.addArguments("disable-geolocation");
 			options.addArguments("--disable-notifications");
-			options.addArguments("--no-sandbox");
+			options.addArguments("--no-sandbox"); 
 			
-			/*	String Node = "http://10.0.7.202:9999/wd/hub";
+			/*	String Node = "http://10.0.2.83:15276/wd/hub";
 	 		DesiredCapabilities cap = DesiredCapabilities.chrome();
 	 		try {
 				driver = new RemoteWebDriver(new URL(Node), cap);
 			} catch (MalformedURLException e) {
 				e.printStackTrace();
-			}*/
+			} */
 			
 			driver = new ChromeDriver(options);
 			Reporter.log("Chrome Browser launches");
@@ -225,6 +233,9 @@ public class BaseLib {
 		myprofilepage = PageFactory.initElements(driver, MyProfilePage.class);
 		professorApiPage = PageFactory.initElements(driver, ProfessorApiPage.class);
 		searchPage = PageFactory.initElements(driver, SearchPage.class);
+		trackingApiPage = PageFactory.initElements(driver, TrackingAPIPage.class);
+		
+	
 		
 
 		
@@ -484,7 +495,7 @@ public void testSetUpForFullRegression(){
 			for (String f : srcFile.list()) {
 		        BasePage.copy(new File(srcFile, f), new File(destFile, f));
 		    }
-			BasePage.sendEmail();
+		//	BasePage.sendEmail();
 		
 	}
 	
