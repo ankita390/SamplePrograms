@@ -43,8 +43,10 @@ public class TrackingAPITest extends BaseLib{
 	try {
 		Message message = new MimeMessage(session);
 		message.setFrom(new InternetAddress("anup.kumar@meritnation.com"));
-		message.setRecipients(Message.RecipientType.TO,
+		message.addRecipients(Message.RecipientType.TO,
 				InternetAddress.parse("deepesh.pathak@meritnation.com"));
+		message.addRecipients(Message.RecipientType.TO,
+				InternetAddress.parse("julfkar@meritnation.com"));
 		message.setRecipients(Message.RecipientType.CC,
 				InternetAddress.parse("enggqa@meritnation.com"));
 		message.setSubject("TrackingAPI Report");
