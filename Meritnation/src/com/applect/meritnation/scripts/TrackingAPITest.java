@@ -37,12 +37,12 @@ public class TrackingAPITest extends BaseLib{
 	Session session = Session.getDefaultInstance(props,
 		new javax.mail.Authenticator() {
 			protected PasswordAuthentication getPasswordAuthentication() {
-				return new PasswordAuthentication("qa.meritnation1@gmail.com","amit@765");
+				return new PasswordAuthentication("anup.kumar@meritnation.com","Anup.preeti46");
 			}
 		});
 	try {
 		Message message = new MimeMessage(session);
-		message.setFrom(new InternetAddress("qa.meritnation1@gmail.com"));
+		message.setFrom(new InternetAddress("anup.kumar@meritnation.com"));
 		message.setRecipients(Message.RecipientType.TO,
 				InternetAddress.parse("deepesh.pathak@meritnation.com"));
 		message.setRecipients(Message.RecipientType.CC,
