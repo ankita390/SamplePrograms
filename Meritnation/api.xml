@@ -2,7 +2,7 @@
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
 <suite name="Main Test Suite" parallel="false">
  
-  <test name="Meritnation Web Regression">
+  <test name="Meritnation API Functional Testing">
     <parameter name="browser" value="chrome"/>
     	<groups>
    			<run>

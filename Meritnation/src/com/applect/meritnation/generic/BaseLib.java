@@ -479,7 +479,7 @@ public void testSetUpForFullRegression(){
 		_driver.quit();
 		Reporter.log("Browser closed",true);
 	}
-	@AfterSuite(alwaysRun=true)
+	/*@AfterSuite(alwaysRun=true)
 	public static void sendEmail()
 	{
 		SimpleDateFormat formatter = new SimpleDateFormat("dd_MM_yyyy");  
@@ -494,11 +494,12 @@ public void testSetUpForFullRegression(){
 		File destFile = new File(filepath);
 			for (String f : srcFile.list()) {
 		        BasePage.copy(new File(srcFile, f), new File(destFile, f));
-		    }
+		    }*/
 		//	BasePage.sendEmail();
+
 		
 	}
 	
-}
+
 
  
