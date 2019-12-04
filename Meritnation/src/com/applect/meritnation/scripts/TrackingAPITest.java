@@ -1,5 +1,6 @@
 package com.applect.meritnation.scripts;
 
+import java.io.UnsupportedEncodingException;
 import java.util.Properties;
 import javax.mail.BodyPart;
 import javax.mail.Message;
@@ -42,13 +43,18 @@ public class TrackingAPITest extends BaseLib{
 		});
 	try {
 		Message message = new MimeMessage(session);
-		message.setFrom(new InternetAddress("qa.meritnation1@gmail.com"));
+		try {
+			message.setFrom(new InternetAddress("qa.meritnation1@gmail.com", "Automaion User"));
+		} catch (UnsupportedEncodingException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		message.addRecipients(Message.RecipientType.TO,
-				InternetAddress.parse("deepesh.pathak@meritnation.com"));
-		message.addRecipients(Message.RecipientType.TO,
-				InternetAddress.parse("julfkar@meritnation.com"));
-		message.setRecipients(Message.RecipientType.CC,
-				InternetAddress.parse("enggqa@meritnation.com"));
+				InternetAddress.parse("anup.kumar@meritnation.com"));
+	//	message.addRecipients(Message.RecipientType.TO,
+		//		InternetAddress.parse("julfkar@meritnation.com"));
+	//	message.setRecipients(Message.RecipientType.CC,
+		//		InternetAddress.parse("enggqa@meritnation.com"));
 		message.setSubject("TrackingAPI Report");
 		
 		BodyPart messageBodyPart = new MimeBodyPart();
@@ -56,9 +62,9 @@ public class TrackingAPITest extends BaseLib{
 		BodyPart messageBodyPart1 = new MimeBodyPart();
 		messageBodyPart1.setContent( "<b>Otype is:</b> <br>"+ trackingApiPage.populateAllOtypes(), "text/html; charset=utf-8");
 		BodyPart messageBodyPart2 = new MimeBodyPart();
-		messageBodyPart2.setContent( "<br> <br> <b>Otype occurance count</b>  "  + trackingApiPage.populateOtypeCount(), "text/html; charset=utf-8");
+		messageBodyPart2.setContent( "<br> <br> <b>Otype occurance count: </b>  "  + trackingApiPage.populateOtypeCount(), "text/html; charset=utf-8");
 		BodyPart messageBodyPart3 = new MimeBodyPart();
-		messageBodyPart3.setContent("<br><br>Cheers","text/html; charset=utf-8");
+		messageBodyPart3.setContent("<br><br>Cheers,","text/html; charset=utf-8");
 		BodyPart messageBodyPart4 = new MimeBodyPart();
 		messageBodyPart4.setContent("<br>Automation Team :)","text/html; charset=utf-8");
 		
