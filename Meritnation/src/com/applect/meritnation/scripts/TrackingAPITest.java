@@ -53,8 +53,20 @@ public class TrackingAPITest extends BaseLib{
 				InternetAddress.parse("deepesh.pathak@meritnation.com"));
 		message.addRecipients(Message.RecipientType.TO,
 				InternetAddress.parse("julfkar@meritnation.com"));
-		message.setRecipients(Message.RecipientType.CC,
-				InternetAddress.parse("enggqa@meritnation.com"));
+		
+		message.addRecipients(Message.RecipientType.CC,
+				InternetAddress.parse("anup.kumar@meritnation.com"));
+		message.addRecipients(Message.RecipientType.CC,
+				InternetAddress.parse("amit.pant@meritnation.com"));
+		message.addRecipients(Message.RecipientType.CC,
+				InternetAddress.parse("ashish.kumar@meritnation.com"));
+		message.addRecipients(Message.RecipientType.CC,
+				InternetAddress.parse("shruti.kaushik@meritnation.com"));
+		message.addRecipients(Message.RecipientType.CC,
+				InternetAddress.parse("ankita.sharma@meritnation.com"));
+		message.addRecipients(Message.RecipientType.CC,
+				InternetAddress.parse("ajit.kumar2@meritnation.com"));
+
 		message.setSubject("TrackingAPI Report");
 		
 		BodyPart messageBodyPart = new MimeBodyPart();
