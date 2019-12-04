@@ -37,12 +37,12 @@ public class TrackingAPITest extends BaseLib{
 	Session session = Session.getDefaultInstance(props,
 		new javax.mail.Authenticator() {
 			protected PasswordAuthentication getPasswordAuthentication() {
-				return new PasswordAuthentication("anup.kumar@meritnation.com","Anup.preeti46");
+				return new PasswordAuthentication("qa.meritnation1@gmail.com","amit@765");
 			}
 		});
 	try {
 		Message message = new MimeMessage(session);
-		message.setFrom(new InternetAddress("anup.kumar@meritnation.com"));
+		message.setFrom(new InternetAddress("qa.meritnation1@gmail.com"));
 		message.addRecipients(Message.RecipientType.TO,
 				InternetAddress.parse("deepesh.pathak@meritnation.com"));
 		message.addRecipients(Message.RecipientType.TO,
@@ -52,23 +52,23 @@ public class TrackingAPITest extends BaseLib{
 		message.setSubject("TrackingAPI Report");
 		
 		BodyPart messageBodyPart = new MimeBodyPart();
-		messageBodyPart.setContent("Dear All, Please see below detail report regarding Tracking API: ","text/html; charset=utf-8");
+		messageBodyPart.setContent("Dear All, <br> Please see below detail report regarding Tracking API: <br><br>","text/html; charset=utf-8");
 		BodyPart messageBodyPart1 = new MimeBodyPart();
-		messageBodyPart1.setContent( "Otype is: "+ trackingApiPage.populateAllOtypes(), "text/html; charset=utf-8");
+		messageBodyPart1.setContent( "<b>Otype is:</b> <br>"+ trackingApiPage.populateAllOtypes(), "text/html; charset=utf-8");
 		BodyPart messageBodyPart2 = new MimeBodyPart();
-		messageBodyPart2.setContent( "  and Otype occurance count is  "  + trackingApiPage.populateOtypeCount(), "text/html; charset=utf-8");
+		messageBodyPart2.setContent( "<br> <br> <b>Otype occurance count</b>  "  + trackingApiPage.populateOtypeCount(), "text/html; charset=utf-8");
 		BodyPart messageBodyPart3 = new MimeBodyPart();
-		messageBodyPart3.setContent("Cheers","text/html; charset=utf-8");
+		messageBodyPart3.setContent("<br><br>Cheers","text/html; charset=utf-8");
 		BodyPart messageBodyPart4 = new MimeBodyPart();
-		messageBodyPart4.setContent("Automation Team :)","text/html; charset=utf-8");
+		messageBodyPart4.setContent("<br>Automation Team :)","text/html; charset=utf-8");
 		
 		
 		Multipart multipart = new MimeMultipart();
 		multipart.addBodyPart(messageBodyPart);
 		multipart.addBodyPart(messageBodyPart1);
 		multipart.addBodyPart(messageBodyPart2);
-	//	multipart.addBodyPart(messageBodyPart3);
-	//	multipart.addBodyPart(messageBodyPart4);
+		multipart.addBodyPart(messageBodyPart3);
+		multipart.addBodyPart(messageBodyPart4);
         message.setContent(multipart);
         Transport.send(message);
 		} 
