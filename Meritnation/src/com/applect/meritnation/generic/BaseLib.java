@@ -11,6 +11,8 @@ import org.apache.log4j.LogManager;
 import org.apache.log4j.Logger;
 import org.openqa.selenium.Capabilities;
 import org.openqa.selenium.NoSuchElementException;
+import org.openqa.selenium.Platform;
+import org.openqa.selenium.UnexpectedAlertBehaviour;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
@@ -101,12 +103,17 @@ public class BaseLib {
 		//	WebDriverManager.chromedriver().version("71.0.3578.80").setup();
 			System.setProperty("webdriver.chrome.driver", "/var/www/mn-testing/Meritnation/Exe Files/chromedriver");
 			ChromeOptions options = new ChromeOptions();
+			options.setCapability(CapabilityType.UNEXPECTED_ALERT_BEHAVIOUR,
+	                  UnexpectedAlertBehaviour.IGNORE);
 			options.addArguments("disable-geolocation");
 			options.addArguments("--disable-notifications");
 			options.addArguments("--no-sandbox");
 			
+			
 			/*	String Node = "http://10.0.2.83:6666/wd/hub";
 	 		DesiredCapabilities cap = DesiredCapabilities.chrome();
+	 		cap.setPlatform(Platform.LINUX);
+	 		cap.setVersion("71.0.3578.80");
 	 
 	 		try {
 				driver = new RemoteWebDriver(new URL(Node), cap);
@@ -193,7 +200,7 @@ public class BaseLib {
 		}
 		else if (browsername.equalsIgnoreCase("chrome"))
 		{
-		//	WebDriverManager.chromedriver().version("71.0.3578.80").setup();
+		//	WebDriverManager.chromedriver().version("75.0.3770.80").setup();
 			
 			System.setProperty("webdriver.chrome.driver", "/var/www/mn-testing/Meritnation/Exe Files/chromedriver");
 			ChromeOptions options = new ChromeOptions();
@@ -201,15 +208,15 @@ public class BaseLib {
 			options.addArguments("--disable-notifications");
 			options.addArguments("--no-sandbox"); 
 			
-			/*	String Node = "http://10.0.2.83:15276/wd/hub";
+			String Node = "http://"+GetPropertyValues.getPropertyValue("ashishIp")+":1234/wd/hub";
 	 		DesiredCapabilities cap = DesiredCapabilities.chrome();
 	 		try {
 				driver = new RemoteWebDriver(new URL(Node), cap);
 			} catch (MalformedURLException e) {
 				e.printStackTrace();
-			} */
+			} 
 			
-			driver = new ChromeDriver(options);
+		//	driver = new ChromeDriver(options);
 			Reporter.log("Chrome Browser launches");
 		}
 		else if (browsername.equalsIgnoreCase("IE"))
@@ -220,7 +227,8 @@ public class BaseLib {
 		}
 		driver.manage().window().maximize();
 		//driver.manage().window().setSize(new Dimension (412, 732));
-		driver.get(GetPropertyValues.getPropertyValue("liveURL"));
+		driver.navigate().to(GetPropertyValues.getPropertyValue("liveURL"));
+	//	driver.get(GetPropertyValues.getPropertyValue("liveURL"));
 		Reporter.log("Navigate to the URL", true);
 		WaitStatementLib.implicitWaitForSecond(driver, 5);
 		
