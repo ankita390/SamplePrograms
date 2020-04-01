@@ -1,5 +1,6 @@
 package com.applect.meritnation.scripts;
 
+
 import java.io.UnsupportedEncodingException;
 import java.util.Properties;
 import javax.mail.BodyPart;
@@ -21,7 +22,7 @@ import com.applect.meritnation.generic.BaseLib;
 
 public class TrackingAPITest extends BaseLib{
 	
-	@Test(invocationCount = 1, groups = "api", priority = 1)
+	@Test(invocationCount = 1, groups = "ap", priority = 1)
 	public void TC_001_TrackingAPITest() {
 		
 //		BasePage.login(driver);
@@ -53,7 +54,6 @@ public class TrackingAPITest extends BaseLib{
 				InternetAddress.parse("deepesh.pathak@meritnation.com"));
 		message.addRecipients(Message.RecipientType.TO,
 				InternetAddress.parse("julfkar@meritnation.com"));
-		
 		message.addRecipients(Message.RecipientType.CC,
 				InternetAddress.parse("anup.kumar@meritnation.com"));
 		message.addRecipients(Message.RecipientType.CC,
@@ -95,5 +95,14 @@ public class TrackingAPITest extends BaseLib{
 		throw new RuntimeException(e);
 		}
 	}	
+	
+	@Test(invocationCount = 1, groups = "api", priority = 1)
+	public void TC_001_clcikt() {
+		
+		
+		trackingApiPage.click();
+		
+		
+	}
 
 }

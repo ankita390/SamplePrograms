@@ -61,12 +61,10 @@ public class TrackingAPIPage {
 	SimpleDateFormat formatter = new SimpleDateFormat("dd-MM-yyyy");  
 	Date date = new Date();
 	String currentdate = formatter.format(date);
-	
 	RestAssured.baseURI ="http://www.meritnation.com/trackingapi/v1";
 	RequestSpecification httpRequest = RestAssured.given();
 	Response response = httpRequest.request(Method.GET,"/activity?otype=userwise&filters[userId]=23040578&filters[end_date]=" +currentdate+ "&filters[start_date]=" +currentdate);
 	for (int i=146;i<156;i++) {
-	
 	String arr = ExcelUtils.readData("TestData", i, 1);
 	int allOtypesCount = response.path("data.otype.size()");
 	int counter =0;
@@ -75,10 +73,7 @@ public class TrackingAPIPage {
 	{
 	if(arr.equalsIgnoreCase(response.path("data.otype["+j+"]").toString())) {
 		counter=counter+1;
-	
 		}
-	
-	
 	}
 	cnt.add(Integer.toString(counter));
 	
@@ -87,6 +82,33 @@ return(cnt);
 
 		
 }
+	
+public void click(){
+
+//	RestAssured.baseURI ="https://www.meritnation.com/users/mailer-link";
+	RequestSpecification httpRequest = RestAssured.given();
+	for (int i =0;i<10;i++) {
+		String str = ExcelUtils.readData("sheet3", i, 0);
+		 httpRequest.request(Method.GET,str);
+		
+	}
+	
+	
+}
+
+
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	
 	
 	public TrackingAPIPage(WebDriver driver)
