@@ -22,7 +22,7 @@ import com.applect.meritnation.generic.BaseLib;
 
 public class TrackingAPITest extends BaseLib{
 	
-	@Test(invocationCount = 1, groups = "ap", priority = 1)
+	@Test(invocationCount = 1, groups = "api", priority = 1)
 	public void TC_001_TrackingAPITest() {
 		
 //		BasePage.login(driver);
@@ -96,7 +96,7 @@ public class TrackingAPITest extends BaseLib{
 		}
 	}	
 	
-	@Test(invocationCount = 1, groups = "api", priority = 1)
+	@Test(invocationCount = 1, groups = "ap", priority = 1)
 	public void TC_001_clcikt() {
 		
 		
