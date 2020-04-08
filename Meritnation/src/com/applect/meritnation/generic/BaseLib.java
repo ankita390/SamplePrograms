@@ -11,6 +11,8 @@ import org.apache.log4j.LogManager;
 import org.apache.log4j.Logger;
 import org.openqa.selenium.Capabilities;
 import org.openqa.selenium.NoSuchElementException;
+import org.openqa.selenium.Platform;
+import org.openqa.selenium.UnexpectedAlertBehaviour;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
@@ -38,9 +40,12 @@ import com.applect.meritnation.pageobject.MyProfilePage;
 import com.applect.meritnation.pageobject.ProfessorApiPage;
 import com.applect.meritnation.pageobject.SearchPage;
 import com.applect.meritnation.pageobject.StudyPage;
+import com.applect.meritnation.pageobject.TrackingAPIPage;
+
 import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.MobileElement;
 import io.appium.java_client.android.AndroidDriver;
+import io.github.bonigarcia.wdm.PhantomJsDriverManager;
 import io.github.bonigarcia.wdm.WebDriverManager; 
 
 
@@ -61,7 +66,7 @@ public class BaseLib {
 	protected MyProfilePage myprofilepage;
 	protected ProfessorApiPage professorApiPage;
 	protected SearchPage searchPage;
-	
+	protected TrackingAPIPage trackingApiPage;
 	
 	
 	
@@ -98,12 +103,17 @@ public class BaseLib {
 		//	WebDriverManager.chromedriver().version("71.0.3578.80").setup();
 			System.setProperty("webdriver.chrome.driver", "/var/www/mn-testing/Meritnation/Exe Files/chromedriver");
 			ChromeOptions options = new ChromeOptions();
+			options.setCapability(CapabilityType.UNEXPECTED_ALERT_BEHAVIOUR,
+	                  UnexpectedAlertBehaviour.IGNORE);
 			options.addArguments("disable-geolocation");
 			options.addArguments("--disable-notifications");
 			options.addArguments("--no-sandbox");
 			
+			
 			/*	String Node = "http://10.0.2.83:6666/wd/hub";
 	 		DesiredCapabilities cap = DesiredCapabilities.chrome();
+	 		cap.setPlatform(Platform.LINUX);
+	 		cap.setVersion("71.0.3578.80");
 	 
 	 		try {
 				driver = new RemoteWebDriver(new URL(Node), cap);
@@ -135,7 +145,7 @@ public class BaseLib {
 			myprofilepage = PageFactory.initElements(driver, MyProfilePage.class);
 			professorApiPage = PageFactory.initElements(driver, ProfessorApiPage.class);
 			searchPage = PageFactory.initElements(driver, SearchPage.class);
-			
+			trackingApiPage = PageFactory.initElements(driver, TrackingAPIPage.class);
 			
 			
 			
@@ -157,6 +167,11 @@ public class BaseLib {
 			
 			 
 		}
+	
+	@BeforeMethod(alwaysRun=false, groups = "api")
+	public void preconditionapi() {
+		trackingApiPage = PageFactory.initElements(driver, TrackingAPIPage.class);
+	}
 	
 
 	@BeforeMethod(alwaysRun =false, groups = "CurrentTask")
@@ -185,23 +200,23 @@ public class BaseLib {
 		}
 		else if (browsername.equalsIgnoreCase("chrome"))
 		{
-		//	WebDriverManager.chromedriver().version("71.0.3578.80").setup();
+		//	WebDriverManager.chromedriver().version("75.0.3770.80").setup();
 			
 			System.setProperty("webdriver.chrome.driver", "/var/www/mn-testing/Meritnation/Exe Files/chromedriver");
 			ChromeOptions options = new ChromeOptions();
 			options.addArguments("disable-geolocation");
 			options.addArguments("--disable-notifications");
-			options.addArguments("--no-sandbox");
+			options.addArguments("--no-sandbox"); 
 			
-			/*	String Node = "http://10.0.7.202:9999/wd/hub";
+			String Node = "http://"+GetPropertyValues.getPropertyValue("ashishIp")+":1234/wd/hub";
 	 		DesiredCapabilities cap = DesiredCapabilities.chrome();
 	 		try {
 				driver = new RemoteWebDriver(new URL(Node), cap);
 			} catch (MalformedURLException e) {
 				e.printStackTrace();
-			}*/
+			} 
 			
-			driver = new ChromeDriver(options);
+		//	driver = new ChromeDriver(options);
 			Reporter.log("Chrome Browser launches");
 		}
 		else if (browsername.equalsIgnoreCase("IE"))
@@ -212,7 +227,8 @@ public class BaseLib {
 		}
 		driver.manage().window().maximize();
 		//driver.manage().window().setSize(new Dimension (412, 732));
-		driver.get(GetPropertyValues.getPropertyValue("liveURL"));
+		driver.navigate().to(GetPropertyValues.getPropertyValue("liveURL"));
+	//	driver.get(GetPropertyValues.getPropertyValue("liveURL"));
 		Reporter.log("Navigate to the URL", true);
 		WaitStatementLib.implicitWaitForSecond(driver, 5);
 		
@@ -225,6 +241,9 @@ public class BaseLib {
 		myprofilepage = PageFactory.initElements(driver, MyProfilePage.class);
 		professorApiPage = PageFactory.initElements(driver, ProfessorApiPage.class);
 		searchPage = PageFactory.initElements(driver, SearchPage.class);
+		trackingApiPage = PageFactory.initElements(driver, TrackingAPIPage.class);
+		
+	
 		
 
 		
@@ -470,7 +489,7 @@ public void testSetUpForFullRegression(){
 		_driver.quit();
 		Reporter.log("Browser closed",true);
 	}
-	@AfterSuite(alwaysRun=true)
+	/*@AfterSuite(alwaysRun=true)
 	public static void sendEmail()
 	{
 		SimpleDateFormat formatter = new SimpleDateFormat("dd_MM_yyyy");  
@@ -485,11 +504,12 @@ public void testSetUpForFullRegression(){
 		File destFile = new File(filepath);
 			for (String f : srcFile.list()) {
 		        BasePage.copy(new File(srcFile, f), new File(destFile, f));
-		    }
-			BasePage.sendEmail();
+		    }*/
+		//	BasePage.sendEmail();
+
 		
 	}
 	
-}
+
 
  

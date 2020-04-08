@@ -18,16 +18,12 @@
 	<classpathentry kind="lib" path="Jar Files/java-client-7.0.0.jar"/>
 	<classpathentry kind="lib" path="Jar Files/org.apache.commons.io.jar"/>
 	<classpathentry kind="lib" path="Jar Files/selenium-java-3.141.59.jar"/>
-	<classpathentry kind="lib" path="Jar Files/commons-lang3-3.8.1.jar"/>
 	<classpathentry kind="lib" path="Jar Files/cglib-2.2.jar"/>
 	<classpathentry kind="lib" path="Jar Files/selenium-server-standalone-3.141.59.jar"/>
-	<classpathentry kind="lib" path="Jar Files/commons-codec-1.10.jar"/>
 	<classpathentry kind="lib" path="Jar Files/commons-collections4-4.1.jar"/>
 	<classpathentry kind="lib" path="Jar Files/commons-logging-1.2.jar"/>
 	<classpathentry kind="lib" path="Jar Files/curvesapi-1.04.jar"/>
 	<classpathentry kind="lib" path="Jar Files/jarchivelib-1.0.0.jar"/>
-	<classpathentry kind="lib" path="Jar Files/httpclient-4.5.6.jar"/>
-	<classpathentry kind="lib" path="Jar Files/httpcore-4.4.10.jar"/>
 	<classpathentry kind="lib" path="Jar Files/slf4j-api-1.7.25.jar"/>
 	<classpathentry kind="lib" path="Jar Files/okhttp-3.11.0.jar"/>
 	<classpathentry kind="lib" path="Jar Files/jsoup-1.11.3.jar"/>
@@ -36,6 +32,22 @@
 	<classpathentry kind="lib" path="Jar Files/gson-2.8.5.jar"/>
 	<classpathentry kind="lib" path="Jar Files/slf4j-nop-1.7.25.jar"/>
 	<classpathentry kind="lib" path="Jar Files/webdrivermanager-3.6.0.jar"/>
+	<classpathentry kind="lib" path="Jar Files/activation-1.1.1.jar"/>
+	<classpathentry kind="lib" path="Jar Files/commons-codec-1.9.jar"/>
+	<classpathentry kind="lib" path="Jar Files/commons-lang3-3.4.jar"/>
+	<classpathentry kind="lib" path="Jar Files/groovy-2.5.8.jar"/>
+	<classpathentry kind="lib" path="Jar Files/groovy-json-2.5.8.jar"/>
+	<classpathentry kind="lib" path="Jar Files/groovy-xml-2.5.8.jar"/>
+	<classpathentry kind="lib" path="Jar Files/hamcrest-2.1.jar"/>
+	<classpathentry kind="lib" path="Jar Files/httpclient-4.5.3.jar"/>
+	<classpathentry kind="lib" path="Jar Files/httpcore-4.4.6.jar"/>
+	<classpathentry kind="lib" path="Jar Files/httpmime-4.5.3.jar"/>
+	<classpathentry kind="lib" path="Jar Files/javax.activation-api-1.2.0.jar"/>
+	<classpathentry kind="lib" path="Jar Files/jaxb-api-2.3.1.jar"/>
+	<classpathentry kind="lib" path="Jar Files/jaxb-osgi-2.3.0.1.jar"/>
+	<classpathentry kind="lib" path="Jar Files/org.apache.sling.javax.activation-0.1.0.jar"/>
+	<classpathentry kind="lib" path="Jar Files/tagsoup-1.2.1.jar"/>
+	<classpathentry kind="lib" path="Jar Files/rest-assured-4.1.2.jar"/>
 	<classpathentry kind="con" path="org.testng.TESTNG_CONTAINER"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
